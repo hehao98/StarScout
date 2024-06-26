@@ -1,33 +1,27 @@
-import stscraper as scraper
-import pymongo
 import sys
+import yaml
+import pymongo
 import logging
 import pandas as pd
-import time
-
-file_path = 'tokens.txt'
-tokens = []
-# Read the tokens from the file and join them into one string
-with open(file_path, 'r') as file:
-    for line in file:
-        # Split the line into parts based on the colon and space
-        parts = line.strip().split(': ')
-        if len(parts) == 2:
-            tokens.append(parts[1])
-
-# Join the tokens into one string without any separator
-combined_tokens = ','.join(tokens)
-print(combined_tokens)
-gh_api4 = scraper.GitHubAPIv4(combined_tokens)
+import multiprocessing as mp
+import stscraper as scraper
 
 
-def get_star(git):
-    github = git.split('/')
-    name = github[1]
-    owner = github[0]
+with open("secrets.yaml", "r") as f:
+    SECRETS = yaml.safe_load(f)
+
+
+def get_stars(repo: str):
+    global SECRETS
+    owner, name = repo.split("/")
+    tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
+    strudel = scraper.GitHubAPIv4(tokens)
+    db = pymongo.MongoClient(SECRETS["mongo_url"]).fakestars.stars
+
+    logging.info(f"start working on {repo}, tokens: {scraper.get_limits(tokens)}")
 
     try:
-        result = gh_api4(
+        result = strudel(
             """
       query($cursor: String, $owner: String!, $name: String!) {
         repository(owner:$owner, name:$name){
@@ -51,18 +45,22 @@ def get_star(git):
             pageInfo {endCursor, hasNextPage}
           }
         }
-      }""", ('repository', 'stargazers'), owner=owner, name=name
+      }""",
+            ("repository", "stargazers"),
+            owner=owner,
+            name=name,
         )
     except Exception as ex:
-        logging.error(f"Error processing {git}: {ex}")
-        sys.exit(1)
+        logging.error(f"Error processing {repo}: {ex}")
+        return
+
     results = []
     for i, star in enumerate(result):
         starredAt = star["starredAt"]
 
         node = star["node"]
         data = {
-            "github": git,
+            "github": repo,
             "stargazerName": node["login"],
             "starredAt": starredAt,
             "createdAt": node["createdAt"],
@@ -76,10 +74,15 @@ def get_star(git):
             "gists": node["gists"]["totalCount"],
             "repos": node["repositories"]["totalCount"],
         }
-        
-        existing_check = stars.find_one(
-            {"github": data["github"], "stargazerName": data["stargazerName"], "starredAt": data["starredAt"]})
-        
+
+        existing_check = db.find_one(
+            {
+                "github": data["github"],
+                "stargazerName": data["stargazerName"],
+                "starredAt": data["starredAt"],
+            }
+        )
+
         if existing_check:  # already in DB
             break
         else:
@@ -88,30 +91,35 @@ def get_star(git):
             logging.info(f"processed {i} stars")
 
     if len(results) == 0:
-        logging.info("nothing to add for " + git)
+        logging.info("nothing to add for " + repo)
     else:
-        stars.insert_many(results)
-        logging.info("finish updating for " + git)
+        db.insert_many(results)
+        logging.info("finish updating for " + repo)
 
 
-df = pd.read_csv("samples.csv")
-githubs = dict(zip(df['github'], df['stars']))
+def main():
+    global SECRETS
 
-DbClient = pymongo.MongoClient("mongodb://localhost:27020")
-db = DbClient.fake_stars
-stars = db.stars
-stars.create_index([("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True)
+    df = pd.read_csv("samples.csv")
 
-logging.basicConfig(
-    format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
-    level=logging.INFO,
-    handlers=[logging.StreamHandler(sys.stdout)],
-)
-logging.info("Start!")
+    db = pymongo.MongoClient(SECRETS["mongo_url"]).fakestars.stars
+    db.create_index(
+        [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
+    )
 
-for git, n_stars in githubs.items():
-    tokens = scraper.get_limits(combined_tokens)
-    logging.info(f"start working on {git}, {n_stars} stars, tokens: {tokens}")
-    get_star(git)
+    logging.basicConfig(
+        format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
+        level=logging.INFO,
+        handlers=[logging.StreamHandler(sys.stdout)],
+    )
 
-logging.info("Done!")
+    logging.info("Start!")
+
+    with mp.pool(len(SECRETS["github_tokens"]) * 5) as pool:
+        pool.map(get_stars, df["github"].tolist())
+
+    logging.info("Done!")
+
+
+if __name__ == "__main__":
+    main()
