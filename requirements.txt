@@ -1,0 +1,3 @@
+strudel.scraper
+pandas
+pymongo

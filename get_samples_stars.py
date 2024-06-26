@@ -23,7 +23,6 @@ gh_api4 = scraper.GitHubAPIv4(combined_tokens)
 
 def get_star(git):
     github = git.split('/')
-    logging.info(f"start working on {git}")
     name = github[1]
     owner = github[0]
 
@@ -34,8 +33,7 @@ def get_star(git):
         repository(owner:$owner, name:$name){
           stargazers(first: 100, after: $cursor, orderBy: {field: STARRED_AT, direction: DESC}) {
             edges {
-
-              node{
+              node {
                 login,
                 createdAt
                 updatedAt
@@ -59,7 +57,7 @@ def get_star(git):
         logging.error(f"Error processing {git}: {ex}")
         sys.exit(1)
     results = []
-    for star in result:
+    for i, star in enumerate(result):
         starredAt = star["starredAt"]
 
         node = star["node"]
@@ -78,16 +76,16 @@ def get_star(git):
             "gists": node["gists"]["totalCount"],
             "repos": node["repositories"]["totalCount"],
         }
-        try:
-            existing_check = stars.find_one(
-                {"github": data["github"], "stargazerName": data["stargazerName"], "starredAt": data["starredAt"]})
-        except Exception as ex:
-            logging.error(f"Error checking {git}: {ex}")
-            sys.exit(1)
+        
+        existing_check = stars.find_one(
+            {"github": data["github"], "stargazerName": data["stargazerName"], "starredAt": data["starredAt"]})
+        
         if existing_check:  # already in DB
             break
         else:
             results.append(data)
+        if i % 100 == 0:
+            logging.info(f"processed {i} stars")
 
     if len(results) == 0:
         logging.info("nothing to add for " + git)
@@ -97,26 +95,23 @@ def get_star(git):
 
 
 df = pd.read_csv("samples.csv")
-githubs = set(df['github'])
+githubs = dict(zip(df['github'], df['stars']))
 
 DbClient = pymongo.MongoClient("mongodb://localhost:27020")
 db = DbClient.fake_stars
 stars = db.stars
-stars.create_index([("github", 1), ("stargazerName", 1), ("starredAt", 1)])
+stars.create_index([("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True)
 
 logging.basicConfig(
     format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
     level=logging.INFO,
     handlers=[logging.StreamHandler(sys.stdout)],
-
-
 )
 logging.info("Start!")
 
-for git in githubs:
+for git, n_stars in githubs.items():
     tokens = scraper.get_limits(combined_tokens)
-    for token in tokens:
-        logging.info(token)
+    logging.info(f"start working on {git}, {n_stars} stars, tokens: {tokens}")
     get_star(git)
 
 logging.info("Done!")
