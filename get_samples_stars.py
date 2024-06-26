@@ -1,10 +1,12 @@
 import sys
 import yaml
+import argparse
 import pymongo
 import logging
 import pandas as pd
-import multiprocessing as mp
 import stscraper as scraper
+
+from multiprocessing.pool import ThreadPool
 
 
 with open("secrets.yaml", "r") as f:
@@ -13,16 +15,21 @@ with open("secrets.yaml", "r") as f:
 
 def get_stars(repo: str):
     global SECRETS
+
     owner, name = repo.split("/")
+    client = pymongo.MongoClient(SECRETS["mongo_url"])
+    db = client.fakestars.stars
+
     tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
     strudel = scraper.GitHubAPIv4(tokens)
-    db = pymongo.MongoClient(SECRETS["mongo_url"]).fakestars.stars
 
-    logging.info(f"start working on {repo}, tokens: {scraper.get_limits(tokens)}")
+    limits = list(scraper.get_limits(tokens))
+    for limit in limits:
+        del limit["key"]
+    logging.info(f"start working on {repo}, tokens: {limits}")
 
-    try:
-        result = strudel(
-            """
+    result = strudel(
+        """
       query($cursor: String, $owner: String!, $name: String!) {
         repository(owner:$owner, name:$name){
           stargazers(first: 100, after: $cursor, orderBy: {field: STARRED_AT, direction: DESC}) {
@@ -31,7 +38,6 @@ def get_stars(repo: str):
                 login,
                 createdAt
                 updatedAt
-                email
                 isHireable
                 bio
                 twitterUsername
@@ -46,13 +52,10 @@ def get_stars(repo: str):
           }
         }
       }""",
-            ("repository", "stargazers"),
-            owner=owner,
-            name=name,
-        )
-    except Exception as ex:
-        logging.error(f"Error processing {repo}: {ex}")
-        return
+        ("repository", "stargazers"),
+        owner=owner,
+        name=name,
+    )
 
     results = []
     for i, star in enumerate(result):
@@ -65,7 +68,7 @@ def get_stars(repo: str):
             "starredAt": starredAt,
             "createdAt": node["createdAt"],
             "updatedAt": node["updatedAt"],
-            "email": node["email"],
+            "email": "",  # node["email"], requiring user:email scope and not particularly useful
             "isHireable": node["isHireable"],
             "bio": node["bio"],
             "twitterUsername": node["twitterUsername"],
@@ -96,16 +99,18 @@ def get_stars(repo: str):
         db.insert_many(results)
         logging.info("finish updating for " + repo)
 
+    client.close()
+
 
 def main():
     global SECRETS
 
     df = pd.read_csv("samples.csv")
 
-    db = pymongo.MongoClient(SECRETS["mongo_url"]).fakestars.stars
-    db.create_index(
-        [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
-    )
+    with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
+        client.fakestars.stars.create_index(
+            [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
+        )
 
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -115,8 +120,16 @@ def main():
 
     logging.info("Start!")
 
-    with mp.pool(len(SECRETS["github_tokens"]) * 5) as pool:
-        pool.map(get_stars, df["github"].tolist())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-j", help="Number of Jobs", type=int, default=1)
+    arguments = parser.parse_args()
+
+    if arguments.j > 1:
+        with ThreadPool(arguments.j) as pool:
+            pool.map(get_stars, df["github"].tolist())
+    else:
+        for repo in df["github"].tolist():
+            get_stars(repo)
 
     logging.info("Done!")
 
