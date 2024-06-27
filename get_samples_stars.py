@@ -106,13 +106,6 @@ def get_stars(repo: str):
 def main():
     global SECRETS
 
-    df = pd.read_csv("data/samples.csv")
-
-    with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
-        client.fake_stars.stars.create_index(
-            [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
-        )
-
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
         level=logging.INFO,
@@ -120,6 +113,14 @@ def main():
     )
 
     logging.info("Start!")
+
+    df = pd.read_csv("data/samples.csv")
+    logging.info(f"{len(set(df['github']))} repos to collect")
+
+    with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
+        client.fake_stars.stars.create_index(
+            [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
+        )
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-j", help="Number of Jobs", type=int, default=1)
