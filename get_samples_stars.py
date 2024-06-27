@@ -106,7 +106,7 @@ def get_stars(repo: str):
 def main():
     global SECRETS
 
-    df = pd.read_csv("samples.csv")
+    df = pd.read_csv("data/samples.csv")
 
     with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
         client.fake_stars.stars.create_index(
