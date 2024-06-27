@@ -1,6 +1,7 @@
 from datetime import datetime
 import datetime as dt
 import pymongo
+import pandas as pd
 
 
 def _validate_star(user):
@@ -30,7 +31,7 @@ def read_from_mongo(uri, dbname, collection_name):
     fake_count = 0
     github_dict = {}
     total_stars = {}
-
+    user_info = []
     # Process and validate users
     for user in users:
         user["createdAt"] = datetime.strptime(
@@ -43,6 +44,8 @@ def read_from_mongo(uri, dbname, collection_name):
         repo_name = user["github"]
 
         if _validate_star(user):
+            user_info.append(
+                {"github": user["github"], "name": user["stargazerName"]})
             fake_count += 1
             if repo_name not in github_dict:
                 github_dict[repo_name] = {"fake_stars": 0, "total_stars": 0}
@@ -52,6 +55,8 @@ def read_from_mongo(uri, dbname, collection_name):
             total_stars[repo_name] = 0
         total_stars[repo_name] += 1
 
+    results = pd.DataFrame(user_info)
+    results.sort_values(by="github").to_csv("fake_users.csv", index=False)
     # Merge the total stars into the github_dict
     for repo_name in github_dict:
         github_dict[repo_name]["total_stars"] = total_stars[repo_name]

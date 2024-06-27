@@ -18,15 +18,15 @@ def get_stars(repo: str):
 
     owner, name = repo.split("/")
     client = pymongo.MongoClient(SECRETS["mongo_url"])
-    db = client.fakestars.stars
+    db = client.fake_stars.stars
 
     tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
     strudel = scraper.GitHubAPIv4(tokens)
 
-    limits = list(scraper.get_limits(tokens))
+    limits = scraper.get_limits(tokens)
     for limit in limits:
         del limit["key"]
-    logging.info(f"start working on {repo}, tokens: {limits}")
+        logging.info(f"tokens: {limit}")
 
     result = strudel(
         """
@@ -68,7 +68,8 @@ def get_stars(repo: str):
             "starredAt": starredAt,
             "createdAt": node["createdAt"],
             "updatedAt": node["updatedAt"],
-            "email": "",  # node["email"], requiring user:email scope and not particularly useful
+            # node["email"], requiring user:email scope and not particularly useful
+            "email": "",
             "isHireable": node["isHireable"],
             "bio": node["bio"],
             "twitterUsername": node["twitterUsername"],
@@ -108,7 +109,7 @@ def main():
     df = pd.read_csv("samples.csv")
 
     with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
-        client.fakestars.stars.create_index(
+        client.fake_stars.stars.create_index(
             [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
         )
 
@@ -129,6 +130,7 @@ def main():
             pool.map(get_stars, df["github"].tolist())
     else:
         for repo in df["github"].tolist():
+            logging.info(f"start working on {repo}")
             get_stars(repo)
 
     logging.info("Done!")
