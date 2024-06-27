@@ -6,7 +6,7 @@ import logging
 import pandas as pd
 import stscraper as scraper
 
-from multiprocessing.pool import ThreadPool
+from multiprocessing import Pool
 
 
 with open("secrets.yaml", "r") as f:
@@ -126,7 +126,7 @@ def main():
     arguments = parser.parse_args()
 
     if arguments.j > 1:
-        with ThreadPool(arguments.j) as pool:
+        with Pool(arguments.j) as pool:
             pool.map(get_stars, df["github"].tolist())
     else:
         for repo in df["github"].tolist():
