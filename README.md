@@ -14,7 +14,7 @@ These scripts have only been tested in Ubuntu.
     pip install -r requirements.txt
     ```
 
-2. Configuring Secrets in `secrets.yaml`
+2. Configure Secrets in `secrets.yaml`:
 
     ```yaml
     mongo_url: "your_mongo_url"
@@ -24,6 +24,8 @@ These scripts have only been tested in Ubuntu.
       - token: "your_github_token"
         name: "your_github_username"
     ```
+
+3. Configure Google BigQuery [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs).
 
 ## Getting Data
 

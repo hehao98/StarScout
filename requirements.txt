@@ -2,3 +2,4 @@ pandas
 pymongo
 pyyaml
 strudel.scraper
+google-cloud-bigquery
