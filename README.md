@@ -34,7 +34,7 @@ These scripts have only been tested in Ubuntu.
     nohup python get_samples_stars.py > logs/get_samples_stars.log &
     ```
 
-    This script will read from `data/samples.csv` and write to `fake_stars.stars` collection in MongoDB. It is idempotent and can incrementally collect new data based on existing data in the collection.
+    This script will read from `data/samples.csv` and write to `fake_stars.stars` collection in MongoDB. It is idempotent and can incrementally collect new data based on existing data in the collection. Use the `-j [number of jobs]` option to enable multiprocessing.
 
 2. Get obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
 
