@@ -56,7 +56,7 @@ def read_from_mongo(uri, dbname, collection_name):
         total_stars[repo_name] += 1
 
     results = pd.DataFrame(user_info)
-    results.sort_values(by="github").to_csv("data/fake_users.csv", index=False)
+    results.sort_values(by="github").to_csv("data/fake_stars_obvious.csv", index=False)
 
     # Merge the total stars into the github_dict
     for repo_name in github_dict:

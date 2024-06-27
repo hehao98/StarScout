@@ -42,4 +42,10 @@ These scripts have only been tested in Ubuntu.
     nohup python detect_fake_star_simple.py > logs/detect_fake_star_simple.log &
     ```
 
-    The script will read from `fake_stars.stars` collection in MongoDB and write to `data/fake_users.csv`.
+    The script will read from `fake_stars.stars` collection in MongoDB and write to `data/fake_stars_obvious.csv`.
+
+3. Get non-obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
+
+    ```shell
+    nohup python detect_fake_star_complex.py > logs/detect_fake_star_complex.log &
+    ```
