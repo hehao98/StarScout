@@ -115,7 +115,8 @@ def main():
     logging.info("Start!")
 
     df = pd.read_csv("data/samples.csv")
-    logging.info(f"{len(set(df['github']))} repos to collect")
+    total_stars = sum(dict(zip(df["github"], df["stars"])).values())
+    logging.info(f"{len(set(df['github']))} repos ({total_stars} stars) to collect")
 
     with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
         client.fake_stars.stars.create_index(
