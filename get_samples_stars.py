@@ -129,9 +129,9 @@ def main():
 
     if arguments.j > 1:
         with Pool(arguments.j) as pool:
-            pool.map(get_stars, df["github"].tolist())
+            pool.map(get_stars, set(df['github']))
     else:
-        for repo in df["github"].tolist():
+        for repo in set(df['github']):
             logging.info(f"start working on {repo}")
             get_stars(repo)
 
