@@ -18,7 +18,7 @@ def get_stars(repo: str):
 
     owner, name = repo.split("/")
     client = pymongo.MongoClient(SECRETS["mongo_url"])
-    db = client.fakestars.stars
+    db = client.fake_stars.stars
 
     tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
     strudel = scraper.GitHubAPIv4(tokens)
@@ -108,7 +108,7 @@ def main():
     df = pd.read_csv("samples.csv")
 
     with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
-        client.fakestars.stars.create_index(
+        client.fake_stars.stars.create_index(
             [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
         )
 
