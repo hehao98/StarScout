@@ -26,6 +26,7 @@ These scripts have only been tested in Ubuntu.
     # The Google Bigquery dataset to write to for complex detector
     bigquery_project: your_project_name
     bigquery_dataset: your_table_name
+    google_cloud_bucket: your_google_cloud_bucket_name
     ```
 
 3. Configure Google BigQuery [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs).
@@ -55,4 +56,4 @@ These scripts have only been tested in Ubuntu.
     python detect_fake_star_complex.py
     ```
 
-    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before each query is sent.
+    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before the most expensive bulk query is sent. Then, the script will compute fake stars per repo and write results to `gs://{{google_cloud_bucket}}/fake-stars/{{repo}}/{{table}}.json`.

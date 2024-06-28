@@ -3,13 +3,16 @@ import yaml
 import logging
 
 from pprint import pformat
+from google.cloud import storage
 from google.cloud import bigquery
+from google.cloud.bigquery.job import ExtractJobConfig
 
 
 with open("secrets.yaml", "r") as f:
     SECRETS = yaml.safe_load(f)
 PROJECT_ID = SECRETS["bigquery_project"]
 DATASET_ID = SECRETS["bigquery_dataset"]
+GCP_BUCKET = SECRETS["google_cloud_bucket"]
 
 
 def yes_or_no(question: str) -> bool:
@@ -19,6 +22,12 @@ def yes_or_no(question: str) -> bool:
             return True
         if reply[0] == "n":
             return False
+
+
+def check_gcp_blob_exists(bucket_name: str, path: str) -> bool:
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    return storage.Blob(bucket=bucket, name=path).exists()
 
 
 def process_bigquery(
@@ -86,12 +95,18 @@ def main():
     process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_bulk_task)
 
     for repo in repos:
+        gcp_dest_path = f"fake-stars/{repo.replace('/', '_')}"
+        if check_gcp_blob_exists(GCP_BUCKET, gcp_dest_path + "/fake_star_stats.json"):
+            logging.info("Repo %s results already exists, skipping", repo)
+            continue
+
         logging.info("Processing repo: %s", repo)
         bigquery_per_repo_tasks = [
             "stg_stargazer_overlap",
             "stg_stargazer_repo_clusters",
             "stg_spammy_repos",
             "stargazer_summary",
+            "stargazer_repo_summary",
             "fake_star_stats",
         ]
         for task in bigquery_per_repo_tasks:
@@ -102,10 +117,24 @@ def main():
                 interactive=False,
                 query_file=f"complex_detector/{task}.sql",
                 output_table_id=task,
-                params=[
-                    bigquery.ScalarQueryParameter("repo", "STRING", repo)
-                ],
+                params=[bigquery.ScalarQueryParameter("repo", "STRING", repo)],
             )
+
+        logging.info("Writing results to Google Cloud Storage")
+        dataset_ref = bigquery.DatasetReference(PROJECT_ID, DATASET_ID)
+
+        for table in bigquery_per_repo_tasks:
+            logging.info("Writing table %s", table)
+            extract_job = client.extract_table(
+                source=dataset_ref.table(table),
+                destination_uris=f"gs://{GCP_BUCKET}/{gcp_dest_path}/{table}.json",
+                job_config=ExtractJobConfig(
+                    destination_format=(
+                        bigquery.DestinationFormat.NEWLINE_DELIMITED_JSON
+                    )
+                ),
+            )
+            extract_job.result()
 
     return
 
