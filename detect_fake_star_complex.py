@@ -73,7 +73,12 @@ def main():
     )
 
     start_date, end_date = "220101", "231231"
-    repos = ["serverless-stack/sst"]
+    repos = [
+        "serverless-stack/sst",
+        "animate-css/animate.css",
+        "facebook/docusaurus",
+        "rails/rails",
+    ]
 
     client = bigquery.Client()
     dataset = bigquery.Dataset(PROJECT_ID + "." + DATASET_ID)
