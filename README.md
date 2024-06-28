@@ -17,12 +17,15 @@ These scripts have only been tested in Ubuntu.
 2. Configure Secrets in `secrets.yaml`:
 
     ```yaml
-    mongo_url: "your_mongo_url"
+    mongo_url: your_mongo_url
     github_tokens:
-      - token: "your_github_token"
-        name: "your_github_username"
-      - token: "your_github_token"
-        name: "your_github_username"
+      - token: your_github_token
+        name: your_github_username
+      - token: your_github_token
+        name: your_github_username
+    # The Google Bigquery dataset to write to for complex detector
+    bigquery_project: your_project_name
+    bigquery_dataset: your_table_name
     ```
 
 3. Configure Google BigQuery [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs).
