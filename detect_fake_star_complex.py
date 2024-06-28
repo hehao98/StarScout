@@ -16,10 +16,10 @@ BIGQUERY_TASKS = [
         "query_file": "complex_detector/stg_all_actions_for_stargazers.sql",
         "output_table_id": "stg_all_actions",
         "params": [
-            bigquery.ScalarQueryParameter("start_date", "STRING", "231225"),
+            bigquery.ScalarQueryParameter("start_date", "STRING", "220101"),
             bigquery.ScalarQueryParameter("end_date", "STRING", "231231"),
             bigquery.ArrayQueryParameter(
-                "repositories", "STRING", ["hydro-dev/Hydro", "discordjs/discord.js"]
+                "repositories", "STRING", ["serverless-stack/sst"]
             ),
         ],
     },

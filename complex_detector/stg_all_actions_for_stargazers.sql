@@ -27,7 +27,7 @@ FROM
   `githubarchive.day.20*`
 WHERE
   (_TABLE_SUFFIX BETWEEN @start_date
-    AND @start_date)
+    AND @end_date)
   AND actor.login IN (
   SELECT
     actor
