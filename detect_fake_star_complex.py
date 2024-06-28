@@ -8,46 +8,8 @@ from google.cloud import bigquery
 
 with open("secrets.yaml", "r") as f:
     SECRETS = yaml.safe_load(f)
-
 PROJECT_ID = SECRETS["bigquery_project"]
 DATASET_ID = SECRETS["bigquery_dataset"]
-BIGQUERY_TASKS = [
-    {
-        "query_file": "complex_detector/stg_all_actions_for_stargazers.sql",
-        "output_table_id": "stg_all_actions",
-        "params": [
-            bigquery.ScalarQueryParameter("start_date", "STRING", "220101"),
-            bigquery.ScalarQueryParameter("end_date", "STRING", "231231"),
-            bigquery.ArrayQueryParameter(
-                "repositories", "STRING", ["serverless-stack/sst"]
-            ),
-        ],
-    },
-    {
-        "query_file": "complex_detector/stg_stargazer_overlap.sql",
-        "output_table_id": "stg_stargazer_overlap",
-    },
-    {
-        "query_file": "complex_detector/stg_stargazer_repo_clusters.sql",
-        "output_table_id": "stg_stargazer_repo_clusters",
-    },
-    {
-        "query_file": "complex_detector/stg_spammy_repos.sql",
-        "output_table_id": "stg_spammy_repos",
-    },
-    {
-        "query_file": "complex_detector/stargazer_summary.sql",
-        "output_table_id": "stargazer_summary",
-    },
-    {
-        "query_file": "complex_detector/stargazer_repo_summary.sql",
-        "output_table_id": "stargazer_repo_summary",
-    },
-    {
-        "query_file": "complex_detector/fake_star_stats.sql",
-        "output_table_id": "fake_star_stats",
-    },
-]
 
 
 def yes_or_no(question: str) -> bool:
@@ -62,9 +24,10 @@ def yes_or_no(question: str) -> bool:
 def process_bigquery(
     project_id: str,
     dataset_id: str,
+    interactive: bool,
     query_file: str,
     output_table_id: str,
-    params: list[bigquery.ScalarQueryParameter] = [],
+    params: list = [],
 ):
     with open(query_file, "r") as f:
         query = f.read()
@@ -80,7 +43,7 @@ def process_bigquery(
     dry_run_job = client.query(query, job_config=job_config)
     logging.info("Query cost: %f GB", dry_run_job.total_bytes_processed / 1024**3)
 
-    if yes_or_no("Proceed?"):
+    if not interactive or yes_or_no("Proceed?"):
         job_config.dry_run = False
         job_config.write_disposition = bigquery.WriteDisposition.WRITE_TRUNCATE
         job_config.destination = ".".join([project_id, dataset_id, output_table_id])
@@ -93,7 +56,6 @@ def process_bigquery(
 
 def main():
     global PROJECT_ID, DATASET_ID
-    global BIGQUERY_TASKS
 
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -101,14 +63,49 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
+    start_date, end_date = "220101", "231231"
+    repos = ["serverless-stack/sst"]
+
     client = bigquery.Client()
     dataset = bigquery.Dataset(PROJECT_ID + "." + DATASET_ID)
     dataset = client.create_dataset(dataset, exists_ok=True, timeout=30)
     logging.info("Created BigQuery dataset %s.%s", client.project, dataset.dataset_id)
 
-    for bigquery_task in BIGQUERY_TASKS:
-        logging.info("Current BigQuery task:\n%s", pformat(bigquery_task))
-        process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+    # This task can be very expensive, require user confirmation
+    bigquery_bulk_task = {
+        "interactive": True,
+        "query_file": "complex_detector/stg_all_actions_for_stargazers.sql",
+        "output_table_id": "stg_all_actions",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", start_date),
+            bigquery.ScalarQueryParameter("end_date", "STRING", end_date),
+            bigquery.ArrayQueryParameter("repositories", "STRING", repos),
+        ],
+    }
+    logging.info("Current BigQuery task:\n%s", pformat(bigquery_bulk_task))
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_bulk_task)
+
+    for repo in repos:
+        logging.info("Processing repo: %s", repo)
+        bigquery_per_repo_tasks = [
+            "stg_stargazer_overlap",
+            "stg_stargazer_repo_clusters",
+            "stg_spammy_repos",
+            "stargazer_summary",
+            "fake_star_stats",
+        ]
+        for task in bigquery_per_repo_tasks:
+            logging.info("Current BigQuery task: %s", task)
+            process_bigquery(
+                PROJECT_ID,
+                DATASET_ID,
+                interactive=False,
+                query_file=f"complex_detector/{task}.sql",
+                output_table_id=task,
+                params=[
+                    bigquery.ScalarQueryParameter("repo", "STRING", repo)
+                ],
+            )
 
     return
 

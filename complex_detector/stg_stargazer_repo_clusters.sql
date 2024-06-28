@@ -1,7 +1,19 @@
 -- ## summarize activity per repo & cross join to compare to every other repo in set
 -- summary table with 1 row per repo
 
-WITH repo_summary AS (
+WITH stg_this_repo_actions AS (
+  SELECT 
+    *,
+    IF (repo = @repo, TRUE, FALSE) AS is_target_repo
+  FROM @project_id.@dataset_id.stg_all_actions
+  WHERE actor IN (
+    SELECT 
+      DISTINCT actor 
+    FROM @project_id.@dataset_id.stg_all_actions 
+    WHERE repo = @repo AND is_star = TRUE
+  )
+),
+repo_summary AS (
     SELECT
     repo,
     ARRAY_AGG(DISTINCT event) as events,
@@ -12,7 +24,7 @@ WITH repo_summary AS (
     COUNT(*)n,
     ARRAY_AGG(DISTINCT actor IGNORE NULLS) actors,
     ARRAY_AGG(DISTINCT IFNULL(org, 'no org')) orgs,
-    FROM @project_id.@dataset_id.stg_all_actions
+    FROM stg_this_repo_actions
 
     -- exclude actors who interacted with very large number of repos (avoid memory exceeded error)
     WHERE actor NOT IN (
