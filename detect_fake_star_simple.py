@@ -38,14 +38,18 @@ def read_from_mongo(uri, dbname, collection_name):
 
     # Process and validate users
     for user in collection.find():
-        user["createdAt"] = datetime.strptime(user["createdAt"], "%Y-%m-%dT%H:%M:%SZ")
-        user["updatedAt"] = datetime.strptime(user["updatedAt"], "%Y-%m-%dT%H:%M:%SZ")
-        user["starredAt"] = datetime.strptime(user["starredAt"], "%Y-%m-%dT%H:%M:%SZ")
+        user["createdAt"] = datetime.strptime(
+            user["createdAt"], "%Y-%m-%dT%H:%M:%SZ")
+        user["updatedAt"] = datetime.strptime(
+            user["updatedAt"], "%Y-%m-%dT%H:%M:%SZ")
+        user["starredAt"] = datetime.strptime(
+            user["starredAt"], "%Y-%m-%dT%H:%M:%SZ")
 
         repo_name = user["github"]
 
         if _validate_star(user):
-            user_info.append({"github": user["github"], "name": user["stargazerName"]})
+            user_info.append(
+                {"github": user["github"], "name": user["stargazerName"]})
             fake_count += 1
             if repo_name not in github_dict:
                 github_dict[repo_name] = {"fake_stars": 0, "total_stars": 0}
@@ -56,13 +60,15 @@ def read_from_mongo(uri, dbname, collection_name):
         total_stars[repo_name] += 1
 
     results = pd.DataFrame(user_info)
-    results.sort_values(by="github").to_csv("data/fake_stars_obvious.csv", index=False)
+    results.sort_values(by="github").to_csv(
+        "data/fake_stars_obvious.csv", index=False)
 
     # Merge the total stars into the github_dict
     for repo_name in github_dict:
         github_dict[repo_name]["total_stars"] = total_stars[repo_name]
         github_dict[repo_name]["fake_percentage"] = (
-            github_dict[repo_name]["fake_stars"] / github_dict[repo_name]["total_stars"]
+            github_dict[repo_name]["fake_stars"] /
+            github_dict[repo_name]["total_stars"]
         ) * 100
 
     # Sort by fake percentage
@@ -70,15 +76,21 @@ def read_from_mongo(uri, dbname, collection_name):
         sorted(
             github_dict.items(),
             key=lambda item: item[1]["fake_percentage"],
-            reverse=True,
+            reverse=False,
         )
     )
 
+    fake_percentage = []
     # Display the results
     for key, value in sorted_github_dict.items():
-        print(
-            f"{key}: {value['fake_stars']} fake stars, {value['fake_percentage']:.2f}% fake stars"
-        )
+        fake_percentage.append({"github": key,
+                                "total_stars": value["total_stars"],
+                                "fake_stars": value["fake_stars"],
+                                "fake_percentage": value["fake_percentage"]
+                                })
+    fake_percentage = pd.DataFrame(fake_percentage)
+    fake_percentage.sort_values(by="fake_percentage", ascending=False).to_csv(
+        "data/fake_stars_obvious_percentage.csv", index=False)
 
     print("Number of suspicious repos: " + str(len(sorted_github_dict)))
     client.close()
