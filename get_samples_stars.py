@@ -1,5 +1,6 @@
 import sys
 import yaml
+import traceback
 import argparse
 import pymongo
 import logging
@@ -28,79 +29,82 @@ def get_stars(repo: str):
         del limit["key"]
         logging.info(f"tokens: {limit}")
 
-    result = strudel(
-        """
-      query($cursor: String, $owner: String!, $name: String!) {
-        repository(owner:$owner, name:$name){
-          stargazers(first: 100, after: $cursor, orderBy: {field: STARRED_AT, direction: DESC}) {
-            edges {
-              node {
-                login,
-                createdAt
-                updatedAt
-                isHireable
-                bio
-                twitterUsername
-                followers{ totalCount }
-                following{ totalCount }
-                gists{ totalCount }
-                repositories{ totalCount }
-              }
-              starredAt
+    try:
+        result = strudel(
+            """
+        query($cursor: String, $owner: String!, $name: String!) {
+            repository(owner:$owner, name:$name){
+            stargazers(first: 100, after: $cursor, orderBy: {field: STARRED_AT, direction: DESC}) {
+                edges {
+                node {
+                    login,
+                    createdAt
+                    updatedAt
+                    isHireable
+                    bio
+                    twitterUsername
+                    followers{ totalCount }
+                    following{ totalCount }
+                    gists{ totalCount }
+                    repositories{ totalCount }
+                }
+                starredAt
+                }
+                pageInfo {endCursor, hasNextPage}
             }
-            pageInfo {endCursor, hasNextPage}
-          }
-        }
-      }""",
-        ("repository", "stargazers"),
-        owner=owner,
-        name=name,
-    )
-
-    results = []
-    for i, star in enumerate(result):
-        starredAt = star["starredAt"]
-
-        node = star["node"]
-        data = {
-            "github": repo,
-            "stargazerName": node["login"],
-            "starredAt": starredAt,
-            "createdAt": node["createdAt"],
-            "updatedAt": node["updatedAt"],
-            # node["email"], requiring user:email scope and not particularly useful
-            "email": "",
-            "isHireable": node["isHireable"],
-            "bio": node["bio"],
-            "twitterUsername": node["twitterUsername"],
-            "followers": node["followers"]["totalCount"],
-            "following": node["following"]["totalCount"],
-            "gists": node["gists"]["totalCount"],
-            "repos": node["repositories"]["totalCount"],
-        }
-
-        existing_check = db.find_one(
-            {
-                "github": data["github"],
-                "stargazerName": data["stargazerName"],
-                "starredAt": data["starredAt"],
             }
+        }""",
+            ("repository", "stargazers"),
+            owner=owner,
+            name=name,
         )
 
-        if existing_check:  # already in DB
-            break
+        results = []
+        for i, star in enumerate(result):
+            starredAt = star["starredAt"]
+
+            node = star["node"]
+            data = {
+                "github": repo,
+                "stargazerName": node["login"],
+                "starredAt": starredAt,
+                "createdAt": node["createdAt"],
+                "updatedAt": node["updatedAt"],
+                # node["email"], requiring user:email scope and not particularly useful
+                "email": "",
+                "isHireable": node["isHireable"],
+                "bio": node["bio"],
+                "twitterUsername": node["twitterUsername"],
+                "followers": node["followers"]["totalCount"],
+                "following": node["following"]["totalCount"],
+                "gists": node["gists"]["totalCount"],
+                "repos": node["repositories"]["totalCount"],
+            }
+
+            existing_check = db.find_one(
+                {
+                    "github": data["github"],
+                    "stargazerName": data["stargazerName"],
+                    "starredAt": data["starredAt"],
+                }
+            )
+
+            if existing_check:  # already in DB
+                break
+            else:
+                results.append(data)
+            if i % 100 == 0:
+                logging.info(f"processed {i} stars")
+
+        if len(results) == 0:
+            logging.info("nothing to add for " + repo)
         else:
-            results.append(data)
-        if i % 100 == 0:
-            logging.info(f"processed {i} stars")
-
-    if len(results) == 0:
-        logging.info("nothing to add for " + repo)
-    else:
-        db.insert_many(results)
-        logging.info("finish updating for " + repo)
-
-    client.close()
+            db.insert_many(results)
+            logging.info("finish updating for " + repo)
+    except Exception as ex:
+        logging.error(f"error fetching repo {repo}: {ex}\n{traceback.format_exc(ex)}")
+    finally:
+        client.close()
 
 
 def main():
@@ -129,9 +133,9 @@ def main():
 
     if arguments.j > 1:
         with Pool(arguments.j) as pool:
-            pool.map(get_stars, set(df['github']))
+            pool.map(get_stars, set(df["github"]))
     else:
-        for repo in set(df['github']):
+        for repo in set(df["github"]):
             logging.info(f"start working on {repo}")
             get_stars(repo)
 

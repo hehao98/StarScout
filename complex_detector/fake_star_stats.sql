@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+-- Summarize fake stargazer statistics
 
 SELECT
     COUNT(*) as total_users_starring_repo,
@@ -7,4 +7,4 @@ SELECT
     COUNTIF(REGEXP_CONTAINS(fake_acct, 'low')) as fake_stars_low_activity,
     COUNTIF(fake_acct = 'unknown') as real_stars,
     COUNTIF(REGEXP_CONTAINS(fake_acct, 'suspected')) / COUNT(*) * 100 as p_fake
-FROM {{ ref('starring_actor_summary') }}
+FROM @project_id.@dataset_id.stargazer_summary

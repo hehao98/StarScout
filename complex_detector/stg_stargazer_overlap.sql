@@ -1,6 +1,19 @@
--- ## summarize activity per actor & cross join to compare to every other actor in set
+-- Staging: Summarize activity per actor & cross join to compare to every other actor in set"
+
 -- summary table with 1 row per actor
-WITH actor_summary AS (
+WITH stg_this_repo_actions AS (
+  SELECT 
+    *,
+    IF (repo = @repo, TRUE, FALSE) AS is_target_repo
+  FROM @project_id.@dataset_id.stg_all_actions
+  WHERE actor IN (
+    SELECT 
+      DISTINCT actor 
+    FROM @project_id.@dataset_id.stg_all_actions 
+    WHERE repo = @repo AND is_star = TRUE
+  )
+),
+actor_summary AS (
   SELECT
     actor,
     ARRAY_AGG(DISTINCT event) as events,
@@ -12,7 +25,7 @@ WITH actor_summary AS (
     ARRAY_AGG(DISTINCT avatar_url IGNORE NULLS) actor_avatars,
     ARRAY_AGG(DISTINCT repo IGNORE NULLS) repos,
     ARRAY_AGG(DISTINCT IFNULL(org, 'no org')) orgs,
-  FROM {{ ref('stg_all_actions_for_actors_who_starred_repo') }}
+  FROM stg_this_repo_actions
   GROUP BY 1
 ),
 -- cross join actor_summary to compare each user to each other user in set
