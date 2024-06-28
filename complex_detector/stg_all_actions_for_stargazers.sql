@@ -21,10 +21,8 @@ SELECT
   repo.name repo,
   org.login org,
   payload,
-IF
-  (repo.name IN UNNEST(@repositories), TRUE, FALSE) AS is_target_repo,
-IF
-  (type = 'WatchEvent', TRUE, FALSE) AS is_star,
+  IF (repo.name IN UNNEST(@repositories), TRUE, FALSE) AS is_target_repo,
+  IF (type = 'WatchEvent', TRUE, FALSE) AS is_star,
 FROM
   `githubarchive.day.20*`
 WHERE
