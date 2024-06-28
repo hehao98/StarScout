@@ -36,7 +36,6 @@ These scripts have only been tested in Ubuntu.
 
     ```shell
     mkdir logs
-    # Determine number of jobs based on your tokens
     nohup python get_samples_stars.py -j 32 > logs/get_samples_stars.log & 
     ```
 
@@ -53,5 +52,7 @@ These scripts have only been tested in Ubuntu.
 3. Get non-obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
 
     ```shell
-    nohup python detect_fake_star_complex.py > logs/detect_fake_star_complex.log &
+    python detect_fake_star_complex.py
     ```
+
+    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before each query is sent.
