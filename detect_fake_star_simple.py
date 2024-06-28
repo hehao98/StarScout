@@ -80,11 +80,17 @@ def read_from_mongo(uri, dbname, collection_name):
         )
     )
 
+    fake_percentage = []
     # Display the results
     for key, value in sorted_github_dict.items():
-        print(
-            f"{key}: {value['fake_stars']} fake stars, {value['fake_percentage']:.2f}% fake stars"
-        )
+        fake_percentage.append({"github": key,
+                                "total_stars": value["total_stars"],
+                                "fake_stars": value["fake_stars"],
+                                "fake_percentage": value["fake_percentage"]
+                                })
+    fake_percentage = pd.DataFrame(fake_percentage)
+    fake_percentage.sort_values(by="fake_percentage", ascending=False).to_csv(
+        "data/fake_stars_obvious_percentage.csv", index=False)
 
     print("Number of suspicious repos: " + str(len(sorted_github_dict)))
     client.close()
