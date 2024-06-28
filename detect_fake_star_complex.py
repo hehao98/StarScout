@@ -14,6 +14,7 @@ DATASET_ID = SECRETS["bigquery_dataset"]
 BIGQUERY_TASKS = [
     {
         "query_file": "complex_detector/stg_all_actions_for_stargazers.sql",
+        "output_table_id": "stg_all_actions",
         "params": [
             bigquery.ScalarQueryParameter("start_date", "STRING", "231225"),
             bigquery.ScalarQueryParameter("end_date", "STRING", "231231"),
@@ -21,10 +22,32 @@ BIGQUERY_TASKS = [
                 "repositories", "STRING", ["hydro-dev/Hydro", "discordjs/discord.js"]
             ),
         ],
-        "output_table_id": "stg_all_actions",
-    }
+    },
+    {
+        "query_file": "complex_detector/stg_stargazer_overlap.sql",
+        "output_table_id": "stg_stargazer_overlap",
+    },
+    {
+        "query_file": "complex_detector/stg_stargazer_repo_clusters.sql",
+        "output_table_id": "stg_stargazer_repo_clusters",
+    },
+    {
+        "query_file": "complex_detector/stg_spammy_repos.sql",
+        "output_table_id": "stg_spammy_repos",
+    },
+    {
+        "query_file": "complex_detector/stargazer_summary.sql",
+        "output_table_id": "stargazer_summary",
+    },
+    {
+        "query_file": "complex_detector/stargazer_repo_summary.sql",
+        "output_table_id": "stargazer_repo_summary",
+    },
+    {
+        "query_file": "complex_detector/fake_star_stats.sql",
+        "output_table_id": "fake_star_stats",
+    },
 ]
-QUERY_STG_ACTOR_OVERLAP = "complex_detector/stg_starring_actor_overlap.sql"
 
 
 def yes_or_no(question: str) -> bool:
@@ -40,11 +63,15 @@ def process_bigquery(
     project_id: str,
     dataset_id: str,
     query_file: str,
-    params: list[bigquery.ScalarQueryParameter],
     output_table_id: str,
+    params: list[bigquery.ScalarQueryParameter] = [],
 ):
     with open(query_file, "r") as f:
         query = f.read()
+        # This is an unfortunate workaround because Google BigQuery does
+        # not accept parameters in table names. Do not use in production
+        query = query.replace("@project_id", project_id)
+        query = query.replace("@dataset_id", dataset_id)
 
     client = bigquery.Client()
     job_config = bigquery.QueryJobConfig(dry_run=True, query_parameters=params)
@@ -55,6 +82,7 @@ def process_bigquery(
 
     if yes_or_no("Proceed?"):
         job_config.dry_run = False
+        job_config.write_disposition = bigquery.WriteDisposition.WRITE_TRUNCATE
         job_config.destination = ".".join([project_id, dataset_id, output_table_id])
         actual_job = client.query(query, job_config=job_config)
         actual_job.result()
@@ -64,7 +92,7 @@ def process_bigquery(
 
 
 def main():
-    global SECRETS
+    global PROJECT_ID, DATASET_ID
     global BIGQUERY_TASKS
 
     logging.basicConfig(

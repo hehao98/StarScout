@@ -1,3 +1,4 @@
+-- Staging: Pull ALL activity for users who starred the suspicious repos in a time period
 WITH
   watch_event_actors AS (
   SELECT

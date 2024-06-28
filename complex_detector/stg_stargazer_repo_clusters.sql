@@ -1,5 +1,6 @@
 -- ## summarize activity per repo & cross join to compare to every other repo in set
 -- summary table with 1 row per repo
+
 WITH repo_summary AS (
     SELECT
     repo,
@@ -11,11 +12,11 @@ WITH repo_summary AS (
     COUNT(*)n,
     ARRAY_AGG(DISTINCT actor IGNORE NULLS) actors,
     ARRAY_AGG(DISTINCT IFNULL(org, 'no org')) orgs,
-    FROM {{ ref('stg_all_actions_for_actors_who_starred_repo') }}
+    FROM @project_id.@dataset_id.stg_all_actions
 
     -- exclude actors who interacted with very large number of repos (avoid memory exceeded error)
     WHERE actor NOT IN (
-        SELECT actor FROM {{ ref('stg_starring_actor_overlap') }} WHERE n_repos > 200
+        SELECT actor FROM @project_id.@dataset_id.stg_stargazer_overlap WHERE n_repos > 200
     )
     GROUP BY 1
 ),
