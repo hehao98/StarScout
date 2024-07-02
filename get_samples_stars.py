@@ -1,6 +1,6 @@
 import sys
 import yaml
-import traceback
+import time
 import argparse
 import pymongo
 import logging
@@ -102,7 +102,9 @@ def get_stars(repo: str):
             db.insert_many(results)
             logging.info("finish updating for " + repo)
     except Exception as ex:
-        logging.error(f"error fetching repo {repo}: {ex}\n{traceback.format_exc(ex)}")
+        logging.error(f"error fetching repo {repo}: {ex}")
+        logging.info("Sleeping...")
+        time.sleep(3600)
     finally:
         client.close()
 
