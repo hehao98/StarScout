@@ -67,7 +67,7 @@ def main():
     )
     logging.info("Start!")
 
-    df = pd.read_csv("samples.csv")
+    df = pd.read_csv("data/samples.csv")
     pkg_names = set(df['package'])
 
     pkgs_nonscoped, pkgs_scoped = [], []
