@@ -29337,7 +29337,6 @@ volar-service-html,volarjs/services,141880.0,4,1,120,84
 @types/pg-promise,vitaly-t/pg-promise,130503.0,1,0,3404,850
 tributejs,zurb/tribute,4315272.0,0,25,1966,904
 @woocommerce/currency,woocommerce/woocommerce,72749.0,5,9,8999,44640
-manrope,sharanda/manrope,594703.0,0,0,1509,104
 @fastify/redis,fastify/fastify-redis,407466.0,2,8,179,191
 tablesaw,filamentgroup/tablesaw,191527.0,2,23,5496,391
 @workday/canvas-kit-react-modal,Workday/canvas-kit,38200.0,6,4,286,2600

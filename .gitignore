@@ -1,6 +1,5 @@
 tokens.txt
 secrets.yaml
-fake_users.csv
 logs/
 *.log
 __pycache__

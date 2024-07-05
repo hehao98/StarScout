@@ -49,7 +49,7 @@ def read_from_mongo(uri, dbname, collection_name):
 
         if _validate_star(user):
             user_info.append(
-                {"github": user["github"], "name": user["stargazerName"]})
+                {"github": user["github"], "name": user["stargazerName"], "starredAt": user["starredAt"]})
             fake_count += 1
             if repo_name not in github_dict:
                 github_dict[repo_name] = {"fake_stars": 0, "total_stars": 0}
@@ -61,7 +61,7 @@ def read_from_mongo(uri, dbname, collection_name):
 
     results = pd.DataFrame(user_info)
     results.sort_values(by="github").to_csv(
-        "data/fake_stars_obvious.csv", index=False)
+        "data/fake_stars_obvious_users.csv", index=False)
 
     # Merge the total stars into the github_dict
     for repo_name in github_dict:
