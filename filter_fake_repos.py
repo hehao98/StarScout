@@ -7,7 +7,7 @@ with open("secrets.yaml", "r") as f:
 client = pymongo.MongoClient(SECRETS["mongo_url"])
 db = client.fake_stars.stars
 
-file_path1 = "data/fake_stars_obvious_percentage.csv"
+file_path1 = "data/fake_stars_obvious_repos.csv"
 df1 = pd.read_csv(file_path1)
 filtered_df1 = df1[(df1["fake_percentage"] >= 2) | (df1["fake_stars"] >= 100)]
 

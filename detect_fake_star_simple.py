@@ -6,19 +6,25 @@ from datetime import datetime
 
 
 def _validate_star(user):
+    createTime = datetime.strptime(
+        user["createdAt"], "%Y-%m-%dT%H:%M:%SZ")
+    updateTime = datetime.strptime(
+        user["updatedAt"], "%Y-%m-%dT%H:%M:%SZ")
+    starTime = datetime.strptime(
+        user["starredAt"], "%Y-%m-%dT%H:%M:%SZ")
     # Returns True if this matches a fake profile.
     if (
         (user["followers"] < 2)
         and (user["following"] < 2)
         and (user["gists"] == 0)
         and (user["repos"] < 5)
-        and (user["createdAt"] > dt.datetime(2022, 1, 1))
+        and (createTime > dt.datetime(2022, 1, 1))
         and (user["email"] == "")
         and (user["bio"] is None or user["bio"] == "")
         and (
-            user["starredAt"].date()
-            == user["updatedAt"].date()
-            == user["createdAt"].date()
+            starTime.date()
+            == updateTime.date()
+            == createTime.date()
         )
     ):
         return True
@@ -38,13 +44,11 @@ def read_from_mongo(uri, dbname, collection_name):
 
     # Process and validate users
     for user in collection.find():
-        user["createdAt"] = datetime.strptime(user["createdAt"], "%Y-%m-%dT%H:%M:%SZ")
-        user["updatedAt"] = datetime.strptime(user["updatedAt"], "%Y-%m-%dT%H:%M:%SZ")
-        user["starredAt"] = datetime.strptime(user["starredAt"], "%Y-%m-%dT%H:%M:%SZ")
 
         repo_name = user["github"]
 
         if _validate_star(user):
+
             user_info.append(
                 {
                     "github": user["github"],
@@ -70,7 +74,8 @@ def read_from_mongo(uri, dbname, collection_name):
     for repo_name in github_dict:
         github_dict[repo_name]["total_stars"] = total_stars[repo_name]
         github_dict[repo_name]["fake_percentage"] = (
-            github_dict[repo_name]["fake_stars"] / github_dict[repo_name]["total_stars"]
+            github_dict[repo_name]["fake_stars"] /
+            github_dict[repo_name]["total_stars"]
         ) * 100
 
     # Sort by fake percentage
