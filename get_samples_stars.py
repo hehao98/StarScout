@@ -24,12 +24,13 @@ def get_stars(repo: str):
     tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
     strudel = scraper.GitHubAPIv4(tokens)
 
-    limits = scraper.get_limits(tokens)
-    for limit in limits:
-        del limit["key"]
-        logging.info(f"tokens: {limit}")
-
     try:
+        limits = scraper.get_limits(tokens)
+        for limit in limits:
+            del limit["key"]
+            logging.info(f"tokens: {limit}")
+
+
         result = strudel(
             """
         query($cursor: String, $owner: String!, $name: String!) {
