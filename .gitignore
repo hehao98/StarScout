@@ -3,3 +3,4 @@ secrets.yaml
 logs/
 *.log
 __pycache__
+data/filtered_repos_total_users.csv
