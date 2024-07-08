@@ -95,7 +95,7 @@ def read_from_mongo(uri, dbname, collection_name):
         )
     fake_percentage = pd.DataFrame(fake_percentage)
     fake_percentage.sort_values(by="fake_percentage", ascending=False).to_csv(
-        "data/fake_stars_obvious_percentage.csv", index=False
+        "data/fake_stars_obvious_repos.csv", index=False
     )
 
     print("Number of suspicious repos: " + str(len(sorted_github_dict)))
