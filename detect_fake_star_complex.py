@@ -107,17 +107,20 @@ def process_fake_star_detection(repo: str) -> list[dict]:
         dataset_ref = bigquery.DatasetReference(PROJECT_ID, DATASET_ID)
 
         for table in bigquery_per_repo_tasks:
-            logging.info("Writing table %s", table)
-            extract_job = client.extract_table(
-                source=dataset_ref.table(table),
-                destination_uris=f"gs://{GCP_BUCKET}/{gcp_dest_path}/{table}.json",
-                job_config=ExtractJobConfig(
-                    destination_format=(
-                        bigquery.DestinationFormat.NEWLINE_DELIMITED_JSON
-                    )
-                ),
-            )
-            extract_job.result()
+            try:
+                logging.info("Writing table %s", table)
+                extract_job = client.extract_table(
+                    source=dataset_ref.table(table),
+                    destination_uris=f"gs://{GCP_BUCKET}/{gcp_dest_path}/{table}.json",
+                    job_config=ExtractJobConfig(
+                        destination_format=(
+                            bigquery.DestinationFormat.NEWLINE_DELIMITED_JSON
+                        )
+                    ),
+                )
+                extract_job.result()
+            except Exception as ex:
+                logging.error("Error writing table %s: %s", table, ex)
     else:
         logging.info("Repo %s results already exists, skipping BigQuery tasks", repo)
 

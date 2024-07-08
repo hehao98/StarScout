@@ -53,7 +53,7 @@ These scripts have only been tested in Ubuntu.
 3. Get non-obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
 
     ```shell
-    python detect_fake_star_complex.py
+    python detect_fake_star_complex.py --init
     ```
 
-    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before the most expensive bulk query is sent. Then, the script will compute fake stars per repo and write results to `gs://{{google_cloud_bucket}}/fake-stars/{{repo}}/{{table}}.json`.
+    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before the most expensive bulk query is sent. Then, the script will compute fake stars per repo and write results to `gs://{{google_cloud_bucket}}/fake-stars/{{repo}}/{{table}}.json`. Finally, it will collect all the Google Cloud Storage files and aggreggate fake star info into local files.
