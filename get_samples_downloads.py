@@ -105,6 +105,8 @@ def main():
         if pkg is None:
             continue
         if pkg.startswith("@") and "/" in pkg:
+            # TODO: Currently ignore scoped pkgs because already finished collecting them.
+            # Needs to change back in the future
             continue
         else:
             pkgs_nonscoped.append(pkg)
