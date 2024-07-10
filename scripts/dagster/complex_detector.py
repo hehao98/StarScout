@@ -130,7 +130,7 @@ def process_fake_star_detection(repo: str) -> list[dict]:
                 PROJECT_ID,
                 DATASET_ID,
                 interactive=False,
-                query_file=f"complex_detector/{task}.sql",
+                query_file=f"scripts/dagster/queries/{task}.sql",
                 output_table_id=task,
                 params=[bigquery.ScalarQueryParameter("repo", "STRING", repo)],
             )
@@ -202,6 +202,7 @@ def dump_fake_star_data(fake_star_users: list[dict]):
     repo_to_id = {r: get_repo_id(r) for r in set(fake_star_users.repo_name)}
     repo_id_series = fake_star_users.repo_name.map(lambda n: repo_to_id[n])
     fake_star_users.insert(0, column="repo_id", value=repo_id_series)
+    fake_star_users.sort_values(by="repo_id", inplace=True)
 
     fake_star_repos = []
     for repo_id, df in fake_star_users.groupby(by="repo_id"):
@@ -210,13 +211,14 @@ def dump_fake_star_data(fake_star_users: list[dict]):
         fake_star_repos.append(
             {
                 "repo_id": repo_id,
-                "repo_names": set(df.repo_name),
+                "repo_names": ",".join(sorted(set(df.repo_name))),
                 "total_stars": len(df),
                 "fake_stars": len(df[df.fake_acct != "unknown"]),
                 "fake_percentage": len(df[df.fake_acct != "unknown"]) / len(df) * 100,
             }
         )
     fake_star_repos = pd.DataFrame(fake_star_repos)
+    fake_star_repos.sort_values(by="repo_id", inplace=True)
 
     fake_star_users.to_csv("data/fake_stars_complex_users.csv", index=False)
     fake_star_repos.to_csv("data/fake_stars_complex_repos.csv", index=False)
@@ -251,7 +253,7 @@ def main():
             # This task can be very expensive, require user confirmation
             bigquery_bulk_task = {
                 "interactive": True,
-                "query_file": "complex_detector/stg_all_actions_for_stargazers.sql",
+                "query_file": "scripts/dagster/queries/stg_all_actions_for_stargazers.sql",
                 "output_table_id": "stg_all_actions",
                 "params": [
                     bigquery.ScalarQueryParameter("start_date", "STRING", start_date),

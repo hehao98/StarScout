@@ -37,7 +37,7 @@ These scripts have only been tested in Ubuntu.
 
     ```shell
     mkdir logs
-    nohup python get_samples_stars.py -j 32 > logs/get_samples_stars.log & 
+    nohup python -m scripts.get_samples_stars -j 32 > logs/get_samples_stars.log & 
     ```
 
     This script will read from `data/samples.csv` and write to `fake_stars.stars` collection in MongoDB. It is idempotent and can incrementally collect new data based on existing data in the collection. Use the `-j [number of jobs]` option to enable multiprocessing.
@@ -45,15 +45,15 @@ These scripts have only been tested in Ubuntu.
 2. Get obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
 
     ```shell
-    nohup python detect_fake_star_simple.py > logs/detect_fake_star_simple.log &
+    nohup python -m scripts.dagster.simple_detector > logs/simple_detector.log &
     ```
 
-    The script will read from `fake_stars.stars` collection in MongoDB and write to `data/fake_stars_obvious.csv`.
+    The script will read from `fake_stars.stars` collection in MongoDB and write to `data/fake_stars_obvious_users.csv` and `data/fake_stars_obvious_repos.csv`.
 
 3. Get non-obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
 
     ```shell
-    python detect_fake_star_complex.py --init
+    python -m scripts.dagster.complex_detector --init
     ```
 
-    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before the most expensive bulk query is sent. Then, the script will compute fake stars per repo and write results to `gs://{{google_cloud_bucket}}/fake-stars/{{repo}}/{{table}}.json`. Finally, it will collect all the Google Cloud Storage files and aggreggate fake star info into local files.
+    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before the most expensive bulk query is sent. Then, the script will compute fake stars per repo and write results to `gs://{{google_cloud_bucket}}/fake-stars/{{repo}}/{{table}}*.json`. Finally, it will collect all the Google Cloud Storage files and aggreggate fake star info into local files.
