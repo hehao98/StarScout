@@ -294,8 +294,8 @@ theBowja/genshin-db,358,2,0.5586592178770949
 vivaxy/gacp,180,1,0.5555555555555556
 cypress-io/cypress-skip-test,180,1,0.5555555555555556
 themustafaomar/jsvectormap,361,2,0.554016620498615
-celo-org/celo-blockchain,544,3,0.5514705882352942
 merdok/homebridge-miot,363,2,0.5509641873278237
+celo-org/celo-blockchain,546,3,0.5494505494505495
 GrapesJS/preset-newsletter,182,1,0.5494505494505495
 ngbracket/ngx-layout,183,1,0.546448087431694
 nuxt-modules/algolia,183,1,0.546448087431694
@@ -697,7 +697,7 @@ drudge/passport-facebook-token,389,1,0.2570694087403599
 hyochan/react-native-masonry-list,392,1,0.25510204081632654
 okta/okta-oidc-js,392,1,0.25510204081632654
 reworkcss/css,1569,4,0.25493945188017847
-software-mansion/react-native-gesture-handler,5931,15,0.25290844714213456
+software-mansion/react-native-gesture-handler,5932,15,0.2528658125421443
 PrismarineJS/mineflayer,4753,12,0.25247212286976645
 nuxt-community/robots-module,397,1,0.2518891687657431
 syncfusion/ej2-javascript-ui-controls,397,1,0.2518891687657431
@@ -769,7 +769,7 @@ hughsk/glsl-easings,436,1,0.22935779816513763
 cloud-carbon-footprint/cloud-carbon-footprint,872,2,0.22935779816513763
 okta/okta-auth-js,437,1,0.2288329519450801
 andrewgioia/keyrune,438,1,0.228310502283105
-gchq/CyberChef,27202,62,0.2279244173222557
+gchq/CyberChef,27226,62,0.22772349959597443
 pnp/cli-microsoft365,881,2,0.22701475595913734
 pnp/office365-cli,881,2,0.22701475595913734
 drcmda/react-zdog,441,1,0.22675736961451248
@@ -1273,9 +1273,9 @@ google/schema-dts,853,1,0.11723329425556857
 amarofashion/react-credit-cards,2566,3,0.11691348402182386
 google/vrview,1711,2,0.11689070718877849
 beatgammit/base64-js,858,1,0.11655011655011654
-OfficeDev/office-ui-fabric-react,18033,21,0.11645316918981867
 andreis/disposable,859,1,0.11641443538998836
 omrilotan/isbot,859,1,0.11641443538998836
+OfficeDev/office-ui-fabric-react,18040,21,0.11640798226164081
 rollup/rollup,25012,29,0.11594434671357748
 tailwindlabs/headlessui,25027,29,0.11587485515643105
 miragejs/ember-cli-mirage,864,1,0.11574074074074073
@@ -2584,7 +2584,7 @@ modern-js-dev/modern.js,4247,1,0.02354603249352484
 Chocobozzz/PeerTube,12742,3,0.023544184586407158
 web-infra-dev/modern.js,4248,1,0.023540489642184557
 samchon/typia,4258,1,0.023485204321277597
-terser/terser,8519,2,0.023476933912431035
+terser/terser,8521,2,0.023471423541837812
 terser-js/terser,8523,2,0.02346591575736243
 cubiq/iscroll,12886,3,0.023281080242123234
 apostrophecms/apostrophe,4297,1,0.023272050267628578

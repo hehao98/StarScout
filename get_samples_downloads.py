@@ -1,6 +1,7 @@
 import os
 import requests
 import time
+import yaml
 import pandas as pd
 import urllib.request
 import json
@@ -9,10 +10,14 @@ from dateutil.relativedelta import relativedelta
 import pymongo
 import logging
 import sys
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
+
+with open("secrets.yaml", "r") as f:
+    SECRETS = yaml.safe_load(f)
 
 
 def get_downloads(pkg, sampleDf, startDate):
+    global SECRETS
     result = []
     try:
         url = "https://registry.npmjs.org/" + pkg
@@ -50,23 +55,48 @@ def get_downloads(pkg, sampleDf, startDate):
                     "github": github
                 }
             )
+        return result
     except Exception as ex:
         logging.error(f"Error processing package {pkg}: {ex}")
-        raise
-    return result
+        logging.info(f"Sleeping...")
+        time.sleep(60)
+        return ["skip"]
+
+
+def process_pkg(pkg):
+    global SECRETS
+    client = pymongo.MongoClient(SECRETS["mongo_url"])
+    downloads = client.fake_stars.downloads
+
+    df = pd.read_csv("data/samples.csv")
+
+    latest_record = downloads.find_one(
+        {"package": pkg}, sort=[("month", pymongo.DESCENDING)]
+    )
+
+    if latest_record:
+        startDate = latest_record["month"] + relativedelta(months=1)
+    else:
+        startDate = datetime(2015, 1, 1)
+
+    result = get_downloads(pkg, df, startDate)
+    if result == []:
+        logging.info("nothing to add for " + pkg)
+    elif result[0] == "skip":
+        logging.info("skip " + pkg + " due to exception")
+    else:
+        downloads.insert_many(result)
+        logging.info("finish updating for " + pkg)
+    client.close()
 
 
 def main():
-    client = pymongo.MongoClient("mongodb://localhost:27020")
-    db = client.fake_stars
-    downloads = db.downloads
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
         level=logging.INFO,
         handlers=[logging.StreamHandler(sys.stdout)],
     )
     logging.info("Start!")
-
     df = pd.read_csv("data/samples.csv")
     pkg_names = set(df['package'])
 
@@ -75,35 +105,19 @@ def main():
         if pkg is None:
             continue
         if pkg.startswith("@") and "/" in pkg:
-            pkgs_scoped.append(pkg)
+            # TODO: Currently ignore scoped pkgs because already finished collecting them.
+            # Needs to change back in the future
+            continue
         else:
             pkgs_nonscoped.append(pkg)
 
     # Combine scoped and nonscoped packages
     all_pkgs = pkgs_scoped + pkgs_nonscoped
 
-    try:
-        for pkg in all_pkgs:
-            # incremental: how many data we already have in db?
-            latest_record = downloads.find_one(
-                {"package": pkg}, sort=[("month", pymongo.DESCENDING)]
-            )
-            if latest_record:
-                startDate = latest_record["month"] + relativedelta(months=1)
-            else:
-                startDate = datetime(2015, 1, 1)
+    with Pool(8) as pool:
+        pool.map(process_pkg, reversed(all_pkgs))
 
-            result = get_downloads(pkg, df, startDate)
-            if result == []:
-                logging.info("nothing to add for " + pkg)
-            else:
-                downloads.insert_many(result)
-                logging.info("finish updating for " + pkg)
-
-        logging.info("Done!")
-    except Exception as e:
-        logging.error(f"Fatal error: {e}")
-        sys.exit(1)  # Exit the program with a non-zero status code
+    logging.info("Done!")
 
 
 if __name__ == "__main__":
