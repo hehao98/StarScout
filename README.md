@@ -37,7 +37,7 @@ These scripts have only been tested in Ubuntu.
 
     ```shell
     mkdir logs
-    nohup python -m scripts.get_samples_stars -j 32 > logs/get_samples_stars.log & 
+    nohup python -m scripts.get_sample_stars -j 32 > logs/get_sample_stars.log & 
     ```
 
     This script will read from `data/samples.csv` and write to `fake_stars.stars` collection in MongoDB. It is idempotent and can incrementally collect new data based on existing data in the collection. Use the `-j [number of jobs]` option to enable multiprocessing.
