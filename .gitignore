@@ -3,4 +3,5 @@ secrets.yaml
 logs/
 *.log
 __pycache__
-data/filtered_repos_total_users.csv
+data/copycatch_test_stargazers_real.csv
+data/copycatch_test_stargazers_fake.csv

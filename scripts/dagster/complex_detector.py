@@ -1,5 +1,6 @@
+import io
 import sys
-import yaml
+import json
 import logging
 import argparse
 import pandas as pd
@@ -19,9 +20,27 @@ from scripts import (
 from scripts.gcp import (
     check_gcp_blob_exists,
     list_gcp_blobs,
-    read_gcp_stargazer_summary_blob,
+    download_gcp_blob_to_stream,
     process_bigquery,
 )
+
+
+def read_gcp_stargazer_summary_blob(
+    repo: str, bucket_name: str, stargazer_blob_path: str
+) -> list[dict]:
+    stargazer_stats = []
+    stream = download_gcp_blob_to_stream(bucket_name, stargazer_blob_path, io.BytesIO())
+    for line in stream.readlines():
+        line = json.loads(line)
+        stargazer_stats.append(
+            {
+                "repo_name": repo,
+                "actor": line["actor"],
+                "starred_at": line["star_time"],
+                "fake_acct": line["fake_acct"],
+            }
+        )
+    return stargazer_stats
 
 
 def process_fake_star_detection(repo: str) -> list[dict]:

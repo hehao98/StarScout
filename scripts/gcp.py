@@ -1,7 +1,6 @@
 # Wrappers of Google Cloud Platform APIs
 
 import io
-import json
 import logging
 
 from pprint import pformat
@@ -32,7 +31,6 @@ def list_gcp_blobs(buckt_name: str, path: str) -> list[storage.Blob]:
 def download_gcp_blob_to_stream(
     bucket_name: str, path: str, file_obj: io.BytesIO
 ) -> io.BytesIO:
-    """Downloads a blob to a stream or other file-like object."""
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
     blob = storage.Blob(bucket=bucket, name=path)
@@ -40,24 +38,6 @@ def download_gcp_blob_to_stream(
     file_obj.seek(0)
     logging.info("Downloaded %s to file-like object", path)
     return file_obj
-
-
-def read_gcp_stargazer_summary_blob(
-    repo: str, bucket_name: str, stargazer_blob_path: str
-) -> list[dict]:
-    stargazer_stats = []
-    stream = download_gcp_blob_to_stream(bucket_name, stargazer_blob_path, io.BytesIO())
-    for line in stream.readlines():
-        line = json.loads(line)
-        stargazer_stats.append(
-            {
-                "repo_name": repo,
-                "actor": line["actor"],
-                "starred_at": line["star_time"],
-                "fake_acct": line["fake_acct"],
-            }
-        )
-    return stargazer_stats
 
 
 def process_bigquery(
