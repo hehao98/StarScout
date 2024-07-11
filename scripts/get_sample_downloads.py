@@ -1,23 +1,20 @@
-import os
 import requests
 import time
-import yaml
 import pandas as pd
 import urllib.request
 import json
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 import pymongo
 import logging
 import sys
-from multiprocessing import Pool, cpu_count
 
-with open("secrets.yaml", "r") as f:
-    SECRETS = yaml.safe_load(f)
+from multiprocessing import Pool
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+from scripts import MONGO_URL
 
 
 def get_downloads(pkg, sampleDf, startDate):
-    global SECRETS
     result = []
     try:
         url = "https://registry.npmjs.org/" + pkg
@@ -64,8 +61,7 @@ def get_downloads(pkg, sampleDf, startDate):
 
 
 def process_pkg(pkg):
-    global SECRETS
-    client = pymongo.MongoClient(SECRETS["mongo_url"])
+    client = pymongo.MongoClient(MONGO_URL)
     downloads = client.fake_stars.downloads
 
     df = pd.read_csv("data/samples.csv")

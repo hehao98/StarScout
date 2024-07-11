@@ -1,7 +1,5 @@
-import io
 import sys
 import yaml
-import json
 import logging
 import argparse
 import pandas as pd
@@ -9,104 +7,24 @@ import stscraper as scraper
 
 from pprint import pformat
 from typing import Optional
-from google.cloud import storage
 from google.cloud import bigquery
-from google.cloud.bigquery.job import ExtractJobConfig
+from google.cloud.bigquery import ExtractJobConfig
 
-
-with open("secrets.yaml", "r") as f:
-    SECRETS = yaml.safe_load(f)
-PROJECT_ID = SECRETS["bigquery_project"]
-DATASET_ID = SECRETS["bigquery_dataset"]
-GCP_BUCKET = SECRETS["google_cloud_bucket"]
-
-
-def yes_or_no(question: str) -> bool:
-    while True:
-        reply = str(input(question + " (y/n): ")).lower().strip()
-        if reply[0] == "y":
-            return True
-        if reply[0] == "n":
-            return False
-
-
-def check_gcp_blob_exists(bucket_name: str, path: str) -> bool:
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    return storage.Blob(bucket=bucket, name=path).exists()
-
-
-def list_gcp_blobs(buckt_name: str, path: str) -> list[storage.Blob]:
-    client = storage.Client()
-    return list(client.list_blobs(buckt_name, prefix=path))
-
-
-def download_gcp_blob_to_stream(
-    bucket_name: str, path: str, file_obj: io.BytesIO
-) -> io.BytesIO:
-    """Downloads a blob to a stream or other file-like object."""
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_name)
-    blob = storage.Blob(bucket=bucket, name=path)
-    blob.download_to_file(file_obj)
-    file_obj.seek(0)
-    logging.info("Downloaded %s to file-like object", path)
-    return file_obj
-
-
-def read_gcp_stargazer_summary_blob(
-    repo: str, bucket_name: str, stargazer_blob_path: str
-) -> list[dict]:
-    stargazer_stats = []
-    stream = download_gcp_blob_to_stream(bucket_name, stargazer_blob_path, io.BytesIO())
-    for line in stream.readlines():
-        line = json.loads(line)
-        stargazer_stats.append(
-            {
-                "repo_name": repo,
-                "actor": line["actor"],
-                "starred_at": line["star_time"],
-                "fake_acct": line["fake_acct"],
-            }
-        )
-    return stargazer_stats
-
-
-def process_bigquery(
-    project_id: str,
-    dataset_id: str,
-    interactive: bool,
-    query_file: str,
-    output_table_id: str,
-    params: list = [],
-):
-    with open(query_file, "r") as f:
-        query = f.read()
-        # This is an unfortunate workaround because Google BigQuery does
-        # not accept parameters in table names. Do not use in production
-        query = query.replace("@project_id", project_id)
-        query = query.replace("@dataset_id", dataset_id)
-
-    client = bigquery.Client()
-    job_config = bigquery.QueryJobConfig(dry_run=True, query_parameters=params)
-    logging.info("Sending query:\n%s\nwith params:\n%s", query, pformat(params))
-
-    dry_run_job = client.query(query, job_config=job_config)
-    logging.info("Query cost: %f GB", dry_run_job.total_bytes_processed / 1024**3)
-
-    if not interactive or yes_or_no("Proceed?"):
-        job_config.dry_run = False
-        job_config.write_disposition = bigquery.WriteDisposition.WRITE_TRUNCATE
-        job_config.destination = ".".join([project_id, dataset_id, output_table_id])
-        actual_job = client.query(query, job_config=job_config)
-        actual_job.result()
-        logging.info("Results written to destination %s", job_config.destination)
-    else:
-        logging.info("Aborting")
+from scripts import (
+    GITHUB_TOKENS,
+    BIGQUERY_PROJECT as PROJECT_ID,
+    BIGQUERY_DATASET as DATASET_ID,
+    GOOGLE_CLOUD_BUCKET as GCP_BUCKET,
+)
+from scripts.gcp import (
+    check_gcp_blob_exists,
+    list_gcp_blobs,
+    read_gcp_stargazer_summary_blob,
+    process_bigquery,
+)
 
 
 def process_fake_star_detection(repo: str) -> list[dict]:
-    global GCP_BUCKET, PROJECT_ID, DATASET_ID
     client = bigquery.Client()
     gcp_dest_path = f"fake-stars/{repo.replace('/', '_')}"
     stargazer_blob_path = gcp_dest_path + "/stargazer_summary.json"
@@ -173,11 +91,8 @@ def process_fake_star_detection(repo: str) -> list[dict]:
 
 
 def get_repo_id(repo: str) -> Optional[str]:
-    global SECRETS
-
     owner, name = repo.split("/")
-    tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
-    strudel = scraper.GitHubAPIv4(tokens)
+    strudel = scraper.GitHubAPIv4(",".join(GITHUB_TOKENS))
 
     try:
         result = strudel(
@@ -202,7 +117,7 @@ def dump_fake_star_data(fake_star_users: list[dict]):
     repo_to_id = {r: get_repo_id(r) for r in set(fake_star_users.repo_name)}
     repo_id_series = fake_star_users.repo_name.map(lambda n: repo_to_id[n])
     fake_star_users.insert(0, column="repo_id", value=repo_id_series)
-    fake_star_users.sort_values(by="repo_id", inplace=True)
+    fake_star_users.sort_values(by=["repo_id", "starred_at"], inplace=True)
 
     fake_star_repos = []
     for repo_id, df in fake_star_users.groupby(by="repo_id"):
@@ -213,13 +128,19 @@ def dump_fake_star_data(fake_star_users: list[dict]):
                 "repo_id": repo_id,
                 "repo_names": ",".join(sorted(set(df.repo_name))),
                 "total_stars": len(df),
-                "fake_stars": len(df[df.fake_acct != "unknown"]),
-                "fake_percentage": len(df[df.fake_acct != "unknown"]) / len(df) * 100,
+                "p_fake_stars": len(df[df.fake_acct != "unknown"]) / len(df),
+                "n_fake_stars": len(df[df.fake_acct != "unknown"]),
+                "n_low_activity": len(df[df.fake_acct == "suspected-low_activity"]),
+                "n_activity_cluster": len(
+                    df[df.fake_acct == "suspected-activity_cluster"]
+                ),
             }
         )
     fake_star_repos = pd.DataFrame(fake_star_repos)
+
     fake_star_repos.sort_values(by="repo_id", inplace=True)
 
+    fake_star_users.drop("repo_id", axis=1, inplace=True)
     fake_star_users.to_csv("data/fake_stars_complex_users.csv", index=False)
     fake_star_repos.to_csv("data/fake_stars_complex_repos.csv", index=False)
     return

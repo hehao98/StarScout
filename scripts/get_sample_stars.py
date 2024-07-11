@@ -9,27 +9,21 @@ import stscraper as scraper
 
 from multiprocessing import Pool
 
-
-with open("secrets.yaml", "r") as f:
-    SECRETS = yaml.safe_load(f)
+from scripts import MONGO_URL, GITHUB_TOKENS
 
 
 def get_stars(repo: str):
-    global SECRETS
-
     owner, name = repo.split("/")
-    client = pymongo.MongoClient(SECRETS["mongo_url"])
+    client = pymongo.MongoClient(MONGO_URL)
     db = client.fake_stars.stars
 
-    tokens = ",".join(x["token"] for x in SECRETS["github_tokens"])
-    strudel = scraper.GitHubAPIv4(tokens)
+    strudel = scraper.GitHubAPIv4(",".join(GITHUB_TOKENS))
 
     try:
-        limits = scraper.get_limits(tokens)
+        limits = scraper.get_limits(",".join(GITHUB_TOKENS))
         for limit in limits:
             del limit["key"]
             logging.info(f"tokens: {limit}")
-
 
         result = strudel(
             """
@@ -111,8 +105,6 @@ def get_stars(repo: str):
 
 
 def main():
-    global SECRETS
-
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
         level=logging.INFO,
@@ -125,7 +117,7 @@ def main():
     total_stars = sum(dict(zip(df["github"], df["stars"])).values())
     logging.info(f"{len(set(df['github']))} repos ({total_stars} stars) to collect")
 
-    with pymongo.MongoClient(SECRETS["mongo_url"]) as client:
+    with pymongo.MongoClient(MONGO_URL) as client:
         client.fake_stars.stars.create_index(
             [("github", 1), ("stargazerName", 1), ("starredAt", 1)], unique=True
         )

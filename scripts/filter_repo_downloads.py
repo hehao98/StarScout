@@ -1,11 +1,10 @@
-import pandas as pd
 import pymongo
-import yaml
+import pandas as pd
+
+from scripts import MONGO_URL
 
 if __name__ == "__main__":
-    with open("secrets.yaml", "r") as f:
-        SECRETS = yaml.safe_load(f)
-    client = pymongo.MongoClient(SECRETS["mongo_url"])
+    client = pymongo.MongoClient(MONGO_URL)
     stars_db = client.fake_stars.stars
     downloads_db = client.fake_stars.downloads
 
@@ -21,5 +20,7 @@ if __name__ == "__main__":
     download = list(
         downloads_db.find(query, {"github": 1, "month": 1, "downloads": 1, "_id": 0})
     )
-    df_download = pd.DataFrame(download).groupby(["github", "month"], as_index=False).sum()
+    df_download = (
+        pd.DataFrame(download).groupby(["github", "month"], as_index=False).sum()
+    )
     df_download.to_csv("data/filtered_repos_downloads.csv", index=False)

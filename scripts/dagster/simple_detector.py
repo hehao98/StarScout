@@ -4,14 +4,13 @@ import pandas as pd
 import datetime as dt
 from datetime import datetime
 
+from scripts import MONGO_URL
+
 
 def _validate_star(user):
-    createTime = datetime.strptime(
-        user["createdAt"], "%Y-%m-%dT%H:%M:%SZ")
-    updateTime = datetime.strptime(
-        user["updatedAt"], "%Y-%m-%dT%H:%M:%SZ")
-    starTime = datetime.strptime(
-        user["starredAt"], "%Y-%m-%dT%H:%M:%SZ")
+    createTime = datetime.strptime(user["createdAt"], "%Y-%m-%dT%H:%M:%SZ")
+    updateTime = datetime.strptime(user["updatedAt"], "%Y-%m-%dT%H:%M:%SZ")
+    starTime = datetime.strptime(user["starredAt"], "%Y-%m-%dT%H:%M:%SZ")
     # Returns True if this matches a fake profile.
     if (
         (user["followers"] < 2)
@@ -21,11 +20,7 @@ def _validate_star(user):
         and (createTime > dt.datetime(2022, 1, 1))
         and (user["email"] == "")
         and (user["bio"] is None or user["bio"] == "")
-        and (
-            starTime.date()
-            == updateTime.date()
-            == createTime.date()
-        )
+        and (starTime.date() == updateTime.date() == createTime.date())
     ):
         return True
     else:
@@ -74,8 +69,7 @@ def read_from_mongo(uri, dbname, collection_name):
     for repo_name in github_dict:
         github_dict[repo_name]["total_stars"] = total_stars[repo_name]
         github_dict[repo_name]["fake_percentage"] = (
-            github_dict[repo_name]["fake_stars"] /
-            github_dict[repo_name]["total_stars"]
+            github_dict[repo_name]["fake_stars"] / github_dict[repo_name]["total_stars"]
         ) * 100
 
     # Sort by fake percentage
@@ -109,10 +103,7 @@ def read_from_mongo(uri, dbname, collection_name):
 
 
 def main():
-    with open("secrets.yaml", "r") as f:
-        SECRETS = yaml.safe_load(f)
-
-    uri = SECRETS["mongo_url"]
+    uri = MONGO_URL
     db_name = "fake_stars"
     collection_name = "stars"
     count = read_from_mongo(uri, db_name, collection_name)
