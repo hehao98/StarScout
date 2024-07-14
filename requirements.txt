@@ -1,6 +1,7 @@
 scipy
 pandas
 matplotlib
+networkx
 pymongo
 pyyaml
 strudel.scraper
