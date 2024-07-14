@@ -5,3 +5,4 @@ logs/
 __pycache__
 data/copycatch_test_stargazers_real.csv
 data/copycatch_test_stargazers_fake.csv
+data/low_activity_stars_actors.csv
