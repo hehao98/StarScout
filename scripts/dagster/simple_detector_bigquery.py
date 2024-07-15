@@ -2,6 +2,7 @@ import io
 import sys
 import json
 import logging
+import pymongo
 import pandas as pd
 
 from pprint import pformat
@@ -9,6 +10,7 @@ from google.cloud import bigquery
 from google.cloud.bigquery import ExtractJobConfig
 
 from scripts import (
+    MONGO_URL,
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
     GOOGLE_CLOUD_BUCKET as GCP_BUCKET,
@@ -16,7 +18,8 @@ from scripts import (
     END_DATE,
     MIN_STARS_LOW_ACTIVITY,
 )
-from scripts.gcp import process_bigquery, download_gcp_blob_to_stream
+from scripts.gcp import process_bigquery, download_gcp_blob_to_stream, list_gcp_blobs
+from scripts.github import get_repo_id
 
 
 def get_repos_with_low_activity_stars():
@@ -50,33 +53,91 @@ def get_repos_with_low_activity_stars():
         ),
     )
     extract_job.result()
-    
+
+    client.close()
+
+
+def get_low_activity_stars_users():
+    client = bigquery.Client()
+
+    # This task can be very expensive, require user confirmation
+    bigquery_task = {
+        "interactive": True,
+        "query_file": "scripts/dagster/queries/stg_low_activity_stargazers.sql",
+        "output_table_id": "low_activity_stars",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+            bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
+        ],
+    }
+    logging.info("Current BigQuery task:\n%s", pformat(bigquery_task))
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+
+    dataset_ref = bigquery.DatasetReference(PROJECT_ID, DATASET_ID)
+    extract_job = client.extract_table(
+        source=dataset_ref.table(f"low_activity_stars"),
+        destination_uris=f"gs://{GCP_BUCKET}/low_activity_stars*.json",
+        job_config=ExtractJobConfig(
+            destination_format=(bigquery.DestinationFormat.NEWLINE_DELIMITED_JSON)
+        ),
+    )
+    extract_job.result()
+
     client.close()
 
 
 def dump_repos_with_low_activity_stars():
-    repos = []
     stream = download_gcp_blob_to_stream(
         GCP_BUCKET, "repos_with_low_activity_stars.json", io.BytesIO()
     )
-    for line in stream.readlines():
-        repos.append(json.loads(line))
-    repos = pd.DataFrame(repos)
+
+    repos = pd.DataFrame([json.loads(line) for line in stream.readlines()])
     repos.n_stars = repos.n_stars.astype(int)
     repos.n_stars_low_activity = repos.n_stars_low_activity.astype(int)
 
-    repos.p_stars_low_activity = repos.n_stars_low_activity / repos.n_stars
+    # sum stars for duplicate repo ids, keeping those without repo id
+    repos.insert(0, "repo_id", repos.repo_name.apply(get_repo_id))
+    repos_with_id = (
+        repos[repos.repo_id.notna()]
+        .groupby("repo_id")
+        .agg(
+            repo_id=("repo_id", "first"),
+            repo_names=("repo_name", "unique"),
+            n_stars=("n_stars", "sum"),
+            n_stars_low_activity=("n_stars_low_activity", "sum"),
+        )
+    )
+    repos_with_id.repo_names = repos_with_id.repo_names.apply(lambda x: ",".join(x))
+    repos.rename(columns={"repo_name": "repo_names"}, inplace=True)
+    repos = pd.concat([repos[repos.repo_id.isna()], repos_with_id])
+    repos["p_stars_low_activity"] = repos.n_stars_low_activity / repos.n_stars
     repos.sort_values(by="p_stars_low_activity", ascending=False, inplace=True)
-
-    all_actors = []
-    for repo, actors in zip(repos.repo_name, repos.low_activity_actors):
-        for actor in actors:
-            all_actors.append({"repo": repo, "actors": actor})
-    pd.DataFrame(all_actors).to_csv(f"data/low_activity_stars_users.csv", index=False)
-
     repos.drop(columns=["low_activity_actors"], inplace=True)
-    repos.rename(columns={"repo_name": "repo"}, inplace=True)
+
     repos.to_csv(f"data/low_activity_stars_repos.csv", index=False)
+
+
+def dump_low_activity_stars_users():
+    client = pymongo.MongoClient(MONGO_URL)
+    db = client.get_database("fake_stars")
+    db.low_activity_stars.drop()
+    db.low_activity_stars.create_index(["repo", "actor", "starred_at"], unique=True)
+
+    existing = set()
+    for blob in list_gcp_blobs(GCP_BUCKET, ""):
+        if "low_activity_stars" not in blob.name:
+            continue
+        stars = []
+        stream = download_gcp_blob_to_stream(GCP_BUCKET, blob.name, io.BytesIO())
+        for line in stream.readlines():
+            star = json.loads(line)
+            if star["repo"] + star["actor"] + star["starred_at"] in existing:
+                continue
+            stars.append(star)
+            existing.add(star["repo"] + star["actor"] + star["starred_at"])
+        db.low_activity_stars.insert_many(stars)
+
+    client.close()
 
 
 def main():
@@ -88,7 +149,11 @@ def main():
 
     get_repos_with_low_activity_stars()
 
+    get_low_activity_stars_users()
+
     dump_repos_with_low_activity_stars()
+
+    dump_low_activity_stars_users()
 
     logging.info("Done!")
 

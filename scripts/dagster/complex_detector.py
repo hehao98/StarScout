@@ -4,15 +4,13 @@ import json
 import logging
 import argparse
 import pandas as pd
-import stscraper as scraper
 
 from pprint import pformat
-from typing import Optional
+
 from google.cloud import bigquery
 from google.cloud.bigquery import ExtractJobConfig
 
 from scripts import (
-    GITHUB_TOKENS,
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
     GOOGLE_CLOUD_BUCKET as GCP_BUCKET,
@@ -25,6 +23,7 @@ from scripts.gcp import (
     download_gcp_blob_to_stream,
     process_bigquery,
 )
+from scripts.github import get_repo_id
 
 
 def read_gcp_stargazer_summary_blob(
@@ -109,28 +108,6 @@ def process_fake_star_detection(repo: str) -> list[dict]:
             stargazer_stats.extend(chunk)
 
     return stargazer_stats
-
-
-def get_repo_id(repo: str) -> Optional[str]:
-    owner, name = repo.split("/")
-    strudel = scraper.GitHubAPIv4(",".join(GITHUB_TOKENS))
-
-    try:
-        result = strudel(
-            """
-            query ($owner: String!, $name: String!) {
-                repository(owner: $owner, name: $name) {
-                    id
-                }
-            }
-            """,
-            owner=owner,
-            name=name,
-        )
-        return result
-    except Exception as ex:
-        logging.error(f"Error fetching repo {repo}: {ex}")
-        return None
 
 
 def dump_fake_star_data(fake_star_users: list[dict]):
