@@ -12,20 +12,14 @@ from scripts import (
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
     GOOGLE_CLOUD_BUCKET as GCP_BUCKET,
+    START_DATE,
+    END_DATE,
+    MIN_STARS_LOW_ACTIVITY,
 )
 from scripts.gcp import process_bigquery, download_gcp_blob_to_stream
 
 
-def main():
-    logging.basicConfig(
-        format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
-        level=logging.INFO,
-        handlers=[logging.StreamHandler(sys.stdout)],
-    )
-
-    start_date, end_date = "190701", "240701"
-    min_stars_low_activity = 50
-
+def get_repos_with_low_activity_stars():
     client = bigquery.Client()
     dataset = bigquery.Dataset(PROJECT_ID + "." + DATASET_ID)
     dataset = client.create_dataset(dataset, exists_ok=True, timeout=30)
@@ -37,10 +31,10 @@ def main():
         "query_file": "scripts/dagster/queries/stg_all_repos_with_low_activity_stars.sql",
         "output_table_id": "repos_with_low_activity_stars",
         "params": [
-            bigquery.ScalarQueryParameter("start_date", "STRING", start_date),
-            bigquery.ScalarQueryParameter("end_date", "STRING", end_date),
+            bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+            bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
             bigquery.ScalarQueryParameter(
-                "min_stars_low_activity", "INT64", min_stars_low_activity
+                "min_stars_low_activity", "INT64", MIN_STARS_LOW_ACTIVITY
             ),
         ],
     }
@@ -56,7 +50,11 @@ def main():
         ),
     )
     extract_job.result()
+    
+    client.close()
 
+
+def dump_repos_with_low_activity_stars():
     repos = []
     stream = download_gcp_blob_to_stream(
         GCP_BUCKET, "repos_with_low_activity_stars.json", io.BytesIO()
@@ -64,19 +62,34 @@ def main():
     for line in stream.readlines():
         repos.append(json.loads(line))
     repos = pd.DataFrame(repos)
+    repos.n_stars = repos.n_stars.astype(int)
     repos.n_stars_low_activity = repos.n_stars_low_activity.astype(int)
-    repos.sort_values(by="n_stars_low_activity", ascending=False, inplace=True)
+
+    repos.p_stars_low_activity = repos.n_stars_low_activity / repos.n_stars
+    repos.sort_values(by="p_stars_low_activity", ascending=False, inplace=True)
 
     all_actors = []
     for repo, actors in zip(repos.repo_name, repos.low_activity_actors):
         for actor in actors:
             all_actors.append({"repo": repo, "actors": actor})
-    pd.DataFrame(all_actors).to_csv(f"data/low_activity_stars_actors.csv", index=False)
+    pd.DataFrame(all_actors).to_csv(f"data/low_activity_stars_users.csv", index=False)
 
     repos.drop(columns=["low_activity_actors"], inplace=True)
     repos.rename(columns={"repo_name": "repo"}, inplace=True)
     repos.to_csv(f"data/low_activity_stars_repos.csv", index=False)
-    client.close()
+
+
+def main():
+    logging.basicConfig(
+        format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
+        level=logging.INFO,
+        handlers=[logging.StreamHandler(sys.stdout)],
+    )
+
+    get_repos_with_low_activity_stars()
+
+    dump_repos_with_low_activity_stars()
+
     logging.info("Done!")
 
 

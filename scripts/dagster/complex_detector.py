@@ -16,6 +16,8 @@ from scripts import (
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
     GOOGLE_CLOUD_BUCKET as GCP_BUCKET,
+    START_DATE,
+    END_DATE,
 )
 from scripts.gcp import (
     check_gcp_blob_exists,
@@ -178,7 +180,6 @@ def main():
     parser.add_argument("--init", action="store_true", default=False)
     args = parser.parse_args()
 
-    start_date, end_date = "190701", "240701"
     df = pd.read_csv("data/fake_stars_obvious_repos.csv")
     df_filtered = df[(df["fake_percentage"] >= 2) | (df["fake_stars"] >= 100)]
     repos = list(set(df_filtered.github))
@@ -196,8 +197,8 @@ def main():
                 "query_file": "scripts/dagster/queries/stg_all_actions_for_stargazers.sql",
                 "output_table_id": "stg_all_actions",
                 "params": [
-                    bigquery.ScalarQueryParameter("start_date", "STRING", start_date),
-                    bigquery.ScalarQueryParameter("end_date", "STRING", end_date),
+                    bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+                    bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
                     bigquery.ArrayQueryParameter("repositories", "STRING", repos),
                 ],
             }
