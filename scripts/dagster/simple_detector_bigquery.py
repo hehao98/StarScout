@@ -127,7 +127,7 @@ def dump_low_activity_stars_users():
 
     existing = set()
     for blob in list_gcp_blobs(GCP_BUCKET, ""):
-        if "low_activity_stars" not in blob.name:
+        if "low_activity_stars0000" not in blob.name:
             continue
         stars = []
         stream = download_gcp_blob_to_stream(GCP_BUCKET, blob.name, io.BytesIO())
