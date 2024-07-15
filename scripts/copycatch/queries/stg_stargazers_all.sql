@@ -1,6 +1,6 @@
 SELECT
   actor.login AS actor,
-  repo.name repo,
+  repo.name AS repo_name,
   created_at AS starred_at,
 FROM
   `githubarchive.day.20*`

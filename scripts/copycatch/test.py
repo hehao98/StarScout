@@ -1,4 +1,5 @@
 import io
+import os
 import sys
 import json
 import random
@@ -12,16 +13,14 @@ from scripts import (
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
     GOOGLE_CLOUD_BUCKET as GCP_BUCKET,
+    START_DATE,
+    END_DATE,
 )
 from scripts.gcp import (
     check_gcp_blob_exists,
     download_gcp_blob_to_stream,
     process_bigquery,
 )
-
-
-def get_stargazer_data_synthetic():
-    pass
 
 
 def get_stargazer_data_dagster(start_date: str, end_date: str):
@@ -84,8 +83,8 @@ def main():
     )
 
     logging.info("Generating test data...")
-    get_stargazer_data_synthetic()
-    get_stargazer_data_dagster(start_date="190701", end_date="240701")
+    if not os.path.exists("data/copycatch_test_stargazers_fake.csv"):
+        get_stargazer_data_dagster(start_date=START_DATE, end_date=END_DATE)
 
     # TODO: Run and compare the two CopyCatch implementations
 
