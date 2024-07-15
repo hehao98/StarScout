@@ -9,7 +9,7 @@ WITH
   WITH
   OFFSET
     off )
-SELECT
+SELECT DISTINCT
   actor.login AS actor,
   repo.name repo,
   created_at AS starred_at,

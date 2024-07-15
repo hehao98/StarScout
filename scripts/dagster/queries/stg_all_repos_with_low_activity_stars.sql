@@ -4,7 +4,7 @@ WITH
     actor.login AS actor,
     DATE(MIN(created_at)) AS first_active,
     DATE(MAX(created_at)) AS last_active,
-    COUNT(created_at) AS n_actions,
+    COUNT(DISTINCT created_at) AS n_actions,
     COUNT(DISTINCT repo.name) AS n_repos,
     COUNT(DISTINCT org.login) AS n_orgs,
   FROM
@@ -38,15 +38,14 @@ WITH
 SELECT
   repo_name,
   COUNT(DISTINCT actor) AS n_stars,
-  COUNTIF(low_activity = TRUE) AS n_stars_low_activity,
   ARRAY_AGG(DISTINCT
-  IF
-    (low_activity = FALSE, actor, NULL) IGNORE NULLS) AS low_activity_actors
+    IF (low_activity = TRUE, actor, NULL) IGNORE NULLS
+  ) AS low_activity_actors
 FROM
   stars
 GROUP BY
   repo_name
 HAVING
-  n_stars_low_activity >= @min_stars_low_activity
+  ARRAY_LENGTH(low_activity_actors) >= @min_stars_low_activity
 ORDER BY
-  n_stars_low_activity DESC
+  ARRAY_LENGTH(low_activity_actors) DESC

@@ -93,7 +93,9 @@ def dump_repos_with_low_activity_stars():
 
     repos = pd.DataFrame([json.loads(line) for line in stream.readlines()])
     repos.n_stars = repos.n_stars.astype(int)
-    repos.n_stars_low_activity = repos.n_stars_low_activity.astype(int)
+    repos["n_stars_low_activity"] = repos.low_activity_actors.apply(
+        lambda x: len(set(x))
+    )
 
     # sum stars for duplicate repo ids, keeping those without repo id
     repos.insert(0, "repo_id", repos.repo_name.apply(get_repo_id))
@@ -131,7 +133,11 @@ def dump_low_activity_stars_users():
         stream = download_gcp_blob_to_stream(GCP_BUCKET, blob.name, io.BytesIO())
         for line in stream.readlines():
             star = json.loads(line)
+            if "repo" not in star or "actor" not in star or "starred_at" not in star:
+                logging.error("Invalid star: %s", star)
+                continue
             if star["repo"] + star["actor"] + star["starred_at"] in existing:
+                logging.error("Duplicated star: %s", star)
                 continue
             stars.append(star)
             existing.add(star["repo"] + star["actor"] + star["starred_at"])
