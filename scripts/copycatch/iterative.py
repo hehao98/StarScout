@@ -2,10 +2,11 @@ import random
 import logging
 import numpy as np
 import pandas as pd
+import multiprocessing as mp
 
 from dataclasses import dataclass
-from typing import Optional, Iterator
-from scipy import sparse
+from typing import Optional
+from scipy import sparse, spatial
 
 
 logger = logging.getLogger(__name__)
@@ -70,24 +71,45 @@ class CopyCatch:
         self.rho = params.rho
         self.beta = params.beta
 
-    def run_all(self, max_iter: int = 100) -> Iterator[tuple[set[str], set[str]]]:
-        for i in range(self.M):
-            repo_ids = {i} | self._find_closest_repos(i, self.m - 1)
-            seed_center = np.zeros(self.M)
-            for repo_id in repo_ids:
-                seed_repo_col = self.U[:, [repo_id]].toarray().flatten()
-                seed_center[repo_id] = np.mean(seed_repo_col[seed_repo_col > 0])
-            logger.debug("Seed: %s at %s", repo_ids, seed_center)
+    def run_all(
+        self, n_jobs: int = 1, max_iter: int = 100
+    ) -> list[tuple[set[str], set[str]]]:
+        results = []
+        if n_jobs == 1:
+            for i in range(self.M):
+                users, repos = self.run_once(i, max_iter)
+                if len(users) < self.n or len(repos) < self.m:
+                    continue
+                results.append((users, repos))
+        else:
+            with mp.Pool(n_jobs) as pool:
+                results = pool.starmap(
+                    self.run_once, [(i, max_iter) for i in range(self.M)]
+                )
+                results = [
+                    (users, repos)
+                    for users, repos in results
+                    if len(users) >= self.n and len(repos) >= self.m
+                ]
+        return results
 
-            center, rids = self.run_once(seed_center, repo_ids, max_iter)
-            uids, _ = self._find_users(center, rids)
+    def run_once(self, repo_id: int, max_iter: int = 100) -> tuple[set[str], set[str]]:
+        repo_ids = {repo_id} | self._find_closest_repos(repo_id, self.m - 1)
+        seed_center = np.zeros(self.M)
+        for i in repo_ids:
+            seed_repo_col = self.U[:, [i]].toarray().flatten()
+            seed_center[i] = np.mean(seed_repo_col[seed_repo_col > 0])
+        logger.info("Seed: %s at %s", repo_ids, seed_center)
 
-            if len(uids) >= self.n:
-                users = {self.users[uid] for uid in uids}
-                repos = {self.repos[rid] for rid in rids}
-                yield users, repos
+        center, rids = self._s_copy_catch(seed_center, repo_ids, max_iter)
+        uids, _ = self._find_users(center, rids)
 
-    def run_once(
+        users = {self.users[uid] for uid in uids}
+        repos = {self.repos[rid] for rid in rids}
+        logger.info("%s <- %s", repos, users)
+        return users, repos
+
+    def _s_copy_catch(
         self, seed_center: np.ndarray, seed_repo_ids: set[int], max_iter: int
     ) -> tuple[np.ndarray, set[int]]:
         assert seed_center.shape == (self.M,)

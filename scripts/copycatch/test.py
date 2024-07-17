@@ -94,26 +94,40 @@ def test_iterative_synthetic():
         logging.info("Running synthetic test %d...", i)
         syn = pd.read_csv(f"data/copycatch_test/synthetic{i}.csv")
         copycatch = CopyCatch.from_df(copycatch_params, syn)
-        for users, repos in copycatch.run_all():
-            logging.info("%s -> %s", users, repos)
+        copycatch.run_all()
 
     logging.info("Running synthetic test 3 with m = 2...")
     copycatch_params.m = 2
     copycatch = CopyCatch.from_df(copycatch_params, syn)
-    for users, repos in copycatch.run_all():
-        logging.info("%s -> %s", users, repos)
+    copycatch.run_all()
 
     logging.info("Running synthetic test 3 with delta_t = 400 days...")
     copycatch_params.delta_t = 400 * 24 * 60 * 60
     copycatch = CopyCatch.from_df(copycatch_params, syn)
-    for users, repos in copycatch.run_all():
-        logging.info("%s -> %s", users, repos)
+    copycatch.run_all()
 
     logging.info("Running synthetic test 3 with m = 3...")
     copycatch_params.m = 3
     copycatch = CopyCatch.from_df(copycatch_params, syn)
-    for users, repos in copycatch.run_all():
-        logging.info("%s -> %s", users, repos)
+    copycatch.run_all()
+    copycatch_logger.setLevel(logging.INFO)
+
+
+def test_iterative_real():
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=50,
+        m=5,
+        rho=0.81,
+        beta=2,
+    )
+
+    for actor_type in ["fake", "real"]:
+        logging.info("Running test for %s actors...", actor_type)
+        stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
+        copycatch = CopyCatch.from_df(copycatch_params, stargazers)
+        copycatch.run_all(n_jobs=1)
+
 
 
 def main():
@@ -128,6 +142,8 @@ def main():
         get_stargazer_data_dagster(start_date=START_DATE, end_date=END_DATE)
 
     test_iterative_synthetic()
+
+    test_iterative_real()
 
     logging.info("Done!")
 
