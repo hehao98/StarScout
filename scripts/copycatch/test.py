@@ -122,12 +122,20 @@ def test_iterative_real():
         beta=2,
     )
 
-    for actor_type in ["fake", "real"]:
-        logging.info("Running test for %s actors...", actor_type)
-        stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
-        copycatch = CopyCatch.from_df(copycatch_params, stargazers)
-        copycatch.run_all(n_jobs=1)
-
+    logging.info("Running test for one suspicious repo...")
+    test_repo = "holochain/holochain-client-js"
+    stargazers = pd.read_csv(f"data/copycatch_test/stargazers_fake.csv")
+    actors = set(stargazers[stargazers.repo_name == test_repo].actor)
+    stargazers = stargazers[stargazers.actor.isin(actors)]
+    logging.info(
+        "%d edges, %d repos, %d stargazers",
+        len(stargazers),
+        len(stargazers.repo_name.unique()),
+        len(actors),
+    )
+    copycatch = CopyCatch.from_df(copycatch_params, stargazers)
+    for users, repos in copycatch.run_all(n_jobs=1):
+        logging.info("Found %d user cluster among %s", len(users), repos)
 
 
 def main():

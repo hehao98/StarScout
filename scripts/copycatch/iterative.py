@@ -99,7 +99,7 @@ class CopyCatch:
         for i in repo_ids:
             seed_repo_col = self.U[:, [i]].toarray().flatten()
             seed_center[i] = np.mean(seed_repo_col[seed_repo_col > 0])
-        logger.info("Seed: %s at %s", repo_ids, seed_center)
+        logger.info("Seed: %s", repo_ids)
 
         center, rids = self._s_copy_catch(seed_center, repo_ids, max_iter)
         uids, _ = self._find_users(center, rids)
@@ -144,7 +144,7 @@ class CopyCatch:
 
         curr_uids, _ = self._find_users(center, repo_ids)
         if len(curr_uids) == 0:
-            logger.warning("No users found for center %s", center)
+            # logger.warning("No users found for center %s", center)
             return center
 
         c = np.mean([self.U[[uid]].toarray().flatten() for uid in curr_uids], axis=0)
