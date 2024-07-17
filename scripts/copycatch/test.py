@@ -21,6 +21,11 @@ from scripts.gcp import (
     download_gcp_blob_to_stream,
     process_bigquery,
 )
+from scripts.copycatch.iterative import (
+    CopyCatch,
+    CopyCatchParams,
+    logger as copycatch_logger,
+)
 
 
 def get_stargazer_data_dagster(start_date: str, end_date: str):
@@ -75,6 +80,42 @@ def get_stargazer_data_dagster(start_date: str, end_date: str):
         logging.info("Generated test data for %s actors", actor_type)
 
 
+def test_iterative_synthetic():
+    copycatch_logger.setLevel(logging.DEBUG)
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=1,
+        m=1,
+        rho=0.5,
+        beta=2,
+    )
+
+    for i in range(1, 4):
+        logging.info("Running synthetic test %d...", i)
+        syn = pd.read_csv(f"data/copycatch_test/synthetic{i}.csv")
+        copycatch = CopyCatch.from_df(copycatch_params, syn)
+        for users, repos in copycatch.run_all():
+            logging.info("%s -> %s", users, repos)
+
+    logging.info("Running synthetic test 3 with m = 2...")
+    copycatch_params.m = 2
+    copycatch = CopyCatch.from_df(copycatch_params, syn)
+    for users, repos in copycatch.run_all():
+        logging.info("%s -> %s", users, repos)
+
+    logging.info("Running synthetic test 3 with delta_t = 400 days...")
+    copycatch_params.delta_t = 400 * 24 * 60 * 60
+    copycatch = CopyCatch.from_df(copycatch_params, syn)
+    for users, repos in copycatch.run_all():
+        logging.info("%s -> %s", users, repos)
+
+    logging.info("Running synthetic test 3 with m = 3...")
+    copycatch_params.m = 3
+    copycatch = CopyCatch.from_df(copycatch_params, syn)
+    for users, repos in copycatch.run_all():
+        logging.info("%s -> %s", users, repos)
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -83,10 +124,10 @@ def main():
     )
 
     logging.info("Generating test data...")
-    if not os.path.exists("data/copycatch_test_stargazers_fake.csv"):
+    if not os.path.exists("data/copycatch_test/stargazers_fake.csv"):
         get_stargazer_data_dagster(start_date=START_DATE, end_date=END_DATE)
 
-    # TODO: Run and compare the two CopyCatch implementations
+    test_iterative_synthetic()
 
     logging.info("Done!")
 
