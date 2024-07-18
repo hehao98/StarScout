@@ -6,6 +6,7 @@ import random
 import logging
 import argparse
 import pandas as pd
+import multiprocessing as mp
 
 from pprint import pformat
 from google.cloud import bigquery
@@ -160,6 +161,42 @@ def test_iterative_one_repo(test_repo: str, actor_type: str) -> tuple[int, int]:
     return len(fake_users), n_cluster
 
 
+def test_iterative_all_repos(actor_type: str):
+    stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
+    logging.info(
+        "%d edges, %d repos, %d stargazers",
+        len(stargazers),
+        len(stargazers.repo_name.unique()),
+        len(stargazers.actor.unique()),
+    )
+
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=20,
+        m=4,
+        rho=0.5,
+        beta=2,
+    )
+    copycatch = CopyCatch.from_df(copycatch_params, stargazers)
+    fake_results = {}
+    with mp.Pool(mp.cpu_count()) as pool:
+        for results in pool.imap_unordered(
+            copycatch.run_around_one_repo,
+            stargazers.repo_name.unique(),
+            chunksize=1,
+        ):
+            actors = set()
+            repos = set(stargazers.repo_name.unique())
+            for users, repo_chunks in results:
+                actors.update(users)
+                repos = repos.intersection(repo_chunks)
+            assert len(repos) == 1
+            repo = list(repos)[0]
+            fake_results[repo] = len(actors)
+            logging.info("Found %d fake stars for %s", len(actors), repo)
+    return fake_results
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run CopyCatch tests")
     parser.add_argument(
@@ -184,6 +221,12 @@ def main():
         "--test-real",
         action="store_true",
         help="Run CopyCatch tests on real data",
+        default=False,
+    )
+    parser.add_argument(
+        "--test-real-all",
+        action="store_true",
+        help="Run CopyCatch tests on all repos in real data",
         default=False,
     )
     args = parser.parse_args()
@@ -218,6 +261,12 @@ def main():
         for repo in suspicious_repos:
             fake_results[repo] = test_iterative_one_repo(repo, "fake")
             real_results[repo] = test_iterative_one_repo(repo, "real")
+        logging.info("Fake results:\n%s", pformat(fake_results))
+        logging.info("Real results:\n%s", pformat(real_results))
+
+    if args.test_real_all:
+        fake_results = test_iterative_all_repos("fake")
+        real_results = test_iterative_all_repos("real")
         logging.info("Fake results:\n%s", pformat(fake_results))
         logging.info("Real results:\n%s", pformat(real_results))
 

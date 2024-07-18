@@ -6,6 +6,7 @@ import multiprocessing as mp
 from dataclasses import dataclass
 from typing import Optional
 from itertools import batched
+from collections import defaultdict
 
 
 logger = logging.getLogger(__name__)
@@ -24,13 +25,14 @@ class AdjacencyMatrix:
     def __init__(self, N: int, M: int):
         self.N = N
         self.M = M
-        self.data: dict[dict, float] = dict()
+        self.data: dict[int, dict[int, float]] = dict()
+        self.col_to_idx: dict[int, set[int]] = defaultdict(set)
 
     def non_zero_row(self, i) -> dict[int, float]:
         return self.data.get(i, {})
 
     def non_zero_col(self, j) -> dict[int, float]:
-        return {i: self.data[i].get(j) for i in range(self.N) if j in self.data[i]}
+        return {i: self.data[i].get(j) for i in self.col_to_idx[j]}
 
     def __getitem__(self, key: tuple[int, int]) -> float:
         if key[0] in self.data:
@@ -41,6 +43,7 @@ class AdjacencyMatrix:
         if key[0] not in self.data:
             self.data[key[0]] = dict()
         self.data[key[0]][key[1]] = value
+        self.col_to_idx[key[1]].add(key[0])
 
 
 class CopyCatch:
@@ -113,7 +116,7 @@ class CopyCatch:
         return results
 
     def run_around_one_repo(
-        self, repo: str, n_rounds: int, max_iter: int = 100
+        self, repo: str, n_rounds: int = 10, max_iter: int = 100
     ) -> list[tuple[set[str], set[str]]]:
         results = []
 
