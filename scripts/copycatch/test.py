@@ -193,14 +193,19 @@ def main():
         test_iterative_synthetic()
 
     if args.test_real:
-        test_iterative_one_repo("holochain/holochain-client-js", "fake")
-        test_iterative_one_repo("Bitcoin-ABC/bitcoin-abc", "fake")
-        test_iterative_one_repo("Bitcoin-ABC/bitcoin-abc", "real")
-        # test_iterative_one_repo("ant-design/ant-design", "fake")
-        test_iterative_one_repo("Joystream/joystream", "fake")
-        test_iterative_one_repo("subquery/subql", "fake")
-        test_iterative_one_repo("subquery/subql", "real")
-
+        suspicious_repos = [
+            "holochain/holochain-client-js",
+            "Bitcoin-ABC/bitcoin-abc",
+            "Joystream/joystream",
+            "subquery/subql",
+            "etherspot/etherspot-sdk",
+            "tatumio/tatum-js",
+            "streamr-dev/network",
+            "paraswap/paraswap-sdk",
+        ]
+        for repo in suspicious_repos:
+            test_iterative_one_repo(repo, "fake")
+            test_iterative_one_repo(repo, "real")
     logging.info("Done!")
 
 
