@@ -115,10 +115,13 @@ def test_iterative_one_repo(test_repo: str, actor_type: str):
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=20,
-        m=4,
-        rho=0.5,
+        m=5,
+        rho=0.6,
         beta=2,
     )
+
+    df = pd.read_csv("data/fake_stars_complex_repos.csv")
+    n_cluster = df[df.repo_names.str.contains(test_repo)].n_activity_cluster.iloc[0]
 
     logging.info("Searching Dagster's %s stars for %s...", actor_type, test_repo)
     stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
@@ -130,19 +133,20 @@ def test_iterative_one_repo(test_repo: str, actor_type: str):
         len(stargazers.repo_name.unique()),
         len(actors),
     )
+
     copycatch = CopyCatch.from_df(copycatch_params, stargazers)
     fake_users = set()
-
     users, _ = copycatch.run_once(
         copycatch.find_closest_repos(copycatch.repo2id[test_repo], copycatch.m)
     )
     fake_users.update(users)
+    logging.info("Found %d/%d fakes in one search", len(fake_users), n_cluster)
 
-    # for users, repos in copycatch.run_all(n_jobs=8):
-    #    logging.info("Found %d user cluster among %s", len(users), repos)
-    #    if test_repo in repos:
-    #        fake_users.update(users)
-    logging.info("Found %d/%d fake users", len(fake_users), len(actors))
+    for users, repos in copycatch.run_all(n_jobs=8):
+        logging.info("Found %d user cluster among %s", len(users), repos)
+        if test_repo in repos:
+            fake_users.update(users)
+    logging.info("Found %d/%d fakes in exhaustive search", len(fake_users), n_cluster)
 
 
 def main():
@@ -192,7 +196,7 @@ def main():
         test_iterative_one_repo("holochain/holochain-client-js", "fake")
         test_iterative_one_repo("Bitcoin-ABC/bitcoin-abc", "fake")
         test_iterative_one_repo("Bitcoin-ABC/bitcoin-abc", "real")
-        test_iterative_one_repo("ant-design/ant-design", "fake")
+        # test_iterative_one_repo("ant-design/ant-design", "fake")
         test_iterative_one_repo("Joystream/joystream", "fake")
         test_iterative_one_repo("subquery/subql", "fake")
         test_iterative_one_repo("subquery/subql", "real")

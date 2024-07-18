@@ -102,9 +102,9 @@ class CopyCatch:
                 if len(users) >= self.n:
                     results.append((users, repos))
         else:
-            params = set(
+            params = [
                 (self.find_closest_repos(i, self.m), max_iter) for i in range(self.M)
-            )
+            ]
             with mp.Pool(n_jobs) as pool:
                 for users, repos in pool.starmap(self.run_once, params):
                     if len(users) >= self.n:
