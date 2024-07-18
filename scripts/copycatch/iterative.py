@@ -97,19 +97,24 @@ class CopyCatch:
         results = []
         if n_jobs == 1:
             for i in range(self.M):
-                users, repos = self.run_once(i, max_iter)
-                if len(users) >= self.n and len(repos) >= self.m:
+                seed_repo_ids = self.find_closest_repos(i, self.m)
+                users, repos = self.run_once(seed_repo_ids, max_iter)
+                if len(users) >= self.n:
                     results.append((users, repos))
         else:
-            params = [(i, max_iter) for i in range(self.M)]
+            params = set(
+                (self.find_closest_repos(i, self.m), max_iter) for i in range(self.M)
+            )
             with mp.Pool(n_jobs) as pool:
                 for users, repos in pool.starmap(self.run_once, params):
-                    if len(users) >= self.n and len(repos) >= self.m:
+                    if len(users) >= self.n:
                         results.append((users, repos))
         return results
 
-    def run_once(self, repo_id: int, max_iter: int = 100) -> tuple[set[str], set[str]]:
-        repo_ids = {repo_id} | self._find_closest_repos(repo_id, self.m - 1)
+    def run_once(
+        self, repo_ids: set[int], max_iter: int = 100
+    ) -> tuple[set[str], set[str]]:
+        assert len(repo_ids) == self.m
 
         seed_center = np.zeros(self.M)
         for i in repo_ids:
@@ -124,16 +129,12 @@ class CopyCatch:
         logger.info("%s <- %s", repos, users)
         return users, repos
 
-    def _find_closest_repos(self, repo_id: int, k: int) -> set[int]:
-        assert 0 <= repo_id < self.M
-        if k == 0:
-            return set()
+    def find_closest_repos(self, repo_id: int, k: int) -> set[int]:
+        assert 0 <= repo_id < self.M and k > 0
 
         repo_id_to_dist = dict()
         user_ids = set(self.U.non_zero_col(repo_id).keys())
         for j in range(self.M):
-            if j == repo_id:
-                continue
             repo_id_to_dist[j] = len(user_ids & set(self.U.non_zero_col(j).keys()))
         sorted_rids = sorted(list(repo_id_to_dist.items()), key=lambda x: -x[1])
         sorted_rids = [rid for rid, _ in sorted_rids]
