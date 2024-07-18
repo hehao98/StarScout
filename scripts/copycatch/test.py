@@ -115,8 +115,8 @@ def test_iterative_one_repo(test_repo: str, actor_type: str):
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=20,
-        m=5,
-        rho=0.6,
+        m=4,
+        rho=0.5,
         beta=2,
     )
 
@@ -139,14 +139,19 @@ def test_iterative_one_repo(test_repo: str, actor_type: str):
     users, _ = copycatch.run_once(
         copycatch.find_closest_repos(copycatch.repo2id[test_repo], copycatch.m)
     )
-    fake_users.update(users)
+    if len(users) > copycatch_params.n:
+        fake_users.update(users)
     logging.info("Found %d/%d fakes in one search", len(fake_users), n_cluster)
 
-    for users, repos in copycatch.run_all(n_jobs=8):
-        logging.info("Found %d user cluster among %s", len(users), repos)
-        if test_repo in repos:
-            fake_users.update(users)
-    logging.info("Found %d/%d fakes in exhaustive search", len(fake_users), n_cluster)
+    for users, _ in copycatch.run_around_one_repo(test_repo, n_rounds=10):
+        fake_users.update(users)
+    logging.info("Found %d/%d fakes in 10 searches", len(fake_users), n_cluster)
+
+    # for users, repos in copycatch.run_all(n_jobs=8):
+    #    logging.info("Found %d user cluster among %s", len(users), repos)
+    #    if test_repo in repos:
+    #        fake_users.update(users)
+    # logging.info("Found %d/%d fakes in exhaustive search", len(fake_users), n_cluster)
 
 
 def main():

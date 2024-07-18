@@ -5,6 +5,7 @@ import multiprocessing as mp
 
 from dataclasses import dataclass
 from typing import Optional
+from itertools import batched
 
 
 logger = logging.getLogger(__name__)
@@ -111,6 +112,22 @@ class CopyCatch:
                         results.append((users, repos))
         return results
 
+    def run_around_one_repo(
+        self, repo: str, n_rounds: int, max_iter: int = 100
+    ) -> list[tuple[set[str], set[str]]]:
+        results = []
+
+        repo_id = self.repo2id[repo]
+        seed_repo_ids = self.find_closest_repos(
+            repo_id, (self.m - 1) * n_rounds + 1
+        ) - {repo_id}
+
+        for chunk in batched(seed_repo_ids, self.m - 1):
+            users, repos = self.run_once({repo_id} | set(chunk), max_iter)
+            if len(users) >= self.n:
+                results.append((users, repos))
+        return results
+
     def run_once(
         self, repo_ids: set[int], max_iter: int = 100
     ) -> tuple[set[str], set[str]]:
@@ -126,7 +143,8 @@ class CopyCatch:
 
         users = {self.users[uid] for uid in uids}
         repos = {self.repos[rid] for rid in rids}
-        logger.info("%s <- %s", repos, users)
+        if len(users) >= self.n:
+            logger.info("%d users -> %s", len(users), repos)
         return users, repos
 
     def find_closest_repos(self, repo_id: int, k: int) -> set[int]:
