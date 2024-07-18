@@ -4,6 +4,7 @@ import sys
 import json
 import random
 import logging
+import argparse
 import pandas as pd
 
 from google.cloud import bigquery
@@ -24,7 +25,6 @@ from scripts.gcp import (
 from scripts.copycatch.iterative import (
     CopyCatch,
     CopyCatchParams,
-    logger as copycatch_logger,
 )
 
 
@@ -81,7 +81,6 @@ def get_stargazer_data_dagster(start_date: str, end_date: str):
 
 
 def test_iterative_synthetic():
-    copycatch_logger.setLevel(logging.DEBUG)
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=1,
@@ -110,21 +109,19 @@ def test_iterative_synthetic():
     copycatch_params.m = 3
     copycatch = CopyCatch.from_df(copycatch_params, syn)
     copycatch.run_all()
-    copycatch_logger.setLevel(logging.INFO)
 
 
-def test_iterative_real():
+def test_iterative_one_repo(test_repo: str, actor_type: str):
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
-        n=50,
+        n=20,
         m=5,
-        rho=0.81,
+        rho=0.79,
         beta=2,
     )
 
-    logging.info("Running test for one suspicious repo...")
-    test_repo = "holochain/holochain-client-js"
-    stargazers = pd.read_csv(f"data/copycatch_test/stargazers_fake.csv")
+    logging.info("Searching %s stars for %s...", actor_type, test_repo)
+    stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
     actors = set(stargazers[stargazers.repo_name == test_repo].actor)
     stargazers = stargazers[stargazers.actor.isin(actors)]
     logging.info(
@@ -134,24 +131,65 @@ def test_iterative_real():
         len(actors),
     )
     copycatch = CopyCatch.from_df(copycatch_params, stargazers)
-    for users, repos in copycatch.run_all(n_jobs=1):
+    fake_users = set()
+    for users, repos in copycatch.run_all(n_jobs=4): # [copycatch.run_once(copycatch.repo2id[test_repo])]:
         logging.info("Found %d user cluster among %s", len(users), repos)
+        if test_repo in repos:
+            fake_users.update(users)
+    logging.info("Found %d fake users", len(fake_users))
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Run CopyCatch tests")
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable debug logging",
+        default=False,
+    )
+    parser.add_argument(
+        "--generate",
+        action="store_true",
+        help="Generate test data",
+        default=False,
+    )
+    parser.add_argument(
+        "--test-synthetic",
+        action="store_true",
+        help="Run CopyCatch tests on simple synthetic data",
+        default=False,
+    )
+    parser.add_argument(
+        "--test-real",
+        action="store_true",
+        help="Run CopyCatch tests on real data",
+        default=False,
+    )
+    args = parser.parse_args()
+
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
-        level=logging.INFO,
+        level=logging.INFO if not args.debug else logging.DEBUG,
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    logging.info("Generating test data...")
-    if not os.path.exists("data/copycatch_test/stargazers_fake.csv"):
-        get_stargazer_data_dagster(start_date=START_DATE, end_date=END_DATE)
+    if args.generate:
+        if not os.path.exists("data/copycatch_test/stargazers_fake.csv"):
+            get_stargazer_data_dagster(start_date=START_DATE, end_date=END_DATE)
+        else:
+            logging.info("Test data already exists")
 
-    test_iterative_synthetic()
+    if args.test_synthetic:
+        test_iterative_synthetic()
 
-    test_iterative_real()
+    if args.test_real:
+        test_iterative_one_repo("holochain/holochain-client-js", "fake")
+        # test_iterative_one_repo("Bitcoin-ABC/bitcoin-abc", "fake")
+        # test_iterative_one_repo("Bitcoin-ABC/bitcoin-abc", "real")
+        # test_iterative_one_repo("ant-design/ant-design", "fake")
+        # test_iterative_one_repo("Joystream/joystream", "fake")
+        # test_iterative_one_repo("subquery/subql", "fake")
+        # test_iterative_one_repo("subquery/subql", "real")
 
     logging.info("Done!")
 

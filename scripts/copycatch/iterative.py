@@ -1,4 +1,3 @@
-import random
 import logging
 import numpy as np
 import pandas as pd
@@ -6,7 +5,6 @@ import multiprocessing as mp
 
 from dataclasses import dataclass
 from typing import Optional
-from scipy import sparse, spatial
 
 
 logger = logging.getLogger(__name__)
@@ -19,6 +17,29 @@ class CopyCatchParams:
     m: int  # min. number of repos in the cluster
     rho: float  # relaxation term for cluster density
     beta: float  # relaxation term for time window
+
+
+class AdjacencyMatrix:
+    def __init__(self, N: int, M: int):
+        self.N = N
+        self.M = M
+        self.data: dict[dict, float] = dict()
+
+    def non_zero_row(self, i) -> dict[int, float]:
+        return self.data.get(i, {})
+
+    def non_zero_col(self, j) -> dict[int, float]:
+        return {i: self.data[i].get(j) for i in range(self.N) if j in self.data[i]}
+
+    def __getitem__(self, key: tuple[int, int]) -> float:
+        if key[0] in self.data:
+            return self.data[key[0]].get(key[1], 0.0)
+        return 0.0
+
+    def __setitem__(self, key: tuple[int, int], value: float):
+        if key[0] not in self.data:
+            self.data[key[0]] = dict()
+        self.data[key[0]][key[1]] = value
 
 
 class CopyCatch:
@@ -59,11 +80,10 @@ class CopyCatch:
 
         self.N = len(self.users)
         self.M = len(self.repos)
-        self.U = sparse.dok_array((len(self.users), len(self.repos)), dtype=float)
+        self.U = AdjacencyMatrix(self.N, self.M)
         for user, repo, time in stars:
             assert time > 0
             self.U[self.user2id[user], self.repo2id[repo]] = time
-        self.U = self.U.tocsr()
 
         self.delta_t = params.delta_t
         self.n = params.n
@@ -78,27 +98,22 @@ class CopyCatch:
         if n_jobs == 1:
             for i in range(self.M):
                 users, repos = self.run_once(i, max_iter)
-                if len(users) < self.n or len(repos) < self.m:
-                    continue
-                results.append((users, repos))
+                if len(users) >= self.n and len(repos) >= self.m:
+                    results.append((users, repos))
         else:
+            params = [(i, max_iter) for i in range(self.M)]
             with mp.Pool(n_jobs) as pool:
-                results = pool.starmap(
-                    self.run_once, [(i, max_iter) for i in range(self.M)]
-                )
-                results = [
-                    (users, repos)
-                    for users, repos in results
-                    if len(users) >= self.n and len(repos) >= self.m
-                ]
+                for users, repos in pool.starmap(self.run_once, params):
+                    if len(users) >= self.n and len(repos) >= self.m:
+                        results.append((users, repos))
         return results
 
     def run_once(self, repo_id: int, max_iter: int = 100) -> tuple[set[str], set[str]]:
         repo_ids = {repo_id} | self._find_closest_repos(repo_id, self.m - 1)
+
         seed_center = np.zeros(self.M)
         for i in repo_ids:
-            seed_repo_col = self.U[:, [i]].toarray().flatten()
-            seed_center[i] = np.mean(seed_repo_col[seed_repo_col > 0])
+            seed_center[i] = np.mean(list(self.U.non_zero_col(i).values()))
         logger.info("Seed: %s", repo_ids)
 
         center, rids = self._s_copy_catch(seed_center, repo_ids, max_iter)
@@ -109,6 +124,21 @@ class CopyCatch:
         logger.info("%s <- %s", repos, users)
         return users, repos
 
+    def _find_closest_repos(self, repo_id: int, k: int) -> set[int]:
+        assert 0 <= repo_id < self.M
+        if k == 0:
+            return set()
+
+        repo_id_to_dist = dict()
+        user_ids = set(self.U.non_zero_col(repo_id).keys())
+        for j in range(self.M):
+            if j == repo_id:
+                continue
+            repo_id_to_dist[j] = len(user_ids & set(self.U.non_zero_col(j).keys()))
+        sorted_rids = sorted(list(repo_id_to_dist.items()), key=lambda x: -x[1])
+        sorted_rids = [rid for rid, _ in sorted_rids]
+        return set(sorted_rids[:k])
+
     def _s_copy_catch(
         self, seed_center: np.ndarray, seed_repo_ids: set[int], max_iter: int
     ) -> tuple[np.ndarray, set[int]]:
@@ -116,7 +146,7 @@ class CopyCatch:
 
         center, repo_ids = seed_center.copy(), seed_repo_ids.copy()
         for _ in range(max_iter):
-            logger.debug("Curr center %s, repo ids %s", center, repo_ids)
+            logger.debug("Curr center ndarray(%s), repo ids %s", center.shape, repo_ids)
             center_old, repo_ids_old = center.copy(), repo_ids.copy()
             center = self._update_center(center, repo_ids)
             repo_ids = self._update_subspace(center, repo_ids)
@@ -125,39 +155,30 @@ class CopyCatch:
 
         return center, repo_ids
 
-    def _find_closest_repos(self, repo_id: int, k: int) -> set[int]:
-        assert 0 <= repo_id < self.M
-        if k == 0:
-            return set()
-
-        repo_id_to_dist = np.zeros(self.M)
-        for j in range(self.M):
-            repo_id_to_dist[j] = np.linalg.norm(
-                self.U[:, [j]].toarray().flatten()
-                - self.U[:, [repo_id]].toarray().flatten()
-            )
-        return set(np.argsort(repo_id_to_dist)[1 : k + 1].tolist())
-
     def _update_center(self, center: np.ndarray, repo_ids: set[int]) -> np.ndarray:
         assert center.shape == (self.M,)
-        logger.debug("Updating center %s with repo ids %s", center, repo_ids)
+        logger.debug("Updating ndarray(%s) with repo ids %s", center.shape, repo_ids)
 
         curr_uids, _ = self._find_users(center, repo_ids)
         if len(curr_uids) == 0:
-            # logger.warning("No users found for center %s", center)
+            logger.debug("No users found for center %s", center)
             return center
 
-        c = np.mean([self.U[[uid]].toarray().flatten() for uid in curr_uids], axis=0)
-        logger.debug("Caliberated center %s", c)
+        c_new = np.zeros(self.M)
         for rid in repo_ids:
-            curr_uids, w = self._find_users(c, repo_ids, rid, self.beta * self.delta_t)
-            _, c[rid] = self._find_center(curr_uids, w, rid)
+            c_new[rid] = np.mean(list(self.U.non_zero_col(rid).values()))
+        logger.debug("Caliberated center ndarray(%s)", c_new.shape)
+        for rid in repo_ids:
+            curr_uids, w = self._find_users(
+                c_new, repo_ids, rid, self.beta * self.delta_t
+            )
+            _, c_new[rid] = self._find_center(curr_uids, w, rid)
 
-        return c
+        return c_new
 
     def _update_subspace(self, center: np.ndarray, repo_ids: set[int]) -> set[int]:
         assert center.shape == (self.M,)
-        logger.debug("Updating subspace %s with center %s", repo_ids, center)
+        logger.debug("Updating subspace %s, center=ndarray%s", repo_ids, center.shape)
 
         all_rids, next_rids = set(range(self.M)), repo_ids.copy()
         uids, _ = self._find_users(center, repo_ids)
@@ -230,7 +251,7 @@ class CopyCatch:
         logger.debug(
             "_find_users(center=%s, repo_ids=%s, center_repo_id=%s, "
             "relaxed_delta_t=%s, user_ids_all=%s)",
-            center,
+            center.shape,
             repo_ids,
             center_repo_id,
             relaxed_delta_t,
@@ -251,7 +272,9 @@ class CopyCatch:
                     )
                 ):
                     user_weights[uid] += 1
-            if user_weights[uid] > self.rho * self.m:
+            if user_weights[uid] >= self.rho * self.m or np.isclose(
+                user_weights[uid], self.rho * self.m
+            ):
                 user_ids.add(uid)
 
         logger.debug("Found users %s with weights %s", user_ids, user_weights)
