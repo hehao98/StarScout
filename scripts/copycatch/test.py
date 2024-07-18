@@ -7,6 +7,7 @@ import logging
 import argparse
 import pandas as pd
 
+from pprint import pformat
 from google.cloud import bigquery
 from google.cloud.bigquery import ExtractJobConfig
 
@@ -111,7 +112,7 @@ def test_iterative_synthetic():
     copycatch.run_all()
 
 
-def test_iterative_one_repo(test_repo: str, actor_type: str):
+def test_iterative_one_repo(test_repo: str, actor_type: str) -> tuple[int, int]:
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=20,
@@ -120,8 +121,11 @@ def test_iterative_one_repo(test_repo: str, actor_type: str):
         beta=2,
     )
 
-    df = pd.read_csv("data/fake_stars_complex_repos.csv")
-    n_cluster = df[df.repo_names.str.contains(test_repo)].n_activity_cluster.iloc[0]
+    if actor_type == "fake":
+        df = pd.read_csv("data/fake_stars_complex_repos.csv")
+        n_cluster = df[df.repo_names.str.contains(test_repo)].n_activity_cluster.iloc[0]
+    else:
+        n_cluster = 0
 
     logging.info("Searching Dagster's %s stars for %s...", actor_type, test_repo)
     stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
@@ -152,6 +156,8 @@ def test_iterative_one_repo(test_repo: str, actor_type: str):
     #    if test_repo in repos:
     #        fake_users.update(users)
     # logging.info("Found %d/%d fakes in exhaustive search", len(fake_users), n_cluster)
+
+    return len(fake_users), n_cluster
 
 
 def main():
@@ -198,6 +204,7 @@ def main():
         test_iterative_synthetic()
 
     if args.test_real:
+        fake_results, real_results = {}, {}
         suspicious_repos = [
             "holochain/holochain-client-js",
             "Bitcoin-ABC/bitcoin-abc",
@@ -209,8 +216,11 @@ def main():
             "paraswap/paraswap-sdk",
         ]
         for repo in suspicious_repos:
-            test_iterative_one_repo(repo, "fake")
-            test_iterative_one_repo(repo, "real")
+            fake_results[repo] = test_iterative_one_repo(repo, "fake")
+            real_results[repo] = test_iterative_one_repo(repo, "real")
+        logging.info("Fake results:\n%s", pformat(fake_results))
+        logging.info("Real results:\n%s", pformat(real_results))
+
     logging.info("Done!")
 
 
