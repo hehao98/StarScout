@@ -117,8 +117,8 @@ def test_iterative_one_repo(test_repo: str, actor_type: str) -> tuple[int, int]:
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=20,
-        m=4,
-        rho=0.5,
+        m=5,
+        rho=0.6,
         beta=2,
     )
 
@@ -173,8 +173,8 @@ def test_iterative_all_repos(actor_type: str):
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=20,
-        m=4,
-        rho=0.5,
+        m=5,
+        rho=0.6,
         beta=2,
     )
     copycatch = CopyCatch.from_df(copycatch_params, stargazers)
