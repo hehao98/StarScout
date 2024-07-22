@@ -28,6 +28,7 @@ from scripts.copycatch.iterative import (
     CopyCatch,
     CopyCatchParams,
 )
+from scripts.copycatch.dataframe import run as run_dataframe
 
 
 def get_stargazer_data_dagster(start_date: str, end_date: str):
@@ -116,9 +117,9 @@ def test_iterative_synthetic():
 def test_iterative_one_repo(test_repo: str, actor_type: str) -> tuple[int, int]:
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
-        n=20,
-        m=5,
-        rho=0.6,
+        n=50,
+        m=4,
+        rho=0.5,
         beta=2,
     )
 
@@ -158,7 +159,7 @@ def test_iterative_one_repo(test_repo: str, actor_type: str) -> tuple[int, int]:
     #        fake_users.update(users)
     # logging.info("Found %d/%d fakes in exhaustive search", len(fake_users), n_cluster)
 
-    return len(fake_users), n_cluster
+    return len(fake_users), int(n_cluster)
 
 
 def test_iterative_all_repos(actor_type: str):
@@ -197,6 +198,34 @@ def test_iterative_all_repos(actor_type: str):
     return fake_results
 
 
+def test_dataframe_synthetic():
+    syn = pd.read_csv("data/copycatch_test/synthetic.csv")
+
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=1,
+        m=1,
+        rho=0.6,
+        beta=2,
+    )
+
+    run_dataframe(syn, copycatch_params, min_repo_stars=1)
+
+
+def test_dataframe_real(actor_type: str):
+    stars = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
+
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=50,
+        m=4,
+        rho=0.5,
+        beta=2,
+    )
+
+    run_dataframe(stars, copycatch_params, min_repo_stars=50)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run CopyCatch tests")
     parser.add_argument(
@@ -229,6 +258,19 @@ def main():
         help="Run CopyCatch tests on all repos in real data",
         default=False,
     )
+    parser.add_argument(
+        "--test-dataframe-synthetic",
+        action="store_true",
+        help="Test the dataframe version of CopyCatch on synthetic data",
+        default=None,
+    )
+    parser.add_argument(
+        "--test-dataframe-real",
+        action="store_true",
+        help="Test the dataframe version of CopyCatch on real data",
+        default=None,
+    )
+
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -258,17 +300,35 @@ def main():
             "streamr-dev/network",
             "paraswap/paraswap-sdk",
         ]
-        for repo in suspicious_repos:
+        nonsuspicous_repos = ["microsoft/vscode", "vuejs/vue", "novuhq/novu"]
+        for repo in suspicious_repos + nonsuspicous_repos:
             fake_results[repo] = test_iterative_one_repo(repo, "fake")
             real_results[repo] = test_iterative_one_repo(repo, "real")
-        logging.info("Fake results:\n%s", pformat(fake_results))
-        logging.info("Real results:\n%s", pformat(real_results))
+        logging.info(
+            "Fake results:\n%s\nTotal: %d/%d",
+            pformat(fake_results),
+            sum(x[0] for x in fake_results.values()),
+            sum(x[1] for x in fake_results.values()),
+        )
+        logging.info(
+            "Real results:\n%s\nTotal: %d/%d",
+            pformat(real_results),
+            sum(x[0] for x in real_results.values()),
+            sum(x[1] for x in real_results.values()),
+        )
 
     if args.test_real_all:
         fake_results = test_iterative_all_repos("fake")
         real_results = test_iterative_all_repos("real")
         logging.info("Fake results:\n%s", pformat(fake_results))
         logging.info("Real results:\n%s", pformat(real_results))
+
+    if args.test_dataframe_synthetic:
+        test_dataframe_synthetic()
+
+    if args.test_dataframe_real:
+        test_dataframe_real("fake")
+        test_dataframe_real("real")
 
     logging.info("Done!")
 
