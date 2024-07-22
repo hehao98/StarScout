@@ -89,27 +89,6 @@ def _get_initial_centers(df: pd.DataFrame) -> pd.DataFrame:
     repo_to_actors = repo_to_actors[repo_to_actors.n_actors >= MIN_REPO_STARS]
     logger.debug("%d repos >= %d stars", len(repo_to_actors), MIN_REPO_STARS)
 
-    """
-    repo_to_actors["cluster"] = repo_to_actors.actors.map(
-        lambda x: df[df[USER_KEY].isin(set(x))][REPO_KEY]
-        .value_counts()
-        .index[: (COPYCATCH_PARAMS.m - 1) * NUM_SAMPLES_PER_REPO + 1]
-        .tolist()
-    )
-
-    repo_to_actors["cluster"] = repo_to_actors["cluster"].map(
-        lambda x: (
-            [[x[0]] + list(y) for y in batched(x[1:], COPYCATCH_PARAMS.m - 1)]
-            if len(x) > 1
-            else [x]
-        )
-    )
-    initial_centers = repo_to_actors.explode("cluster").reset_index()
-    initial_centers["center"] = initial_centers["cluster"].map(
-        lambda c: repo_to_actors.loc[c].center.to_dict()
-    )
-    """
-
     centers = repo_to_actors.reset_index()[["repo_name", "repo_center"]]
     centers["centers"] = centers.apply(lambda x: {x.repo_name: x.repo_center}, axis=1)
     centers["clusters"] = centers.repo_name.map(lambda x: [x])
