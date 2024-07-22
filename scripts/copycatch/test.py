@@ -153,12 +153,6 @@ def test_iterative_one_repo(test_repo: str, actor_type: str) -> tuple[int, int]:
         fake_users.update(users)
     logging.info("Found %d/%d fakes in 10 searches", len(fake_users), n_cluster)
 
-    # for users, repos in copycatch.run_all(n_jobs=8):
-    #    logging.info("Found %d user cluster among %s", len(users), repos)
-    #    if test_repo in repos:
-    #        fake_users.update(users)
-    # logging.info("Found %d/%d fakes in exhaustive search", len(fake_users), n_cluster)
-
     return len(fake_users), int(n_cluster)
 
 
@@ -211,7 +205,7 @@ def test_dataframe_synthetic():
         syn = pd.read_csv(f"data/copycatch_test/synthetic{i}.csv")
         results = run_dataframe(syn, copycatch_params, min_repo_stars=1, max_iter=3)
         logging.info("\nData:\n%s\nResults:\n%s", syn, results)
-        
+
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=1,
@@ -228,6 +222,42 @@ def test_dataframe_synthetic():
     logging.info("\nData:\n%s\nResults:\n%s", syn, results)
 
 
+def test_dataframe_one_repo(test_repo: str, actor_type: str):
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=50,
+        m=4,
+        rho=0.5,
+        beta=2,
+    )
+
+    if actor_type == "fake":
+        df = pd.read_csv("data/fake_stars_complex_repos.csv")
+        n_cluster = df[df.repo_names.str.contains(test_repo)].n_activity_cluster.iloc[0]
+    else:
+        n_cluster = 0
+
+    logging.info("Searching Dagster's %s stars for %s...", actor_type, test_repo)
+    stargazers = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
+    actors = set(stargazers[stargazers.repo_name == test_repo].actor)
+    stargazers = stargazers[stargazers.actor.isin(actors)]
+    logging.info(
+        "%d edges, %d repos, %d stargazers",
+        len(stargazers),
+        len(stargazers.repo_name.unique()),
+        len(actors),
+    )
+
+    results = run_dataframe(stargazers, copycatch_params, min_repo_stars=50)
+    logging.info("Results:\n%s", results)
+    if results is not None:
+        for users, clusters in zip(results.users, results.clusters):
+            if test_repo in clusters:
+                return len(users), int(n_cluster)
+    else:
+        return 0, int(n_cluster)
+
+
 def test_dataframe_real(actor_type: str):
     stars = pd.read_csv(f"data/copycatch_test/stargazers_{actor_type}.csv")
 
@@ -239,7 +269,8 @@ def test_dataframe_real(actor_type: str):
         beta=2,
     )
 
-    run_dataframe(stars, copycatch_params, min_repo_stars=50)
+    results = run_dataframe(stars, copycatch_params, min_repo_stars=50)
+    logging.info("Results:\n%s", results)
 
 
 def main():
@@ -286,6 +317,12 @@ def main():
         help="Test the dataframe version of CopyCatch on real data",
         default=None,
     )
+    parser.add_argument(
+        "--test-dataframe-all",
+        action="store_true",
+        help="Test the dataframe version of CopyCatch on all repos in real data",
+        default=None,
+    )
 
     args = parser.parse_args()
 
@@ -294,6 +331,18 @@ def main():
         level=logging.INFO if not args.debug else logging.DEBUG,
         handlers=[logging.StreamHandler(sys.stdout)],
     )
+
+    suspicious_repos = [
+        "holochain/holochain-client-js",
+        "Bitcoin-ABC/bitcoin-abc",
+        "Joystream/joystream",
+        "subquery/subql",
+        "etherspot/etherspot-sdk",
+        "tatumio/tatum-js",
+        "streamr-dev/network",
+        "paraswap/paraswap-sdk",
+    ]
+    nonsuspicous_repos = ["microsoft/vscode", "vuejs/vue", "novuhq/novu"]
 
     if args.generate:
         if not os.path.exists("data/copycatch_test/stargazers_fake.csv"):
@@ -306,20 +355,11 @@ def main():
 
     if args.test_real:
         fake_results, real_results = {}, {}
-        suspicious_repos = [
-            "holochain/holochain-client-js",
-            "Bitcoin-ABC/bitcoin-abc",
-            "Joystream/joystream",
-            "subquery/subql",
-            "etherspot/etherspot-sdk",
-            "tatumio/tatum-js",
-            "streamr-dev/network",
-            "paraswap/paraswap-sdk",
-        ]
-        nonsuspicous_repos = ["microsoft/vscode", "vuejs/vue", "novuhq/novu"]
+
         for repo in suspicious_repos + nonsuspicous_repos:
             fake_results[repo] = test_iterative_one_repo(repo, "fake")
             real_results[repo] = test_iterative_one_repo(repo, "real")
+            
         logging.info(
             "Fake results:\n%s\nTotal: %d/%d",
             pformat(fake_results),
@@ -343,6 +383,27 @@ def main():
         test_dataframe_synthetic()
 
     if args.test_dataframe_real:
+        fake_results, real_results = {}, {}
+
+        for repo in suspicious_repos + nonsuspicous_repos:
+            fake_results[repo] = test_dataframe_one_repo(repo, "fake")
+            logging.info("Fake results for %s: %s", repo, fake_results[repo])
+            real_results[repo] = test_dataframe_one_repo(repo, "real")
+            logging.info("Real results for %s: %s", repo, real_results[repo])
+        logging.info(
+            "Fake results:\n%s\nTotal: %d/%d",
+            pformat(fake_results),
+            sum(x[0] for x in fake_results.values()),
+            sum(x[1] for x in fake_results.values()),
+        )
+        logging.info(
+            "Real results:\n%s\nTotal: %d/%d",
+            pformat(real_results),
+            sum(x[0] for x in real_results.values()),
+            sum(x[1] for x in real_results.values()),
+        )
+
+    if args.test_dataframe_all:
         test_dataframe_real("fake")
         test_dataframe_real("real")
 

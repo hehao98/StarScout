@@ -1,6 +1,7 @@
 import logging
 import pandas as pd
 
+from typing import Optional
 from collections import defaultdict
 
 from .iterative import CopyCatchParams
@@ -25,7 +26,7 @@ def run(
     user_key: str = "actor",
     repo_key: str = "repo_name",
     time_key: str = "starred_at",
-) -> pd.DataFrame:
+) -> Optional[pd.DataFrame]:
     global COPYCATCH_PARAMS, MIN_REPO_STARS, NUM_SAMPLES_PER_REPO
     global USER_KEY, REPO_KEY, TIME_KEY
 
@@ -46,19 +47,37 @@ def run(
     centers = _get_initial_centers(df)
     logger.debug("\n%s", centers)
 
+    n_prev_centers, n_prev_users = -1, -1
     for i in range(max_iter):
         users = _map_users(df, centers)
         logger.debug("Iteration %d users\n%s", i, users)
+        if len(users) == 0:
+            return None
+
         centers = _reduce_centers(df, users, centers)
         logger.debug("Iteration %d centers\n%s", i, centers)
 
-    users = _map_users(df, centers)
-    return (
-        users.groupby("cluster_id")
+        if len(centers) == n_prev_centers and len(users) == n_prev_users:
+            break
+        n_prev_centers, n_prev_users = len(centers), len(users)
+        logger.info(
+            "Iteration %d: %d clusters (%d users)",
+            i,
+            len(centers),
+            len(users),
+        )
+
+    users = (
+        _map_users(df, centers)
+        .groupby("cluster_id")
         .agg(users=("user", list))
         .join(centers.set_index("cluster_id"))
-        .reset_index()
+        .reset_index()[["users", "clusters"]]
     )
+    users.users = users.users.map(lambda x: tuple(sorted(set(x))))
+    users.clusters = users.clusters.map(lambda x: tuple(sorted(set(x))))
+    users.insert(0, "n_users", users.users.map(len))
+    return users.drop_duplicates().sort_values(by="n_users", ascending=False)
 
 
 def _get_initial_centers(df: pd.DataFrame) -> pd.DataFrame:
