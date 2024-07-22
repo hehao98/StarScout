@@ -199,8 +199,6 @@ def test_iterative_all_repos(actor_type: str):
 
 
 def test_dataframe_synthetic():
-    syn = pd.read_csv("data/copycatch_test/synthetic.csv")
-
     copycatch_params = CopyCatchParams(
         delta_t=180 * 24 * 60 * 60,
         n=1,
@@ -209,7 +207,25 @@ def test_dataframe_synthetic():
         beta=2,
     )
 
-    run_dataframe(syn, copycatch_params, min_repo_stars=1)
+    for i in [1, 2, 3]:
+        syn = pd.read_csv(f"data/copycatch_test/synthetic{i}.csv")
+        results = run_dataframe(syn, copycatch_params, min_repo_stars=1, max_iter=3)
+        logging.info("\nData:\n%s\nResults:\n%s", syn, results)
+        
+    copycatch_params = CopyCatchParams(
+        delta_t=180 * 24 * 60 * 60,
+        n=1,
+        m=2,
+        rho=0.6,
+        beta=2,
+    )
+    syn = pd.read_csv(f"data/copycatch_test/synthetic3.csv")
+    results = run_dataframe(syn, copycatch_params, min_repo_stars=1, max_iter=3)
+    logging.info("\nData:\n%s\nResults:\n%s", syn, results)
+
+    copycatch_params.delta_t = 360 * 24 * 60 * 60
+    results = run_dataframe(syn, copycatch_params, min_repo_stars=1, max_iter=3)
+    logging.info("\nData:\n%s\nResults:\n%s", syn, results)
 
 
 def test_dataframe_real(actor_type: str):
