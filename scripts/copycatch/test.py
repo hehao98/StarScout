@@ -250,10 +250,12 @@ def test_dataframe_one_repo(test_repo: str, actor_type: str):
 
     results = run_dataframe(stargazers, copycatch_params, min_repo_stars=50)
     logging.info("Results:\n%s", results)
+    all_users = set()
     if results is not None:
         for users, clusters in zip(results.users, results.clusters):
             if test_repo in clusters:
-                return len(users), int(n_cluster)
+                all_users.update(users)
+        return len(all_users), int(n_cluster)
     else:
         return 0, int(n_cluster)
 

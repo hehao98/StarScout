@@ -14,7 +14,6 @@ USER_KEY, REPO_KEY, TIME_KEY = None, None, None
 COPYCATCH_PARAMS: CopyCatchParams = None
 MATRIX: dict[tuple[str, str], float] = dict()
 MIN_REPO_STARS: int = None
-NUM_SAMPLES_PER_REPO: int = None
 
 
 def run(
@@ -22,17 +21,15 @@ def run(
     copycatch_params: CopyCatchParams,
     max_iter: int = 100,
     min_repo_stars: int = 50,
-    num_samples_per_repo: int = 10,
     user_key: str = "actor",
     repo_key: str = "repo_name",
     time_key: str = "starred_at",
 ) -> Optional[pd.DataFrame]:
-    global COPYCATCH_PARAMS, MIN_REPO_STARS, NUM_SAMPLES_PER_REPO
+    global COPYCATCH_PARAMS, MIN_REPO_STARS
     global USER_KEY, REPO_KEY, TIME_KEY
 
     COPYCATCH_PARAMS = copycatch_params
     MIN_REPO_STARS = min_repo_stars
-    NUM_SAMPLES_PER_REPO = num_samples_per_repo
 
     if user_key not in df.columns or repo_key not in df.columns:
         raise ValueError("Invalid column names")
