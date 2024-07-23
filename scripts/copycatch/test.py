@@ -224,7 +224,7 @@ def test_dataframe_synthetic():
 
 def test_dataframe_one_repo(test_repo: str, actor_type: str):
     copycatch_params = CopyCatchParams(
-        delta_t=180 * 24 * 60 * 60,
+        delta_t=90 * 24 * 60 * 60,
         n=50,
         m=4,
         rho=0.5,
@@ -253,7 +253,11 @@ def test_dataframe_one_repo(test_repo: str, actor_type: str):
     all_users = set()
     if results is not None:
         for users, clusters in zip(results.users, results.clusters):
-            if test_repo in clusters:
+            if (
+                test_repo in clusters
+                and len(users) >= copycatch_params.n
+                and len(clusters) >= copycatch_params.m
+            ):
                 all_users.update(users)
         return len(all_users), int(n_cluster)
     else:
@@ -361,7 +365,7 @@ def main():
         for repo in suspicious_repos + nonsuspicous_repos:
             fake_results[repo] = test_iterative_one_repo(repo, "fake")
             real_results[repo] = test_iterative_one_repo(repo, "real")
-            
+
         logging.info(
             "Fake results:\n%s\nTotal: %d/%d",
             pformat(fake_results),
