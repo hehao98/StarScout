@@ -1,4 +1,5 @@
 import logging
+import numpy as np
 import pandas as pd
 
 from typing import Optional
@@ -105,7 +106,9 @@ def _map_users(df: pd.DataFrame, centers: pd.DataFrame) -> pd.DataFrame:
                     MATRIX[(user, repo)] - center[repo]
                 ) <= COPYCATCH_PARAMS.delta_t:
                     theta += 1
-            if theta >= COPYCATCH_PARAMS.rho * len(clusters):
+            if theta > COPYCATCH_PARAMS.rho * len(clusters) or np.isclose(
+                theta, COPYCATCH_PARAMS.rho * len(clusters)
+            ):
                 results.append({"cluster_id": k, "user": user})
     return pd.DataFrame(results)
 

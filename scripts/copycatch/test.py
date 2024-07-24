@@ -362,9 +362,9 @@ def main():
     if args.test_real:
         fake_results, real_results = {}, {}
 
-        for repo in suspicious_repos + nonsuspicous_repos:
+        for repo in suspicious_repos:
             fake_results[repo] = test_iterative_one_repo(repo, "fake")
-            real_results[repo] = test_iterative_one_repo(repo, "real")
+            fake_results[repo] = test_iterative_one_repo(repo, "real")
 
         logging.info(
             "Fake results:\n%s\nTotal: %d/%d",
@@ -379,6 +379,9 @@ def main():
             sum(x[1] for x in real_results.values()),
         )
 
+        for repo in nonsuspicous_repos:
+            real_results[repo] = test_iterative_one_repo(repo, "real")
+
     if args.test_real_all:
         fake_results = test_iterative_all_repos("fake")
         real_results = test_iterative_all_repos("real")
@@ -391,7 +394,7 @@ def main():
     if args.test_dataframe_real:
         fake_results, real_results = {}, {}
 
-        for repo in suspicious_repos + nonsuspicous_repos:
+        for repo in suspicious_repos:
             fake_results[repo] = test_dataframe_one_repo(repo, "fake")
             logging.info("Fake results for %s: %s", repo, fake_results[repo])
             real_results[repo] = test_dataframe_one_repo(repo, "real")
@@ -408,6 +411,12 @@ def main():
             sum(x[0] for x in real_results.values()),
             sum(x[1] for x in real_results.values()),
         )
+
+        for repo in nonsuspicous_repos:
+            fake_results[repo] = test_dataframe_one_repo(repo, "fake")
+            logging.info("Fake results for %s: %s", repo, fake_results[repo])
+            real_results[repo] = test_dataframe_one_repo(repo, "real")
+            logging.info("Real results for %s: %s", repo, real_results[repo])
 
     if args.test_dataframe_all:
         test_dataframe_real("fake")
