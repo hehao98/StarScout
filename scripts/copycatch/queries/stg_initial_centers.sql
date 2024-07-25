@@ -5,7 +5,7 @@ WITH
     COUNT(actor) AS n_stars,
     AVG(UNIX_SECONDS(starred_at)) AS repo_center,
   FROM
-    `socket-research.fake_stars.stargazers_*`
+    `@project_id.@dataset_id.stargazers_*`
   WHERE
     ENDS_WITH(_TABLE_SUFFIX, CONCAT(@start_date, '_', @end_date))
   GROUP BY
