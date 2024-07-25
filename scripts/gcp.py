@@ -40,6 +40,19 @@ def download_gcp_blob_to_stream(
     return file_obj
 
 
+def check_bigquery_table_exists(
+    project_id: str, dataset_id: str, table_id: str
+) -> bool:
+    client = bigquery.Client()
+    dataset_ref = client.dataset(dataset_id, project=project_id)
+    table_ref = dataset_ref.table(table_id)
+    try:
+        client.get_table(table_ref)
+        return True
+    except:
+        return False
+
+
 def process_bigquery(
     project_id: str,
     dataset_id: str,
