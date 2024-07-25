@@ -13,8 +13,9 @@ WITH
   HAVING
     n_stars >= @min_stars_copycatch_seed)
 SELECT
-  *,
+  repo_name,
+  repo_center,
   JSON_OBJECT(repo_name, repo_center) AS centers,
-  [repo_name] AS clusters,
+  [repo_name] AS cluster,
 FROM
   df1
