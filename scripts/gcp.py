@@ -53,6 +53,14 @@ def check_bigquery_table_exists(
         return False
 
 
+def get_bigquery_table_nrows(project_id: str, dataset_id: str, table_id: str) -> int:
+    client = bigquery.Client()
+    dataset_ref = client.dataset(dataset_id, project=project_id)
+    table_ref = dataset_ref.table(table_id)
+    table = client.get_table(table_ref)
+    return table.num_rows
+
+
 def process_bigquery(
     project_id: str,
     dataset_id: str,
@@ -70,10 +78,12 @@ def process_bigquery(
 
     client = bigquery.Client()
     job_config = bigquery.QueryJobConfig(dry_run=True, query_parameters=params)
-    logging.info("Sending query:\n%s\nwith params:\n%s", query, pformat(params))
+    if interactive:
+        logging.info("Sending query:\n%s\nwith params:\n%s", query, pformat(params))
 
     dry_run_job = client.query(query, job_config=job_config)
-    logging.info("Query cost: %f GB", dry_run_job.total_bytes_processed / 1024**3)
+    if interactive:
+        logging.info("Query cost: %f GB", dry_run_job.total_bytes_processed / 1024**3)
 
     if not interactive or yes_or_no("Proceed?"):
         job_config.dry_run = False
@@ -81,6 +91,7 @@ def process_bigquery(
         job_config.destination = ".".join([project_id, dataset_id, output_table_id])
         actual_job = client.query(query, job_config=job_config)
         actual_job.result()
-        logging.info("Results written to destination %s", job_config.destination)
+        if interactive:
+            logging.info("Results written to destination %s", job_config.destination)
     else:
         logging.info("Aborting")

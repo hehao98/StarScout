@@ -11,7 +11,11 @@ from scripts import (
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
 )
-from scripts.gcp import check_bigquery_table_exists, process_bigquery
+from scripts.gcp import (
+    check_bigquery_table_exists,
+    get_bigquery_table_nrows,
+    process_bigquery,
+)
 
 
 def get_stargazer_data(start_date: str, end_date: str):
@@ -55,7 +59,7 @@ def get_initial_centers(start_date: str, end_date: str):
     logging.info("Created table %s", bigquery_task["output_table_id"])
 
 
-def map_users(start_date: str, end_date: str):
+def map_users(start_date: str, end_date: str) -> int:
     bigquery_task = {
         "interactive": False,
         "query_file": "scripts/copycatch/queries/map_users.sql",
@@ -67,12 +71,37 @@ def map_users(start_date: str, end_date: str):
             bigquery.ScalarQueryParameter("rho", "FLOAT64", COPYCATCH_PARAMS.rho),
         ],
     }
+
     process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
     logging.info("Created user mapping %s", bigquery_task["output_table_id"])
 
+    return get_bigquery_table_nrows(
+        PROJECT_ID, DATASET_ID, bigquery_task["output_table_id"]
+    )
 
-def reduce_centers(start_date: str, end_date: str):
-    pass
+
+def reduce_centers(start_date: str, end_date: str) -> int:
+    bigquery_task = {
+        "interactive": False,
+        "query_file": "scripts/copycatch/queries/reduce_centers.sql",
+        "output_table_id": f"centers_{start_date}_{end_date}",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", start_date),
+            bigquery.ScalarQueryParameter("end_date", "STRING", end_date),
+            bigquery.ScalarQueryParameter("delta_t", "INT64", COPYCATCH_PARAMS.delta_t),
+            bigquery.ScalarQueryParameter("m", "INT64", COPYCATCH_PARAMS.m),
+            bigquery.ScalarQueryParameter(
+                "relaxed_m", "INT64", 20 * COPYCATCH_PARAMS.m
+            ),
+        ],
+    }
+
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+    logging.info("Created center mapping %s", bigquery_task["output_table_id"])
+
+    return get_bigquery_table_nrows(
+        PROJECT_ID, DATASET_ID, bigquery_task["output_table_id"]
+    )
 
 
 def cleanup_results():
@@ -88,13 +117,21 @@ def main():
 
     for start_date, end_date in COPYCATCH_DATE_CHUNKS[:1]:
         logging.info("Processing dates %s to %s", start_date, end_date)
+
         get_stargazer_data(start_date, end_date)
+
         get_initial_centers(start_date, end_date)
+
+        n_prev_users = -1
         for i in range(COPYCATCH_NUM_ITERATIONS):
-            map_users(start_date, end_date)
-            reduce_centers(start_date, end_date)
-            logging.info("Iteration %d done", i)
-            break
+            n_users = map_users(start_date, end_date)
+            n_centers = reduce_centers(start_date, end_date)
+
+            logging.info("Iteration %d (%d users, %d clusters)", i, n_users, n_centers)
+            if n_users == n_prev_users:
+                break
+            n_prev_users = n_users
+
     cleanup_results()
 
     logging.info("All done!")
