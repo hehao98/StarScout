@@ -20,10 +20,10 @@ MIN_STARS_LOW_ACTIVITY: int = 50
 MIN_STARS_COPYCATCH_SEED: int = 50
 COPYCATCH_NUM_ITERATIONS: int = 10
 COPYCATCH_PARAMS = CopyCatchParams(
-    delta_t=90 * 24 * 60 * 60,
+    delta_t=15 * 24 * 60 * 60,
     n=50,
-    m=4,
-    rho=0.5,
+    m=5,
+    rho=0.6,
     beta=2,
 )
 COPYCATCH_DATE_CHUNKS = [
