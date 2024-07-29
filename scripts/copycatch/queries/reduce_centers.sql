@@ -7,8 +7,8 @@ WITH
     u.actor,
   FROM
     `@project_id.@dataset_id.centers_*` c
-  JOIN
-    `@project_id.@dataset_id.users_*` u
+  JOIN --sample to keep this join efficient
+    `@project_id.@dataset_id.users_*` u TABLESAMPLE SYSTEM (25 PERCENT)
   ON
     c.repo_name = u.repo_name
   WHERE
@@ -64,6 +64,6 @@ SELECT
   JSON_OBJECT(
     ARRAY(SELECT r FROM UNNEST(centers)), 
     ARRAY(SELECT c FROM UNNEST(centers))) AS centers,
-  ARRAY((SELECT r FROM UNNEST(centers) LIMIT @m)) as clusters,
+  ARRAY((SELECT r FROM UNNEST(centers) LIMIT @m)) as cluster,
 FROM
   new_center3
