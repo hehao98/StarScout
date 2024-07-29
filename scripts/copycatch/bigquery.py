@@ -151,7 +151,7 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    for start_date, end_date in COPYCATCH_DATE_CHUNKS[:1]:
+    for start_date, end_date in COPYCATCH_DATE_CHUNKS[1:2]:
         gcp_path = f"clusters/{start_date}_{end_date}"
         if len(list_gcp_blobs(GCP_BUCKET, gcp_path)) > 0:
             logging.info("Clusters %s_%s already exist, skipping", start_date, end_date)
@@ -166,12 +166,13 @@ def main():
         n_prev_users = -1
         for i in range(COPYCATCH_NUM_ITERATIONS):
             n_users = map_users(start_date, end_date)
-            n_centers = reduce_centers(start_date, end_date)
-            logging.info("Iteration %d (%d users, %d clusters)", i, n_users, n_centers)
-
             if n_users == n_prev_users:
+                logging.info("No new users, stopping")
                 break
             n_prev_users = n_users
+            
+            n_centers = reduce_centers(start_date, end_date)
+            logging.info("Iteration %d (%d users, %d clusters)", i, n_users, n_centers)
 
         agg_results(start_date, end_date)
 

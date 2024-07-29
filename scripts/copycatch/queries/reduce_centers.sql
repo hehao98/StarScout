@@ -8,7 +8,7 @@ WITH
   FROM
     `@project_id.@dataset_id.centers_*` c
   JOIN --sample to keep this join efficient
-    `@project_id.@dataset_id.users_*` u TABLESAMPLE SYSTEM (25 PERCENT)
+    `@project_id.@dataset_id.users_*` u TABLESAMPLE SYSTEM (10 PERCENT)
   ON
     c.repo_name = u.repo_name
   WHERE
