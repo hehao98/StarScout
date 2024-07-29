@@ -1,5 +1,6 @@
 import sys
 import logging
+import multiprocessing as mp
 
 from google.cloud import bigquery
 from google.cloud.bigquery.job import ExtractJobConfig
@@ -144,6 +145,36 @@ def dump_results(start_date: str, end_date: str):
     logging.info("Exported clusters to %s", destination)
 
 
+def run_chunk(start_date: str, end_date: str):
+    gcp_path = f"clusters/{start_date}_{end_date}"
+    if len(list_gcp_blobs(GCP_BUCKET, gcp_path)) > 0:
+        logging.info("Clusters %s_%s already exist, skipping", start_date, end_date)
+        return
+
+    logging.info("Processing dates %s to %s", start_date, end_date)
+
+    get_stargazer_data(start_date, end_date)
+
+    get_initial_centers(start_date, end_date)
+
+    n_prev_users = -1
+    for i in range(COPYCATCH_NUM_ITERATIONS):
+        n_users = map_users(start_date, end_date)
+        if n_users == n_prev_users:
+            logging.info("No new users, stopping")
+            break
+        n_prev_users = n_users
+
+        n_centers = reduce_centers(start_date, end_date)
+        logging.info("Iteration %d (%d users, %d clusters)", i, n_users, n_centers)
+
+    agg_results(start_date, end_date)
+
+    dump_results(start_date, end_date)
+
+    logging.info("Finished chunk %s_%s", start_date, end_date)
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -151,32 +182,8 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    for start_date, end_date in COPYCATCH_DATE_CHUNKS[1:2]:
-        gcp_path = f"clusters/{start_date}_{end_date}"
-        if len(list_gcp_blobs(GCP_BUCKET, gcp_path)) > 0:
-            logging.info("Clusters %s_%s already exist, skipping", start_date, end_date)
-            continue
-
-        logging.info("Processing dates %s to %s", start_date, end_date)
-
-        get_stargazer_data(start_date, end_date)
-
-        get_initial_centers(start_date, end_date)
-
-        n_prev_users = -1
-        for i in range(COPYCATCH_NUM_ITERATIONS):
-            n_users = map_users(start_date, end_date)
-            if n_users == n_prev_users:
-                logging.info("No new users, stopping")
-                break
-            n_prev_users = n_users
-            
-            n_centers = reduce_centers(start_date, end_date)
-            logging.info("Iteration %d (%d users, %d clusters)", i, n_users, n_centers)
-
-        agg_results(start_date, end_date)
-
-        dump_results(start_date, end_date)
+    with mp.Pool(len(COPYCATCH_DATE_CHUNKS)) as pool:
+        pool.starmap(run_chunk, COPYCATCH_DATE_CHUNKS)
 
     logging.info("All done!")
 
