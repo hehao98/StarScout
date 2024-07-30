@@ -5,10 +5,9 @@ import logging
 import argparse
 import multiprocessing as mp
 
-from pprint import pformat
 from datetime import datetime
 from collections import defaultdict
-from pymongo import MongoClient
+from pymongo import MongoClient, UpdateOne
 from google.cloud import bigquery
 from google.cloud.bigquery.job import ExtractJobConfig
 
@@ -253,7 +252,7 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
     collection.drop()
     collection.create_index(["repo", "actor", "starred_at"], unique=True)
 
-    # Export all real stars first, and then export all fake stars to overwrite older ones
+    # Export all real stars first
     chunk = []
     for start_date, end_date in COPYCATCH_DATE_CHUNKS:
         for b in list_gcp_blobs(GCP_BUCKET, f"stargazers/{start_date}_{end_date}"):
@@ -261,22 +260,27 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
                 if repo in repo_to_fakes:
                     key = {"repo": repo, "actor": actor, "starred_at": time}
                     chunk.append(
-                        {
-                            "filter": {**key},
-                            "update": {
+                        UpdateOne(
+                            filter={**key},
+                            update={
                                 "$set": {
                                     **key,
                                     "suspicous": False,
                                 }
                             },
-                            "upsert": True,
-                        }
+                            upsert=True,
+                        )
                     )
-                if len(chunk) >= 4096:
+                if len(chunk) >= 100000:
                     logging.info("Inserting %d records", len(chunk))
                     collection.bulk_write(chunk)
                     chunk.clear()
-
+    if len(chunk) >= 0:
+        logging.info("Inserting %d records", len(chunk))
+        collection.bulk_write(chunk)
+        chunk.clear()
+    
+    # And then export all fake stars to overwrite older ones
     chunk = []
     for start_date, end_date in COPYCATCH_DATE_CHUNKS:
         for b in list_gcp_blobs(GCP_BUCKET, f"stargazers/{start_date}_{end_date}"):
@@ -284,21 +288,25 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
                 if repo in repo_to_fakes and actor in repo_to_fakes[repo]:
                     key = {"repo": repo, "actor": actor, "starred_at": time}
                     chunk.append(
-                        {
-                            "filter": {**key},
-                            "update": {
+                        UpdateOne(
+                            filter={**key},
+                            update={
                                 "$set": {
                                     **key,
                                     "suspicous": True,
                                 }
                             },
-                            "upsert": True,
-                        }
+                            upsert=True,
+                        )
                     )
-                if len(chunk) >= 4096:
+                if len(chunk) >= 100000:
                     logging.info("Inserting %d records", len(chunk))
                     collection.bulk_write(chunk)
                     chunk.clear()
+    if len(chunk) >= 0:
+        logging.info("Inserting %d records", len(chunk))
+        collection.bulk_write(chunk)
+        chunk.clear()
 
     logging.info("Finish exporting to MongoDB")
     client.close()
