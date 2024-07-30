@@ -22,8 +22,8 @@ COPYCATCH_NUM_ITERATIONS: int = 10
 COPYCATCH_PARAMS = CopyCatchParams(
     delta_t=15 * 24 * 60 * 60,
     n=50,
-    m=5,
-    rho=0.6,
+    m=10,
+    rho=0.5,
     beta=2,
 )
 COPYCATCH_DATE_CHUNKS = [

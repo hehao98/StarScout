@@ -6,9 +6,7 @@ WITH
     t1.centers[cluster_repo_name] AS cluster_repo_center,
     ARRAY_LENGTH(t1.cluster) as cluster_size
   FROM
-    `@project_id.@dataset_id.centers_*` t1
-  CROSS JOIN
-    UNNEST(t1.cluster) AS cluster_repo_name
+    `@project_id.@dataset_id.centers_*` t1, t1.cluster AS cluster_repo_name
   WHERE
     ENDS_WITH(_TABLE_SUFFIX, CONCAT(@start_date, '_', @end_date))),
   cluster_id_to_actor AS (
@@ -29,6 +27,8 @@ WITH
 SELECT
   repo_name,
   actor,
+  -- cluster_size,
+  -- COUNT(*) AS n_overlap
 FROM
   cluster_id_to_actor
 GROUP BY
