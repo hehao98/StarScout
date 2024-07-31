@@ -19,7 +19,7 @@ from scripts import (
     MIN_STARS_LOW_ACTIVITY,
 )
 from scripts.gcp import process_bigquery, download_gcp_blob_to_stream, list_gcp_blobs
-from scripts.github import get_repo_id
+from scripts.github import get_repo_id, get_repo_n_stars_latest
 
 
 def get_repos_with_low_activity_stars():
@@ -99,6 +99,8 @@ def dump_repos_with_low_activity_stars():
 
     # sum stars for duplicate repo ids, keeping those without repo id
     repos.insert(0, "repo_id", repos.repo_name.apply(get_repo_id))
+    repos["n_stars_latest"] = repos.repo_name.apply(get_repo_n_stars_latest)
+
     repos_with_id = (
         repos[repos.repo_id.notna()]
         .groupby("repo_id")
@@ -113,6 +115,7 @@ def dump_repos_with_low_activity_stars():
     repos.rename(columns={"repo_name": "repo_names"}, inplace=True)
     repos = pd.concat([repos[repos.repo_id.isna()], repos_with_id])
     repos["p_stars_low_activity"] = repos.n_stars_low_activity / repos.n_stars
+
     repos.sort_values(by="p_stars_low_activity", ascending=False, inplace=True)
     repos.drop(columns=["low_activity_actors"], inplace=True)
 

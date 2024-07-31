@@ -29,7 +29,7 @@ from scripts.gcp import (
     get_bigquery_table_nrows,
     process_bigquery,
 )
-from scripts.github import get_repo_id
+from scripts.github import get_repo_id, get_repo_n_stars_latest
 
 
 def get_stargazer_data(start_date: str, end_date: str):
@@ -333,6 +333,7 @@ def summarize_mongodb():
     results = pd.DataFrame(results)
 
     results.insert(0, "repo_id", results["repo_name"].apply(get_repo_id))
+    results["n_stars_latest"] = results["repo_id"].apply(get_repo_n_stars_latest)
 
     results = (
         results.groupby("repo_id")
@@ -348,7 +349,6 @@ def summarize_mongodb():
     results["p_stars_clustered"] = results["n_stars_clustered"] / results["n_stars"]
 
     results.sort_values(by="p_stars_clustered", ascending=False, inplace=True)
-
     results.to_csv("data/fake_stars_clustered_repos.csv", index=False)
 
 

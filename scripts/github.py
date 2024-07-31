@@ -26,3 +26,12 @@ def get_repo_id(repo: str) -> Optional[str]:
     except Exception as ex:
         logging.error(f"Error fetching repo {repo}: {ex}")
         return None
+
+
+def get_repo_n_stars_latest(repo: str) -> Optional[int]:
+    strudel = scraper.GitHubAPI(",".join(GITHUB_TOKENS))
+    try:
+        return strudel.repo_info(repo)["stargazers_count"]
+    except Exception as ex:
+        logging.error(f"Error fetching repo {repo}: {ex}")
+        return None
