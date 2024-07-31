@@ -9,9 +9,9 @@ with open("secrets.yaml", "r") as f:
 # Secrets
 MONGO_URL: str = SECRETS["mongo_url"]
 GITHUB_TOKENS: list[str] = [x["token"] for x in SECRETS["github_tokens"]]
-# BIGQUERY_PROJECT: str = SECRETS["bigquery_project"]
-# BIGQUERY_DATASET: str = SECRETS["bigquery_dataset"]
-# GOOGLE_CLOUD_BUCKET: str = SECRETS["google_cloud_bucket"]
+BIGQUERY_PROJECT: str = SECRETS["bigquery_project"]
+BIGQUERY_DATASET: str = SECRETS["bigquery_dataset"]
+GOOGLE_CLOUD_BUCKET: str = SECRETS["google_cloud_bucket"]
 
 # Parameters for running experiments
 START_DATE: str = "190701"
@@ -22,8 +22,8 @@ COPYCATCH_NUM_ITERATIONS: int = 10
 COPYCATCH_PARAMS = CopyCatchParams(
     delta_t=15 * 24 * 60 * 60,
     n=50,
-    m=5,
-    rho=0.6,
+    m=10,
+    rho=0.5,
     beta=2,
 )
 COPYCATCH_DATE_CHUNKS = [

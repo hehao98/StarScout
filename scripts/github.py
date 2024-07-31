@@ -5,6 +5,7 @@ from typing import Optional
 
 from scripts import GITHUB_TOKENS
 
+
 def get_repo_id(repo: str) -> Optional[str]:
     owner, name = repo.split("/")
     strudel = scraper.GitHubAPIv4(",".join(GITHUB_TOKENS))
