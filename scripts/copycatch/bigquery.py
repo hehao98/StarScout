@@ -4,6 +4,7 @@ import json
 import logging
 import argparse
 import multiprocessing as mp
+import pandas as pd
 
 from datetime import datetime
 from collections import defaultdict
@@ -28,6 +29,7 @@ from scripts.gcp import (
     get_bigquery_table_nrows,
     process_bigquery,
 )
+from scripts.github import get_repo_id
 
 
 def get_stargazer_data(start_date: str, end_date: str):
@@ -265,7 +267,7 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
                             update={
                                 "$set": {
                                     **key,
-                                    "suspicous": False,
+                                    "clustered": False,
                                 }
                             },
                             upsert=True,
@@ -279,7 +281,7 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
         logging.info("Inserting %d records", len(chunk))
         collection.bulk_write(chunk)
         chunk.clear()
-    
+
     # And then export all fake stars to overwrite older ones
     chunk = []
     for start_date, end_date in COPYCATCH_DATE_CHUNKS:
@@ -293,7 +295,7 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
                             update={
                                 "$set": {
                                     **key,
-                                    "suspicous": True,
+                                    "clustered": True,
                                 }
                             },
                             upsert=True,
@@ -310,6 +312,44 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
 
     logging.info("Finish exporting to MongoDB")
     client.close()
+
+
+def summarize_mongodb():
+    client = MongoClient(MONGO_URL)
+    collection = client.fake_stars.clustered_stars
+
+    results = []
+    for repo in collection.distinct("repo"):
+        n_stars = collection.count_documents({"repo": repo})
+        n_fakes = collection.count_documents({"repo": repo, "clustered": True})
+        logging.info("Repo %s: %d stars, %d fakes", repo, n_stars, n_fakes)
+        results.append(
+            {
+                "repo_name": repo,
+                "n_stars": n_stars,
+                "n_stars_clustered": n_fakes,
+            }
+        )
+    results = pd.DataFrame(results)
+
+    results.insert(0, "repo_id", results["repo_name"].apply(get_repo_id))
+
+    results = (
+        results.groupby("repo_id")
+        .agg(
+            repo_id="first",
+            repo_names=("repo_name", "unique"),
+            n_stars="sum",
+            n_stars_clustered="sum",
+        )
+        .reset_index()
+    )
+
+    results["p_stars_clustered"] = results["n_stars_clustered"] / results["n_stars"]
+
+    results.sort_values(by="p_stars_clustered", ascending=False, inplace=True)
+
+    results.to_csv("data/fake_stars_clustered_repos.csv", index=False)
 
 
 def main():
@@ -330,6 +370,11 @@ def main():
         "--summarize",
         action="store_true",
         help="Summarize results from Google Cloud Storage",
+    )
+    parser.add_argument(
+        "--summarize-mongodb",
+        action="store_true",
+        help="Summarize results from MongoDB",
     )
     args = parser.parse_args()
 
@@ -352,8 +397,9 @@ def main():
             len(repo_to_fakes),
             sum(map(len, repo_to_fakes.values())),
         )
-
         export_mongodb(repo_to_fakes)
+    if args.summarize_mongodb:
+        summarize_mongodb()
 
     logging.info("All done!")
 

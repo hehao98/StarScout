@@ -116,7 +116,7 @@ def dump_repos_with_low_activity_stars():
     repos.sort_values(by="p_stars_low_activity", ascending=False, inplace=True)
     repos.drop(columns=["low_activity_actors"], inplace=True)
 
-    repos.to_csv(f"data/low_activity_stars_repos.csv", index=False)
+    repos.to_csv(f"data/fake_stars_low_activity_repos.csv", index=False)
 
 
 def dump_low_activity_stars_users():
