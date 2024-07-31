@@ -25,7 +25,7 @@ def get_stars_by_month(fake_type: str) -> pd.DataFrame:
                             "month": {"$substr": ["$starred_at", 0, 7]},
                         },
                         "n_stars": {"$sum": 1},
-                        f"n_{fake_type}_stars": {
+                        f"n_stars_{fake_type}": {
                             "$sum": {
                                 "$convert": {"input": f"${fake_type}", "to": "int"}
                             }
