@@ -333,19 +333,7 @@ def summarize_mongodb():
     results = pd.DataFrame(results)
 
     results.insert(0, "repo_id", results["repo_name"].apply(get_repo_id))
-    results["n_stars_latest"] = results["repo_id"].apply(get_repo_n_stars_latest)
-
-    results = (
-        results.groupby("repo_id")
-        .agg(
-            repo_id="first",
-            repo_names=("repo_name", "unique"),
-            n_stars="sum",
-            n_stars_clustered="sum",
-        )
-        .reset_index()
-    )
-
+    results["n_stars_latest"] = results["repo_name"].apply(get_repo_n_stars_latest)
     results["p_stars_clustered"] = results["n_stars_clustered"] / results["n_stars"]
 
     results.sort_values(by="p_stars_clustered", ascending=False, inplace=True)

@@ -100,20 +100,6 @@ def dump_repos_with_low_activity_stars():
     # sum stars for duplicate repo ids, keeping those without repo id
     repos.insert(0, "repo_id", repos.repo_name.apply(get_repo_id))
     repos["n_stars_latest"] = repos.repo_name.apply(get_repo_n_stars_latest)
-
-    repos_with_id = (
-        repos[repos.repo_id.notna()]
-        .groupby("repo_id")
-        .agg(
-            repo_id=("repo_id", "first"),
-            repo_names=("repo_name", "unique"),
-            n_stars=("n_stars", "sum"),
-            n_stars_low_activity=("n_stars_low_activity", "sum"),
-        )
-    )
-    repos_with_id.repo_names = repos_with_id.repo_names.apply(lambda x: ",".join(x))
-    repos.rename(columns={"repo_name": "repo_names"}, inplace=True)
-    repos = pd.concat([repos[repos.repo_id.isna()], repos_with_id])
     repos["p_stars_low_activity"] = repos.n_stars_low_activity / repos.n_stars
 
     repos.sort_values(by="p_stars_low_activity", ascending=False, inplace=True)
