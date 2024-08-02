@@ -385,8 +385,9 @@ def main():
             len(repo_to_fakes),
             sum(map(len, repo_to_fakes.values())),
         )
+        
         export_mongodb(repo_to_fakes)
-    if args.summarize_mongodb:
+
         summarize_mongodb()
 
     logging.info("All done!")

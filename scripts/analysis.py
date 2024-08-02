@@ -2,6 +2,7 @@ import os
 import pymongo
 import pandas as pd
 
+from typing import Optional
 
 from scripts import MONGO_URL
 
@@ -50,7 +51,7 @@ def get_fake_star_repos_all() -> pd.DataFrame:
     repos = pd.merge(low_activity, clustered, on=["repo_id", "repo_name"], how="outer")
 
     repos.insert(2, "n_stars", repos.n_stars_x.fillna(0) + repos.n_stars_y.fillna(0))
-    
+
     repos.insert(
         3,
         "n_stars_latest",
@@ -88,6 +89,34 @@ def get_stars_by_month_all() -> pd.DataFrame:
     stars.drop(columns=["n_stars_x", "n_stars_y"], inplace=True)
     stars.sort_values(["repo", "month"], inplace=True)
     return stars
+
+
+def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
+    client = pymongo.MongoClient(MONGO_URL)
+
+    low_activity = client.fake_stars.low_activity_stars.find({"repo": repo})
+    cluster = client.fake_stars.clustered_stars.find({"repo": repo})
+
+    low_activity = pd.DataFrame(list(low_activity))
+    cluster = pd.DataFrame(list(cluster))
+
+    if len(low_activity) == 0 and len(cluster) == 0:
+        return None
+
+    if len(low_activity) == 0:
+        cluster["low_activity"] = False
+        return cluster
+
+    if len(cluster) == 0:
+        low_activity["clustered"] = False
+        return low_activity
+
+    merged = pd.merge(
+        low_activity, cluster, on=["repo", "actor", "starred_at"], how="outer"
+    ).drop(columns=["_id_x", "_id_y"])
+    merged["low_activity"] = merged.low_activity.astype(bool).fillna(False)
+    merged["clustered"] = merged.clustered.astype(bool).fillna(False)
+    return merged
 
 
 def main():
