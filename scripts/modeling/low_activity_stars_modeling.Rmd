@@ -1,0 +1,136 @@
+---
+title: "low_activity_stars_modeling"
+output: pdf_document
+date: "2024-07-31"
+---
+
+```{r}
+# replace the csv file with any other data files. It should contain 4 columns: repo name, month, number of total stars in that month, number of fake stars in that month
+repos = read.csv("fake_stars_low_activity_stars_by_month.csv")
+colnames(repos) <- c("repo_name", "month", "total", "fake")
+
+```
+
+```{r}
+
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+
+repos <- repos %>%
+  arrange(repo_name, month)
+
+repos <- repos %>%
+  group_by(repo_name) %>%       # Group by repo_name
+  mutate(
+    # create lag variables
+    real = total - fake,
+    # number of reals stars x months ago
+    real1 = lag(real, 1),
+    real2 = lag(real, 2),
+    real3 = lag(real, 3),
+    # number of fake stars x months ago
+    fake1 = lag(fake, 1),
+    fake2 = lag(fake, 2),
+    fake3 = lag(fake, 3),
+    # sum of reals stars until x months ago
+    sumReal = cumsum(real),
+    sumReal1 = lag(sumReal, 1),
+    sumReal2 = lag(sumReal, 2),
+    sumReal3 = lag(sumReal, 3),
+    # sum of fake stars until x months ago
+    sumFake = cumsum(fake),
+    sumFake1 = lag(sumFake, 1),
+    sumFake2 = lag(sumFake, 2),
+    sumFake3 = lag(sumFake, 3),
+    fake_percentage = fake/(real+fake)
+  ) %>%
+  ungroup() %>% # Remove grouping
+  drop_na()
+
+repos <- repos %>%
+  group_by(repo_name) %>%
+  mutate(time_label = row_number()) %>% #relabel the time using integers starting from 1
+  ungroup()
+
+repos <- subset(repos, repo_name != "ant-design/ant-design")
+
+```
+
+```{r}
+library(nlme)
+# first order autoregressive model
+ar1_star = lme(real ~ real1 + fake1 + sumReal2 + sumFake2,
+          random = ~ 1 | repo_name,
+          correlation = corAR1(form = ~ time_label | repo_name),
+          data = repos)
+summary(ar1_star)
+```
+```{r}
+# second order autoregressive model
+ar2_star = lme(real ~ real1 + real2 + fake1 + fake2 + sumReal3 + sumFake3,
+          random = ~ 1 | repo_name,
+          correlation = corARMA(form = ~ time_label | repo_name, p = 2),
+          data = repos)
+summary(ar2_star)
+```
+
+```{r}
+library(plm)
+library(lmtest)
+# fixed effects model 
+panel_star <- plm(real ~ real1 + fake1, 
+                    data = repos,
+                    index = c("repo_name", "time_label"), 
+                    model = "within")
+coeftest(panel_star, vcov. = vcovHC, type = "HC1")
+```
+
+```{r}
+library(tseries)
+residuals_ar1_star <- resid(ar1_star)
+# Apply the ADF test on the residuals
+adf_test_result <- adf.test(residuals_ar1_star)
+
+# Display the test results
+print(adf_test_result)
+# Plotting residuals to check assumptions
+plot(ar1_star, which = 1)  # Residuals vs Fitted values
+qqnorm(residuals_ar1_star)    # Q-Q plot for normality of residuals
+qqline(residuals_ar1_star)
+```
+
+```{r}
+ks.test(residuals_ar1_star, "pnorm", 0, 1)
+
+```
+
+```{r}
+library(nlme)
+ar2_star = lme(real ~ real1 + real2 + fake1 + fake2 + sumReal3 + sumFake3,
+          random = ~ 1 | repo_name,
+          correlation = corARMA(form = ~ time_label | repo_name, p = 2),
+          data = repos)
+summary(ar2_star)
+```
+
+```{r}
+library(MuMIn)
+r_squared_values <- r.squaredGLMM(ar2_star)
+
+# Print the R-squared values
+print(r_squared_values)
+```
+```{r}
+library(tseries)
+residuals_ar2_star <- resid(ar2_star)
+# Apply the ADF test on the residuals
+adf_test_result <- adf.test(residuals_ar2_star)
+
+# Display the test results
+print(adf_test_result)
+# Plotting residuals to check assumptions
+plot(ar1_star, which = 1)  # Residuals vs Fitted values
+qqnorm(residuals_ar2_star)    # Q-Q plot for normality of residuals
+qqline(residuals_ar2_star)
+```
