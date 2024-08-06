@@ -1,10 +1,13 @@
 import os
 import pymongo
+import psycopg
 import pandas as pd
 
 from typing import Optional
+from psycopg.rows import dict_row
+from psycopg.types.composite import CompositeInfo, register_composite
 
-from scripts import MONGO_URL
+from scripts import MONGO_URL, NPM_FOLLOWER_POSTGRES
 
 
 def get_stars_by_month(fake_type: str) -> pd.DataFrame:
@@ -148,9 +151,73 @@ def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
     return pypi_github, pypi_downloads
 
 
+def get_npm_pkg_github() -> pd.DataFrame:
+    if os.path.exists("data/npm_github.csv"):
+        return pd.read_csv("data/npm_github.csv")
+    npm_github = []
+    with psycopg.connect(NPM_FOLLOWER_POSTGRES) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT DISTINCT 
+                    packages.name, 
+                    ((versions.repository_parsed).github_bitbucket_gitlab_user 
+                    || '/' || (versions.repository_parsed).github_bitbucket_gitlab_repo)
+                    AS github
+                FROM versions 
+                JOIN packages ON versions.package_id = packages.id
+                WHERE (versions.repository_parsed).host = 'github'
+                ORDER BY packages.name ASC
+                """
+            )
+            for name, github in cur.fetchall():
+                npm_github.append({"name": name, "github": github})
+    npm_github = pd.DataFrame(npm_github)
+    npm_github.to_csv("data/npm_github.csv", index=False)
+    return npm_github
+
+
+def get_npm_downloads() -> pd.DataFrame:
+    if os.path.exists("data/npm_downloads.csv"):
+        return pd.read_csv("data/npm_downloads.csv")
+
+    npm_github = get_npm_pkg_github()
+    repos = get_fake_star_repos_all()
+    pkgs = set(npm_github[npm_github.github.isin(set(repos.repo_name))].name)
+
+    npm_downloads = []
+    with psycopg.connect(NPM_FOLLOWER_POSTGRES, row_factory=dict_row) as conn:
+        t_info = CompositeInfo.fetch(conn, "download_count_struct")
+        register_composite(t_info, conn)
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT packages.name, download_counts FROM download_metrics
+                JOIN packages ON packages.id = download_metrics.package_id
+                WHERE packages.name = ANY(%(pkgs)s)
+                ORDER BY packages.name ASC
+                """,
+                {"pkgs": list(pkgs)},
+            )
+            for row in cur.fetchall():
+                for download in row["download_counts"]:
+                    npm_downloads.append(
+                        {
+                            "name": row["name"],
+                            "date": download.time.strftime("%Y-%m-%d"),
+                            "download_count": download.counter,
+                        }
+                    )
+    npm_downloads = pd.DataFrame(npm_downloads)
+    npm_downloads.to_csv("data/npm_downloads.csv", index=False)
+
+
 def main():
     get_stars_by_month("low_activity")
     get_stars_by_month("clustered")
+
+    get_npm_pkg_github()
+    get_npm_downloads()
 
 
 if __name__ == "__main__":
