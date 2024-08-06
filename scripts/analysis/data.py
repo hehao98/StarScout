@@ -134,8 +134,8 @@ def get_repo_with_compaign() -> set[str]:
         >= 0.5
     )
 
-    repos_burst =  set(stars[stars.seems_like_compaign].repo)
-    # If lower than 10%, I choose to not trust the algorithm. 
+    repos_burst = set(stars[stars.seems_like_compaign].repo)
+    # If lower than 10%, I choose to not trust the algorithm.
     # It may be producing false alerts for a legitimate repo.
     repos_high_pert = set(repos[repos["p_stars_fake"] >= 0.1].repo_name)
     return repos_burst & repos_high_pert
@@ -238,7 +238,11 @@ def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
     return npm_github, npm_downloads
 
 
-def get_modeling_data():
+def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
+    path_stars, path_downloads = "data/model_stars.csv", "data/model_downloads.csv"
+    if os.path.exists(path_stars) and os.path.exists(path_downloads):
+        return pd.read_csv(path_stars), pd.read_csv(path_downloads)
+
     npm_github, npm_downloads = get_npm_pkgs_and_downloads()
     pypi_github, pypi_downloads = get_pypi_pkgs_and_downloads()
     stars = get_stars_by_month_all()
@@ -288,6 +292,7 @@ def get_modeling_data():
                 {
                     "repo": repo,
                     "month": month,
+                    "platform": "npm" if repo in set(npm_github.github) else "PyPI",
                     "download_count": count,
                     "n_stars_all": n_stars_all,
                     "n_stars_fake": n_stars_fake,
@@ -299,8 +304,12 @@ def get_modeling_data():
         for repo, months in model_stars.items()
         for month, data in months.items()
     ]
-    pd.DataFrame(model_stars_df).to_csv("data/model_stars.csv", index=False)
-    pd.DataFrame(model_downloads_df).to_csv("data/model_downloads.csv", index=False)
+
+    model_stars_df = pd.DataFrame(model_stars_df)
+    model_downloads_df = pd.DataFrame(model_downloads_df)
+    model_stars_df.to_csv("data/model_stars.csv", index=False)
+    model_downloads_df.to_csv("data/model_downloads.csv", index=False)
+    return model_stars_df, model_downloads_df
 
 
 def main():
