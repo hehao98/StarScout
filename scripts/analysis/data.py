@@ -124,14 +124,21 @@ def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
 
 
 def get_repo_with_compaign() -> set[str]:
+    repos = get_fake_star_repos_all()
     stars = get_stars_by_month_all()
-    stars["seems_like_compaign"] = (stars["n_stars_low_activity"] >= 50) & (
-        stars["n_stars_low_activity"] / stars["n_stars"] >= 0.5
-    ) | (
-        (stars["n_stars_clustered"] >= 50)
-        & (stars["n_stars_clustered"] / stars["n_stars"] >= 0.5)
+
+    stars["seems_like_compaign"] = (
+        stars["n_stars_low_activity"] + stars["n_stars_clustered"] >= 50
+    ) & (
+        (stars["n_stars_low_activity"] + stars["n_stars_clustered"]) / stars["n_stars"]
+        >= 0.5
     )
-    return set(stars[stars.seems_like_compaign].repo)
+
+    repos_burst =  set(stars[stars.seems_like_compaign].repo)
+    # If lower than 10%, I choose to not trust the algorithm. 
+    # It may be producing false alerts for a legitimate repo.
+    repos_high_pert = set(repos[repos["p_stars_fake"] >= 0.1].repo_name)
+    return repos_burst & repos_high_pert
 
 
 def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
