@@ -7,3 +7,5 @@ pyyaml
 strudel.scraper
 google-cloud-storage
 google-cloud-bigquery
+psycopg[binary]
+tqdm

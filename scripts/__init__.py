@@ -12,6 +12,7 @@ GITHUB_TOKENS: list[str] = [x["token"] for x in SECRETS["github_tokens"]]
 BIGQUERY_PROJECT: str = SECRETS["bigquery_project"]
 BIGQUERY_DATASET: str = SECRETS["bigquery_dataset"]
 GOOGLE_CLOUD_BUCKET: str = SECRETS["google_cloud_bucket"]
+NPM_FOLLOWER_POSTGRES: str = SECRETS["npm_follower_postgres"]
 
 # Parameters for running experiments
 START_DATE: str = "190701"

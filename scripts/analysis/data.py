@@ -119,6 +119,35 @@ def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
     return merged
 
 
+def get_repo_with_compaign() -> set[str]:
+    stars = get_stars_by_month_all()
+    stars["seems_like_compaign"] = (stars["n_stars_low_activity"] >= 50) & (
+        stars["n_stars_low_activity"] / stars["n_stars"] >= 0.5
+    ) | (
+        (stars["n_stars_clustered"] >= 50)
+        & (stars["n_stars_clustered"] / stars["n_stars"] >= 0.5)
+    )
+    return set(stars[stars.seems_like_compaign].repo)
+
+
+def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
+    repos_with_compaign = get_repo_with_compaign()
+    pypi_github = pd.read_csv("data/pypi_github.csv")
+    pypi_downloads = pd.read_csv("data/pypi_downloads.csv")
+    pypi_pkg_repos = set(pypi_github.github) & repos_with_compaign
+
+    pypi_github = (
+        pypi_github[pypi_github.github.isin(pypi_pkg_repos)]
+        .drop(columns=["version"])
+        .drop_duplicates()
+        .reset_index(drop=True)
+    )
+
+    pypi_downloads = pypi_downloads[pypi_downloads.name.isin(set(pypi_github.name))]
+
+    return pypi_github, pypi_downloads
+
+
 def main():
     get_stars_by_month("low_activity")
     get_stars_by_month("clustered")
