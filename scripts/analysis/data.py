@@ -212,6 +212,16 @@ def get_npm_downloads() -> pd.DataFrame:
     npm_downloads.to_csv("data/npm_downloads.csv", index=False)
 
 
+def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
+    npm_github = get_npm_pkg_github()
+    npm_downloads = get_npm_downloads()
+    repos = get_repo_with_compaign()
+
+    npm_github = npm_github[npm_github.github.isin(repos)]
+    npm_downloads = npm_downloads[npm_downloads.name.isin(set(npm_github.name))]
+    return npm_github, npm_downloads
+
+
 def main():
     get_stars_by_month("low_activity")
     get_stars_by_month("clustered")
