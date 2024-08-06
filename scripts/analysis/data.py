@@ -4,6 +4,7 @@ import psycopg
 import pandas as pd
 
 from typing import Optional
+from collections import defaultdict
 from psycopg.rows import dict_row
 from psycopg.types.composite import CompositeInfo, register_composite
 
@@ -219,7 +220,80 @@ def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     npm_github = npm_github[npm_github.github.isin(repos)]
     npm_downloads = npm_downloads[npm_downloads.name.isin(set(npm_github.name))]
+    npm_downloads.insert(1, "month", npm_downloads.date.map(lambda x: x[:7]))
+    npm_downloads = (
+        npm_downloads.drop(columns=["date"])
+        .groupby(["name", "month"])
+        .sum()
+        .reset_index()
+    )
+
     return npm_github, npm_downloads
+
+
+def get_modeling_data():
+    npm_github, npm_downloads = get_npm_pkgs_and_downloads()
+    pypi_github, pypi_downloads = get_pypi_pkgs_and_downloads()
+    stars = get_stars_by_month_all()
+    repos_with_campaign = sorted(get_repo_with_compaign())
+
+    model_stars, model_downloads = defaultdict(dict), defaultdict(dict)
+
+    for repo in repos_with_campaign:
+        if repo in set(npm_github.github):
+            pkgs = set(npm_github[npm_github.github == repo].name)
+            df = (
+                npm_downloads[npm_downloads.name.isin(pkgs)]
+                .groupby("month")
+                .sum()
+                .reset_index()
+            )
+            for month, count in zip(df.month, df.download_count):
+                model_downloads[repo][month] = count
+        if repo in set(pypi_github.github):
+            pkgs = set(pypi_github[pypi_github.github == repo].name)
+            df = (
+                pypi_downloads[pypi_downloads.name.isin(pkgs)]
+                .groupby("month")
+                .sum()
+                .reset_index()
+            )
+            for month, count in zip(df.month, df.download_count):
+                model_downloads[repo][month] = count
+        df = stars[stars.repo == repo]
+        for row in df.itertuples():
+            model_stars[repo][row.month] = {
+                "n_stars_all": row.n_stars,
+                "n_stars_fake": row.n_stars_low_activity + row.n_stars_clustered,
+                "n_stars_real": row.n_stars_other,
+            }
+
+    model_downloads_df = []
+    for repo, months in model_downloads.items():
+        for month, count in months.items():
+            if month in model_stars[repo]:
+                n_stars_all = model_stars[repo][month]["n_stars_all"]
+                n_stars_fake = model_stars[repo][month]["n_stars_fake"]
+                n_stars_real = model_stars[repo][month]["n_stars_real"]
+            else:
+                n_stars_all = n_stars_fake = n_stars_real = 0
+            model_downloads_df.append(
+                {
+                    "repo": repo,
+                    "month": month,
+                    "download_count": count,
+                    "n_stars_all": n_stars_all,
+                    "n_stars_fake": n_stars_fake,
+                    "n_stars_real": n_stars_real,
+                }
+            )
+    model_stars_df = [
+        {"repo": repo, "month": month, **data}
+        for repo, months in model_stars.items()
+        for month, data in months.items()
+    ]
+    pd.DataFrame(model_stars_df).to_csv("data/model_stars.csv", index=False)
+    pd.DataFrame(model_downloads_df).to_csv("data/model_downloads.csv", index=False)
 
 
 def main():
@@ -228,6 +302,8 @@ def main():
 
     get_npm_pkg_github()
     get_npm_downloads()
+
+    get_modeling_data()
 
 
 if __name__ == "__main__":
