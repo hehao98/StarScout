@@ -1,0 +1,137 @@
+---
+title: "fake_stars_downloads_modeling"
+output: pdf_document
+---
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(nlme)
+library(tseries)
+library(MuMIn)
+```
+
+```{r}
+repos = read.csv("data/model_downloads.csv")
+```
+
+```{r}
+repos <- repos %>%
+  arrange(repo, month)
+
+repos <- repos %>%
+  group_by(repo) %>%       # Group by repo_name
+  mutate(
+    # number of downloads x months ago
+    download0 = download_count,
+    download1 = lag(download_count, 1),
+    download2 = lag(download_count, 2),
+    download3 = lag(download_count, 3),
+    # number of reals stars x months ago
+    real0 = n_stars_real,
+    real1 = lag(n_stars_real, 1),
+    real2 = lag(n_stars_real, 2),
+    real3 = lag(n_stars_real, 3),
+    # number of fake stars x months ago
+    fake0 = n_stars_fake,
+    fake1 = lag(n_stars_fake, 1),
+    fake2 = lag(n_stars_fake, 2),
+    fake3 = lag(n_stars_fake, 3),
+    # sum of reals stars until x months ago
+    sumReal = cumsum(n_stars_real),
+    sumReal1 = lag(sumReal, 1),
+    sumReal2 = lag(sumReal, 2),
+    sumReal3 = lag(sumReal, 3),
+    sumReal4 = lag(sumReal, 4),
+    # sum of fake stars until x months ago
+    sumFake = cumsum(n_stars_fake),
+    sumFake1 = lag(sumFake, 1),
+    sumFake2 = lag(sumFake, 2),
+    sumFake3 = lag(sumFake, 3),
+    sumFake4 = lag(sumFake, 4),
+    fake_percentage = n_stars_fake/(n_stars_real+n_stars_fake)
+  ) %>%
+  ungroup() %>% # Remove grouping
+  drop_na()
+
+repos <- repos %>%
+  group_by(repo) %>%
+  mutate(time_label = row_number()) %>% #relabel the time using integers starting from 1
+  ungroup()
+```
+
+```{r}
+# first order autoregressive model
+ar1_star = lme(log2(download0 + 1) ~ 
+                 log2(real0 + 1) + log2(fake0 + 1) + 
+                 log2(download1 + 1) + log2(real1 + 1) + log2(fake1 + 1) + 
+                 log2(sumReal2 + 1) + log2(sumFake2 + 1),
+          random = ~ 1 | repo,
+          correlation = corAR1(form = ~ time_label | repo),
+          data = repos)
+summary(ar1_star)
+```
+
+```{r}
+print(r.squaredGLMM(ar1_star))
+```
+
+```{r}
+residuals_ar1_star <- resid(ar1_star)
+adf_test_result <- adf.test(residuals_ar1_star)
+
+# Display the test results
+print(adf_test_result)
+# Plotting residuals to check assumptions
+plot(ar1_star, which = 1)  # Residuals vs Fitted values
+qqnorm(residuals_ar1_star)    # Q-Q plot for normality of residuals
+qqline(residuals_ar1_star)
+```
+
+```{r}
+# second order autoregressive model
+ar2_star = lme(
+          log2(download0 + 1) 
+            ~ log2(download1 + 1) + 
+              log2(download2 + 1) +
+              log2(real0 + 1) +
+              log2(real1 + 1) + 
+              log2(real2 + 1) + 
+              log2(fake0 + 1) +
+              log2(fake1 + 1) + 
+              log2(fake2 + 1) + 
+              log2(sumReal3 + 1) + 
+              log2(sumFake3 + 1),
+          random = ~ 1 | repo,
+          correlation = corARMA(form = ~ time_label | repo, p = 2),
+          data = repos)
+summary(ar2_star)
+```
+```{r}
+print(r.squaredGLMM(ar2_star))
+```
+
+```{r}
+# third-order
+ar3_star = lme(
+          log2(download0 + 1) 
+            ~ log2(download1 + 1) + 
+              log2(download2 + 1) + 
+              log2(download3 + 1) +
+              log2(real1 + 1) + 
+              log2(real2 + 1) + 
+              log2(real3 + 1) +
+              log2(fake0 + 1) + 
+              log2(fake1 + 1) + 
+              log2(fake2 + 1) + 
+              log2(fake3 + 1) +
+              log2(sumReal4 + 1) + 
+              log2(sumFake4 + 1),
+          random = ~ 1 | repo,
+          correlation = corARMA(form = ~ time_label | repo, p = 2),
+          data = repos)
+summary(ar3_star)
+```
+```{r}
+print(r.squaredGLMM(ar3_star))
+```
