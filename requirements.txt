@@ -1,6 +1,7 @@
 scipy
 pandas
 matplotlib
+seaborn
 networkx
 pymongo
 pyyaml

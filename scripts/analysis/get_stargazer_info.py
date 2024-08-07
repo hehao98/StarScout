@@ -8,7 +8,7 @@ from scripts import MONGO_URL
 from scripts.github import get_user_info
 
 
-def get_fake_star_users() -> set[str]:
+def get_fake_star_users() -> tuple[set[str], set[str]]:
     client = pymongo.MongoClient(MONGO_URL)
     collection = client.fake_stars.low_activity_stars
     users_low_activity = list(
@@ -27,7 +27,7 @@ def get_fake_star_users() -> set[str]:
     users_clustered = set(x["_id"] for x in users_clustered)
 
     client.close()
-    return users_low_activity | users_clustered
+    return users_low_activity, users_clustered
 
 
 def fetch_user_info(users: list[str]):
@@ -79,7 +79,8 @@ def main():
         client.fake_stars.clustered_stars.create_index("actor")
         client.fake_stars.low_activity_stars.create_index("actor")
 
-    users = get_fake_star_users()
+    users_low_activity, users_clustered = get_fake_star_users()
+    users = users_low_activity.union(users_clustered)
     logging.info("Fetched %d users", len(users))
 
     with mp.Pool(8) as pool:
