@@ -35,3 +35,12 @@ def get_repo_n_stars_latest(repo: str) -> Optional[int]:
     except Exception as ex:
         logging.error(f"Error fetching repo {repo}: {ex}")
         return None
+
+
+def get_user_info(user: str) -> dict:
+    strudel = scraper.GitHubAPI(",".join(GITHUB_TOKENS))
+    try:
+        return strudel.user_info(user)
+    except Exception as ex:
+        logging.error(f"Error fetching user {user}: {ex}")
+        return {"error": str(ex)}
