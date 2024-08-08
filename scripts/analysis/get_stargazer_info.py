@@ -54,6 +54,7 @@ def fetch_user_info(users: list[str]):
                     "info": None,
                 }
             )
+            logging.info("Fetched info for user %s", user)
         elif "error" not in info:
             db.actors.insert_one(
                 {
@@ -63,7 +64,9 @@ def fetch_user_info(users: list[str]):
                     "info": info,
                 }
             )
-        logging.info("Fetched info for user %s", user)
+            logging.info("Fetched info for user %s", user)
+        else:
+            logging.error("No action for user %s, info = %s", user, info)
     client.close()
 
 
