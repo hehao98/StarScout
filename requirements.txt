@@ -10,3 +10,4 @@ google-cloud-storage
 google-cloud-bigquery
 psycopg[binary]
 tqdm
+PyGithub
