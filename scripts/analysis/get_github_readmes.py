@@ -26,7 +26,14 @@ def clone_github_repo(repo: str) -> None:
     prev_dir = os.getcwd()
     os.chdir("../repos")
     result = subprocess.run(
-        ["git", "clone", f"https://github.com/{repo}.git", repo.replace("/", "_")],
+        [
+            "git",
+            "clone",
+            f"https://github.com/{repo}.git",
+            repo.replace("/", "_"),
+            "--depth",
+            "1",
+        ],
         capture_output=True,
     )
     if result.returncode != 0:
