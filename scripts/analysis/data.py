@@ -9,6 +9,7 @@ from psycopg.rows import dict_row
 from psycopg.types.composite import CompositeInfo, register_composite
 
 from scripts import MONGO_URL, NPM_FOLLOWER_POSTGRES
+from scripts.analysis.get_stargazer_info import get_fake_star_users as get_user_sets
 
 
 def get_stars_by_month(fake_type: str) -> pd.DataFrame:
@@ -310,6 +311,33 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     model_stars_df.to_csv("data/model_stars.csv", index=False)
     model_downloads_df.to_csv("data/model_downloads.csv", index=False)
     return model_stars_df, model_downloads_df
+
+
+def get_fake_star_users() -> pd.DataFrame:
+    if os.path.exists("data/fake_stars_users.csv"):
+        return pd.read_csv("data/fake_stars_users.csv")
+
+    client = pymongo.MongoClient(MONGO_URL)
+
+    users_low_activity, users_clustered = get_user_sets()
+
+    results = []
+    for doc in client.fake_stars.actors.find():
+        results.append(
+            {
+                "actor": doc["actor"],
+                "n_repos_starred": set(x["repo"] for x in doc["stars"]),
+                "low_activity": doc["actor"] in users_low_activity,
+                "clustered": doc["actor"] in users_clustered,
+                "deleted": doc["error"],
+                "first_active": doc["stars"][0]["starred_at"],
+                "last_active": doc["stars"][-1]["starred_at"],
+            }
+        )
+
+    results = pd.DataFrame(results)
+    results.to_csv("data/fake_stars_users.csv", index=False)
+    return results
 
 
 def main():
