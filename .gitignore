@@ -12,3 +12,4 @@ data/fake_stars.clustered_stars.json.zip
 data/fake_stars_users.csv
 data/pypi_github.csv
 data/npm_downloads.csv
+data/readmes/*.md

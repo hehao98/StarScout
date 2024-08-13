@@ -1,7 +1,9 @@
 import os
 import sys
+import base64
 import logging
 import subprocess
+import pandas as pd
 
 from typing import Optional
 from github import Github, Auth
@@ -108,6 +110,20 @@ def main():
             else:
                 logging.info(f"Failed to get README for {repo}")
 
+        summary = []
+        os.makedirs("data/readmes", exist_ok=True)
+        for repo in repos[repos.repo_id.notna()].repo_name:
+            readme = github_readmes.find_one({"repo": repo})
+
+            if readme:
+                path = f"data/readmes/{repo.replace('/', '_')}.md"
+                with open(path, "w") as f:
+                    content = base64.b64decode(readme["readme"])
+                    f.write(content.decode("utf-8", "ignore"))
+                    summary.append({"repo": repo, "readme": path, "type": None})
+        pd.DataFrame(summary).to_csv("data/readmes/summary.csv", index=False)
+
+    """
     for repo in repos[repos.repo_id.notna()].repo_name:
         size = get_repo_size(repo)
         if size is None:
@@ -117,6 +133,7 @@ def main():
             logging.info(f"Skipping {repo} because it is too large ({size} Kb)")
             continue
         clone_github_repo(repo)
+    """
 
     for repo in repos.repo_name:
         pass  # TODO: world of code
