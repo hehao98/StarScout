@@ -75,6 +75,15 @@ def clone_github_repo(repo: str) -> None:
     os.chdir(prev_dir)
 
 
+def get_readme_woc(repo: str) -> Optional[str]:
+    try:
+        import oscar
+    except ImportError:
+        logging.error("oscar.py not installed")
+        return None
+    raise NotImplementedError("TODO")
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
