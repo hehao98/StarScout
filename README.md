@@ -28,6 +28,7 @@ These scripts have only been tested in Ubuntu.
     bigquery_dataset: your_table_name
     google_cloud_bucket: your_google_cloud_bucket_name
     npm_follower_postgres: your_postgresql_that_stores_npm_follower_dataset
+    virus_total_api_key: your_virus_total_api_key
     ```
 
 3. Configure Google BigQuery [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs).

@@ -13,6 +13,7 @@ BIGQUERY_PROJECT: str = SECRETS["bigquery_project"]
 BIGQUERY_DATASET: str = SECRETS["bigquery_dataset"]
 GOOGLE_CLOUD_BUCKET: str = SECRETS["google_cloud_bucket"]
 NPM_FOLLOWER_POSTGRES: str = SECRETS["npm_follower_postgres"]
+VIRUS_TOTAL_API_KEY: str = SECRETS["virus_total_api_key"]
 
 # Parameters for running experiments
 START_DATE: str = "190701"
