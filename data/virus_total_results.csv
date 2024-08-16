@@ -1,0 +1,206 @@
+repo,scanner,result
+Imran407704/payloads,CAT-QuickHeal,HTML.IframeRef.C
+Imran407704/payloads,ClamAV,Win.Trojan.Agent-35594
+Imran407704/payloads,Baidu,JS.Trojan-Downloader.Iframe.ee
+Imran407704/payloads,Google,Detected
+lmillionzz/Adobe-Acrobat,Lionic,Hacktool.Win32.Generic.3!c
+lmillionzz/Adobe-Acrobat,FireEye,Application.Hacktool.ASP
+lmillionzz/Adobe-Acrobat,Skyhigh,Artemis!PUP
+lmillionzz/Adobe-Acrobat,ALYac,Application.Hacktool.ASP
+lmillionzz/Adobe-Acrobat,Sangfor,Hacktool.Asp.Agent.Vdiv
+lmillionzz/Adobe-Acrobat,K7AntiVirus,Unwanted-Program ( 0057ac0f1 )
+lmillionzz/Adobe-Acrobat,K7GW,Unwanted-Program ( 0057ac0f1 )
+lmillionzz/Adobe-Acrobat,ESET-NOD32,multiple detections
+lmillionzz/Adobe-Acrobat,BitDefender,Application.Hacktool.ASP
+lmillionzz/Adobe-Acrobat,Sophos,Generic Reputation PUA (PUA)
+lmillionzz/Adobe-Acrobat,VIPRE,Application.Hacktool.ASP
+lmillionzz/Adobe-Acrobat,Emsisoft,Application.Hacktool.ASP (B)
+lmillionzz/Adobe-Acrobat,Ikarus,PUA.RiskWare.Hacktool
+lmillionzz/Adobe-Acrobat,Varist,W64/ABApplication.ZSNR-3388
+lmillionzz/Adobe-Acrobat,Antiy-AVL,Trojan/Win64.Generic
+lmillionzz/Adobe-Acrobat,Arcabit,Application.Hacktool.ASP
+lmillionzz/Adobe-Acrobat,GData,Application.Hacktool.ASP
+lmillionzz/Adobe-Acrobat,Google,Detected
+lmillionzz/Adobe-Acrobat,McAfee,Artemis!96756DEAFF1B
+lmillionzz/Adobe-Acrobat,MAX,malware (ai score=87)
+lmillionzz/Adobe-Acrobat,Rising,Hacktool.Agent!8.335 (CLOUD)
+lmillionzz/Adobe-Acrobat,Yandex,Riskware.HackTool!PjKgFXh9dp8
+fashbestplays98/Citizens_Conflict_free_token,Kaspersky,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
+fashbestplays98/Citizens_Conflict_free_token,Sophos,Coinminer Config (PUA)
+fashbestplays98/Citizens_Conflict_free_token,Xcitium,Application.Script.BitMiner.A@7xk8f5
+fashbestplays98/Citizens_Conflict_free_token,ZoneAlarm,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
+3kh0/spoof-hwid,MicroWorld-eScan,Generic.HTML.Phishing.Q.01771430
+3kh0/spoof-hwid,VIPRE,Generic.HTML.Phishing.Q.01771430
+3kh0/spoof-hwid,BitDefender,Generic.HTML.Phishing.Q.01771430
+3kh0/spoof-hwid,Emsisoft,Generic.HTML.Phishing.Q.01771430 (B)
+3kh0/spoof-hwid,FireEye,Generic.HTML.Phishing.Q.01771430
+3kh0/spoof-hwid,MAX,malware (ai score=84)
+3kh0/spoof-hwid,Arcabit,Generic.HTML.Phishing.Q.D1B07A6
+3kh0/spoof-hwid,GData,Generic.HTML.Phishing.Q.01771430
+3kh0/spoof-hwid,ALYac,Generic.HTML.Phishing.Q.01771430
+Valdemar-Neto/Projetos,Ikarus,Trojan.Win64.Reverseshell
+Valdemar-Neto/Projetos,Google,Detected
+Vardhannn/AndroidStudioProjects,Ikarus,Trojan-Spy.AndroidOS.SMSSpy
+b815747Y/FORTNITEBLACKi,Lionic,Trojan.Win32.Cerber.4!c
+b815747Y/FORTNITEBLACKi,MicroWorld-eScan,Gen:Variant.Tedy.604571
+b815747Y/FORTNITEBLACKi,VIPRE,Gen:Variant.Tedy.604571
+b815747Y/FORTNITEBLACKi,Sangfor,Downloader.Win32.Agent.Vssd
+b815747Y/FORTNITEBLACKi,ESET-NOD32,MSIL/TrojanDownloader.Tiny.CNQ
+b815747Y/FORTNITEBLACKi,TrendMicro-HouseCall,TROJ_GEN.R002C0DGV24
+b815747Y/FORTNITEBLACKi,BitDefender,Gen:Variant.Tedy.604571
+b815747Y/FORTNITEBLACKi,Emsisoft,Gen:Variant.Tedy.604571 (B)
+b815747Y/FORTNITEBLACKi,DrWeb,Trojan.DownLoader46.64705
+b815747Y/FORTNITEBLACKi,TrendMicro,TROJ_GEN.R002C0DGV24
+b815747Y/FORTNITEBLACKi,FireEye,Gen:Variant.Tedy.604571
+b815747Y/FORTNITEBLACKi,Sophos,Mal/Generic-S
+b815747Y/FORTNITEBLACKi,Ikarus,Trojan.Win32.Cerber
+b815747Y/FORTNITEBLACKi,Google,Detected
+b815747Y/FORTNITEBLACKi,Antiy-AVL,Trojan/Win32.Cerber
+b815747Y/FORTNITEBLACKi,Arcabit,Trojan.Generic.D45C30BF
+b815747Y/FORTNITEBLACKi,GData,Gen:Variant.Tedy.604571
+b815747Y/FORTNITEBLACKi,Varist,W32/ABTrojan.ECWS-2251
+b815747Y/FORTNITEBLACKi,ALYac,Gen:Variant.Tedy.604571
+b815747Y/FORTNITEBLACKi,MAX,malware (ai score=82)
+b815747Y/FORTNITEBLACKi,Fortinet,W32/PossibleThreat
+Lsaqutellia/New-Game-Product-Fortnite,MicroWorld-eScan,Gen:Variant.Lazy.562895
+Lsaqutellia/New-Game-Product-Fortnite,ESET-NOD32,a variant of MSIL/TrojanDropper.Agent.GCY
+Lsaqutellia/New-Game-Product-Fortnite,Avast,Win32:PWSX-gen [Trj]
+Lsaqutellia/New-Game-Product-Fortnite,Kaspersky,HEUR:Trojan.MSIL.DOTHETUK.gen
+Lsaqutellia/New-Game-Product-Fortnite,BitDefender,Gen:Variant.Lazy.562895
+Lsaqutellia/New-Game-Product-Fortnite,Emsisoft,Gen:Variant.Lazy.562895 (B)
+Lsaqutellia/New-Game-Product-Fortnite,Google,Detected
+Lsaqutellia/New-Game-Product-Fortnite,VIPRE,Gen:Variant.Lazy.562895
+Lsaqutellia/New-Game-Product-Fortnite,SentinelOne,Static AI - Malicious Archive
+Lsaqutellia/New-Game-Product-Fortnite,FireEye,Gen:Variant.Lazy.562895
+Lsaqutellia/New-Game-Product-Fortnite,Sophos,Generic ML PUA (PUA)
+Lsaqutellia/New-Game-Product-Fortnite,Ikarus,Trojan-Dropper.MSIL.Agent
+Lsaqutellia/New-Game-Product-Fortnite,Arcabit,Trojan.Lazy.D896CF
+Lsaqutellia/New-Game-Product-Fortnite,ZoneAlarm,HEUR:Trojan.MSIL.DOTHETUK.gen
+Lsaqutellia/New-Game-Product-Fortnite,GData,Gen:Variant.Lazy.562895
+Lsaqutellia/New-Game-Product-Fortnite,AhnLab-V3,Trojan/Win.PWSX-gen.C5629772
+Lsaqutellia/New-Game-Product-Fortnite,ALYac,Gen:Variant.Lazy.562895
+Lsaqutellia/New-Game-Product-Fortnite,MAX,malware (ai score=87)
+Lsaqutellia/New-Game-Product-Fortnite,Zoner,Probably Heur.ExeHeaderL
+Lsaqutellia/New-Game-Product-Fortnite,Rising,Malware.Obfus/MSIL@AI.100 (RDM.MSIL2:j4+ePkME5ayy4Fq6jZBu6g)
+Lsaqutellia/New-Game-Product-Fortnite,huorong,Trojan/MSIL.Agent.jk
+Lsaqutellia/New-Game-Product-Fortnite,BitDefenderTheta,Gen:NN.ZemsilF.36810.Uu0@aaxuFDp
+Lsaqutellia/New-Game-Product-Fortnite,AVG,Win32:PWSX-gen [Trj]
+BeurStma/Trovo-ViewBot,Lionic,Trojan.Win32.PsDownload.a!c
+BeurStma/Trovo-ViewBot,MicroWorld-eScan,Gen:Variant.Barys.382335
+BeurStma/Trovo-ViewBot,FireEye,Gen:Variant.Barys.382335
+BeurStma/Trovo-ViewBot,McAfee,Artemis!B5E479D3926B
+BeurStma/Trovo-ViewBot,K7AntiVirus,Trojan-Downloader ( 00593c201 )
+BeurStma/Trovo-ViewBot,K7GW,Trojan-Downloader ( 00593c201 )
+BeurStma/Trovo-ViewBot,huorong,TrojanDownloader/MSIL.Agent.sc
+BeurStma/Trovo-ViewBot,BitDefenderTheta,Gen:NN.ZemsilF.36810.am0@auU@!Fb
+BeurStma/Trovo-ViewBot,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
+BeurStma/Trovo-ViewBot,Cynet,Malicious (score: 99)
+BeurStma/Trovo-ViewBot,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+BeurStma/Trovo-ViewBot,Avast,Win32:MalwareX-gen [Trj]
+BeurStma/Trovo-ViewBot,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+BeurStma/Trovo-ViewBot,BitDefender,Gen:Variant.Barys.382335
+BeurStma/Trovo-ViewBot,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
+BeurStma/Trovo-ViewBot,Emsisoft,Gen:Variant.Barys.382335 (B)
+BeurStma/Trovo-ViewBot,F-Secure,Heuristic.HEUR/AGEN.1308540
+BeurStma/Trovo-ViewBot,DrWeb,Trojan.DownLoader45.55850
+BeurStma/Trovo-ViewBot,VIPRE,Gen:Variant.Barys.382335
+BeurStma/Trovo-ViewBot,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+BeurStma/Trovo-ViewBot,Sophos,Mal/Generic-S
+BeurStma/Trovo-ViewBot,Ikarus,Trojan.MSIL.CoinMiner
+BeurStma/Trovo-ViewBot,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
+BeurStma/Trovo-ViewBot,Avira,HEUR/AGEN.1308540
+BeurStma/Trovo-ViewBot,MAX,malware (ai score=88)
+BeurStma/Trovo-ViewBot,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
+BeurStma/Trovo-ViewBot,Xcitium,Malware@#17g86n0c7dep
+BeurStma/Trovo-ViewBot,Arcabit,Trojan.Barys.D5D57F
+BeurStma/Trovo-ViewBot,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+BeurStma/Trovo-ViewBot,GData,Gen:Variant.Barys.382335
+BeurStma/Trovo-ViewBot,Google,Detected
+BeurStma/Trovo-ViewBot,AhnLab-V3,Trojan/Win.Generic.C5148890
+BeurStma/Trovo-ViewBot,VBA32,TScope.Trojan.MSIL
+BeurStma/Trovo-ViewBot,ALYac,Gen:Variant.Barys.382335
+BeurStma/Trovo-ViewBot,Rising,Downloader.Agent!8.B23 (CLOUD)
+BeurStma/Trovo-ViewBot,SentinelOne,Static AI - Malicious Archive
+BeurStma/Trovo-ViewBot,Fortinet,MSIL/Agent.MAE!tr
+BeurStma/Trovo-ViewBot,AVG,Win32:MalwareX-gen [Trj]
+BeurStma/Trovo-ViewBot,Panda,Trj/GdSda.A
+Voq1210uBadIRaPeBY/68762t9wgsht1q,Kaspersky,UDS:Trojan.Win32.GenericML.xnet
+Voq1210uBadIRaPeBY/68762t9wgsht1q,ZoneAlarm,UDS:Trojan.Win32.GenericML.xnet
+ViMelamyquc/j4d4wxglbr,Kaspersky,UDS:Trojan.Win32.GenericML.xnet
+ViMelamyquc/j4d4wxglbr,ZoneAlarm,UDS:Trojan.Win32.GenericML.xnet
+m-boutaleb/LZS,Sophos,Generic ML PUA (PUA)
+broom19hogcher/Airdrop_free,Kaspersky,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
+broom19hogcher/Airdrop_free,Sophos,Coinminer Config (PUA)
+broom19hogcher/Airdrop_free,Xcitium,Application.Script.BitMiner.A@7xk8f5
+broom19hogcher/Airdrop_free,ZoneAlarm,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
+Martin01238/Rbx,Google,Detected
+Martin01238/Rbx,Varist,W32/MSIL_Kryptik.BHF.gen!Eldorado
+Estigma1604/Solana-Bot,ESET-NOD32,PowerShell/HackTool.Agent.BT potentially unsafe
+L3MO1337/Thimble-Exploit-Bot-4.0,Lionic,Trojan.ZIP.PsDownload.a!c
+L3MO1337/Thimble-Exploit-Bot-4.0,MicroWorld-eScan,Gen:Variant.Barys.382335
+L3MO1337/Thimble-Exploit-Bot-4.0,FireEye,Gen:Variant.Barys.382335
+L3MO1337/Thimble-Exploit-Bot-4.0,McAfee,Artemis!B5E479D3926B
+L3MO1337/Thimble-Exploit-Bot-4.0,huorong,TrojanDownloader/MSIL.Agent.sc
+L3MO1337/Thimble-Exploit-Bot-4.0,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
+L3MO1337/Thimble-Exploit-Bot-4.0,Cynet,Malicious (score: 99)
+L3MO1337/Thimble-Exploit-Bot-4.0,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+L3MO1337/Thimble-Exploit-Bot-4.0,Avast,Win32:MalwareX-gen [Trj]
+L3MO1337/Thimble-Exploit-Bot-4.0,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+L3MO1337/Thimble-Exploit-Bot-4.0,BitDefender,Gen:Variant.Barys.382335
+L3MO1337/Thimble-Exploit-Bot-4.0,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
+L3MO1337/Thimble-Exploit-Bot-4.0,Emsisoft,Gen:Variant.Barys.382335 (B)
+L3MO1337/Thimble-Exploit-Bot-4.0,F-Secure,Heuristic.HEUR/AGEN.1308540
+L3MO1337/Thimble-Exploit-Bot-4.0,DrWeb,Trojan.DownLoader45.55850
+L3MO1337/Thimble-Exploit-Bot-4.0,VIPRE,Gen:Variant.Barys.382335
+L3MO1337/Thimble-Exploit-Bot-4.0,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+L3MO1337/Thimble-Exploit-Bot-4.0,Sophos,Mal/Generic-S
+L3MO1337/Thimble-Exploit-Bot-4.0,Ikarus,Trojan.MSIL.CoinMiner
+L3MO1337/Thimble-Exploit-Bot-4.0,Google,Detected
+L3MO1337/Thimble-Exploit-Bot-4.0,Avira,HEUR/AGEN.1308540
+L3MO1337/Thimble-Exploit-Bot-4.0,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
+L3MO1337/Thimble-Exploit-Bot-4.0,Xcitium,Malware@#17g86n0c7dep
+L3MO1337/Thimble-Exploit-Bot-4.0,Arcabit,Trojan.Barys.D5D57F
+L3MO1337/Thimble-Exploit-Bot-4.0,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+L3MO1337/Thimble-Exploit-Bot-4.0,GData,Gen:Variant.Barys.382335
+L3MO1337/Thimble-Exploit-Bot-4.0,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
+L3MO1337/Thimble-Exploit-Bot-4.0,BitDefenderTheta,Gen:NN.ZemsilCO.36810.am0@auU@!Fb
+L3MO1337/Thimble-Exploit-Bot-4.0,ALYac,Gen:Variant.Barys.382335
+L3MO1337/Thimble-Exploit-Bot-4.0,MAX,malware (ai score=82)
+L3MO1337/Thimble-Exploit-Bot-4.0,VBA32,TScope.Trojan.MSIL
+L3MO1337/Thimble-Exploit-Bot-4.0,Rising,Downloader.Agent!8.B23 (CLOUD)
+L3MO1337/Thimble-Exploit-Bot-4.0,SentinelOne,Static AI - Malicious Archive
+L3MO1337/Thimble-Exploit-Bot-4.0,Fortinet,MSIL/Agent.MAE!tr
+L3MO1337/Thimble-Exploit-Bot-4.0,AVG,Win32:MalwareX-gen [Trj]
+L3MO1337/Thimble-Exploit-Bot-4.0,Panda,Trj/GdSda.A
+Rtyn1337/Thimble-bot-4.1,Lionic,Trojan.Win32.PsDownload.a!c
+Rtyn1337/Thimble-bot-4.1,MicroWorld-eScan,Gen:Variant.Barys.382335
+Rtyn1337/Thimble-bot-4.1,FireEye,Gen:Variant.Barys.382335
+Rtyn1337/Thimble-bot-4.1,K7AntiVirus,Trojan-Downloader ( 00593c201 )
+Rtyn1337/Thimble-bot-4.1,K7GW,Trojan-Downloader ( 00593c201 )
+Rtyn1337/Thimble-bot-4.1,huorong,TrojanDownloader/MSIL.Agent.sc
+Rtyn1337/Thimble-bot-4.1,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
+Rtyn1337/Thimble-bot-4.1,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+Rtyn1337/Thimble-bot-4.1,Cynet,Malicious (score: 99)
+Rtyn1337/Thimble-bot-4.1,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+Rtyn1337/Thimble-bot-4.1,BitDefender,Gen:Variant.Barys.382335
+Rtyn1337/Thimble-bot-4.1,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
+Rtyn1337/Thimble-bot-4.1,Sophos,Mal/Generic-S
+Rtyn1337/Thimble-bot-4.1,F-Secure,Heuristic.HEUR/AGEN.1308540
+Rtyn1337/Thimble-bot-4.1,BitDefenderTheta,Gen:NN.ZemsilF.36812.am0@auU@!Fb
+Rtyn1337/Thimble-bot-4.1,VIPRE,Gen:Variant.Barys.382335
+Rtyn1337/Thimble-bot-4.1,Emsisoft,Gen:Variant.Barys.382335 (B)
+Rtyn1337/Thimble-bot-4.1,Ikarus,Trojan.MSIL.CoinMiner
+Rtyn1337/Thimble-bot-4.1,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
+Rtyn1337/Thimble-bot-4.1,Avira,HEUR/AGEN.1308540
+Rtyn1337/Thimble-bot-4.1,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
+Rtyn1337/Thimble-bot-4.1,Xcitium,Malware@#17g86n0c7dep
+Rtyn1337/Thimble-bot-4.1,Arcabit,Trojan.Barys.D5D57F
+Rtyn1337/Thimble-bot-4.1,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+Rtyn1337/Thimble-bot-4.1,Google,Detected
+Rtyn1337/Thimble-bot-4.1,AhnLab-V3,Trojan/Win.Generic.C5148890
+Rtyn1337/Thimble-bot-4.1,VBA32,TScope.Trojan.MSIL
+Rtyn1337/Thimble-bot-4.1,MAX,malware (ai score=89)
+Rtyn1337/Thimble-bot-4.1,Rising,Downloader.Agent!8.B23 (CLOUD)
+Rtyn1337/Thimble-bot-4.1,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
+Rtyn1337/Thimble-bot-4.1,SentinelOne,Static AI - Malicious Archive
+Rtyn1337/Thimble-bot-4.1,Panda,Trj/GdSda.A
