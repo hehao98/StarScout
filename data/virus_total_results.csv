@@ -204,3 +204,44 @@ Rtyn1337/Thimble-bot-4.1,Rising,Downloader.Agent!8.B23 (CLOUD)
 Rtyn1337/Thimble-bot-4.1,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
 Rtyn1337/Thimble-bot-4.1,SentinelOne,Static AI - Malicious Archive
 Rtyn1337/Thimble-bot-4.1,Panda,Trj/GdSda.A
+ChaGiNa7/Office365,Lionic,Trojan.Win32.PsDownload.a!c
+ChaGiNa7/Office365,FireEye,Gen:Variant.Barys.382335
+ChaGiNa7/Office365,ALYac,Gen:Variant.Barys.382335
+ChaGiNa7/Office365,K7AntiVirus,Trojan-Downloader ( 00593c201 )
+ChaGiNa7/Office365,K7GW,Trojan-Downloader ( 00593c201 )
+ChaGiNa7/Office365,BitDefenderTheta,Gen:NN.ZemsilF.36812.am0@auU@!Fb
+ChaGiNa7/Office365,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
+ChaGiNa7/Office365,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+ChaGiNa7/Office365,Cynet,Malicious (score: 99)
+ChaGiNa7/Office365,Arcabit,Trojan.Barys.D5D57F
+ChaGiNa7/Office365,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
+ChaGiNa7/Office365,Emsisoft,Gen:Variant.Barys.382335 (B)
+ChaGiNa7/Office365,F-Secure,Heuristic.HEUR/AGEN.1308540
+ChaGiNa7/Office365,DrWeb,Trojan.DownLoader45.55850
+ChaGiNa7/Office365,VIPRE,Gen:Variant.Barys.382335
+ChaGiNa7/Office365,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+ChaGiNa7/Office365,SentinelOne,Static AI - Malicious Archive
+ChaGiNa7/Office365,Sophos,Mal/Generic-S
+ChaGiNa7/Office365,Ikarus,Trojan.MSIL.CoinMiner
+ChaGiNa7/Office365,Avira,HEUR/AGEN.1308540
+ChaGiNa7/Office365,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
+ChaGiNa7/Office365,Xcitium,Malware@#17g86n0c7dep
+ChaGiNa7/Office365,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+ChaGiNa7/Office365,Google,Detected
+ChaGiNa7/Office365,AhnLab-V3,Trojan/Win.Generic.C5148890
+ChaGiNa7/Office365,VBA32,TScope.Trojan.MSIL
+ChaGiNa7/Office365,MAX,malware (ai score=85)
+ChaGiNa7/Office365,Rising,Downloader.Agent!8.B23 (CLOUD)
+ChaGiNa7/Office365,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
+ChaGiNa7/Office365,huorong,TrojanDownloader/MSIL.Agent.sc
+ChaGiNa7/Office365,Fortinet,MSIL/Agent.MAE!tr
+ChaGiNa7/Office365,Panda,Trj/GdSda.A
+dscvm/Visoul-Grabber,MicroWorld-eScan,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,FireEye,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,ALYac,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,BitDefender,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,Emsisoft,Generic.PY.Stealer.D.6D84DE58 (B)
+dscvm/Visoul-Grabber,VIPRE,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,Arcabit,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,GData,Generic.PY.Stealer.D.6D84DE58
+dscvm/Visoul-Grabber,MAX,malware (ai score=80)
