@@ -245,3 +245,98 @@ dscvm/Visoul-Grabber,VIPRE,Generic.PY.Stealer.D.6D84DE58
 dscvm/Visoul-Grabber,Arcabit,Generic.PY.Stealer.D.6D84DE58
 dscvm/Visoul-Grabber,GData,Generic.PY.Stealer.D.6D84DE58
 dscvm/Visoul-Grabber,MAX,malware (ai score=80)
+AmitAKB/shoppingcart,VirIT,Trojan.Win32.MSIL_Heur.D
+SniperDev00001/PumpFun-Sniper-Bot,Cynet,Malicious (score: 70)
+SniperDev00001/PumpFun-Sniper-Bot,Baidu,Archive.Bomb
+SniperDev00001/PumpFun-Sniper-Bot,F-Secure,Heuristic.HEUR/Pumpar.Gen
+SniperDev00001/PumpFun-Sniper-Bot,Avira,HEUR/Pumpar.Gen
+SniperDev00001/PumpFun-Sniper-Bot,Fortinet,W64/Kryptik.EDD!tr
+ThanatosXingYu/iKun_Keyboard,FireEye,Generic.UAC.Marte.B.07BB2D07
+ThanatosXingYu/iKun_Keyboard,BitDefender,Generic.UAC.Marte.B.07BB2D07
+ThanatosXingYu/iKun_Keyboard,Emsisoft,Generic.UAC.Marte.B.07BB2D07 (B)
+ThanatosXingYu/iKun_Keyboard,VIPRE,Generic.UAC.Marte.B.07BB2D07
+ThanatosXingYu/iKun_Keyboard,Arcabit,Generic.UAC.Marte.B.07BB2D07
+ThanatosXingYu/iKun_Keyboard,GData,Generic.UAC.Marte.B.07BB2D07
+ThanatosXingYu/iKun_Keyboard,ALYac,Generic.UAC.Marte.B.07BB2D07
+ThanatosXingYu/iKun_Keyboard,MAX,malware (ai score=88)
+Habuhoyoto/FiveM-Crown-Menu,Lionic,Trojan.ZIP.PsDownload.a!c
+Habuhoyoto/FiveM-Crown-Menu,Skyhigh,Artemis!Trojan
+Habuhoyoto/FiveM-Crown-Menu,ALYac,Gen:Variant.Barys.382335
+Habuhoyoto/FiveM-Crown-Menu,Sangfor,Downloader.Msil.Asyncrat.Vl9e
+Habuhoyoto/FiveM-Crown-Menu,Arcabit,Trojan.Barys.D5D57F [many]
+Habuhoyoto/FiveM-Crown-Menu,huorong,TrojanDownloader/MSIL.Agent.sc
+Habuhoyoto/FiveM-Crown-Menu,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
+Habuhoyoto/FiveM-Crown-Menu,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+Habuhoyoto/FiveM-Crown-Menu,McAfee,Artemis!B5E479D3926B
+Habuhoyoto/FiveM-Crown-Menu,Avast,Win32:MalwareX-gen [Trj]
+Habuhoyoto/FiveM-Crown-Menu,Cynet,Malicious (score: 99)
+Habuhoyoto/FiveM-Crown-Menu,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+Habuhoyoto/FiveM-Crown-Menu,BitDefender,Gen:Variant.Barys.382335
+Habuhoyoto/FiveM-Crown-Menu,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
+Habuhoyoto/FiveM-Crown-Menu,MicroWorld-eScan,Gen:Variant.Barys.382335
+Habuhoyoto/FiveM-Crown-Menu,Tencent,Malware.Win32.Gencirc.140c6d27
+Habuhoyoto/FiveM-Crown-Menu,Emsisoft,Gen:Variant.Barys.382335 (B)
+Habuhoyoto/FiveM-Crown-Menu,F-Secure,Heuristic.HEUR/AGEN.1308540
+Habuhoyoto/FiveM-Crown-Menu,DrWeb,Trojan.DownLoader45.55850
+Habuhoyoto/FiveM-Crown-Menu,VIPRE,Gen:Variant.Barys.382335
+Habuhoyoto/FiveM-Crown-Menu,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
+Habuhoyoto/FiveM-Crown-Menu,FireEye,Gen:Variant.Barys.382335
+Habuhoyoto/FiveM-Crown-Menu,Sophos,Mal/Generic-S
+Habuhoyoto/FiveM-Crown-Menu,Ikarus,Trojan.MSIL.CoinMiner
+Habuhoyoto/FiveM-Crown-Menu,Google,Detected
+Habuhoyoto/FiveM-Crown-Menu,Avira,HEUR/AGEN.1308540
+Habuhoyoto/FiveM-Crown-Menu,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
+Habuhoyoto/FiveM-Crown-Menu,Xcitium,Malware@#17g86n0c7dep
+Habuhoyoto/FiveM-Crown-Menu,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
+Habuhoyoto/FiveM-Crown-Menu,GData,Gen:Variant.Barys.382335 (2x)
+Habuhoyoto/FiveM-Crown-Menu,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
+Habuhoyoto/FiveM-Crown-Menu,BitDefenderTheta,Gen:NN.ZemsilCO.36812.am0@auU@!Fb
+Habuhoyoto/FiveM-Crown-Menu,MAX,malware (ai score=83)
+Habuhoyoto/FiveM-Crown-Menu,VBA32,TScope.Trojan.MSIL
+Habuhoyoto/FiveM-Crown-Menu,Rising,Downloader.Agent!8.B23 (CLOUD)
+Habuhoyoto/FiveM-Crown-Menu,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
+Habuhoyoto/FiveM-Crown-Menu,SentinelOne,Static AI - Malicious Archive
+Habuhoyoto/FiveM-Crown-Menu,Fortinet,MSIL/Agent.MAE!tr
+Habuhoyoto/FiveM-Crown-Menu,AVG,Win32:MalwareX-gen [Trj]
+Habuhoyoto/FiveM-Crown-Menu,Panda,Trj/GdSda.A
+NatroTeam/NatroMacro,NANO-Antivirus,Trojan.Win32.Drop.kkwkwe
+NatroTeam/NatroMacro,SentinelOne,Static AI - Suspicious Archive
+NatroTeam/NatroMacro,Antiy-AVL,Trojan/PowerShell.Runner
+NatroTeam/NatroMacro,VBA32,suspected of Win32.PhishingPE.Heur
+NatroTeam/NatroMacro,Fortinet,W32/PossibleThreat
+TrashUwU/PokeAssistant,MicroWorld-eScan,JS:Trojan.Cryxos.12333
+TrashUwU/PokeAssistant,FireEye,JS:Trojan.Cryxos.12333
+TrashUwU/PokeAssistant,BitDefender,JS:Trojan.Cryxos.12333
+TrashUwU/PokeAssistant,Emsisoft,JS:Trojan.Cryxos.12333 (B)
+TrashUwU/PokeAssistant,VIPRE,JS:Trojan.Cryxos.12333
+TrashUwU/PokeAssistant,Arcabit,JS:Trojan.Cryxos.D302D
+TrashUwU/PokeAssistant,GData,JS:Trojan.Cryxos.12333
+TrashUwU/PokeAssistant,ALYac,JS:Trojan.Cryxos.12333
+TrashUwU/PokeAssistant,MAX,malware (ai score=88)
+ArvinFox/V00D-Mods,Jiangmin,Trojan.Shelma.dqe
+ArvinFox/V00D-Mods,Google,Detected
+ArvinFox/V00D-Mods,Varist,W64/Rozena.GH.gen!Eldorado
+matter-labs/zksync-lite-docs,GData,HTML.Trojan-Stealer.Phish.KH
+can-kat/cstealer,Lionic,Trojan.ZIP.PyCStealer.i!c
+can-kat/cstealer,MicroWorld-eScan,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,FireEye,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,Symantec,Trojan.Gen.NPE
+can-kat/cstealer,ESET-NOD32,Python/PSW.Agent.BKD
+can-kat/cstealer,Avast,Other:Malware-gen [Trj]
+can-kat/cstealer,Kaspersky,HEUR:Trojan-PSW.Python.Disco.gen
+can-kat/cstealer,BitDefender,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,Tencent,Win32.Trojan-QQPass.QQRob.Vmhl
+can-kat/cstealer,Emsisoft,Generic.PyCStealer.A.3BC53D22 (B)
+can-kat/cstealer,DrWeb,Python.Stealer.1387
+can-kat/cstealer,VIPRE,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,Ikarus,Trojan-Spy.Python.CStealer
+can-kat/cstealer,Google,Detected
+can-kat/cstealer,Arcabit,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,ZoneAlarm,HEUR:Trojan-PSW.Python.Disco.gen
+can-kat/cstealer,GData,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,Varist,PY/Stealer.E
+can-kat/cstealer,ALYac,Generic.PyCStealer.A.3BC53D22
+can-kat/cstealer,MAX,malware (ai score=84)
+can-kat/cstealer,huorong,Ransom/LockFile.fl
+can-kat/cstealer,AVG,Other:Malware-gen [Trj]
+can-kat/cstealer,alibabacloud,Trojan:Python/CStealer.C#8PHU
