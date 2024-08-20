@@ -1,10 +1,8 @@
 # Fake-Star-Detector
 
-This is a project to detect fake stars in popular github repos
+## Setup
 
-## Dev Setup
-
-These scripts have only been tested in Ubuntu.
+The scripts works with Python 3.12 and has only been tested on Ubuntu 22.04.
 
 1. Setup Python env. For example (using Anaconda):
 
@@ -14,7 +12,7 @@ These scripts have only been tested in Ubuntu.
     pip install -r requirements.txt
     ```
 
-2. Configure Secrets in `secrets.yaml`:
+2. Configure secrets in `secrets.yaml`:
 
     ```yaml
     mongo_url: your_mongo_url
@@ -23,7 +21,6 @@ These scripts have only been tested in Ubuntu.
         name: your_github_username
       - token: your_github_token
         name: your_github_username
-    # The Google Bigquery dataset to write to for complex detector
     bigquery_project: your_project_name
     bigquery_dataset: your_table_name
     google_cloud_bucket: your_google_cloud_bucket_name
@@ -31,31 +28,36 @@ These scripts have only been tested in Ubuntu.
     virus_total_api_key: your_virus_total_api_key
     ```
 
-3. Configure Google BigQuery [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs).
+    If you only want to run fake star detector, you only need to setup the MongoDB URL and Google Cloud related fields (remember to configure Google Cloud [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs)). The remaining configurations are for experimental and research scripts.
 
-## Getting Data
+## Running the Fake Star Detector
 
-1. Get stargazer metadata from GitHub:
+The fake star detector employs two heuristics: a low-activity heuristic and a clustering heuristic. Their parameters are defined in [scripts/__init__.py](scripts/__init__.py). Notably, you may wnat to change the `END_DATE` and `COPYCATCH_DATE_CHUNKS` to include latest data. The CopyCatch algorithm for the clustering heuristic works on half-year chunks as specified in `COPYCATCH_DATE_CHUNKS` and a new chunk should be manually added on a quarterly basis (e.g., add `("240301", "241001")` after Oct 2024).
 
-    ```shell
-    mkdir logs
-    nohup python -m scripts.get_sample_stars -j 32 > logs/get_sample_stars.log & 
-    ```
+To run the low-acivity heuristic, use:
 
-    This script will read from `data/samples.csv` and write to `fake_stars.stars` collection in MongoDB. It is idempotent and can incrementally collect new data based on existing data in the collection. Use the `-j [number of jobs]` option to enable multiprocessing.
+```shell
+python -m scripts.dagster.simple_detector_bigquery
+```
 
-2. Get obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
+It will run the low-activity heuristic starting from `scripts.START_DATE` to `scripts.END_DATE` on Google BigQuery, and write the results to MongoDB. Expect it to read >= 20TB of data ($6.25/TB on the default billing).
 
-    ```shell
-    nohup python -m scripts.dagster.simple_detector > logs/simple_detector.log &
-    ```
+To run the clustering heuristic, first use:
 
-    The script will read from `fake_stars.stars` collection in MongoDB and write to `data/fake_stars_obvious_users.csv` and `data/fake_stars_obvious_repos.csv`.
+```shell
+python -m scripts.copycatch.bigquery --run
+```
 
-3. Get non-obvious fake stars (using the [Dagster.io](https://dagster.io/blog/fake-stars) approach):
+Allow it a week to finish all iterations and expect it to read >= 40TB of data. You can use `nohup` to put it as a background process. After a week, you can run the following two commands to collect the results into MongoDB and local CSV files:
 
-    ```shell
-    python -m scripts.dagster.complex_detector --init
-    ```
+```shell
+# write BigQuery Tables to Google Cloud Storage
+python -m scripts.copycatch.bigquery --export
+```
 
-    As Google BigQuery can read a huge amount of data and cost you money, this script is designed to run interactively and you will need to confirm the cost before the most expensive bulk query is sent. Then, the script will compute fake stars per repo and write results to `gs://{{google_cloud_bucket}}/fake-stars/{{repo}}/{{table}}*.json`. Finally, it will collect all the Google Cloud Storage files and aggreggate fake star info into local files.
+```shell
+# Export from Google Cloud Storage to MongoDB and local CSV files
+python -m scripts.copycatch.bigquery --summarize 
+```
+
+The first script should be relatively fast but the second script can take several days. After they finish, you should be able to see updated CSV files in the `data/` folder.

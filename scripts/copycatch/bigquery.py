@@ -359,11 +359,6 @@ def main():
         action="store_true",
         help="Summarize results from Google Cloud Storage",
     )
-    parser.add_argument(
-        "--summarize-mongodb",
-        action="store_true",
-        help="Summarize results from MongoDB",
-    )
     args = parser.parse_args()
 
     if args.run:
