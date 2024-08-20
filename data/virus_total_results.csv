@@ -1,342 +1,342 @@
-repo,scanner,result
-Imran407704/payloads,CAT-QuickHeal,HTML.IframeRef.C
-Imran407704/payloads,ClamAV,Win.Trojan.Agent-35594
-Imran407704/payloads,Baidu,JS.Trojan-Downloader.Iframe.ee
-Imran407704/payloads,Google,Detected
-lmillionzz/Adobe-Acrobat,Lionic,Hacktool.Win32.Generic.3!c
-lmillionzz/Adobe-Acrobat,FireEye,Application.Hacktool.ASP
-lmillionzz/Adobe-Acrobat,Skyhigh,Artemis!PUP
-lmillionzz/Adobe-Acrobat,ALYac,Application.Hacktool.ASP
-lmillionzz/Adobe-Acrobat,Sangfor,Hacktool.Asp.Agent.Vdiv
-lmillionzz/Adobe-Acrobat,K7AntiVirus,Unwanted-Program ( 0057ac0f1 )
-lmillionzz/Adobe-Acrobat,K7GW,Unwanted-Program ( 0057ac0f1 )
-lmillionzz/Adobe-Acrobat,ESET-NOD32,multiple detections
-lmillionzz/Adobe-Acrobat,BitDefender,Application.Hacktool.ASP
-lmillionzz/Adobe-Acrobat,Sophos,Generic Reputation PUA (PUA)
-lmillionzz/Adobe-Acrobat,VIPRE,Application.Hacktool.ASP
-lmillionzz/Adobe-Acrobat,Emsisoft,Application.Hacktool.ASP (B)
-lmillionzz/Adobe-Acrobat,Ikarus,PUA.RiskWare.Hacktool
-lmillionzz/Adobe-Acrobat,Varist,W64/ABApplication.ZSNR-3388
-lmillionzz/Adobe-Acrobat,Antiy-AVL,Trojan/Win64.Generic
-lmillionzz/Adobe-Acrobat,Arcabit,Application.Hacktool.ASP
-lmillionzz/Adobe-Acrobat,GData,Application.Hacktool.ASP
-lmillionzz/Adobe-Acrobat,Google,Detected
-lmillionzz/Adobe-Acrobat,McAfee,Artemis!96756DEAFF1B
-lmillionzz/Adobe-Acrobat,MAX,malware (ai score=87)
-lmillionzz/Adobe-Acrobat,Rising,Hacktool.Agent!8.335 (CLOUD)
-lmillionzz/Adobe-Acrobat,Yandex,Riskware.HackTool!PjKgFXh9dp8
-fashbestplays98/Citizens_Conflict_free_token,Kaspersky,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
-fashbestplays98/Citizens_Conflict_free_token,Sophos,Coinminer Config (PUA)
-fashbestplays98/Citizens_Conflict_free_token,Xcitium,Application.Script.BitMiner.A@7xk8f5
-fashbestplays98/Citizens_Conflict_free_token,ZoneAlarm,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
-3kh0/spoof-hwid,MicroWorld-eScan,Generic.HTML.Phishing.Q.01771430
-3kh0/spoof-hwid,VIPRE,Generic.HTML.Phishing.Q.01771430
-3kh0/spoof-hwid,BitDefender,Generic.HTML.Phishing.Q.01771430
-3kh0/spoof-hwid,Emsisoft,Generic.HTML.Phishing.Q.01771430 (B)
-3kh0/spoof-hwid,FireEye,Generic.HTML.Phishing.Q.01771430
-3kh0/spoof-hwid,MAX,malware (ai score=84)
-3kh0/spoof-hwid,Arcabit,Generic.HTML.Phishing.Q.D1B07A6
-3kh0/spoof-hwid,GData,Generic.HTML.Phishing.Q.01771430
-3kh0/spoof-hwid,ALYac,Generic.HTML.Phishing.Q.01771430
-Valdemar-Neto/Projetos,Ikarus,Trojan.Win64.Reverseshell
-Valdemar-Neto/Projetos,Google,Detected
-Vardhannn/AndroidStudioProjects,Ikarus,Trojan-Spy.AndroidOS.SMSSpy
-b815747Y/FORTNITEBLACKi,Lionic,Trojan.Win32.Cerber.4!c
-b815747Y/FORTNITEBLACKi,MicroWorld-eScan,Gen:Variant.Tedy.604571
-b815747Y/FORTNITEBLACKi,VIPRE,Gen:Variant.Tedy.604571
-b815747Y/FORTNITEBLACKi,Sangfor,Downloader.Win32.Agent.Vssd
-b815747Y/FORTNITEBLACKi,ESET-NOD32,MSIL/TrojanDownloader.Tiny.CNQ
-b815747Y/FORTNITEBLACKi,TrendMicro-HouseCall,TROJ_GEN.R002C0DGV24
-b815747Y/FORTNITEBLACKi,BitDefender,Gen:Variant.Tedy.604571
-b815747Y/FORTNITEBLACKi,Emsisoft,Gen:Variant.Tedy.604571 (B)
-b815747Y/FORTNITEBLACKi,DrWeb,Trojan.DownLoader46.64705
-b815747Y/FORTNITEBLACKi,TrendMicro,TROJ_GEN.R002C0DGV24
-b815747Y/FORTNITEBLACKi,FireEye,Gen:Variant.Tedy.604571
-b815747Y/FORTNITEBLACKi,Sophos,Mal/Generic-S
-b815747Y/FORTNITEBLACKi,Ikarus,Trojan.Win32.Cerber
-b815747Y/FORTNITEBLACKi,Google,Detected
-b815747Y/FORTNITEBLACKi,Antiy-AVL,Trojan/Win32.Cerber
-b815747Y/FORTNITEBLACKi,Arcabit,Trojan.Generic.D45C30BF
-b815747Y/FORTNITEBLACKi,GData,Gen:Variant.Tedy.604571
-b815747Y/FORTNITEBLACKi,Varist,W32/ABTrojan.ECWS-2251
-b815747Y/FORTNITEBLACKi,ALYac,Gen:Variant.Tedy.604571
-b815747Y/FORTNITEBLACKi,MAX,malware (ai score=82)
-b815747Y/FORTNITEBLACKi,Fortinet,W32/PossibleThreat
-Lsaqutellia/New-Game-Product-Fortnite,MicroWorld-eScan,Gen:Variant.Lazy.562895
-Lsaqutellia/New-Game-Product-Fortnite,ESET-NOD32,a variant of MSIL/TrojanDropper.Agent.GCY
-Lsaqutellia/New-Game-Product-Fortnite,Avast,Win32:PWSX-gen [Trj]
-Lsaqutellia/New-Game-Product-Fortnite,Kaspersky,HEUR:Trojan.MSIL.DOTHETUK.gen
-Lsaqutellia/New-Game-Product-Fortnite,BitDefender,Gen:Variant.Lazy.562895
-Lsaqutellia/New-Game-Product-Fortnite,Emsisoft,Gen:Variant.Lazy.562895 (B)
-Lsaqutellia/New-Game-Product-Fortnite,Google,Detected
-Lsaqutellia/New-Game-Product-Fortnite,VIPRE,Gen:Variant.Lazy.562895
-Lsaqutellia/New-Game-Product-Fortnite,SentinelOne,Static AI - Malicious Archive
-Lsaqutellia/New-Game-Product-Fortnite,FireEye,Gen:Variant.Lazy.562895
-Lsaqutellia/New-Game-Product-Fortnite,Sophos,Generic ML PUA (PUA)
-Lsaqutellia/New-Game-Product-Fortnite,Ikarus,Trojan-Dropper.MSIL.Agent
-Lsaqutellia/New-Game-Product-Fortnite,Arcabit,Trojan.Lazy.D896CF
-Lsaqutellia/New-Game-Product-Fortnite,ZoneAlarm,HEUR:Trojan.MSIL.DOTHETUK.gen
-Lsaqutellia/New-Game-Product-Fortnite,GData,Gen:Variant.Lazy.562895
-Lsaqutellia/New-Game-Product-Fortnite,AhnLab-V3,Trojan/Win.PWSX-gen.C5629772
-Lsaqutellia/New-Game-Product-Fortnite,ALYac,Gen:Variant.Lazy.562895
-Lsaqutellia/New-Game-Product-Fortnite,MAX,malware (ai score=87)
-Lsaqutellia/New-Game-Product-Fortnite,Zoner,Probably Heur.ExeHeaderL
-Lsaqutellia/New-Game-Product-Fortnite,Rising,Malware.Obfus/MSIL@AI.100 (RDM.MSIL2:j4+ePkME5ayy4Fq6jZBu6g)
-Lsaqutellia/New-Game-Product-Fortnite,huorong,Trojan/MSIL.Agent.jk
-Lsaqutellia/New-Game-Product-Fortnite,BitDefenderTheta,Gen:NN.ZemsilF.36810.Uu0@aaxuFDp
-Lsaqutellia/New-Game-Product-Fortnite,AVG,Win32:PWSX-gen [Trj]
-BeurStma/Trovo-ViewBot,Lionic,Trojan.Win32.PsDownload.a!c
-BeurStma/Trovo-ViewBot,MicroWorld-eScan,Gen:Variant.Barys.382335
-BeurStma/Trovo-ViewBot,FireEye,Gen:Variant.Barys.382335
-BeurStma/Trovo-ViewBot,McAfee,Artemis!B5E479D3926B
-BeurStma/Trovo-ViewBot,K7AntiVirus,Trojan-Downloader ( 00593c201 )
-BeurStma/Trovo-ViewBot,K7GW,Trojan-Downloader ( 00593c201 )
-BeurStma/Trovo-ViewBot,huorong,TrojanDownloader/MSIL.Agent.sc
-BeurStma/Trovo-ViewBot,BitDefenderTheta,Gen:NN.ZemsilF.36810.am0@auU@!Fb
-BeurStma/Trovo-ViewBot,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
-BeurStma/Trovo-ViewBot,Cynet,Malicious (score: 99)
-BeurStma/Trovo-ViewBot,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-BeurStma/Trovo-ViewBot,Avast,Win32:MalwareX-gen [Trj]
-BeurStma/Trovo-ViewBot,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-BeurStma/Trovo-ViewBot,BitDefender,Gen:Variant.Barys.382335
-BeurStma/Trovo-ViewBot,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
-BeurStma/Trovo-ViewBot,Emsisoft,Gen:Variant.Barys.382335 (B)
-BeurStma/Trovo-ViewBot,F-Secure,Heuristic.HEUR/AGEN.1308540
-BeurStma/Trovo-ViewBot,DrWeb,Trojan.DownLoader45.55850
-BeurStma/Trovo-ViewBot,VIPRE,Gen:Variant.Barys.382335
-BeurStma/Trovo-ViewBot,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-BeurStma/Trovo-ViewBot,Sophos,Mal/Generic-S
-BeurStma/Trovo-ViewBot,Ikarus,Trojan.MSIL.CoinMiner
-BeurStma/Trovo-ViewBot,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
-BeurStma/Trovo-ViewBot,Avira,HEUR/AGEN.1308540
-BeurStma/Trovo-ViewBot,MAX,malware (ai score=88)
-BeurStma/Trovo-ViewBot,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
-BeurStma/Trovo-ViewBot,Xcitium,Malware@#17g86n0c7dep
-BeurStma/Trovo-ViewBot,Arcabit,Trojan.Barys.D5D57F
-BeurStma/Trovo-ViewBot,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-BeurStma/Trovo-ViewBot,GData,Gen:Variant.Barys.382335
-BeurStma/Trovo-ViewBot,Google,Detected
-BeurStma/Trovo-ViewBot,AhnLab-V3,Trojan/Win.Generic.C5148890
-BeurStma/Trovo-ViewBot,VBA32,TScope.Trojan.MSIL
-BeurStma/Trovo-ViewBot,ALYac,Gen:Variant.Barys.382335
-BeurStma/Trovo-ViewBot,Rising,Downloader.Agent!8.B23 (CLOUD)
-BeurStma/Trovo-ViewBot,SentinelOne,Static AI - Malicious Archive
-BeurStma/Trovo-ViewBot,Fortinet,MSIL/Agent.MAE!tr
-BeurStma/Trovo-ViewBot,AVG,Win32:MalwareX-gen [Trj]
-BeurStma/Trovo-ViewBot,Panda,Trj/GdSda.A
-Voq1210uBadIRaPeBY/68762t9wgsht1q,Kaspersky,UDS:Trojan.Win32.GenericML.xnet
-Voq1210uBadIRaPeBY/68762t9wgsht1q,ZoneAlarm,UDS:Trojan.Win32.GenericML.xnet
-ViMelamyquc/j4d4wxglbr,Kaspersky,UDS:Trojan.Win32.GenericML.xnet
-ViMelamyquc/j4d4wxglbr,ZoneAlarm,UDS:Trojan.Win32.GenericML.xnet
-m-boutaleb/LZS,Sophos,Generic ML PUA (PUA)
-broom19hogcher/Airdrop_free,Kaspersky,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
-broom19hogcher/Airdrop_free,Sophos,Coinminer Config (PUA)
-broom19hogcher/Airdrop_free,Xcitium,Application.Script.BitMiner.A@7xk8f5
-broom19hogcher/Airdrop_free,ZoneAlarm,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen
-Martin01238/Rbx,Google,Detected
-Martin01238/Rbx,Varist,W32/MSIL_Kryptik.BHF.gen!Eldorado
-Estigma1604/Solana-Bot,ESET-NOD32,PowerShell/HackTool.Agent.BT potentially unsafe
-L3MO1337/Thimble-Exploit-Bot-4.0,Lionic,Trojan.ZIP.PsDownload.a!c
-L3MO1337/Thimble-Exploit-Bot-4.0,MicroWorld-eScan,Gen:Variant.Barys.382335
-L3MO1337/Thimble-Exploit-Bot-4.0,FireEye,Gen:Variant.Barys.382335
-L3MO1337/Thimble-Exploit-Bot-4.0,McAfee,Artemis!B5E479D3926B
-L3MO1337/Thimble-Exploit-Bot-4.0,huorong,TrojanDownloader/MSIL.Agent.sc
-L3MO1337/Thimble-Exploit-Bot-4.0,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
-L3MO1337/Thimble-Exploit-Bot-4.0,Cynet,Malicious (score: 99)
-L3MO1337/Thimble-Exploit-Bot-4.0,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-L3MO1337/Thimble-Exploit-Bot-4.0,Avast,Win32:MalwareX-gen [Trj]
-L3MO1337/Thimble-Exploit-Bot-4.0,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-L3MO1337/Thimble-Exploit-Bot-4.0,BitDefender,Gen:Variant.Barys.382335
-L3MO1337/Thimble-Exploit-Bot-4.0,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
-L3MO1337/Thimble-Exploit-Bot-4.0,Emsisoft,Gen:Variant.Barys.382335 (B)
-L3MO1337/Thimble-Exploit-Bot-4.0,F-Secure,Heuristic.HEUR/AGEN.1308540
-L3MO1337/Thimble-Exploit-Bot-4.0,DrWeb,Trojan.DownLoader45.55850
-L3MO1337/Thimble-Exploit-Bot-4.0,VIPRE,Gen:Variant.Barys.382335
-L3MO1337/Thimble-Exploit-Bot-4.0,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-L3MO1337/Thimble-Exploit-Bot-4.0,Sophos,Mal/Generic-S
-L3MO1337/Thimble-Exploit-Bot-4.0,Ikarus,Trojan.MSIL.CoinMiner
-L3MO1337/Thimble-Exploit-Bot-4.0,Google,Detected
-L3MO1337/Thimble-Exploit-Bot-4.0,Avira,HEUR/AGEN.1308540
-L3MO1337/Thimble-Exploit-Bot-4.0,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
-L3MO1337/Thimble-Exploit-Bot-4.0,Xcitium,Malware@#17g86n0c7dep
-L3MO1337/Thimble-Exploit-Bot-4.0,Arcabit,Trojan.Barys.D5D57F
-L3MO1337/Thimble-Exploit-Bot-4.0,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-L3MO1337/Thimble-Exploit-Bot-4.0,GData,Gen:Variant.Barys.382335
-L3MO1337/Thimble-Exploit-Bot-4.0,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
-L3MO1337/Thimble-Exploit-Bot-4.0,BitDefenderTheta,Gen:NN.ZemsilCO.36810.am0@auU@!Fb
-L3MO1337/Thimble-Exploit-Bot-4.0,ALYac,Gen:Variant.Barys.382335
-L3MO1337/Thimble-Exploit-Bot-4.0,MAX,malware (ai score=82)
-L3MO1337/Thimble-Exploit-Bot-4.0,VBA32,TScope.Trojan.MSIL
-L3MO1337/Thimble-Exploit-Bot-4.0,Rising,Downloader.Agent!8.B23 (CLOUD)
-L3MO1337/Thimble-Exploit-Bot-4.0,SentinelOne,Static AI - Malicious Archive
-L3MO1337/Thimble-Exploit-Bot-4.0,Fortinet,MSIL/Agent.MAE!tr
-L3MO1337/Thimble-Exploit-Bot-4.0,AVG,Win32:MalwareX-gen [Trj]
-L3MO1337/Thimble-Exploit-Bot-4.0,Panda,Trj/GdSda.A
-Rtyn1337/Thimble-bot-4.1,Lionic,Trojan.Win32.PsDownload.a!c
-Rtyn1337/Thimble-bot-4.1,MicroWorld-eScan,Gen:Variant.Barys.382335
-Rtyn1337/Thimble-bot-4.1,FireEye,Gen:Variant.Barys.382335
-Rtyn1337/Thimble-bot-4.1,K7AntiVirus,Trojan-Downloader ( 00593c201 )
-Rtyn1337/Thimble-bot-4.1,K7GW,Trojan-Downloader ( 00593c201 )
-Rtyn1337/Thimble-bot-4.1,huorong,TrojanDownloader/MSIL.Agent.sc
-Rtyn1337/Thimble-bot-4.1,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
-Rtyn1337/Thimble-bot-4.1,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-Rtyn1337/Thimble-bot-4.1,Cynet,Malicious (score: 99)
-Rtyn1337/Thimble-bot-4.1,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-Rtyn1337/Thimble-bot-4.1,BitDefender,Gen:Variant.Barys.382335
-Rtyn1337/Thimble-bot-4.1,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
-Rtyn1337/Thimble-bot-4.1,Sophos,Mal/Generic-S
-Rtyn1337/Thimble-bot-4.1,F-Secure,Heuristic.HEUR/AGEN.1308540
-Rtyn1337/Thimble-bot-4.1,BitDefenderTheta,Gen:NN.ZemsilF.36812.am0@auU@!Fb
-Rtyn1337/Thimble-bot-4.1,VIPRE,Gen:Variant.Barys.382335
-Rtyn1337/Thimble-bot-4.1,Emsisoft,Gen:Variant.Barys.382335 (B)
-Rtyn1337/Thimble-bot-4.1,Ikarus,Trojan.MSIL.CoinMiner
-Rtyn1337/Thimble-bot-4.1,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
-Rtyn1337/Thimble-bot-4.1,Avira,HEUR/AGEN.1308540
-Rtyn1337/Thimble-bot-4.1,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
-Rtyn1337/Thimble-bot-4.1,Xcitium,Malware@#17g86n0c7dep
-Rtyn1337/Thimble-bot-4.1,Arcabit,Trojan.Barys.D5D57F
-Rtyn1337/Thimble-bot-4.1,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-Rtyn1337/Thimble-bot-4.1,Google,Detected
-Rtyn1337/Thimble-bot-4.1,AhnLab-V3,Trojan/Win.Generic.C5148890
-Rtyn1337/Thimble-bot-4.1,VBA32,TScope.Trojan.MSIL
-Rtyn1337/Thimble-bot-4.1,MAX,malware (ai score=89)
-Rtyn1337/Thimble-bot-4.1,Rising,Downloader.Agent!8.B23 (CLOUD)
-Rtyn1337/Thimble-bot-4.1,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
-Rtyn1337/Thimble-bot-4.1,SentinelOne,Static AI - Malicious Archive
-Rtyn1337/Thimble-bot-4.1,Panda,Trj/GdSda.A
-ChaGiNa7/Office365,Lionic,Trojan.Win32.PsDownload.a!c
-ChaGiNa7/Office365,FireEye,Gen:Variant.Barys.382335
-ChaGiNa7/Office365,ALYac,Gen:Variant.Barys.382335
-ChaGiNa7/Office365,K7AntiVirus,Trojan-Downloader ( 00593c201 )
-ChaGiNa7/Office365,K7GW,Trojan-Downloader ( 00593c201 )
-ChaGiNa7/Office365,BitDefenderTheta,Gen:NN.ZemsilF.36812.am0@auU@!Fb
-ChaGiNa7/Office365,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
-ChaGiNa7/Office365,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-ChaGiNa7/Office365,Cynet,Malicious (score: 99)
-ChaGiNa7/Office365,Arcabit,Trojan.Barys.D5D57F
-ChaGiNa7/Office365,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
-ChaGiNa7/Office365,Emsisoft,Gen:Variant.Barys.382335 (B)
-ChaGiNa7/Office365,F-Secure,Heuristic.HEUR/AGEN.1308540
-ChaGiNa7/Office365,DrWeb,Trojan.DownLoader45.55850
-ChaGiNa7/Office365,VIPRE,Gen:Variant.Barys.382335
-ChaGiNa7/Office365,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-ChaGiNa7/Office365,SentinelOne,Static AI - Malicious Archive
-ChaGiNa7/Office365,Sophos,Mal/Generic-S
-ChaGiNa7/Office365,Ikarus,Trojan.MSIL.CoinMiner
-ChaGiNa7/Office365,Avira,HEUR/AGEN.1308540
-ChaGiNa7/Office365,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
-ChaGiNa7/Office365,Xcitium,Malware@#17g86n0c7dep
-ChaGiNa7/Office365,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-ChaGiNa7/Office365,Google,Detected
-ChaGiNa7/Office365,AhnLab-V3,Trojan/Win.Generic.C5148890
-ChaGiNa7/Office365,VBA32,TScope.Trojan.MSIL
-ChaGiNa7/Office365,MAX,malware (ai score=85)
-ChaGiNa7/Office365,Rising,Downloader.Agent!8.B23 (CLOUD)
-ChaGiNa7/Office365,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
-ChaGiNa7/Office365,huorong,TrojanDownloader/MSIL.Agent.sc
-ChaGiNa7/Office365,Fortinet,MSIL/Agent.MAE!tr
-ChaGiNa7/Office365,Panda,Trj/GdSda.A
-dscvm/Visoul-Grabber,MicroWorld-eScan,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,FireEye,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,ALYac,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,BitDefender,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,Emsisoft,Generic.PY.Stealer.D.6D84DE58 (B)
-dscvm/Visoul-Grabber,VIPRE,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,Arcabit,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,GData,Generic.PY.Stealer.D.6D84DE58
-dscvm/Visoul-Grabber,MAX,malware (ai score=80)
-AmitAKB/shoppingcart,VirIT,Trojan.Win32.MSIL_Heur.D
-SniperDev00001/PumpFun-Sniper-Bot,Cynet,Malicious (score: 70)
-SniperDev00001/PumpFun-Sniper-Bot,Baidu,Archive.Bomb
-SniperDev00001/PumpFun-Sniper-Bot,F-Secure,Heuristic.HEUR/Pumpar.Gen
-SniperDev00001/PumpFun-Sniper-Bot,Avira,HEUR/Pumpar.Gen
-SniperDev00001/PumpFun-Sniper-Bot,Fortinet,W64/Kryptik.EDD!tr
-ThanatosXingYu/iKun_Keyboard,FireEye,Generic.UAC.Marte.B.07BB2D07
-ThanatosXingYu/iKun_Keyboard,BitDefender,Generic.UAC.Marte.B.07BB2D07
-ThanatosXingYu/iKun_Keyboard,Emsisoft,Generic.UAC.Marte.B.07BB2D07 (B)
-ThanatosXingYu/iKun_Keyboard,VIPRE,Generic.UAC.Marte.B.07BB2D07
-ThanatosXingYu/iKun_Keyboard,Arcabit,Generic.UAC.Marte.B.07BB2D07
-ThanatosXingYu/iKun_Keyboard,GData,Generic.UAC.Marte.B.07BB2D07
-ThanatosXingYu/iKun_Keyboard,ALYac,Generic.UAC.Marte.B.07BB2D07
-ThanatosXingYu/iKun_Keyboard,MAX,malware (ai score=88)
-Habuhoyoto/FiveM-Crown-Menu,Lionic,Trojan.ZIP.PsDownload.a!c
-Habuhoyoto/FiveM-Crown-Menu,Skyhigh,Artemis!Trojan
-Habuhoyoto/FiveM-Crown-Menu,ALYac,Gen:Variant.Barys.382335
-Habuhoyoto/FiveM-Crown-Menu,Sangfor,Downloader.Msil.Asyncrat.Vl9e
-Habuhoyoto/FiveM-Crown-Menu,Arcabit,Trojan.Barys.D5D57F [many]
-Habuhoyoto/FiveM-Crown-Menu,huorong,TrojanDownloader/MSIL.Agent.sc
-Habuhoyoto/FiveM-Crown-Menu,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE
-Habuhoyoto/FiveM-Crown-Menu,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-Habuhoyoto/FiveM-Crown-Menu,McAfee,Artemis!B5E479D3926B
-Habuhoyoto/FiveM-Crown-Menu,Avast,Win32:MalwareX-gen [Trj]
-Habuhoyoto/FiveM-Crown-Menu,Cynet,Malicious (score: 99)
-Habuhoyoto/FiveM-Crown-Menu,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-Habuhoyoto/FiveM-Crown-Menu,BitDefender,Gen:Variant.Barys.382335
-Habuhoyoto/FiveM-Crown-Menu,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf
-Habuhoyoto/FiveM-Crown-Menu,MicroWorld-eScan,Gen:Variant.Barys.382335
-Habuhoyoto/FiveM-Crown-Menu,Tencent,Malware.Win32.Gencirc.140c6d27
-Habuhoyoto/FiveM-Crown-Menu,Emsisoft,Gen:Variant.Barys.382335 (B)
-Habuhoyoto/FiveM-Crown-Menu,F-Secure,Heuristic.HEUR/AGEN.1308540
-Habuhoyoto/FiveM-Crown-Menu,DrWeb,Trojan.DownLoader45.55850
-Habuhoyoto/FiveM-Crown-Menu,VIPRE,Gen:Variant.Barys.382335
-Habuhoyoto/FiveM-Crown-Menu,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ
-Habuhoyoto/FiveM-Crown-Menu,FireEye,Gen:Variant.Barys.382335
-Habuhoyoto/FiveM-Crown-Menu,Sophos,Mal/Generic-S
-Habuhoyoto/FiveM-Crown-Menu,Ikarus,Trojan.MSIL.CoinMiner
-Habuhoyoto/FiveM-Crown-Menu,Google,Detected
-Habuhoyoto/FiveM-Crown-Menu,Avira,HEUR/AGEN.1308540
-Habuhoyoto/FiveM-Crown-Menu,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload
-Habuhoyoto/FiveM-Crown-Menu,Xcitium,Malware@#17g86n0c7dep
-Habuhoyoto/FiveM-Crown-Menu,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen
-Habuhoyoto/FiveM-Crown-Menu,GData,Gen:Variant.Barys.382335 (2x)
-Habuhoyoto/FiveM-Crown-Menu,Varist,W32/MSIL_Agent.DIE.gen!Eldorado
-Habuhoyoto/FiveM-Crown-Menu,BitDefenderTheta,Gen:NN.ZemsilCO.36812.am0@auU@!Fb
-Habuhoyoto/FiveM-Crown-Menu,MAX,malware (ai score=83)
-Habuhoyoto/FiveM-Crown-Menu,VBA32,TScope.Trojan.MSIL
-Habuhoyoto/FiveM-Crown-Menu,Rising,Downloader.Agent!8.B23 (CLOUD)
-Habuhoyoto/FiveM-Crown-Menu,Yandex,Trojan.DL.Agent!26dN9Zzkxjw
-Habuhoyoto/FiveM-Crown-Menu,SentinelOne,Static AI - Malicious Archive
-Habuhoyoto/FiveM-Crown-Menu,Fortinet,MSIL/Agent.MAE!tr
-Habuhoyoto/FiveM-Crown-Menu,AVG,Win32:MalwareX-gen [Trj]
-Habuhoyoto/FiveM-Crown-Menu,Panda,Trj/GdSda.A
-NatroTeam/NatroMacro,NANO-Antivirus,Trojan.Win32.Drop.kkwkwe
-NatroTeam/NatroMacro,SentinelOne,Static AI - Suspicious Archive
-NatroTeam/NatroMacro,Antiy-AVL,Trojan/PowerShell.Runner
-NatroTeam/NatroMacro,VBA32,suspected of Win32.PhishingPE.Heur
-NatroTeam/NatroMacro,Fortinet,W32/PossibleThreat
-TrashUwU/PokeAssistant,MicroWorld-eScan,JS:Trojan.Cryxos.12333
-TrashUwU/PokeAssistant,FireEye,JS:Trojan.Cryxos.12333
-TrashUwU/PokeAssistant,BitDefender,JS:Trojan.Cryxos.12333
-TrashUwU/PokeAssistant,Emsisoft,JS:Trojan.Cryxos.12333 (B)
-TrashUwU/PokeAssistant,VIPRE,JS:Trojan.Cryxos.12333
-TrashUwU/PokeAssistant,Arcabit,JS:Trojan.Cryxos.D302D
-TrashUwU/PokeAssistant,GData,JS:Trojan.Cryxos.12333
-TrashUwU/PokeAssistant,ALYac,JS:Trojan.Cryxos.12333
-TrashUwU/PokeAssistant,MAX,malware (ai score=88)
-ArvinFox/V00D-Mods,Jiangmin,Trojan.Shelma.dqe
-ArvinFox/V00D-Mods,Google,Detected
-ArvinFox/V00D-Mods,Varist,W64/Rozena.GH.gen!Eldorado
-matter-labs/zksync-lite-docs,GData,HTML.Trojan-Stealer.Phish.KH
-can-kat/cstealer,Lionic,Trojan.ZIP.PyCStealer.i!c
-can-kat/cstealer,MicroWorld-eScan,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,FireEye,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,Symantec,Trojan.Gen.NPE
-can-kat/cstealer,ESET-NOD32,Python/PSW.Agent.BKD
-can-kat/cstealer,Avast,Other:Malware-gen [Trj]
-can-kat/cstealer,Kaspersky,HEUR:Trojan-PSW.Python.Disco.gen
-can-kat/cstealer,BitDefender,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,Tencent,Win32.Trojan-QQPass.QQRob.Vmhl
-can-kat/cstealer,Emsisoft,Generic.PyCStealer.A.3BC53D22 (B)
-can-kat/cstealer,DrWeb,Python.Stealer.1387
-can-kat/cstealer,VIPRE,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,Ikarus,Trojan-Spy.Python.CStealer
-can-kat/cstealer,Google,Detected
-can-kat/cstealer,Arcabit,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,ZoneAlarm,HEUR:Trojan-PSW.Python.Disco.gen
-can-kat/cstealer,GData,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,Varist,PY/Stealer.E
-can-kat/cstealer,ALYac,Generic.PyCStealer.A.3BC53D22
-can-kat/cstealer,MAX,malware (ai score=84)
-can-kat/cstealer,huorong,Ransom/LockFile.fl
-can-kat/cstealer,AVG,Other:Malware-gen [Trj]
-can-kat/cstealer,alibabacloud,Trojan:Python/CStealer.C#8PHU
+repo,scanner,result,analysis_id,analysis_link
+Imran407704/payloads,CAT-QuickHeal,HTML.IframeRef.C,MzAzYjc2YzE4YjU4YjI2NDJlNTgyNDc2OWI4NTRmYjI6MTcyMzY2Mzk1OA==,https://www.virustotal.com/gui/file/1c5c7318bc1e9e1d0cd2de58808602c2ba52920ba53cf291ada29a11db8a7f63
+Imran407704/payloads,ClamAV,Win.Trojan.Agent-35594,MzAzYjc2YzE4YjU4YjI2NDJlNTgyNDc2OWI4NTRmYjI6MTcyMzY2Mzk1OA==,https://www.virustotal.com/gui/file/1c5c7318bc1e9e1d0cd2de58808602c2ba52920ba53cf291ada29a11db8a7f63
+Imran407704/payloads,Baidu,JS.Trojan-Downloader.Iframe.ee,MzAzYjc2YzE4YjU4YjI2NDJlNTgyNDc2OWI4NTRmYjI6MTcyMzY2Mzk1OA==,https://www.virustotal.com/gui/file/1c5c7318bc1e9e1d0cd2de58808602c2ba52920ba53cf291ada29a11db8a7f63
+Imran407704/payloads,Google,Detected,MzAzYjc2YzE4YjU4YjI2NDJlNTgyNDc2OWI4NTRmYjI6MTcyMzY2Mzk1OA==,https://www.virustotal.com/gui/file/1c5c7318bc1e9e1d0cd2de58808602c2ba52920ba53cf291ada29a11db8a7f63
+lmillionzz/Adobe-Acrobat,Lionic,Hacktool.Win32.Generic.3!c,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,FireEye,Application.Hacktool.ASP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Skyhigh,Artemis!PUP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,ALYac,Application.Hacktool.ASP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Sangfor,Hacktool.Asp.Agent.Vdiv,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,K7AntiVirus,Unwanted-Program ( 0057ac0f1 ),MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,K7GW,Unwanted-Program ( 0057ac0f1 ),MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,ESET-NOD32,multiple detections,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,BitDefender,Application.Hacktool.ASP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Sophos,Generic Reputation PUA (PUA),MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,VIPRE,Application.Hacktool.ASP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Emsisoft,Application.Hacktool.ASP (B),MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Ikarus,PUA.RiskWare.Hacktool,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Varist,W64/ABApplication.ZSNR-3388,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Antiy-AVL,Trojan/Win64.Generic,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Arcabit,Application.Hacktool.ASP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,GData,Application.Hacktool.ASP,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Google,Detected,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,McAfee,Artemis!96756DEAFF1B,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,MAX,malware (ai score=87),MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Rising,Hacktool.Agent!8.335 (CLOUD),MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+lmillionzz/Adobe-Acrobat,Yandex,Riskware.HackTool!PjKgFXh9dp8,MDAyZjQxMGZlODRlYTg3NGE5YzI5YzJlNmRlMGM0ODY6MTcyMzY2OTEwMw==,https://www.virustotal.com/gui/file/0638621a9e3688ed8f740ac2e51db7095c224d4610e471bc39a52d4c3a343b86
+fashbestplays98/Citizens_Conflict_free_token,Kaspersky,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen,NmM2ZGI4YWRlOTlhYzlmYmZhYmFmNTg2MjZlOGE4NDE6MTcyMzY3MTgwOQ==,https://www.virustotal.com/gui/file/5f5f81619b4cebbcfa9360dcc3bce57056d44324a5c42abbe3e0e733f0ee263b
+fashbestplays98/Citizens_Conflict_free_token,Sophos,Coinminer Config (PUA),NmM2ZGI4YWRlOTlhYzlmYmZhYmFmNTg2MjZlOGE4NDE6MTcyMzY3MTgwOQ==,https://www.virustotal.com/gui/file/5f5f81619b4cebbcfa9360dcc3bce57056d44324a5c42abbe3e0e733f0ee263b
+fashbestplays98/Citizens_Conflict_free_token,Xcitium,Application.Script.BitMiner.A@7xk8f5,NmM2ZGI4YWRlOTlhYzlmYmZhYmFmNTg2MjZlOGE4NDE6MTcyMzY3MTgwOQ==,https://www.virustotal.com/gui/file/5f5f81619b4cebbcfa9360dcc3bce57056d44324a5c42abbe3e0e733f0ee263b
+fashbestplays98/Citizens_Conflict_free_token,ZoneAlarm,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen,NmM2ZGI4YWRlOTlhYzlmYmZhYmFmNTg2MjZlOGE4NDE6MTcyMzY3MTgwOQ==,https://www.virustotal.com/gui/file/5f5f81619b4cebbcfa9360dcc3bce57056d44324a5c42abbe3e0e733f0ee263b
+3kh0/spoof-hwid,MicroWorld-eScan,Generic.HTML.Phishing.Q.01771430,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,VIPRE,Generic.HTML.Phishing.Q.01771430,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,BitDefender,Generic.HTML.Phishing.Q.01771430,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,Emsisoft,Generic.HTML.Phishing.Q.01771430 (B),ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,FireEye,Generic.HTML.Phishing.Q.01771430,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,MAX,malware (ai score=84),ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,Arcabit,Generic.HTML.Phishing.Q.D1B07A6,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,GData,Generic.HTML.Phishing.Q.01771430,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+3kh0/spoof-hwid,ALYac,Generic.HTML.Phishing.Q.01771430,ZmU3OGNlNTUxYTg3MzhlYmQ2MTEwMjE1NDc3YTQ5MzA6MTcyMzY4NzQ1MA==,https://www.virustotal.com/gui/file/6e0d1610d84999508374417c06c27e6eb626e0f2041a58e7ff6254e33dd94c96
+Valdemar-Neto/Projetos,Ikarus,Trojan.Win64.Reverseshell,NTNjOWNjNTVmNmYxNjg4ZDBmMzU5N2NkYTc5YmZjZjU6MTcyMzY5NzY4Mg==,https://www.virustotal.com/gui/file/50ec71041264ef3248c39c3f5b5018ced025d2712aa4acfcaff0e46c86a157e9
+Valdemar-Neto/Projetos,Google,Detected,NTNjOWNjNTVmNmYxNjg4ZDBmMzU5N2NkYTc5YmZjZjU6MTcyMzY5NzY4Mg==,https://www.virustotal.com/gui/file/50ec71041264ef3248c39c3f5b5018ced025d2712aa4acfcaff0e46c86a157e9
+Vardhannn/AndroidStudioProjects,Ikarus,Trojan-Spy.AndroidOS.SMSSpy,YzFmNDk0OTA0YjQ2NTM5ODNiYmM4YjA1YWVjZDNjMzM6MTcyMzcxMDAyMw==,https://www.virustotal.com/gui/file/75086f4ba2602ee36872a1e14e13d0021e9c24b88ba70fccced680ac357974d8
+b815747Y/FORTNITEBLACKi,Lionic,Trojan.Win32.Cerber.4!c,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,MicroWorld-eScan,Gen:Variant.Tedy.604571,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,VIPRE,Gen:Variant.Tedy.604571,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Sangfor,Downloader.Win32.Agent.Vssd,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,ESET-NOD32,MSIL/TrojanDownloader.Tiny.CNQ,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,TrendMicro-HouseCall,TROJ_GEN.R002C0DGV24,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,BitDefender,Gen:Variant.Tedy.604571,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Emsisoft,Gen:Variant.Tedy.604571 (B),MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,DrWeb,Trojan.DownLoader46.64705,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,TrendMicro,TROJ_GEN.R002C0DGV24,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,FireEye,Gen:Variant.Tedy.604571,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Sophos,Mal/Generic-S,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Ikarus,Trojan.Win32.Cerber,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Google,Detected,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Antiy-AVL,Trojan/Win32.Cerber,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Arcabit,Trojan.Generic.D45C30BF,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,GData,Gen:Variant.Tedy.604571,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Varist,W32/ABTrojan.ECWS-2251,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,ALYac,Gen:Variant.Tedy.604571,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,MAX,malware (ai score=82),MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+b815747Y/FORTNITEBLACKi,Fortinet,W32/PossibleThreat,MmRmYzYxOThlYzFhMWE5OTg5NTJmZjZhOThhZDJmZmE6MTcyMzcxNDg0MA==,https://www.virustotal.com/gui/file/645b737e108decda620ff6dca9f683b12a2fed4d343f335e467713e916fee8f8
+Lsaqutellia/New-Game-Product-Fortnite,MicroWorld-eScan,Gen:Variant.Lazy.562895,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,ESET-NOD32,a variant of MSIL/TrojanDropper.Agent.GCY,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Avast,Win32:PWSX-gen [Trj],MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Kaspersky,HEUR:Trojan.MSIL.DOTHETUK.gen,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,BitDefender,Gen:Variant.Lazy.562895,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Emsisoft,Gen:Variant.Lazy.562895 (B),MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Google,Detected,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,VIPRE,Gen:Variant.Lazy.562895,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,SentinelOne,Static AI - Malicious Archive,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,FireEye,Gen:Variant.Lazy.562895,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Sophos,Generic ML PUA (PUA),MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Ikarus,Trojan-Dropper.MSIL.Agent,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Arcabit,Trojan.Lazy.D896CF,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,ZoneAlarm,HEUR:Trojan.MSIL.DOTHETUK.gen,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,GData,Gen:Variant.Lazy.562895,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,AhnLab-V3,Trojan/Win.PWSX-gen.C5629772,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,ALYac,Gen:Variant.Lazy.562895,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,MAX,malware (ai score=87),MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Zoner,Probably Heur.ExeHeaderL,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,Rising,Malware.Obfus/MSIL@AI.100 (RDM.MSIL2:j4+ePkME5ayy4Fq6jZBu6g),MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,huorong,Trojan/MSIL.Agent.jk,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,BitDefenderTheta,Gen:NN.ZemsilF.36810.Uu0@aaxuFDp,MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+Lsaqutellia/New-Game-Product-Fortnite,AVG,Win32:PWSX-gen [Trj],MmYwNzBjZTU5NThiNDUzMGQ5OGJlOTNjZDZkM2MwMzM6MTcyMzcyMDg3OQ==,https://www.virustotal.com/gui/file/940dd7f42b31ba82de6fdf48e50adc5fdb286b59331c71ef84ca890fe8c933d8
+BeurStma/Trovo-ViewBot,Lionic,Trojan.Win32.PsDownload.a!c,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,MicroWorld-eScan,Gen:Variant.Barys.382335,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,FireEye,Gen:Variant.Barys.382335,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,McAfee,Artemis!B5E479D3926B,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,K7AntiVirus,Trojan-Downloader ( 00593c201 ),YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,K7GW,Trojan-Downloader ( 00593c201 ),YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,huorong,TrojanDownloader/MSIL.Agent.sc,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,BitDefenderTheta,Gen:NN.ZemsilF.36810.am0@auU@!Fb,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Cynet,Malicious (score: 99),YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Avast,Win32:MalwareX-gen [Trj],YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,BitDefender,Gen:Variant.Barys.382335,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Emsisoft,Gen:Variant.Barys.382335 (B),YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,F-Secure,Heuristic.HEUR/AGEN.1308540,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,DrWeb,Trojan.DownLoader45.55850,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,VIPRE,Gen:Variant.Barys.382335,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Sophos,Mal/Generic-S,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Ikarus,Trojan.MSIL.CoinMiner,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Varist,W32/MSIL_Agent.DIE.gen!Eldorado,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Avira,HEUR/AGEN.1308540,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,MAX,malware (ai score=88),YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Xcitium,Malware@#17g86n0c7dep,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Arcabit,Trojan.Barys.D5D57F,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,GData,Gen:Variant.Barys.382335,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Google,Detected,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,AhnLab-V3,Trojan/Win.Generic.C5148890,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,VBA32,TScope.Trojan.MSIL,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,ALYac,Gen:Variant.Barys.382335,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Rising,Downloader.Agent!8.B23 (CLOUD),YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,SentinelOne,Static AI - Malicious Archive,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Fortinet,MSIL/Agent.MAE!tr,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,AVG,Win32:MalwareX-gen [Trj],YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+BeurStma/Trovo-ViewBot,Panda,Trj/GdSda.A,YTBmYmNmMjg4YmY4MTJkMTRjYmE2MDk5MGFjYTg2Mzg6MTcyMzcyNDgyMQ==,https://www.virustotal.com/gui/file/a4888561d76362863e58eb6f19060cee35260d2b4d45e69e0f4c46a9feb4f1be
+Voq1210uBadIRaPeBY/68762t9wgsht1q,Kaspersky,UDS:Trojan.Win32.GenericML.xnet,Y2JlM2Q5MGMyMmMyMWNmZWFmMjNmNWU0MzVhODExY2Y6MTcyMzcyNjAyNg==,https://www.virustotal.com/gui/file/24f8a51d9d961c45b4ae1089fdefc02e0067776124a91a9bf2017c57e8c89e58
+Voq1210uBadIRaPeBY/68762t9wgsht1q,ZoneAlarm,UDS:Trojan.Win32.GenericML.xnet,Y2JlM2Q5MGMyMmMyMWNmZWFmMjNmNWU0MzVhODExY2Y6MTcyMzcyNjAyNg==,https://www.virustotal.com/gui/file/24f8a51d9d961c45b4ae1089fdefc02e0067776124a91a9bf2017c57e8c89e58
+ViMelamyquc/j4d4wxglbr,Kaspersky,UDS:Trojan.Win32.GenericML.xnet,Y2MyYmEzMGZmMTFjOWMwYTM5YWUwNGEzNmY1NDlmNjk6MTcyMzcyODEzNQ==,https://www.virustotal.com/gui/file/a1a87322ff4d2f5215a071ab9441ccbdf2125239697cba78295bb57e8875ed93
+ViMelamyquc/j4d4wxglbr,ZoneAlarm,UDS:Trojan.Win32.GenericML.xnet,Y2MyYmEzMGZmMTFjOWMwYTM5YWUwNGEzNmY1NDlmNjk6MTcyMzcyODEzNQ==,https://www.virustotal.com/gui/file/a1a87322ff4d2f5215a071ab9441ccbdf2125239697cba78295bb57e8875ed93
+m-boutaleb/LZS,Sophos,Generic ML PUA (PUA),ODkxOTA4NGUzOWZmMTM1MTU1MTcyOTdmYTQyN2U5ZDg6MTcyMzcyOTY0Mw==,https://www.virustotal.com/gui/file/9f760d672867c36a63b0e85ab10738fb38f9fd40aabffc9b19c20460777e4416
+broom19hogcher/Airdrop_free,Kaspersky,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen,YzRlYmUyYTY3ZjFhNjZmNzIyM2RjOTZhYjg1ZDhmMDQ6MTcyMzc0MjU5MQ==,https://www.virustotal.com/gui/file/271094de02e2a632a2006680134dda386597c9ec27533e2f00808e8fe8454ff9
+broom19hogcher/Airdrop_free,Sophos,Coinminer Config (PUA),YzRlYmUyYTY3ZjFhNjZmNzIyM2RjOTZhYjg1ZDhmMDQ6MTcyMzc0MjU5MQ==,https://www.virustotal.com/gui/file/271094de02e2a632a2006680134dda386597c9ec27533e2f00808e8fe8454ff9
+broom19hogcher/Airdrop_free,Xcitium,Application.Script.BitMiner.A@7xk8f5,YzRlYmUyYTY3ZjFhNjZmNzIyM2RjOTZhYjg1ZDhmMDQ6MTcyMzc0MjU5MQ==,https://www.virustotal.com/gui/file/271094de02e2a632a2006680134dda386597c9ec27533e2f00808e8fe8454ff9
+broom19hogcher/Airdrop_free,ZoneAlarm,not-a-virus:HEUR:RiskTool.Script.BitMiner.gen,YzRlYmUyYTY3ZjFhNjZmNzIyM2RjOTZhYjg1ZDhmMDQ6MTcyMzc0MjU5MQ==,https://www.virustotal.com/gui/file/271094de02e2a632a2006680134dda386597c9ec27533e2f00808e8fe8454ff9
+Martin01238/Rbx,Google,Detected,ZDJiMzA3MTU0Mzc2M2U4MmMzMjcwNmM0ZmNkYmY2NGI6MTcyMzc0ODMxMg==,https://www.virustotal.com/gui/file/69064333617db56d592262920ec37715c595c351339caafc95a3aaae836dd3ae
+Martin01238/Rbx,Varist,W32/MSIL_Kryptik.BHF.gen!Eldorado,ZDJiMzA3MTU0Mzc2M2U4MmMzMjcwNmM0ZmNkYmY2NGI6MTcyMzc0ODMxMg==,https://www.virustotal.com/gui/file/69064333617db56d592262920ec37715c595c351339caafc95a3aaae836dd3ae
+Estigma1604/Solana-Bot,ESET-NOD32,PowerShell/HackTool.Agent.BT potentially unsafe,OGU2ODIxYzI2ODg2MDE3Nzc5NDcxN2FjODUxZTc0M2M6MTcyMzc1MDcyMA==,https://www.virustotal.com/gui/file/72826158d855dbaa5646e2038e2c54e52a52a6043840371a1ed72f829acd13ad
+L3MO1337/Thimble-Exploit-Bot-4.0,Lionic,Trojan.ZIP.PsDownload.a!c,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,MicroWorld-eScan,Gen:Variant.Barys.382335,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,FireEye,Gen:Variant.Barys.382335,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,McAfee,Artemis!B5E479D3926B,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,huorong,TrojanDownloader/MSIL.Agent.sc,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Cynet,Malicious (score: 99),MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Avast,Win32:MalwareX-gen [Trj],MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,BitDefender,Gen:Variant.Barys.382335,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Emsisoft,Gen:Variant.Barys.382335 (B),MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,F-Secure,Heuristic.HEUR/AGEN.1308540,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,DrWeb,Trojan.DownLoader45.55850,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,VIPRE,Gen:Variant.Barys.382335,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Sophos,Mal/Generic-S,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Ikarus,Trojan.MSIL.CoinMiner,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Google,Detected,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Avira,HEUR/AGEN.1308540,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Xcitium,Malware@#17g86n0c7dep,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Arcabit,Trojan.Barys.D5D57F,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,GData,Gen:Variant.Barys.382335,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Varist,W32/MSIL_Agent.DIE.gen!Eldorado,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,BitDefenderTheta,Gen:NN.ZemsilCO.36810.am0@auU@!Fb,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,ALYac,Gen:Variant.Barys.382335,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,MAX,malware (ai score=82),MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,VBA32,TScope.Trojan.MSIL,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Rising,Downloader.Agent!8.B23 (CLOUD),MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,SentinelOne,Static AI - Malicious Archive,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Fortinet,MSIL/Agent.MAE!tr,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,AVG,Win32:MalwareX-gen [Trj],MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+L3MO1337/Thimble-Exploit-Bot-4.0,Panda,Trj/GdSda.A,MDM3MzEwZDM1OTFiYzEwODM1OWFlYjNhNTY5OTgzYTc6MTcyMzc3MzYxNg==,https://www.virustotal.com/gui/file/fdd841d99383dc453f80cccdecad89ff21b002027708291fbeae90e5ac63f5c3
+Rtyn1337/Thimble-bot-4.1,Lionic,Trojan.Win32.PsDownload.a!c,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,MicroWorld-eScan,Gen:Variant.Barys.382335,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,FireEye,Gen:Variant.Barys.382335,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,K7AntiVirus,Trojan-Downloader ( 00593c201 ),NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,K7GW,Trojan-Downloader ( 00593c201 ),NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,huorong,TrojanDownloader/MSIL.Agent.sc,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Cynet,Malicious (score: 99),NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,BitDefender,Gen:Variant.Barys.382335,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Sophos,Mal/Generic-S,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,F-Secure,Heuristic.HEUR/AGEN.1308540,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,BitDefenderTheta,Gen:NN.ZemsilF.36812.am0@auU@!Fb,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,VIPRE,Gen:Variant.Barys.382335,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Emsisoft,Gen:Variant.Barys.382335 (B),NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Ikarus,Trojan.MSIL.CoinMiner,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Varist,W32/MSIL_Agent.DIE.gen!Eldorado,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Avira,HEUR/AGEN.1308540,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Xcitium,Malware@#17g86n0c7dep,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Arcabit,Trojan.Barys.D5D57F,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Google,Detected,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,AhnLab-V3,Trojan/Win.Generic.C5148890,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,VBA32,TScope.Trojan.MSIL,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,MAX,malware (ai score=89),NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Rising,Downloader.Agent!8.B23 (CLOUD),NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Yandex,Trojan.DL.Agent!26dN9Zzkxjw,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,SentinelOne,Static AI - Malicious Archive,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+Rtyn1337/Thimble-bot-4.1,Panda,Trj/GdSda.A,NGQxODQyZjZlY2U1MjBhZDRiYWI2NmM2MzBmZWZkODU6MTcyMzgxMjQ1NQ==,https://www.virustotal.com/gui/file/842a155c7fd532662520c092796babeabe03eaf143ea728db36d8caac183ebc3
+ChaGiNa7/Office365,Lionic,Trojan.Win32.PsDownload.a!c,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,FireEye,Gen:Variant.Barys.382335,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,ALYac,Gen:Variant.Barys.382335,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,K7AntiVirus,Trojan-Downloader ( 00593c201 ),YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,K7GW,Trojan-Downloader ( 00593c201 ),YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,BitDefenderTheta,Gen:NN.ZemsilF.36812.am0@auU@!Fb,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Cynet,Malicious (score: 99),YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Arcabit,Trojan.Barys.D5D57F,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Emsisoft,Gen:Variant.Barys.382335 (B),YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,F-Secure,Heuristic.HEUR/AGEN.1308540,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,DrWeb,Trojan.DownLoader45.55850,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,VIPRE,Gen:Variant.Barys.382335,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,SentinelOne,Static AI - Malicious Archive,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Sophos,Mal/Generic-S,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Ikarus,Trojan.MSIL.CoinMiner,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Avira,HEUR/AGEN.1308540,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Xcitium,Malware@#17g86n0c7dep,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Google,Detected,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,AhnLab-V3,Trojan/Win.Generic.C5148890,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,VBA32,TScope.Trojan.MSIL,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,MAX,malware (ai score=85),YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Rising,Downloader.Agent!8.B23 (CLOUD),YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Yandex,Trojan.DL.Agent!26dN9Zzkxjw,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,huorong,TrojanDownloader/MSIL.Agent.sc,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Fortinet,MSIL/Agent.MAE!tr,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+ChaGiNa7/Office365,Panda,Trj/GdSda.A,YmYxZmFhOGExNzMzM2E3ZTQwMTY1YjBhNGViYTQyM2I6MTcyMzgxODE3NQ==,https://www.virustotal.com/gui/file/7dae437020d43d41aff84f5045919a4f443e9a2e036e45314dfbe1cb32f2fc98
+dscvm/Visoul-Grabber,MicroWorld-eScan,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,FireEye,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,ALYac,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,BitDefender,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,Emsisoft,Generic.PY.Stealer.D.6D84DE58 (B),YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,VIPRE,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,Arcabit,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,GData,Generic.PY.Stealer.D.6D84DE58,YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+dscvm/Visoul-Grabber,MAX,malware (ai score=80),YTI3YTQ3MmM1NjhlNWQzOTc2ODk0ZGQ3NDQwZGI1YTA6MTcyMzgyMjA4OQ==,https://www.virustotal.com/gui/file/020373c62b75dfaeff123b3983827c733ddb350632443b6f03e25c8a507ebcdc
+AmitAKB/shoppingcart,VirIT,Trojan.Win32.MSIL_Heur.D,ZmIyY2NiODM4YWQ5YWFjN2NmYzNiZDJiNGU1NmYyMzY6MTcyMzgzNDczMg==,https://www.virustotal.com/gui/file/d6f242e04fecf33ed0d79713f7d7668dcc83bae2ab4127bea19eb84cdeb33fd8
+SniperDev00001/PumpFun-Sniper-Bot,Cynet,Malicious (score: 70),Yjk1Y2I0YmQyZjkyMTJiYjAxOTUwMzliMDU0NjFkMTg6MTcyMzg0NDY3Mw==,https://www.virustotal.com/gui/file/2cf9867ec0a96787c42c3164e3f9cf2f849ced2ff719922bdb8a045d85599428
+SniperDev00001/PumpFun-Sniper-Bot,Baidu,Archive.Bomb,Yjk1Y2I0YmQyZjkyMTJiYjAxOTUwMzliMDU0NjFkMTg6MTcyMzg0NDY3Mw==,https://www.virustotal.com/gui/file/2cf9867ec0a96787c42c3164e3f9cf2f849ced2ff719922bdb8a045d85599428
+SniperDev00001/PumpFun-Sniper-Bot,F-Secure,Heuristic.HEUR/Pumpar.Gen,Yjk1Y2I0YmQyZjkyMTJiYjAxOTUwMzliMDU0NjFkMTg6MTcyMzg0NDY3Mw==,https://www.virustotal.com/gui/file/2cf9867ec0a96787c42c3164e3f9cf2f849ced2ff719922bdb8a045d85599428
+SniperDev00001/PumpFun-Sniper-Bot,Avira,HEUR/Pumpar.Gen,Yjk1Y2I0YmQyZjkyMTJiYjAxOTUwMzliMDU0NjFkMTg6MTcyMzg0NDY3Mw==,https://www.virustotal.com/gui/file/2cf9867ec0a96787c42c3164e3f9cf2f849ced2ff719922bdb8a045d85599428
+SniperDev00001/PumpFun-Sniper-Bot,Fortinet,W64/Kryptik.EDD!tr,Yjk1Y2I0YmQyZjkyMTJiYjAxOTUwMzliMDU0NjFkMTg6MTcyMzg0NDY3Mw==,https://www.virustotal.com/gui/file/2cf9867ec0a96787c42c3164e3f9cf2f849ced2ff719922bdb8a045d85599428
+ThanatosXingYu/iKun_Keyboard,FireEye,Generic.UAC.Marte.B.07BB2D07,ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,BitDefender,Generic.UAC.Marte.B.07BB2D07,ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,Emsisoft,Generic.UAC.Marte.B.07BB2D07 (B),ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,VIPRE,Generic.UAC.Marte.B.07BB2D07,ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,Arcabit,Generic.UAC.Marte.B.07BB2D07,ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,GData,Generic.UAC.Marte.B.07BB2D07,ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,ALYac,Generic.UAC.Marte.B.07BB2D07,ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+ThanatosXingYu/iKun_Keyboard,MAX,malware (ai score=88),ZDJjMjA3OGE3MGVhZTIxMGU0OGRmMWFkMjMwYzU0OWU6MTcyMzg0NzY4Mw==,https://www.virustotal.com/gui/file/367a5d63144943d3f466bcf642f4c308021d2e6da5a3bda5aeed69350c8ca268
+Habuhoyoto/FiveM-Crown-Menu,Lionic,Trojan.ZIP.PsDownload.a!c,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Skyhigh,Artemis!Trojan,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,ALYac,Gen:Variant.Barys.382335,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Sangfor,Downloader.Msil.Asyncrat.Vl9e,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Arcabit,Trojan.Barys.D5D57F [many],ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,huorong,TrojanDownloader/MSIL.Agent.sc,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,ESET-NOD32,a variant of MSIL/TrojanDownloader.Agent.MAE,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,TrendMicro-HouseCall,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,McAfee,Artemis!B5E479D3926B,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Avast,Win32:MalwareX-gen [Trj],ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Cynet,Malicious (score: 99),ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Kaspersky,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,BitDefender,Gen:Variant.Barys.382335,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,NANO-Antivirus,Trojan.Win32.PsDownload.knitaf,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,MicroWorld-eScan,Gen:Variant.Barys.382335,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Tencent,Malware.Win32.Gencirc.140c6d27,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Emsisoft,Gen:Variant.Barys.382335 (B),ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,F-Secure,Heuristic.HEUR/AGEN.1308540,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,DrWeb,Trojan.DownLoader45.55850,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,VIPRE,Gen:Variant.Barys.382335,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,TrendMicro,TrojanSpy.Win32.RHADAMANTHYS.YXEGIZ,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,FireEye,Gen:Variant.Barys.382335,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Sophos,Mal/Generic-S,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Ikarus,Trojan.MSIL.CoinMiner,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Google,Detected,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Avira,HEUR/AGEN.1308540,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Antiy-AVL,Trojan[Downloader]/MSIL.PsDownload,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Xcitium,Malware@#17g86n0c7dep,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,ZoneAlarm,HEUR:Trojan-Downloader.MSIL.PsDownload.gen,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,GData,Gen:Variant.Barys.382335 (2x),ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Varist,W32/MSIL_Agent.DIE.gen!Eldorado,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,BitDefenderTheta,Gen:NN.ZemsilCO.36812.am0@auU@!Fb,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,MAX,malware (ai score=83),ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,VBA32,TScope.Trojan.MSIL,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Rising,Downloader.Agent!8.B23 (CLOUD),ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Yandex,Trojan.DL.Agent!26dN9Zzkxjw,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,SentinelOne,Static AI - Malicious Archive,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Fortinet,MSIL/Agent.MAE!tr,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,AVG,Win32:MalwareX-gen [Trj],ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+Habuhoyoto/FiveM-Crown-Menu,Panda,Trj/GdSda.A,ZGFiY2U3MjNiODMyODYzOGE1NDljMWNiMmU2OTYzYWE6MTcyMzg2MDYyMw==,https://www.virustotal.com/gui/file/e746c329635c9699a74cbafc2453739366fad4dbaf28a26feef2c0cbc2cfacf9
+NatroTeam/NatroMacro,NANO-Antivirus,Trojan.Win32.Drop.kkwkwe,ZDkwZTVmN2ZkMzc5YWVkZTBiZjRlNDRiZWU1ODJiM2Y6MTcyMzg5MjIzNg==,https://www.virustotal.com/gui/file/80db0668410c5be52eb8e53feef04c8a4d8df5c4609d67e96e1483eb149a9e0b
+NatroTeam/NatroMacro,SentinelOne,Static AI - Suspicious Archive,ZDkwZTVmN2ZkMzc5YWVkZTBiZjRlNDRiZWU1ODJiM2Y6MTcyMzg5MjIzNg==,https://www.virustotal.com/gui/file/80db0668410c5be52eb8e53feef04c8a4d8df5c4609d67e96e1483eb149a9e0b
+NatroTeam/NatroMacro,Antiy-AVL,Trojan/PowerShell.Runner,ZDkwZTVmN2ZkMzc5YWVkZTBiZjRlNDRiZWU1ODJiM2Y6MTcyMzg5MjIzNg==,https://www.virustotal.com/gui/file/80db0668410c5be52eb8e53feef04c8a4d8df5c4609d67e96e1483eb149a9e0b
+NatroTeam/NatroMacro,VBA32,suspected of Win32.PhishingPE.Heur,ZDkwZTVmN2ZkMzc5YWVkZTBiZjRlNDRiZWU1ODJiM2Y6MTcyMzg5MjIzNg==,https://www.virustotal.com/gui/file/80db0668410c5be52eb8e53feef04c8a4d8df5c4609d67e96e1483eb149a9e0b
+NatroTeam/NatroMacro,Fortinet,W32/PossibleThreat,ZDkwZTVmN2ZkMzc5YWVkZTBiZjRlNDRiZWU1ODJiM2Y6MTcyMzg5MjIzNg==,https://www.virustotal.com/gui/file/80db0668410c5be52eb8e53feef04c8a4d8df5c4609d67e96e1483eb149a9e0b
+TrashUwU/PokeAssistant,MicroWorld-eScan,JS:Trojan.Cryxos.12333,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,FireEye,JS:Trojan.Cryxos.12333,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,BitDefender,JS:Trojan.Cryxos.12333,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,Emsisoft,JS:Trojan.Cryxos.12333 (B),ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,VIPRE,JS:Trojan.Cryxos.12333,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,Arcabit,JS:Trojan.Cryxos.D302D,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,GData,JS:Trojan.Cryxos.12333,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,ALYac,JS:Trojan.Cryxos.12333,ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+TrashUwU/PokeAssistant,MAX,malware (ai score=88),ODMzZTNlMmI5OWJjNDJkYTIzMWJmYjEyZjU3YTcyOWY6MTcyMzkxNjkxNw==,https://www.virustotal.com/gui/file/0c7da50b7fb93f4eab4c73678c3f668fbd6ed5e33a8abc92016f495c88b999af
+ArvinFox/V00D-Mods,Jiangmin,Trojan.Shelma.dqe,YTFmOGFmNWM0ODVlMTUwMzU5MzYzZTg1ZTQxM2RlZjI6MTcyMzkyMDUyOQ==,https://www.virustotal.com/gui/file/65094b58292bf4c242c2ac93ce982e3aecc5ff374e463c89727528a4a8b9c989
+ArvinFox/V00D-Mods,Google,Detected,YTFmOGFmNWM0ODVlMTUwMzU5MzYzZTg1ZTQxM2RlZjI6MTcyMzkyMDUyOQ==,https://www.virustotal.com/gui/file/65094b58292bf4c242c2ac93ce982e3aecc5ff374e463c89727528a4a8b9c989
+ArvinFox/V00D-Mods,Varist,W64/Rozena.GH.gen!Eldorado,YTFmOGFmNWM0ODVlMTUwMzU5MzYzZTg1ZTQxM2RlZjI6MTcyMzkyMDUyOQ==,https://www.virustotal.com/gui/file/65094b58292bf4c242c2ac93ce982e3aecc5ff374e463c89727528a4a8b9c989
+matter-labs/zksync-lite-docs,GData,HTML.Trojan-Stealer.Phish.KH,MmRlYWVmYjBlZTlkMmNjMzIwMWNjMzhlYzhiOGEwYmI6MTcyMzkzOTQ5OQ==,https://www.virustotal.com/gui/file/eb9810f2355fce9642f579f4bca4e1010156bd302fcc483f6c8615b71e5c9a65
+can-kat/cstealer,Lionic,Trojan.ZIP.PyCStealer.i!c,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,MicroWorld-eScan,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,FireEye,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Symantec,Trojan.Gen.NPE,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,ESET-NOD32,Python/PSW.Agent.BKD,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Avast,Other:Malware-gen [Trj],NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Kaspersky,HEUR:Trojan-PSW.Python.Disco.gen,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,BitDefender,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Tencent,Win32.Trojan-QQPass.QQRob.Vmhl,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Emsisoft,Generic.PyCStealer.A.3BC53D22 (B),NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,DrWeb,Python.Stealer.1387,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,VIPRE,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Ikarus,Trojan-Spy.Python.CStealer,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Google,Detected,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Arcabit,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,ZoneAlarm,HEUR:Trojan-PSW.Python.Disco.gen,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,GData,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,Varist,PY/Stealer.E,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,ALYac,Generic.PyCStealer.A.3BC53D22,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,MAX,malware (ai score=84),NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,huorong,Ransom/LockFile.fl,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,AVG,Other:Malware-gen [Trj],NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
+can-kat/cstealer,alibabacloud,Trojan:Python/CStealer.C#8PHU,NzU2YjQ1YmQ3Y2Q1YzE3MTg1YjY4NmQ1OGQzNWQ0MTk6MTcyMzk2NjYwOQ==,https://www.virustotal.com/gui/file/41ced465d9fbd4738ecbaf5546a478fa7b6313e502697228769633512216b4ed
