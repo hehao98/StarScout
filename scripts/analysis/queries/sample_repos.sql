@@ -18,9 +18,9 @@ WITH
     @sample_size)
 SELECT
   type,
+  created_at,
   repo.name as repo_name,
   actor.login as actor,
-  created_at
 FROM
   `githubarchive.day.20*`
 WHERE

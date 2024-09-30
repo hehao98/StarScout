@@ -1,8 +1,11 @@
 # Wrappers of Google Cloud Platform APIs
 
 import io
+import gzip
+import json
 import logging
 
+from typing import Iterable, Any
 from pprint import pformat
 from google.cloud import storage
 from google.cloud import bigquery
@@ -38,6 +41,14 @@ def download_gcp_blob_to_stream(
     file_obj.seek(0)
     logging.info("Downloaded %s to file-like object", path)
     return file_obj
+
+
+def read_gzipped_json_from_blob(blob: storage.Blob) -> Iterable[Any]:
+    with blob.open("rb") as f:
+        with gzip.GzipFile(fileobj=f, mode="rb") as gz:
+            for line in gz:
+                json_line = json.loads(line.decode("utf-8"))
+                yield json_line
 
 
 def check_bigquery_table_exists(
@@ -95,3 +106,25 @@ def process_bigquery(
             logging.info("Results written to destination %s", job_config.destination)
     else:
         logging.info("Aborting")
+
+
+def dump_bigquery_table(
+    project_id: str, dataset_id: str, table_id: str, gcp_bucket: str
+) -> list[storage.Blob]:
+    client = bigquery.Client()
+    dataset_ref = client.dataset(dataset_id, project=project_id)
+    table_ref = dataset_ref.table(table_id)
+    destination_uri = f"gs://{gcp_bucket}/{table_id}/*.json.gz"
+
+    job = client.extract_table(
+        table_ref,
+        destination_uris=destination_uri,
+        job_config=bigquery.ExtractJobConfig(
+            compression="GZIP", destination_format="NEWLINE_DELIMITED_JSON"
+        ),
+    )
+    job.result()
+
+    logging.info("Table %s dumped to %s", table_id, destination_uri)
+    client.close()
+    return list_gcp_blobs(gcp_bucket, table_id)
