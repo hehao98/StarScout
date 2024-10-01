@@ -17,7 +17,6 @@ from scripts.gcp import (
     process_bigquery,
     check_bigquery_table_exists,
     dump_bigquery_table,
-    read_gzipped_json_from_blob,
     load_gzipped_json_blob_to_mongodb
 )
 

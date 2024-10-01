@@ -1,4 +1,5 @@
 import io
+import os
 import sys
 import json
 import logging
@@ -30,7 +31,7 @@ def get_repos_with_low_activity_stars():
 
     # This task can be very expensive, require user confirmation
     bigquery_task = {
-        "interactive": True,
+        "interactive": False,
         "query_file": "scripts/dagster/queries/stg_all_repos_with_low_activity_stars.sql",
         "output_table_id": "repos_with_low_activity_stars",
         "params": [
@@ -62,7 +63,7 @@ def get_low_activity_stars_users():
 
     # This task can be very expensive, require user confirmation
     bigquery_task = {
-        "interactive": True,
+        "interactive": False,
         "query_file": "scripts/dagster/queries/stg_low_activity_stargazers.sql",
         "output_table_id": "low_activity_stars",
         "params": [
@@ -76,7 +77,7 @@ def get_low_activity_stars_users():
     dataset_ref = bigquery.DatasetReference(PROJECT_ID, DATASET_ID)
     extract_job = client.extract_table(
         source=dataset_ref.table(f"low_activity_stars"),
-        destination_uris=f"gs://{GCP_BUCKET}/low_activity_stars*.json",
+        destination_uris=f"gs://{GCP_BUCKET}/low_activity_stars/*.json",
         job_config=ExtractJobConfig(
             destination_format=(bigquery.DestinationFormat.NEWLINE_DELIMITED_JSON)
         ),
@@ -105,7 +106,7 @@ def dump_repos_with_low_activity_stars():
     repos.sort_values(by="p_stars_low_activity", ascending=False, inplace=True)
     repos.drop(columns=["low_activity_actors"], inplace=True)
 
-    repos.to_csv(f"data/fake_stars_low_activity_repos.csv", index=False)
+    repos.to_csv(f"data/{END_DATE}/fake_stars_low_activity_repos.csv", index=False)
 
 
 def dump_low_activity_stars_users():
@@ -115,9 +116,7 @@ def dump_low_activity_stars_users():
     db.low_activity_stars.create_index(["repo", "actor", "starred_at"], unique=True)
 
     existing = set()
-    for blob in list_gcp_blobs(GCP_BUCKET, ""):
-        if "low_activity_stars0000" not in blob.name:
-            continue
+    for blob in list_gcp_blobs(GCP_BUCKET, "low_activity_stars"):
         stars = []
         stream = download_gcp_blob_to_stream(GCP_BUCKET, blob.name, io.BytesIO())
         for line in stream.readlines():
@@ -141,6 +140,8 @@ def main():
         level=logging.INFO,
         handlers=[logging.StreamHandler(sys.stdout)],
     )
+
+    os.makedirs(f"data/{END_DATE}", exist_ok=True)
 
     get_repos_with_low_activity_stars()
 

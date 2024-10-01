@@ -6,10 +6,10 @@ logs/
 __pycache__
 data/copycatch_test/stargazers_real.csv
 data/copycatch_test/stargazers_fake.csv
-data/fake_stars.actors.json.zip
-data/fake_stars.low_activity_stars.json.zip
-data/fake_stars.clustered_stars.json.zip
-data/fake_stars_users.csv
+data/*/fake_stars.actors.json.zip
+data/*/fake_stars.low_activity_stars.json.zip
+data/*/fake_stars.clustered_stars.json.zip
+data/*/fake_stars_users.csv
 data/pypi_github.csv
 data/npm_downloads.csv
 data/readmes/*.md
