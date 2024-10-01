@@ -4,6 +4,7 @@ import io
 import gzip
 import json
 import logging
+import pymongo
 
 from typing import Iterable, Any
 from pprint import pformat
@@ -128,3 +129,24 @@ def dump_bigquery_table(
     logging.info("Table %s dumped to %s", table_id, destination_uri)
     client.close()
     return list_gcp_blobs(gcp_bucket, table_id)
+
+
+def load_gzipped_json_blob_to_mongodb(
+    blob: storage.Blob,
+    mongo_url: str,
+    database: str,
+    collection: str,
+    chunk_size: int = 10000,
+):
+    with pymongo.MongoClient(mongo_url) as client:
+        collection = client[database][collection]
+        doc_cache, total = [], 0
+        for doc in read_gzipped_json_from_blob(blob):
+            doc_cache.append(doc)
+            if len(doc_cache) >= chunk_size:
+                collection.insert_many(doc_cache)
+                doc_cache, total = [], total + chunk_size
+        collection.insert_many(doc_cache)
+        total = total + len(doc_cache)
+    logging.info("%d lines written to %s/%s.%s", total, mongo_url, database, collection)
+    return

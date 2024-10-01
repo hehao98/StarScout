@@ -18,6 +18,7 @@ from scripts.gcp import (
     check_bigquery_table_exists,
     dump_bigquery_table,
     read_gzipped_json_from_blob,
+    load_gzipped_json_blob_to_mongodb
 )
 
 
@@ -46,20 +47,10 @@ def sample_repos():
 
     files = dump_bigquery_table(PROJECT_ID, DATASET_ID, "sample_repos", GCP_BUCKET)
 
-    client = pymongo.MongoClient(MONGO_URL)
-    client.fake_stars.sample_repos.drop()
-    client.fake_stars.sample_repos.create_index("repo_name")
-    doc_cache = []
-    for file in files:
-        for doc in read_gzipped_json_from_blob(file):
-            doc_cache.append(doc)
-            if len(doc_cache) >= 10000:
-                logging.info("Inserting %d documents", len(doc_cache))
-                client.fake_stars.sample_repos.insert_many(doc_cache)
-                doc_cache = []
-    logging.info("Inserting %d documents", len(doc_cache))
-    client.fake_stars.sample_repos.insert_many(doc_cache)
-    client.close()
+    with pymongo.MongoClient(MONGO_URL) as client:
+        client.fake_stars.sample_repos.drop()
+        client.fake_stars.sample_repos.create_index("repo_name")
+    load_gzipped_json_blob_to_mongodb(files, MONGO_URL, "fake_stars", "sample_repos")
     return
 
 
@@ -82,20 +73,10 @@ def sample_users():
 
     blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "sample_users", GCP_BUCKET)
 
-    client = pymongo.MongoClient(MONGO_URL)
-    client.fake_stars.sample_actors.drop()
-    client.fake_stars.sample_actors.create_index("actor")
-    doc_cache = []
-    for blob in blobs:
-        for doc in read_gzipped_json_from_blob(blob):
-            doc_cache.append(doc)
-            if len(doc_cache) >= 10000:
-                logging.info("Inserting %d documents", len(doc_cache))
-                client.fake_stars.sample_actors.insert_many(doc_cache)
-                doc_cache = []
-    logging.info("Inserting %d documents", len(doc_cache))
-    client.fake_stars.sample_actors.insert_many(doc_cache)
-    client.close()
+    with pymongo.MongoClient(MONGO_URL) as client:
+        client.fake_stars.sample_actors.drop()
+        client.fake_stars.sample_actors.create_index("actor")
+    load_gzipped_json_blob_to_mongodb(blobs, MONGO_URL, "fake_stars", "sample_actors")
     return
 
 
