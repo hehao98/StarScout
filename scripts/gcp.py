@@ -139,14 +139,14 @@ def load_gzipped_json_blob_to_mongodb(
     chunk_size: int = 10000,
 ):
     with pymongo.MongoClient(mongo_url) as client:
-        collection = client[database][collection]
+        collection_ = client[database][collection]
         doc_cache, total = [], 0
         for doc in read_gzipped_json_from_blob(blob):
             doc_cache.append(doc)
             if len(doc_cache) >= chunk_size:
-                collection.insert_many(doc_cache)
+                collection_.insert_many(doc_cache)
                 doc_cache, total = [], total + chunk_size
-        collection.insert_many(doc_cache)
+        collection_.insert_many(doc_cache)
         total = total + len(doc_cache)
     logging.info("%d lines written to %s/%s.%s", total, mongo_url, database, collection)
     return
