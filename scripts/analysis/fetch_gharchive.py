@@ -2,6 +2,7 @@ import sys
 import random
 import logging
 import pymongo
+import pandas as pd
 
 from google.cloud import bigquery
 
@@ -92,7 +93,7 @@ def stg_all_events_from_fake_star_repos():
         fake_star_repos = list(get_fake_star_repos_all().repo_name)
         logging.info("Number of fake star repos: %d", len(fake_star_repos))
         bigquery_task = {
-            "interactive": True,
+            "interactive": False,
             "query_file": "scripts/analysis/queries/stg_all_events_repos.sql",
             "output_table_id": "all_events_repos",
             "params": [
@@ -143,7 +144,7 @@ def stg_all_events_from_fake_star_actors():
         fake_star_actors += motivating_example_actors
 
         bigquery_task = {
-            "interactive": True,
+            "interactive": False,
             "query_file": "scripts/analysis/queries/stg_all_events_actors.sql",
             "output_table_id": "all_events_actors",
             "params": [
@@ -167,6 +168,106 @@ def stg_all_events_from_fake_star_actors():
     return
 
 
+def aggregate_sample_csvs():
+    with pymongo.MongoClient(MONGO_URL) as client:
+        results = (
+            pd.DataFrame(
+                list(
+                    map(
+                        lambda x: {
+                            "repo": x["_id"]["repo_name"],
+                            "month": x["_id"]["month"],
+                            "n_stars": x["n_stars"],
+                        },
+                        client.fake_stars.sample_repos.aggregate(
+                            [
+                                {"$match": {"type": "WatchEvent"}},
+                                {
+                                    "$group": {
+                                        "_id": {
+                                            "repo_name": "$repo_name",
+                                            "month": {"$substr": ["$created_at", 0, 7]},
+                                        },
+                                        "n_stars": {"$sum": 1},
+                                    }
+                                },
+                            ]
+                        ),
+                    )
+                )
+            )
+            .sort_values(by=["repo", "month"])
+            .reset_index(drop=True)
+        )
+    results.to_csv(f"data/{END_DATE}/sample_repo_stars_by_month.csv", index=False)
+
+    with pymongo.MongoClient(MONGO_URL) as client:
+        results = (
+            pd.DataFrame(
+                list(
+                    map(
+                        lambda x: {
+                            "repo": x["_id"]["repo_name"],
+                            "type": x["_id"]["type"],
+                            "count": x["count"],
+                        },
+                        client.fake_stars.sample_repos.aggregate(
+                            [
+                                {
+                                    "$group": {
+                                        "_id": {
+                                            "repo_name": "$repo_name",
+                                            "type": "$type",
+                                        },
+                                        "count": {"$sum": 1},
+                                    }
+                                },
+                            ]
+                        ),
+                    )
+                )
+            )
+            .pivot(index="repo", columns="type", values="count")
+            .fillna(0)
+            .sort_values(by="repo")
+            .reset_index()
+        )
+    results.to_csv(f"data/{END_DATE}/sample_repo_events.csv", index=False)
+
+    with pymongo.MongoClient(MONGO_URL) as client:
+        results = (
+            pd.DataFrame(
+                list(
+                    map(
+                        lambda x: {
+                            "actor": x["_id"]["actor"],
+                            "type": x["_id"]["type"],
+                            "count": x["count"],
+                        },
+                        client.fake_stars.sample_actors.aggregate(
+                            [
+                                {
+                                    "$group": {
+                                        "_id": {
+                                            "actor": "$actor",
+                                            "type": "$type",
+                                        },
+                                        "count": {"$sum": 1},
+                                    }
+                                },
+                            ]
+                        ),
+                    )
+                )
+            )
+            .pivot(index="actor", columns="type", values="count")
+            .fillna(0)
+            .sort_values(by="actor")
+            .reset_index()
+        )
+    results.to_csv(f"data/{END_DATE}/sample_actor_events.csv", index=False)
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -176,8 +277,11 @@ def main():
 
     sample_repos()
     sample_users()
+
     stg_all_events_from_fake_star_repos()
     stg_all_events_from_fake_star_actors()
+
+    aggregate_sample_csvs()
 
     logging.info("Finish!")
 
