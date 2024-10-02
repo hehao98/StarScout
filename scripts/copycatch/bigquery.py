@@ -13,6 +13,7 @@ from google.cloud import bigquery
 from google.cloud.bigquery.job import ExtractJobConfig
 
 from scripts import (
+    END_DATE,
     MONGO_URL,
     MIN_STARS_COPYCATCH_SEED,
     COPYCATCH_NUM_ITERATIONS,
@@ -337,7 +338,7 @@ def summarize_mongodb():
     results["p_stars_clustered"] = results["n_stars_clustered"] / results["n_stars"]
 
     results.sort_values(by="p_stars_clustered", ascending=False, inplace=True)
-    results.to_csv("data/fake_stars_clustered_repos.csv", index=False)
+    results.to_csv(f"data/{END_DATE}/fake_stars_clustered_repos.csv", index=False)
 
 
 def main():
