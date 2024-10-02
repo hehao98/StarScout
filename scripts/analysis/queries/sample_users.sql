@@ -1,7 +1,7 @@
 SELECT
   type,
   created_at,
-  repo.name as repo_name,
+  repo.name as repo,
   actor.login as actor,
 FROM
   `githubarchive.day.20*`
@@ -11,7 +11,7 @@ WHERE
   SELECT
     DISTINCT actor
   FROM
-    fake-star-detection.data.sample_repos
+    fake-star-detection.data.sample_repo_events
   ORDER BY
     RAND()
   LIMIT

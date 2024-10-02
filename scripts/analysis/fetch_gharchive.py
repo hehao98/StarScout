@@ -27,14 +27,14 @@ from scripts.analysis.data import get_fake_star_repos_all
 SAMPLE_SIZE = 10000
 
 
-def sample_repos():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_repos"):
-        logging.info("sample_repos already exists, skipping table creation")
+def sample_repo_events():
+    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_repo_events"):
+        logging.info("sample_repo_events already exists, skipping table creation")
     else:
         bigquery_task = {
-            "interactive": True,
+            "interactive": False,
             "query_file": "scripts/analysis/queries/sample_repos.sql",
-            "output_table_id": "sample_repos",
+            "output_table_id": "sample_repo_events",
             "params": [
                 bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
                 bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
@@ -45,26 +45,30 @@ def sample_repos():
             ],
         }
         process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table sample_repos created")
+        logging.info("table sample_repo_events created")
 
-    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "sample_repos", GCP_BUCKET)
+    blobs = dump_bigquery_table(
+        PROJECT_ID, DATASET_ID, "sample_repo_events", GCP_BUCKET
+    )
 
     with pymongo.MongoClient(MONGO_URL) as client:
-        client.fake_stars.sample_repos.drop()
-        client.fake_stars.sample_repos.create_index("repo_name")
+        client.fake_stars.sample_repo_events.drop()
+        client.fake_stars.sample_repo_events.create_index("repo")
     for blob in blobs:
-        load_gzipped_json_blob_to_mongodb(blob, MONGO_URL, "fake_stars", "sample_repos")
+        load_gzipped_json_blob_to_mongodb(
+            blob, MONGO_URL, "fake_stars", "sample_repo_events"
+        )
     return
 
 
-def sample_users():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_users"):
-        logging.info("sample_users already exists, skipping table creation")
+def sample_user_events():
+    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_actor_events"):
+        logging.info("sample_actor_events already exists, skipping table creation")
     else:
         bigquery_task = {
-            "interactive": True,
+            "interactive": False,
             "query_file": "scripts/analysis/queries/sample_users.sql",
-            "output_table_id": "sample_users",
+            "output_table_id": "sample_actor_events",
             "params": [
                 bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
                 bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
@@ -72,30 +76,32 @@ def sample_users():
             ],
         }
         process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table sample_users created")
+        logging.info("table sample_actor_events created")
 
-    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "sample_users", GCP_BUCKET)
+    blobs = dump_bigquery_table(
+        PROJECT_ID, DATASET_ID, "sample_actor_events", GCP_BUCKET
+    )
 
     with pymongo.MongoClient(MONGO_URL) as client:
-        client.fake_stars.sample_actors.drop()
-        client.fake_stars.sample_actors.create_index("actor")
+        client.fake_stars.sample_actor_events.drop()
+        client.fake_stars.sample_actor_events.create_index("actor")
     for blob in blobs:
         load_gzipped_json_blob_to_mongodb(
-            blob, MONGO_URL, "fake_stars", "sample_actors"
+            blob, MONGO_URL, "fake_stars", "sample_actor_events"
         )
     return
 
 
 def stg_all_events_from_fake_star_repos():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "all_events_repos"):
-        logging.info("all_events_repos already exists, skipping table creation")
+    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_repo_events"):
+        logging.info("fake_repo_events already exists, skipping table creation")
     else:
         fake_star_repos = list(get_fake_star_repos_all().repo_name)
         logging.info("Number of fake star repos: %d", len(fake_star_repos))
         bigquery_task = {
             "interactive": False,
             "query_file": "scripts/analysis/queries/stg_all_events_repos.sql",
-            "output_table_id": "all_events_repos",
+            "output_table_id": "fake_repo_events",
             "params": [
                 bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
                 bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
@@ -103,23 +109,23 @@ def stg_all_events_from_fake_star_repos():
             ],
         }
         process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table all_events_repos created")
+        logging.info("table fake_repo_events created")
 
-    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "all_events_repos", GCP_BUCKET)
+    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "fake_repo_events", GCP_BUCKET)
 
     with pymongo.MongoClient(MONGO_URL) as client:
-        client.fake_stars.all_events_repos.drop()
-        client.fake_stars.all_events_repos.create_index("repo_name")
+        client.fake_stars.fake_repo_events.drop()
+        client.fake_stars.fake_repo_events.create_index("repo")
     for blob in blobs:
         load_gzipped_json_blob_to_mongodb(
-            blob, MONGO_URL, "fake_stars", "all_events_repos"
+            blob, MONGO_URL, "fake_stars", "fake_repo_events"
         )
     return
 
 
 def stg_all_events_from_fake_star_actors():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "all_events_actors"):
-        logging.info("all_events_actors already exists, skipping table creation")
+    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_actor_events"):
+        logging.info("fake_actor_events already exists, skipping table creation")
     else:
         with pymongo.MongoClient(MONGO_URL) as client:
             fake_star_actors = list(
@@ -146,7 +152,7 @@ def stg_all_events_from_fake_star_actors():
         bigquery_task = {
             "interactive": False,
             "query_file": "scripts/analysis/queries/stg_all_events_actors.sql",
-            "output_table_id": "all_events_actors",
+            "output_table_id": "fake_actor_events",
             "params": [
                 bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
                 bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
@@ -154,38 +160,38 @@ def stg_all_events_from_fake_star_actors():
             ],
         }
         process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table all_events_actors created")
+        logging.info("table fake_actor_events created")
 
-    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "all_events_actors", GCP_BUCKET)
+    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "fake_actor_events", GCP_BUCKET)
 
     with pymongo.MongoClient(MONGO_URL) as client:
-        client.fake_stars.all_events_actors.drop()
-        client.fake_stars.all_events_actors.create_index("actor")
+        client.fake_stars.fake_actor_events.drop()
+        client.fake_stars.fake_actor_events.create_index("actor")
     for blob in blobs:
         load_gzipped_json_blob_to_mongodb(
-            blob, MONGO_URL, "fake_stars", "all_events_actors"
+            blob, MONGO_URL, "fake_stars", "fake_actor_events"
         )
     return
 
 
-def aggregate_sample_csvs():
+def aggregate_csvs():
     with pymongo.MongoClient(MONGO_URL) as client:
         results = (
             pd.DataFrame(
                 list(
                     map(
                         lambda x: {
-                            "repo": x["_id"]["repo_name"],
+                            "repo": x["_id"]["repo"],
                             "month": x["_id"]["month"],
                             "n_stars": x["n_stars"],
                         },
-                        client.fake_stars.sample_repos.aggregate(
+                        client.fake_stars.sample_repo_events.aggregate(
                             [
                                 {"$match": {"type": "WatchEvent"}},
                                 {
                                     "$group": {
                                         "_id": {
-                                            "repo_name": "$repo_name",
+                                            "repo": "$repo",
                                             "month": {"$substr": ["$created_at", 0, 7]},
                                         },
                                         "n_stars": {"$sum": 1},
@@ -201,71 +207,45 @@ def aggregate_sample_csvs():
         )
     results.to_csv(f"data/{END_DATE}/sample_repo_stars_by_month.csv", index=False)
 
-    with pymongo.MongoClient(MONGO_URL) as client:
-        results = (
-            pd.DataFrame(
-                list(
-                    map(
-                        lambda x: {
-                            "repo": x["_id"]["repo_name"],
-                            "type": x["_id"]["type"],
-                            "count": x["count"],
-                        },
-                        client.fake_stars.sample_repos.aggregate(
-                            [
-                                {
-                                    "$group": {
-                                        "_id": {
-                                            "repo_name": "$repo_name",
-                                            "type": "$type",
-                                        },
-                                        "count": {"$sum": 1},
-                                    }
-                                },
-                            ]
-                        ),
+    collections_and_pivots = [
+        ("sample_repo_events", "repo"),
+        ("sample_actor_events", "actor"),
+        ("fake_repo_events", "repo"),
+        ("fake_actor_events", "repo"),
+    ]
+    for collection, pivot in collections_and_pivots:
+        with pymongo.MongoClient(MONGO_URL) as client:
+            results = (
+                pd.DataFrame(
+                    list(
+                        map(
+                            lambda x: {
+                                pivot: x["_id"][pivot],
+                                "type": x["_id"]["type"],
+                                "count": x["count"],
+                            },
+                            client.fake_stars[collection].aggregate(
+                                [
+                                    {
+                                        "$group": {
+                                            "_id": {
+                                                "pivot": f"${pivot}",
+                                                "type": "$type",
+                                            },
+                                            "count": {"$sum": 1},
+                                        }
+                                    },
+                                ]
+                            ),
+                        )
                     )
                 )
+                .pivot(index=pivot, columns="type", values="count")
+                .fillna(0)
+                .sort_values(by=collection)
+                .reset_index()
             )
-            .pivot(index="repo", columns="type", values="count")
-            .fillna(0)
-            .sort_values(by="repo")
-            .reset_index()
-        )
-    results.to_csv(f"data/{END_DATE}/sample_repo_events.csv", index=False)
-
-    with pymongo.MongoClient(MONGO_URL) as client:
-        results = (
-            pd.DataFrame(
-                list(
-                    map(
-                        lambda x: {
-                            "actor": x["_id"]["actor"],
-                            "type": x["_id"]["type"],
-                            "count": x["count"],
-                        },
-                        client.fake_stars.sample_actors.aggregate(
-                            [
-                                {
-                                    "$group": {
-                                        "_id": {
-                                            "actor": "$actor",
-                                            "type": "$type",
-                                        },
-                                        "count": {"$sum": 1},
-                                    }
-                                },
-                            ]
-                        ),
-                    )
-                )
-            )
-            .pivot(index="actor", columns="type", values="count")
-            .fillna(0)
-            .sort_values(by="actor")
-            .reset_index()
-        )
-    results.to_csv(f"data/{END_DATE}/sample_actor_events.csv", index=False)
+        results.to_csv(f"data/{END_DATE}/{collection}.csv", index=False)
 
 
 def main():
@@ -275,13 +255,13 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    sample_repos()
-    sample_users()
+    sample_repo_events()
+    sample_user_events()
 
     stg_all_events_from_fake_star_repos()
     stg_all_events_from_fake_star_actors()
 
-    aggregate_sample_csvs()
+    aggregate_csvs()
 
     logging.info("Finish!")
 

@@ -1,7 +1,7 @@
 SELECT
   type,
   created_at,
-  repo.name as repo_name,
+  repo.name as repo,
   actor.login as actor,
 FROM
   `githubarchive.day.20*`
