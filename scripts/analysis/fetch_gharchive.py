@@ -211,7 +211,7 @@ def aggregate_csvs():
         ("sample_repo_events", "repo"),
         ("sample_actor_events", "actor"),
         ("fake_repo_events", "repo"),
-        ("fake_actor_events", "repo"),
+        ("fake_actor_events", "actor"),
     ]
     for collection, pivot in collections_and_pivots:
         with pymongo.MongoClient(MONGO_URL) as client:
@@ -229,7 +229,7 @@ def aggregate_csvs():
                                     {
                                         "$group": {
                                             "_id": {
-                                                "pivot": f"${pivot}",
+                                                pivot: f"${pivot}",
                                                 "type": "$type",
                                             },
                                             "count": {"$sum": 1},
@@ -242,7 +242,7 @@ def aggregate_csvs():
                 )
                 .pivot(index=pivot, columns="type", values="count")
                 .fillna(0)
-                .sort_values(by=collection)
+                .sort_values(by=pivot)
                 .reset_index()
             )
         results.to_csv(f"data/{END_DATE}/{collection}.csv", index=False)

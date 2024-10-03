@@ -91,6 +91,7 @@ def get_stars_by_month_all() -> pd.DataFrame:
     stars["n_stars_other"] = (
         stars["n_stars"] - stars["n_stars_low_activity"] - stars["n_stars_clustered"]
     )
+    stars["n_stars_fake"] = stars["n_stars_low_activity"] + stars["n_stars_clustered"]
     stars.drop(columns=["n_stars_x", "n_stars_y"], inplace=True)
     stars.sort_values(["repo", "month"], inplace=True)
     return stars
