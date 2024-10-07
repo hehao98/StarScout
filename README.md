@@ -1,6 +1,6 @@
 # StarScout
 
-Find suspicious (and possibly faked) GitHub stars at-scale.
+Find suspicious (and possibly faked) GitHub stars at-scale
 
 ## Setup
 
@@ -32,9 +32,9 @@ The scripts works with Python 3.12 and has only been tested on Ubuntu 22.04.
 
     If you only want to run fake star detector, you only need to setup the MongoDB URL and Google Cloud related fields (remember to configure Google Cloud [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs)). The remaining configurations are for experimental and research scripts.
 
-## Running the Fake Star Detector
+## Running the Detector
 
-The fake star detector employs two heuristics: a low-activity heuristic and a clustering heuristic. Their parameters are defined in [scripts/__init__.py](scripts/__init__.py). Notably, you may wnat to change the `END_DATE` and `COPYCATCH_DATE_CHUNKS` to include latest data. The CopyCatch algorithm for the clustering heuristic works on half-year chunks as specified in `COPYCATCH_DATE_CHUNKS` and a new chunk should be manually added on a quarterly basis (e.g., add `("240401", "241001")` after Oct 2024).
+The detector employs two heuristics: a low-activity heuristic and a clustering heuristic. Their parameters are defined in [scripts/__init__.py](scripts/__init__.py). Notably, you may wnat to change the `END_DATE` and `COPYCATCH_DATE_CHUNKS` to include latest data. The CopyCatch algorithm for the clustering heuristic works on half-year chunks as specified in `COPYCATCH_DATE_CHUNKS` and a new chunk should be manually added on a quarterly basis (e.g., add `("240401", "241001")` after Oct 2024).
 
 To run the low-acivity heuristic, use:
 
