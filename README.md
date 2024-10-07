@@ -51,13 +51,9 @@ python -m scripts.copycatch.bigquery --run
 Allow it a week to finish all iterations and expect it to read >= 40TB of data. You can use `nohup` to put it as a background process. After a week, you can run the following two commands to collect the results into MongoDB and local CSV files:
 
 ```shell
-# write BigQuery Tables to Google Cloud Storage
+# Write BigQuery Tables to Google Cloud Storage
+# Then, export from Google Cloud Storage to MongoDB and local CSV files
 python -m scripts.copycatch.bigquery --export
-```
-
-```shell
-# Export from Google Cloud Storage to MongoDB and local CSV files
-python -m scripts.copycatch.bigquery --summarize 
 ```
 
 The first script should be relatively fast but the second script can take several days. After they finish, you should be able to see updated CSV files in the `data/` folder.

@@ -370,7 +370,7 @@ def main():
             pool.starmap(export_stargazer_graphs, COPYCATCH_DATE_CHUNKS)
             pool.starmap(agg_results, COPYCATCH_DATE_CHUNKS)
             pool.starmap(export_copycatch_results, COPYCATCH_DATE_CHUNKS)
-    if args.summarize:
+            
         repo_to_fakes = defaultdict(set)
         for start_date, end_date in COPYCATCH_DATE_CHUNKS:
             repo_to_fakes = summarize_results(start_date, end_date)
