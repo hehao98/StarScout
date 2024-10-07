@@ -1,4 +1,6 @@
-# Fake-Star-Detector
+# StarScout
+
+Find suspicious (and possibly faked) GitHub stars at-scale.
 
 ## Setup
 
