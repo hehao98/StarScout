@@ -1,14 +1,16 @@
+import os
 import sys
 import pymongo
 import logging
 import itertools
+import pandas as pd
 import multiprocessing as mp
 
-from scripts import MONGO_URL
+from scripts import END_DATE, MONGO_URL
 from scripts.github import get_user_info
 
 
-def get_fake_star_users() -> tuple[set[str], set[str]]:
+def get_user_sets() -> tuple[set[str], set[str]]:
     client = pymongo.MongoClient(MONGO_URL)
     collection = client.fake_stars.low_activity_stars
     users_low_activity = list(
@@ -70,6 +72,30 @@ def fetch_user_info(users: list[str]):
     client.close()
 
 
+def get_fake_star_users() -> pd.DataFrame:
+    client = pymongo.MongoClient(MONGO_URL)
+
+    users_low_activity, users_clustered = get_user_sets()
+
+    results = []
+    for doc in client.fake_stars.actors.find():
+        results.append(
+            {
+                "actor": doc["actor"],
+                "n_repos_starred": set(x["repo"] for x in doc["stars"]),
+                "low_activity": doc["actor"] in users_low_activity,
+                "clustered": doc["actor"] in users_clustered,
+                "deleted": doc["error"],
+                "first_active": doc["stars"][0]["starred_at"],
+                "last_active": doc["stars"][-1]["starred_at"],
+            }
+        )
+
+    results = pd.DataFrame(results)
+    results.to_csv(f"data/{END_DATE}/fake_stars_users.csv", index=False)
+    return results
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -88,6 +114,8 @@ def main():
 
     with mp.Pool(8) as pool:
         pool.map(fetch_user_info, itertools.batched(users, 100))
+
+    get_fake_star_users()
 
     logging.info("Done!")
 

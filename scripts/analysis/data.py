@@ -1,4 +1,6 @@
 import os
+import sys
+import logging
 import pymongo
 import psycopg
 import pandas as pd
@@ -7,15 +9,25 @@ from typing import Optional
 from collections import defaultdict
 from psycopg.rows import dict_row
 from psycopg.types.composite import CompositeInfo, register_composite
+from google.cloud import bigquery
 
-from scripts import MONGO_URL, NPM_FOLLOWER_POSTGRES
+from scripts import (
+    MONGO_URL,
+    NPM_FOLLOWER_POSTGRES,
+    BIGQUERY_PROJECT as PROJECT_ID,
+    BIGQUERY_DATASET as DATASET_ID,
+)
+from scripts.gcp import process_bigquery
 from scripts.analysis.get_stargazer_info import get_fake_star_users as get_user_sets
 
 
-def get_stars_by_month(fake_type: str) -> pd.DataFrame:
-    assert fake_type in ["low_activity", "clustered"]
+END_DATES = ["240701", "241001"]
 
-    output_path = f"data/fake_stars_{fake_type}_stars_by_month.csv"
+
+def get_stars_by_month(end_date: str, fake_type: str) -> pd.DataFrame:
+    assert end_date in END_DATES and fake_type in ["low_activity", "clustered"]
+
+    output_path = f"data/{end_date}/fake_stars_{fake_type}_stars_by_month.csv"
     if os.path.exists(output_path):
         return pd.read_csv(output_path)
 
@@ -50,51 +62,68 @@ def get_stars_by_month(fake_type: str) -> pd.DataFrame:
 
 
 def get_fake_star_repos_all() -> pd.DataFrame:
-    low_activity = pd.read_csv("data/fake_stars_low_activity_repos.csv")
-    clustered = pd.read_csv("data/fake_stars_clustered_repos.csv")
+    all_repos = pd.DataFrame()
+    for end_date in END_DATES:
+        low_activity = pd.read_csv(f"data/{end_date}/fake_stars_low_activity_repos.csv")
+        clustered = pd.read_csv(f"data/{end_date}/fake_stars_clustered_repos.csv")
 
-    repos = pd.merge(low_activity, clustered, on=["repo_id", "repo_name"], how="outer")
+        repos = pd.merge(low_activity, clustered, on=["repo_id", "repo_name"], how="outer")
 
-    repos.insert(2, "n_stars", repos.n_stars_x.fillna(0) + repos.n_stars_y.fillna(0))
-
-    repos.insert(
-        3,
-        "n_stars_latest",
-        repos.n_stars_latest_x.fillna(0) + repos.n_stars_latest_y.fillna(0),
-    )
-
-    repos["n_stars_low_activity"] = repos.n_stars_low_activity.fillna(0)
-    repos["n_stars_clustered"] = repos.n_stars_clustered.fillna(0)
-    repos["p_stars_low_activity"] = repos.n_stars_low_activity / repos.n_stars
-    repos["p_stars_clustered"] = repos.n_stars_clustered / repos.n_stars
-    repos["p_stars_fake"] = repos.p_stars_low_activity + repos.p_stars_clustered
-
-    repos.drop(
-        columns=["n_stars_x", "n_stars_y", "n_stars_latest_x", "n_stars_latest_y"],
-        inplace=True,
-    )
-
-    repos.sort_values("p_stars_fake", ascending=False, inplace=True)
-
-    repos.reset_index(drop=True, inplace=True)
-
-    return repos
+        repos.insert(
+            2, "n_stars", repos.n_stars_x.fillna(0) + repos.n_stars_y.fillna(0)
+        )
+        repos.insert(
+            3,
+            "n_stars_latest",
+            repos.n_stars_latest_x.fillna(0) + repos.n_stars_latest_y.fillna(0),
+        )
+        repos["n_stars_low_activity"] = repos.n_stars_low_activity.fillna(0)
+        repos["n_stars_clustered"] = repos.n_stars_clustered.fillna(0)
+        repos["p_stars_low_activity"] = repos.n_stars_low_activity / repos.n_stars
+        repos["p_stars_clustered"] = repos.n_stars_clustered / repos.n_stars
+        repos["p_stars_fake"] = repos.p_stars_low_activity + repos.p_stars_clustered
+        repos.drop(
+            columns=[
+                "n_stars_x",
+                "n_stars_y",
+                "n_stars_latest_x",
+                "n_stars_latest_y",
+            ],
+            inplace=True,
+        )
+        all_repos = pd.concat([all_repos, repos], ignore_index=True)
+    all_repos.drop_duplicates(subset=["repo_name"], keep="last", inplace=True)
+    all_repos.sort_values("p_stars_fake", ascending=False, inplace=True)
+    all_repos.reset_index(drop=True, inplace=True)
+    return all_repos
 
 
 def get_stars_by_month_all() -> pd.DataFrame:
-    low_activity = get_stars_by_month("low_activity")
-    clustered = get_stars_by_month("clustered")
-    stars = pd.merge(low_activity, clustered, on=["repo", "month"], how="outer")
-    stars.insert(2, "n_stars", stars.n_stars_x.fillna(0) + stars.n_stars_y.fillna(0))
-    stars["n_stars_low_activity"] = stars.n_stars_low_activity.fillna(0)
-    stars["n_stars_clustered"] = stars.n_stars_clustered.fillna(0)
-    stars["n_stars_other"] = (
-        stars["n_stars"] - stars["n_stars_low_activity"] - stars["n_stars_clustered"]
-    )
-    stars["n_stars_fake"] = stars["n_stars_low_activity"] + stars["n_stars_clustered"]
-    stars.drop(columns=["n_stars_x", "n_stars_y"], inplace=True)
-    stars.sort_values(["repo", "month"], inplace=True)
-    return stars
+    all_stars = pd.DataFrame()
+    for end_date in END_DATES:
+        low_activity = get_stars_by_month(end_date, "low_activity")
+        clustered = get_stars_by_month(end_date, "clustered")
+        stars = pd.merge(low_activity, clustered, on=["repo", "month"], how="outer")
+        stars.insert(
+            2, "n_stars", stars.n_stars_x.fillna(0) + stars.n_stars_y.fillna(0)
+        )
+        stars["n_stars_low_activity"] = stars.n_stars_low_activity.fillna(0)
+        stars["n_stars_clustered"] = stars.n_stars_clustered.fillna(0)
+        stars["n_stars_other"] = (
+            stars["n_stars"]
+            - stars["n_stars_low_activity"]
+            - stars["n_stars_clustered"]
+        )
+        stars["n_stars_fake"] = (
+            stars["n_stars_low_activity"] + stars["n_stars_clustered"]
+        )
+        stars.drop(columns=["n_stars_x", "n_stars_y"], inplace=True)
+        stars.sort_values(["repo", "month"], inplace=True)
+        all_stars.concat([all_stars, stars], ignore_index=True)
+    all_stars.drop_duplicates(subset=["repo", "month"], keep="last", inplace=True)
+    all_stars.sort_values(["repo", "month"], inplace=True)
+    all_stars.reset_index(drop=True, inplace=True)
+    return all_stars
 
 
 def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
@@ -240,6 +269,27 @@ def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
     return npm_github, npm_downloads
 
 
+def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
+    repos = get_fake_star_repos_all()
+    pypi_github = pd.read_csv("data/pypi_github.csv")
+    pypi_fake_repos = pypi_github[pypi_github["github"].isin(set(repos.repo_name))]
+    all_fake_pkgs = set(pypi_fake_repos.name)
+    all_fake_pkgs = sorted([x.lower() for x in all_fake_pkgs])
+    logging.info(f"Total {len(all_fake_pkgs)} fake packages in PyPI")
+
+    bigquery_task = {
+        "interactive": True,
+        "query_file": "scripts/analysis/queries/stg_pypi_downloads.sql",
+        "output_table_id": "test_pypi_downloads",
+        "params": [
+            bigquery.ArrayQueryParameter("packages", "STRING", all_fake_pkgs),
+        ],
+    }
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+
+    logging.info("Done!")
+
+
 def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     path_stars, path_downloads = "data/model_stars.csv", "data/model_downloads.csv"
     if os.path.exists(path_stars) and os.path.exists(path_downloads):
@@ -314,40 +364,24 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     return model_stars_df, model_downloads_df
 
 
-def get_fake_star_users() -> pd.DataFrame:
-    if os.path.exists("data/fake_stars_users.csv"):
-        return pd.read_csv("data/fake_stars_users.csv")
-
-    client = pymongo.MongoClient(MONGO_URL)
-
-    users_low_activity, users_clustered = get_user_sets()
-
-    results = []
-    for doc in client.fake_stars.actors.find():
-        results.append(
-            {
-                "actor": doc["actor"],
-                "n_repos_starred": set(x["repo"] for x in doc["stars"]),
-                "low_activity": doc["actor"] in users_low_activity,
-                "clustered": doc["actor"] in users_clustered,
-                "deleted": doc["error"],
-                "first_active": doc["stars"][0]["starred_at"],
-                "last_active": doc["stars"][-1]["starred_at"],
-            }
-        )
-
-    results = pd.DataFrame(results)
-    results.to_csv("data/fake_stars_users.csv", index=False)
-    return results
-
-
 def main():
-    get_stars_by_month("low_activity")
-    get_stars_by_month("clustered")
+    logging.basicConfig(
+        format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
+        level=logging.INFO,
+        handlers=[logging.StreamHandler(sys.stdout)],
+    )
 
+    logging.info("Collecting stars by month...")
+    for end_date in END_DATES:
+        get_stars_by_month(end_date, "low_activity")
+        get_stars_by_month(end_date, "clustered")
+
+    logging.info("Collecting downloads...")
     get_npm_pkg_github()
     get_npm_downloads()
+    # get_pypi_pkgs_and_downloads() # This is a bigquery task, need manual operation
 
+    logging.info("Collecting modeling data...")
     get_modeling_data()
 
 
