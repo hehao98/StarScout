@@ -119,7 +119,7 @@ def get_stars_by_month_all() -> pd.DataFrame:
         )
         stars.drop(columns=["n_stars_x", "n_stars_y"], inplace=True)
         stars.sort_values(["repo", "month"], inplace=True)
-        all_stars.concat([all_stars, stars], ignore_index=True)
+        all_stars = pd.concat([all_stars, stars], ignore_index=True)
     all_stars.drop_duplicates(subset=["repo", "month"], keep="last", inplace=True)
     all_stars.sort_values(["repo", "month"], inplace=True)
     all_stars.reset_index(drop=True, inplace=True)
