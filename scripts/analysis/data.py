@@ -12,19 +12,43 @@ from psycopg.types.composite import CompositeInfo, register_composite
 from google.cloud import bigquery
 
 from scripts import (
+    END_DATE,
     MONGO_URL,
     NPM_FOLLOWER_POSTGRES,
     BIGQUERY_PROJECT as PROJECT_ID,
     BIGQUERY_DATASET as DATASET_ID,
 )
 from scripts.gcp import process_bigquery
-from scripts.analysis.get_stargazer_info import get_fake_star_users as get_user_sets
 
 
 END_DATES = ["240701", "241001"]
 
 
-def get_stars_by_month(end_date: str, fake_type: str) -> pd.DataFrame:
+def _pad_missing_months(df: pd.DataFrame, key: str) -> pd.DataFrame:
+    df.sort_values([key, "month"], inplace=True)
+    metrics = set(df.columns) - {key, "month"}
+    missing_values = []
+    for index, sub_df in df.groupby(key):
+        first, last, all = (
+            sub_df.month.iloc[0],
+            sub_df.month.iloc[-1],
+            set(sub_df.month),
+        )
+        for month in pd.date_range(first, last, freq="MS"):
+            if month.strftime("%Y-%m") not in all:
+                missing_values.append(
+                    {
+                        key: index,
+                        "month": month.strftime("%Y-%m"),
+                        **{m: 0 for m in metrics},
+                    }
+                )
+    return pd.concat([df, pd.DataFrame(missing_values)], ignore_index=True).sort_values(
+        [key, "month"]
+    )
+
+
+def _get_stars_by_month_from_mongodb(end_date: str, fake_type: str) -> pd.DataFrame:
     assert end_date in END_DATES and fake_type in ["low_activity", "clustered"]
 
     output_path = f"data/{end_date}/fake_stars_{fake_type}_stars_by_month.csv"
@@ -61,13 +85,15 @@ def get_stars_by_month(end_date: str, fake_type: str) -> pd.DataFrame:
     return stars_by_month
 
 
-def get_fake_star_repos_all() -> pd.DataFrame:
+def get_fake_star_repos() -> pd.DataFrame:
     all_repos = pd.DataFrame()
     for end_date in END_DATES:
         low_activity = pd.read_csv(f"data/{end_date}/fake_stars_low_activity_repos.csv")
         clustered = pd.read_csv(f"data/{end_date}/fake_stars_clustered_repos.csv")
 
-        repos = pd.merge(low_activity, clustered, on=["repo_id", "repo_name"], how="outer")
+        repos = pd.merge(
+            low_activity, clustered, on=["repo_id", "repo_name"], how="outer"
+        )
 
         repos.insert(
             2, "n_stars", repos.n_stars_x.fillna(0) + repos.n_stars_y.fillna(0)
@@ -98,11 +124,11 @@ def get_fake_star_repos_all() -> pd.DataFrame:
     return all_repos
 
 
-def get_stars_by_month_all() -> pd.DataFrame:
+def get_fake_stars_by_month() -> pd.DataFrame:
     all_stars = pd.DataFrame()
     for end_date in END_DATES:
-        low_activity = get_stars_by_month(end_date, "low_activity")
-        clustered = get_stars_by_month(end_date, "clustered")
+        low_activity = _get_stars_by_month_from_mongodb(end_date, "low_activity")
+        clustered = _get_stars_by_month_from_mongodb(end_date, "clustered")
         stars = pd.merge(low_activity, clustered, on=["repo", "month"], how="outer")
         stars.insert(
             2, "n_stars", stars.n_stars_x.fillna(0) + stars.n_stars_y.fillna(0)
@@ -121,9 +147,18 @@ def get_stars_by_month_all() -> pd.DataFrame:
         stars.sort_values(["repo", "month"], inplace=True)
         all_stars = pd.concat([all_stars, stars], ignore_index=True)
     all_stars.drop_duplicates(subset=["repo", "month"], keep="last", inplace=True)
+    all_stars = _pad_missing_months(all_stars, "repo")
     all_stars.sort_values(["repo", "month"], inplace=True)
     all_stars.reset_index(drop=True, inplace=True)
     return all_stars
+
+
+def get_sample_stars_by_month() -> pd.DataFrame:
+    stars = pd.read_csv(f"data/{END_DATE}/sample_repo_stars_by_month.csv")
+    stars = _pad_missing_months(stars, "repo")
+    stars.sort_values(["repo", "month"], inplace=True)
+    stars.reset_index(drop=True, inplace=True)
+    return stars
 
 
 def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
@@ -155,8 +190,8 @@ def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
 
 
 def get_repo_with_compaign() -> set[str]:
-    repos = get_fake_star_repos_all()
-    stars = get_stars_by_month_all()
+    repos = get_fake_star_repos()
+    stars = get_fake_stars_by_month()
 
     stars["seems_like_compaign"] = (
         stars["n_stars_low_activity"] + stars["n_stars_clustered"] >= 50
@@ -221,7 +256,7 @@ def get_npm_downloads() -> pd.DataFrame:
         return pd.read_csv("data/npm_downloads.csv")
 
     npm_github = get_npm_pkg_github()
-    repos = get_fake_star_repos_all()
+    repos = get_fake_star_repos()
     pkgs = set(npm_github[npm_github.github.isin(set(repos.repo_name))].name)
 
     npm_downloads = []
@@ -270,24 +305,28 @@ def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
-    repos = get_fake_star_repos_all()
+    repos = get_fake_star_repos()
     pypi_github = pd.read_csv("data/pypi_github.csv")
-    pypi_fake_repos = pypi_github[pypi_github["github"].isin(set(repos.repo_name))]
-    all_fake_pkgs = set(pypi_fake_repos.name)
-    all_fake_pkgs = sorted([x.lower() for x in all_fake_pkgs])
-    logging.info(f"Total {len(all_fake_pkgs)} fake packages in PyPI")
+    if os.path.exists("data/pypi_downloads.csv"):
+        pypi_downloads = pd.read_csv("data/pypi_downloads.csv")
+    else:
+        pypi_fake_repos = pypi_github[pypi_github["github"].isin(set(repos.repo_name))]
+        all_fake_pkgs = set(pypi_fake_repos.name)
+        all_fake_pkgs = sorted([x.lower() for x in all_fake_pkgs])
+        logging.info(f"Total {len(all_fake_pkgs)} fake packages in PyPI")
 
-    bigquery_task = {
-        "interactive": True,
-        "query_file": "scripts/analysis/queries/stg_pypi_downloads.sql",
-        "output_table_id": "test_pypi_downloads",
-        "params": [
-            bigquery.ArrayQueryParameter("packages", "STRING", all_fake_pkgs),
-        ],
-    }
-    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+        bigquery_task = {
+            "interactive": True,
+            "query_file": "scripts/analysis/queries/stg_pypi_downloads.sql",
+            "output_table_id": "test_pypi_downloads",
+            "params": [
+                bigquery.ArrayQueryParameter("packages", "STRING", all_fake_pkgs),
+            ],
+        }
+        process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
 
-    logging.info("Done!")
+        logging.info("Done!")
+    return pypi_github, pypi_downloads
 
 
 def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -297,7 +336,7 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     npm_github, npm_downloads = get_npm_pkgs_and_downloads()
     pypi_github, pypi_downloads = get_pypi_pkgs_and_downloads()
-    stars = get_stars_by_month_all()
+    stars = get_fake_stars_by_month()
     repos_with_campaign = sorted(get_repo_with_compaign())
 
     model_stars, model_downloads = defaultdict(dict), defaultdict(dict)
@@ -373,13 +412,14 @@ def main():
 
     logging.info("Collecting stars by month...")
     for end_date in END_DATES:
-        get_stars_by_month(end_date, "low_activity")
-        get_stars_by_month(end_date, "clustered")
+        _get_stars_by_month_from_mongodb(end_date, "low_activity")
+        _get_stars_by_month_from_mongodb(end_date, "clustered")
+    get_fake_stars_by_month()
 
     logging.info("Collecting downloads...")
     get_npm_pkg_github()
     get_npm_downloads()
-    # get_pypi_pkgs_and_downloads() # This is a bigquery task, need manual operation
+    get_pypi_pkgs_and_downloads()
 
     logging.info("Collecting modeling data...")
     get_modeling_data()

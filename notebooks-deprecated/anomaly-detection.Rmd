@@ -1,0 +1,47 @@
+
+```{r}
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("nlme")
+install.packages("tseries")
+install.packages("MuMIn")
+
+library(dplyr)
+library(tidyr)
+library(nlme)
+library(tseries)
+library(MuMIn)
+```
+
+```{r}
+random_repos = read.csv("data/241001/sample_repo_stars_by_month.csv")
+
+random_repos <- random_repos %>% arrange(repo, month)
+
+random_repos <- random_repos %>%
+  group_by(repo) %>% 
+  mutate(
+    n_stars = n_stars,
+    l1_n_stars = lag(n_stars, 1),
+    #all_stars = cumsum(n_stars),
+    #l2_all_stars = lag(all_stars, 2),
+    age = row_number(),
+  ) %>%
+  ungroup() %>%
+  filter(!is.na(l1_n_stars)) %>%
+  #replace(is.na(.), 0)
+```
+
+```{r}
+model = lm(log2(n_stars + 1) ~ log2(l1_n_stars + 1), data = random_repos)
+summary(model)
+```
+
+```{r}
+ar1 = lme(log2(n_stars + 1) ~ log2(l1_n_stars + 1),
+          random = ~ 1 | repo,
+          correlation = corAR1(form = ~ age | repo),
+          data = random_repos)
+print(r.squaredGLMM(ar1))
+summary(ar1)
+```
