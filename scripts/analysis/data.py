@@ -125,7 +125,7 @@ def get_fake_star_repos() -> pd.DataFrame:
     return all_repos
 
 
-def get_fake_stars_by_month(anomaly_detection: bool = False) -> pd.DataFrame:
+def get_fake_stars_by_month() -> pd.DataFrame:
     all_stars = pd.DataFrame()
     for end_date in END_DATES:
         low_activity = _get_stars_by_month_from_mongodb(end_date, "low_activity")
@@ -151,30 +151,9 @@ def get_fake_stars_by_month(anomaly_detection: bool = False) -> pd.DataFrame:
     all_stars = _pad_missing_months(all_stars, "repo")
     all_stars.sort_values(["repo", "month"], inplace=True)
     all_stars.reset_index(drop=True, inplace=True)
-
-    if anomaly_detection:
-        WINDOW_SIZE = 4
-        THRESHOLD = 50
-        all_stars["past_median"], all_stars["past_mad"] = 0.0, 0.0
-        for _, df in all_stars.groupby("repo"):
-            for i, _ in enumerate(df["month"]):
-                past_values = [df["n_stars"].iloc[j] for j in range(i)][-WINDOW_SIZE:]
-                if len(past_values) > 0:
-                    past_median = np.median(past_values)
-                    past_mad = np.median([abs(x - past_median) for x in past_values])
-                else:
-                    past_median, past_mad = 0, 0
-                all_stars.loc[df.index[i], "past_median"] = past_median
-                all_stars.loc[df.index[i], "past_mad"] = past_mad
-        all_stars["threshold"] = (
-            all_stars.past_median + all_stars.past_mad + np.maximum(all_stars.past_mad, THRESHOLD)
-        )
-        all_stars["anomaly"] = (
-            (all_stars.n_stars >= all_stars.threshold)
-            & (all_stars.n_stars_fake >= 50)
-            & (all_stars.n_stars_fake >= 0.5 * all_stars.n_stars)
-        )
-
+    all_stars["anomaly"] = (all_stars.n_stars_fake >= 50) & (
+        all_stars.n_stars_fake >= 0.5 * all_stars.n_stars
+    )
     return all_stars
 
 
