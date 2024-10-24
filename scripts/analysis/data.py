@@ -193,26 +193,15 @@ def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
     return merged
 
 
-def get_repo_with_compaign() -> set[str]:
-    repos = get_fake_star_repos()
-    stars = get_fake_stars_by_month()
-
-    stars["seems_like_compaign"] = (
-        stars["n_stars_low_activity"] + stars["n_stars_clustered"] >= 50
-    ) & (
-        (stars["n_stars_low_activity"] + stars["n_stars_clustered"]) / stars["n_stars"]
-        >= 0.5
+def get_repos_with_campaign() -> set[str]:
+    repos, stars = get_fake_star_repos(), get_fake_stars_by_month()
+    return set(repos[repos.p_stars_fake >= 0.1].repo_name) & set(
+        stars[stars.anomaly].repo
     )
-
-    repos_burst = set(stars[stars.seems_like_compaign].repo)
-    # If lower than 10%, I choose to not trust the algorithm.
-    # It may be producing false alerts for a legitimate repo.
-    repos_high_pert = set(repos[repos["p_stars_fake"] >= 0.1].repo_name)
-    return repos_burst & repos_high_pert
 
 
 def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
-    repos_with_compaign = get_repo_with_compaign()
+    repos_with_compaign = get_repos_with_campaign()
     pypi_github = pd.read_csv("data/pypi_github.csv")
     pypi_downloads = pd.read_csv("data/pypi_downloads.csv")
     pypi_pkg_repos = set(pypi_github.github) & repos_with_compaign
@@ -293,7 +282,7 @@ def get_npm_downloads() -> pd.DataFrame:
 def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
     npm_github = get_npm_pkg_github()
     npm_downloads = get_npm_downloads()
-    repos = get_repo_with_compaign()
+    repos = get_repos_with_campaign()
 
     npm_github = npm_github[npm_github.github.isin(repos)]
     npm_downloads = npm_downloads[npm_downloads.name.isin(set(npm_github.name))]
@@ -341,7 +330,7 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     npm_github, npm_downloads = get_npm_pkgs_and_downloads()
     pypi_github, pypi_downloads = get_pypi_pkgs_and_downloads()
     stars = get_fake_stars_by_month()
-    repos_with_campaign = sorted(get_repo_with_compaign())
+    repos_with_campaign = sorted(get_repos_with_campaign())
 
     model_stars, model_downloads = defaultdict(dict), defaultdict(dict)
 
