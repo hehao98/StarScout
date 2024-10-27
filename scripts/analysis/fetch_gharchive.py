@@ -21,7 +21,8 @@ from scripts.gcp import (
     dump_bigquery_table,
     load_gzipped_json_blob_to_mongodb,
 )
-from scripts.analysis.data import get_fake_star_repos_all
+from scripts.analysis.data import get_fake_star_repos
+from scripts.github import get_repo_id, get_user_info
 
 
 SAMPLE_SIZE = 10000
@@ -96,7 +97,7 @@ def stg_all_events_from_fake_star_repos():
     if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_repo_events"):
         logging.info("fake_repo_events already exists, skipping table creation")
     else:
-        fake_star_repos = list(get_fake_star_repos_all().repo_name)
+        fake_star_repos = list(get_fake_star_repos().repo_name)
         logging.info("Number of fake star repos: %d", len(fake_star_repos))
         bigquery_task = {
             "interactive": False,
@@ -248,6 +249,54 @@ def aggregate_csvs():
         results.to_csv(f"data/{END_DATE}/{collection}.csv", index=False)
 
 
+def check_deletion_status():
+    sample_repos = pd.read_csv(f"data/{END_DATE}/sample_repo_events.csv")
+    sample_actors = pd.read_csv(f"data/{END_DATE}/sample_actor_events.csv")
+    fake_actors = pd.read_csv(f"data/{END_DATE}/fake_actor_events.csv")
+
+    logging.info("Matching %d sample repos to GitHub IDs", len(sample_repos))
+    sample_repo_ids = []
+    for repo in sample_repos.repo:
+        repo_id = get_repo_id(repo)
+        sample_repo_ids.append({"repo": repo, "id": repo_id})
+        logging.info("Repo: %s, ID: %s", repo, repo_id)
+
+    sample_user_info = []
+    for actor in sample_actors.actor:
+        user_info = get_user_info(actor)
+        if "error" in user_info:
+            sample_user_info.append({"actor": actor, "error": user_info["error"]})
+            logging.error("Actor: %s, Error: %s", actor, user_info["error"])
+        else:   
+            user_info = {k: v for k, v in user_info.items() if "url" not in k}
+            user_info = {k: v for k, v in user_info.items() if "node_id" not in k}
+            sample_user_info.append(user_info)
+            logging.info("Actor: %s, Info: %s", actor, user_info)
+
+    fake_user_info = []
+    for actor in fake_actors.actor:
+        user_info = get_user_info(actor)
+        if "error" in user_info:
+            fake_user_info.append({"actor": actor, "error": user_info["error"]})
+            logging.error("Actor: %s, Error: %s", actor, user_info["error"])
+        else:   
+            user_info = {k: v for k, v in user_info.items() if "url" not in k}
+            user_info = {k: v for k, v in user_info.items() if "node_id" not in k}
+            fake_user_info.append(user_info)
+            logging.info("Actor: %s, Info: %s", actor, user_info)
+
+
+    pd.DataFrame(sample_repo_ids).to_csv(
+        f"data/{END_DATE}/sample_repo_ids.csv", index=False
+    )
+    pd.DataFrame(sample_user_info).to_csv(
+        f"data/{END_DATE}/sample_user_info.csv", index=False
+    )
+    pd.DataFrame(fake_user_info).to_csv(
+        f"data/{END_DATE}/fake_user_info.csv", index=False
+    )
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -255,13 +304,15 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    sample_repo_events()
-    sample_user_events()
+    #sample_repo_events()
+    #sample_user_events()
 
-    stg_all_events_from_fake_star_repos()
-    stg_all_events_from_fake_star_actors()
+    #stg_all_events_from_fake_star_repos()
+    #stg_all_events_from_fake_star_actors()
 
-    aggregate_csvs()
+    #aggregate_csvs()
+
+    check_deletion_status()
 
     logging.info("Finish!")
 

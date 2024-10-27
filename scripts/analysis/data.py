@@ -86,6 +86,21 @@ def _get_stars_by_month_from_mongodb(end_date: str, fake_type: str) -> pd.DataFr
     return stars_by_month
 
 
+def get_unique_actors(collection: str, query: dict) -> set:
+    with pymongo.MongoClient(MONGO_URL) as client:
+        return set(
+            map(
+                lambda x: x["_id"],
+                client.fake_stars[collection].aggregate(
+                    [
+                        {"$match": query},
+                        {"$group": {"_id": "$actor"}},
+                    ]
+                ),
+            )
+        )
+
+
 def get_fake_star_repos() -> pd.DataFrame:
     all_repos = pd.DataFrame()
     for end_date in END_DATES:
@@ -163,6 +178,46 @@ def get_sample_stars_by_month() -> pd.DataFrame:
     stars.sort_values(["repo", "month"], inplace=True)
     stars.reset_index(drop=True, inplace=True)
     return stars
+
+
+def get_events_with_samples(repo_or_actor: str) -> pd.DataFrame:
+    assert repo_or_actor in ["repo", "actor"]
+
+    samples = pd.read_csv(f"data/{END_DATE}/sample_{repo_or_actor}_events.csv")
+    fakes = pd.read_csv(f"data/{END_DATE}/fake_{repo_or_actor}_events.csv")
+
+    if repo_or_actor == "repo":
+        repos = get_fake_star_repos()
+        samples = samples[~samples[repo_or_actor].isin(set(repos.repo_name))]
+    else:
+        low_act_actors = get_unique_actors("low_activity_stars", {"low_activity": True})
+        clustered_actors = get_unique_actors("clustered_stars", {"clustered": True})
+        samples = samples[
+            ~samples[repo_or_actor].isin(low_act_actors | clustered_actors)
+        ]
+
+    fakes = fakes.melt(
+        id_vars=[repo_or_actor],
+        value_vars=[x for x in fakes.columns if x.endswith("Event")],
+        var_name="event",
+        value_name="count",
+    )
+    samples = samples.melt(
+        id_vars=[repo_or_actor],
+        value_vars=[x for x in samples.columns if x.endswith("Event")],
+        var_name="event",
+        value_name="count",
+    )
+
+    fakes["percentage"] = fakes["count"] / fakes.groupby(repo_or_actor)[
+        "count"
+    ].transform("sum")
+    samples["percentage"] = samples["count"] / samples.groupby(repo_or_actor)[
+        "count"
+    ].transform("sum")
+
+    fakes["group"], samples["group"] = "Suspected Fakes", "Samples"
+    return pd.concat([fakes, samples], ignore_index=True)
 
 
 def get_stars_from_repo(repo: str) -> Optional[pd.DataFrame]:
