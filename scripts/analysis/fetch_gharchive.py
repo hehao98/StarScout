@@ -270,7 +270,7 @@ def check_deletion_status():
         else:   
             user_info = {k: v for k, v in user_info.items() if "url" not in k}
             user_info = {k: v for k, v in user_info.items() if "node_id" not in k}
-            sample_user_info.append(user_info)
+            sample_user_info.append({"actor": actor, **user_info})
             logging.info("Actor: %s, Info: %s", actor, user_info)
 
     fake_user_info = []
@@ -282,7 +282,7 @@ def check_deletion_status():
         else:   
             user_info = {k: v for k, v in user_info.items() if "url" not in k}
             user_info = {k: v for k, v in user_info.items() if "node_id" not in k}
-            fake_user_info.append(user_info)
+            fake_user_info.append({"actor": actor, **user_info})
             logging.info("Actor: %s, Info: %s", actor, user_info)
 
 
@@ -304,13 +304,13 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    #sample_repo_events()
-    #sample_user_events()
+    sample_repo_events()
+    sample_user_events()
 
-    #stg_all_events_from_fake_star_repos()
-    #stg_all_events_from_fake_star_actors()
+    stg_all_events_from_fake_star_repos()
+    stg_all_events_from_fake_star_actors()
 
-    #aggregate_csvs()
+    aggregate_csvs()
 
     check_deletion_status()
 
