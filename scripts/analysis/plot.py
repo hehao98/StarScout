@@ -16,6 +16,8 @@ def init_matplotlib():
             plt.rcParams["font.family"] = "serif"
             plt.rcParams["font.sans-serif"] = prop.get_name()
 
+    setattr(plt.Axes, "remove_spines", remove_spines)
+
 
 def shorten_gharchive_event(event: str) -> str:
     event = event.replace("Event", "")
@@ -30,3 +32,8 @@ def shorten_gharchive_event(event: str) -> str:
     if event not in EVENT_ORDER:
         return "Other"
     return event
+
+
+def remove_spines(ax: plt.Axes):
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
