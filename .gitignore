@@ -6,6 +6,7 @@ secrets.yaml
 logs/
 *.log
 __pycache__
+data/*/*.json
 data/copycatch_test/stargazers_real.csv
 data/copycatch_test/stargazers_fake.csv
 data/*/fake_stars.actors.json.zip
