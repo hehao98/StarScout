@@ -255,7 +255,25 @@ def get_repos_with_campaign() -> set[str]:
     )
 
 
-def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
+def get_fake_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
+    npm_github = get_npm_pkg_github()
+    npm_downloads = get_npm_downloads()
+    repos = get_repos_with_campaign()
+
+    npm_github = npm_github[npm_github.github.isin(repos)]
+    npm_downloads = npm_downloads[npm_downloads.name.isin(set(npm_github.name))]
+    npm_downloads.insert(1, "month", npm_downloads.date.map(lambda x: x[:7]))
+    npm_downloads = (
+        npm_downloads.drop(columns=["date"])
+        .groupby(["name", "month"])
+        .sum()
+        .reset_index()
+    )
+
+    return npm_github, npm_downloads
+
+
+def get_fake_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
     repos_with_compaign = get_repos_with_campaign()
     pypi_github = pd.read_csv("data/pypi_github.csv")
     pypi_downloads = pd.read_csv("data/pypi_downloads.csv")
@@ -332,24 +350,6 @@ def get_npm_downloads() -> pd.DataFrame:
                     )
     npm_downloads = pd.DataFrame(npm_downloads)
     npm_downloads.to_csv("data/npm_downloads.csv", index=False)
-
-
-def get_npm_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
-    npm_github = get_npm_pkg_github()
-    npm_downloads = get_npm_downloads()
-    repos = get_repos_with_campaign()
-
-    npm_github = npm_github[npm_github.github.isin(repos)]
-    npm_downloads = npm_downloads[npm_downloads.name.isin(set(npm_github.name))]
-    npm_downloads.insert(1, "month", npm_downloads.date.map(lambda x: x[:7]))
-    npm_downloads = (
-        npm_downloads.drop(columns=["date"])
-        .groupby(["name", "month"])
-        .sum()
-        .reset_index()
-    )
-
-    return npm_github, npm_downloads
 
 
 def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:

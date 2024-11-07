@@ -11,3 +11,6 @@ google-cloud-bigquery
 psycopg[binary]
 tqdm
 PyGithub
+scikit-survival
+wordcloud
+gensim
