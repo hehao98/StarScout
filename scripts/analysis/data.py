@@ -3,11 +3,11 @@ import sys
 import logging
 import pymongo
 import psycopg
-import numpy as np
 import pandas as pd
 
 from typing import Optional
-from collections import defaultdict
+from collections import defaultdict, Counter
+from tqdm import tqdm
 from psycopg.rows import dict_row
 from psycopg.types.composite import CompositeInfo, register_composite
 from google.cloud import bigquery
@@ -382,8 +382,8 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     if os.path.exists(path_stars) and os.path.exists(path_downloads):
         return pd.read_csv(path_stars), pd.read_csv(path_downloads)
 
-    npm_github, npm_downloads = get_npm_pkgs_and_downloads()
-    pypi_github, pypi_downloads = get_pypi_pkgs_and_downloads()
+    npm_github, npm_downloads = get_fake_npm_pkgs_and_downloads()
+    pypi_github, pypi_downloads = get_fake_pypi_pkgs_and_downloads()
     stars = get_fake_stars_by_month()
     repos_with_campaign = sorted(get_repos_with_campaign())
 
@@ -413,7 +413,8 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
         df = stars[stars.repo == repo]
         for row in df.itertuples():
             model_stars[repo][row.month] = {
-                "n_stars_all": row.n_stars,
+                "campaign": row.anomaly,
+                "n_stars": row.n_stars,
                 "n_stars_fake": row.n_stars_low_activity + row.n_stars_clustered,
                 "n_stars_real": row.n_stars_other,
             }
@@ -451,6 +452,55 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     return model_stars_df, model_downloads_df
 
 
+def get_control_variables_for_modeling() -> pd.DataFrame:
+    model_stars = pd.read_csv("data/model_stars.csv")
+
+    model_stars = model_stars.sort_values(["repo", "month"]).reset_index(drop=True)
+
+    model_stars["n_stars_total"] = model_stars.groupby("repo").n_stars.cumsum()
+
+    model_stars["age"] = model_stars.groupby("repo").month.transform(
+        lambda x: pd.factorize(x)[0]
+    )
+
+    repo_month_with_release = set()
+    repo_month_to_activity = Counter()
+    with pymongo.MongoClient(MONGO_URL) as client:
+        for repo in tqdm(model_stars.repo.unique()):
+            events = list(client.fake_stars.fake_repo_events.find({"repo": repo}))
+            fake_actors = get_unique_actors(
+                "low_activity_stars", {"repo": repo, "low_activity": True}
+            )
+            fake_actors |= get_unique_actors(
+                "clustered_stars", {"repo": repo, "clustered": True}
+            )
+            for event in events:
+                if event["type"] == "ReleaseEvent":
+                    repo_month_with_release.add((repo, event["created_at"][:7]))
+                if (
+                    event["type"] != "WatchEvent"
+                    and event["actor"] not in fake_actors
+                    and event["actor"] != repo.split("/")[0]
+                ):
+                    repo_month_to_activity[(repo, event["created_at"][:7])] += 1
+
+    release, activity = [], []
+    for row in tqdm(model_stars.itertuples()):
+        if (row.repo, row.month) in repo_month_with_release:
+            release.append(True)
+        else:
+            release.append(False)
+        activity.append(repo_month_to_activity[(row.repo, row.month)])
+    model_stars["release"] = release
+    model_stars["activity"] = activity
+    model_stars["had_release"] = (
+        model_stars.groupby("repo").release.cumsum().astype(bool)
+    )
+
+    model_stars.to_csv("data/model_stars.csv", index=False)
+    return model_stars
+
+
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -471,6 +521,7 @@ def main():
 
     logging.info("Collecting modeling data...")
     get_modeling_data()
+    get_control_variables_for_modeling()
 
 
 if __name__ == "__main__":
