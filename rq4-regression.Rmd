@@ -1,0 +1,306 @@
+```{r}
+library(plm)
+library(dplyr)
+library(tidyr)
+library(nlme)
+library(tseries)
+library(MuMIn)
+library(stargazer)
+```
+
+```{r}
+repos = read.csv("data/model_stars.csv")
+
+l1_repos <- repos %>%
+  group_by(repo) %>%
+  mutate(
+    l1_real = lag(n_stars_real, 1),
+    l1_fake = lag(n_stars_fake, 1),
+    total_real = cumsum(n_stars_real),
+    l2_total_real = lag(total_real, 2),
+    total_fake = cumsum(n_stars_fake),
+    l2_total_fake = lag(total_fake, 2),
+  ) %>%
+  ungroup() %>% 
+  drop_na()
+
+l2_repos <- repos %>%
+  group_by(repo) %>%
+  mutate(
+    l1_real = lag(n_stars_real, 1),
+    l2_real = lag(n_stars_real, 2),
+    l1_fake = lag(n_stars_fake, 1),
+    l2_fake = lag(n_stars_fake, 2),
+    total_real = cumsum(n_stars_real),
+    l3_total_real = lag(total_real, 3),
+    total_fake = cumsum(n_stars_fake),
+    l3_total_fake = lag(total_fake, 3)
+  ) %>%
+  ungroup() %>% 
+  drop_na()
+
+l3_repos <- repos %>%
+  group_by(repo) %>%
+  mutate(
+    l1_real = lag(n_stars_real, 1),
+    l2_real = lag(n_stars_real, 2),
+    l3_real = lag(n_stars_real, 3),
+    l1_fake = lag(n_stars_fake, 1),
+    l2_fake = lag(n_stars_fake, 2),
+    l3_fake = lag(n_stars_fake, 3),
+    total_real = cumsum(n_stars_real),
+    l4_total_real = lag(total_real, 3),
+    total_fake = cumsum(n_stars_fake),
+    l4_total_fake = lag(total_fake, 3),
+  ) %>%
+  ungroup() %>% 
+  drop_na()
+
+l4_repos <- repos %>%
+  group_by(repo) %>%
+  mutate(
+    l1_real = lag(n_stars_real, 1),
+    l2_real = lag(n_stars_real, 2),
+    l3_real = lag(n_stars_real, 3),
+    l4_real = lag(n_stars_real, 4),
+    l1_fake = lag(n_stars_fake, 1),
+    l2_fake = lag(n_stars_fake, 2),
+    l3_fake = lag(n_stars_fake, 3),
+    l4_fake = lag(n_stars_fake, 4),
+    total_real = cumsum(n_stars_real),
+    l5_total_real = lag(total_real, 5),
+    total_fake = cumsum(n_stars_fake),
+    l5_total_fake = lag(total_fake, 5)
+  ) %>%
+  ungroup() %>% 
+  drop_na()
+
+l5_repos <- repos %>%
+  group_by(repo) %>%
+  mutate(
+    l1_real = lag(n_stars_real, 1),
+    l2_real = lag(n_stars_real, 2),
+    l3_real = lag(n_stars_real, 3),
+    l4_real = lag(n_stars_real, 4),
+    l5_real = lag(n_stars_real, 5),
+    l1_fake = lag(n_stars_fake, 1),
+    l2_fake = lag(n_stars_fake, 2),
+    l3_fake = lag(n_stars_fake, 3),
+    l4_fake = lag(n_stars_fake, 4),
+    l5_fake = lag(n_stars_fake, 5),
+    total_real = cumsum(n_stars_real),
+    l6_total_real = lag(total_real, 6),
+    total_fake = cumsum(n_stars_fake),
+    l6_total_fake = lag(total_fake, 6)
+  ) %>%
+  ungroup() %>% 
+  drop_na()
+
+l6_repos <- repos %>%
+  group_by(repo) %>%
+  mutate(
+    l1_real = lag(n_stars_real, 1),
+    l2_real = lag(n_stars_real, 2),
+    l3_real = lag(n_stars_real, 3),
+    l4_real = lag(n_stars_real, 4),
+    l5_real = lag(n_stars_real, 5),
+    l6_real = lag(n_stars_real, 6),
+    l1_fake = lag(n_stars_fake, 1),
+    l2_fake = lag(n_stars_fake, 2),
+    l3_fake = lag(n_stars_fake, 3),
+    l4_fake = lag(n_stars_fake, 4),
+    l5_fake = lag(n_stars_fake, 5),
+    l6_fake = lag(n_stars_fake, 6),
+    total_real = cumsum(n_stars_real),
+    l7_total_real = lag(total_real, 7),
+    total_fake = cumsum(n_stars_fake),
+    l7_total_fake = lag(total_fake, 7)
+  ) %>%
+  ungroup() %>% 
+  drop_na()
+```
+
+```{r}
+ar1_stars_fe = plm(log(n_stars_real + 1) ~ log(l1_real + 1) + log(l1_fake + 1) + log(l2_total_real + 1) + log(l2_total_fake + 1), 
+  data=l1_repos, index=c("repo", "month"), model="within")
+summary(ar1_stars_fe)
+```
+
+```{r}
+ar1_stars_re = plm(
+  log(n_stars_real + 1) ~ 
+    log(l1_real + 1) + log(l1_fake + 1) + 
+    log(l2_total_real + 1) + log(l2_total_fake + 1)
+    + age + had_release + log(activity + 1), 
+  data=l1_repos, index=c("repo", "month"), model="random")
+summary(ar1_stars_re)
+```
+
+```{r}
+phtest(ar1_stars_fe, ar1_stars_re)
+```
+
+```{r}
+ar2_stars_fe = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_total_real + 1) + 
+                     log(l1_fake + 1) + log(l2_fake + 1) + log(l3_total_fake + 1), 
+  data=l2_repos, index=c("repo", "month"), model="within")
+summary(ar2_stars_fe)
+```
+
+```{r}
+ar2_stars_re = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_total_real + 1) 
+                     + log(l1_fake + 1) + log(l2_fake + 1) + log(l3_total_fake + 1)
+                     + age + had_release + log(activity + 1), 
+  data=l2_repos, index=c("repo", "month"), model="random")
+summary(ar2_stars_re)
+```
+
+```{r}
+phtest(ar2_stars_fe, ar2_stars_re)
+```
+
+```{r}
+ar3_stars_fe = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_total_real + 1) + 
+                     log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_total_fake + 1), 
+  data=l3_repos, index=c("repo", "month"), model="within")
+summary(ar3_stars_fe)
+```
+
+```{r}
+ar3_stars_re = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_total_real + 1) 
+                     + log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_total_fake + 1)
+                     + age + had_release + log(activity + 1), 
+  data=l3_repos, index=c("repo", "month"), model="random")
+summary(ar3_stars_re)
+```
+
+
+```{r}
+ar4_stars_fe = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_real + 1) + log(l5_total_real + 1) + 
+                     log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_fake + 1) + log(l5_total_fake + 1), 
+  data=l4_repos, index=c("repo", "month"), model="within")
+summary(ar4_stars_fe)
+```
+```{r}
+ar4_stars_re = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_real + 1) + log(l5_total_real + 1) 
+                     + log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_fake + 1) + log(l5_total_fake + 1)
+                     + age + had_release + log(activity + 1), 
+  data=l4_repos, index=c("repo", "month"), model="random")
+summary(ar4_stars_re)
+```
+```{r}
+ar5_stars_fe = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_real + 1) + log(l5_real + 1) + log(l6_total_real + 1) + 
+                     log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_fake + 1) + log(l5_fake + 1) + log(l6_total_fake + 1), 
+  data=l5_repos, index=c("repo", "month"), model="within")
+summary(ar5_stars_fe)
+```
+```{r}
+ar5_stars_re = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_real + 1) + log(l5_real + 1) + log(l6_total_real + 1) 
+                     + log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_fake + 1) + log(l5_fake + 1) + log(l6_total_fake + 1) 
+                     + age + had_release + log(activity + 1), 
+  data=l5_repos, index=c("repo", "month"), model="random")
+summary(ar5_stars_re)
+```
+```{r}
+ar6_stars_fe = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_real + 1) + log(l5_real + 1) + log(l6_real + 1) + log(l7_total_real + 1) + 
+                     log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_fake + 1) + log(l5_fake + 1) + log(l6_fake + 1) + log(l7_total_fake + 1), 
+  data=l6_repos, index=c("repo", "month"), model="within")
+summary(ar6_stars_fe)
+```
+
+```{r}
+ar6_stars_re = plm(log(n_stars_real + 1) ~ 
+                     log(l1_real + 1) + log(l2_real + 1) + log(l3_real + 1) + log(l4_real + 1) + log(l5_real + 1) + log(l6_real + 1) + log(l7_total_real + 1)
+                     + log(l1_fake + 1) + log(l2_fake + 1) + log(l3_fake + 1) + log(l4_fake + 1) + log(l5_fake + 1) + log(l6_fake + 1) + log(l7_total_fake + 1)
+                     + age + had_release + log(activity + 1), 
+  data=l6_repos, index=c("repo", "month"), model="random")
+summary(ar6_stars_re)
+```
+
+```{r}
+aicbic_plm <- function(object, criterion) {
+  
+  
+  # object is "plm", "panelmodel" 
+  # Lets panel data has index :index = c("Country", "Time")
+  
+  sp = summary(object)
+  
+  if(class(object)[1]=="plm"){
+    u.hat <- residuals(sp) # extract residuals
+    df <- cbind(as.vector(u.hat), attr(u.hat, "index"))
+    names(df) <- c("resid", "repo", "month")
+    c = length(levels(df$Country)) # extract country dimension 
+t = length(levels(df$Time)) # extract time dimension 
+    np = length(sp$coefficients[,1]) # number of parameters
+n.N = nrow(sp$model) # number of data
+    s.sq  <- log( (sum(u.hat^2)/(n.N))) # log sum of squares
+    
+    # effect = c("individual", "time", "twoways", "nested"),
+    # model = c("within", "random", "ht", "between", "pooling", "fd")
+    
+    # I am making example only with some of the versions:
+    
+    if (sp$args$model == "within" & sp$args$effect == "individual"){
+      n = c
+      np = np+n+1 # update number of parameters
+    }
+    
+    if (sp$args$model == "within" & sp$args$effect == "time"){
+      T = t
+      np = np+T+1 # update number of parameters
+    }
+    
+    if (sp$args$model == "within" & sp$args$effect == "twoways"){
+      n = c
+      T = t
+      np = np+n+T # update number of parameters
+    }
+    aic <- round(       2*np  +  n.N * (  log(2*pi) + s.sq  + 1 ),1)
+    bic <- round(log(n.N)*np  +  n.N * (  log(2*pi) + s.sq  + 1 ),1)
+    
+    if(criterion=="AIC"){
+      names(aic) = "AIC"
+      return(aic)
+    }
+    if(criterion=="BIC"){
+      names(bic) = "BIC"
+      return(bic)
+    }
+  }
+}
+
+sprintf("AR(1) FE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar1_stars_fe, "AIC"), aicbic_plm(ar1_stars_fe, "BIC"))
+sprintf("AR(1) RE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar1_stars_re, "AIC"), aicbic_plm(ar1_stars_re, "BIC"))
+sprintf("AR(2) FE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar2_stars_fe, "AIC"), aicbic_plm(ar2_stars_fe, "BIC"))
+sprintf("AR(2) RE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar2_stars_re, "AIC"), aicbic_plm(ar2_stars_re, "BIC"))
+sprintf("AR(3) FE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar3_stars_fe, "AIC"), aicbic_plm(ar3_stars_fe, "BIC"))
+sprintf("AR(3) RE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar3_stars_re, "AIC"), aicbic_plm(ar3_stars_re, "BIC"))
+sprintf("AR(4) FE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar4_stars_fe, "AIC"), aicbic_plm(ar4_stars_fe, "BIC"))
+sprintf("AR(4) RE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar4_stars_re, "AIC"), aicbic_plm(ar4_stars_re, "BIC"))
+sprintf("AR(5) FE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar5_stars_fe, "AIC"), aicbic_plm(ar5_stars_fe, "BIC"))
+sprintf("AR(5) RE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar5_stars_fe, "AIC"), aicbic_plm(ar5_stars_re, "BIC"))
+sprintf("AR(6) FE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar6_stars_fe, "AIC"), aicbic_plm(ar6_stars_fe, "BIC"))
+sprintf("AR(6) RE: AIC=%.2f, BIC=%.2f", aicbic_plm(ar6_stars_re, "AIC"), aicbic_plm(ar6_stars_re, "BIC"))
+```
+
+```{r}
+rob_se <- list(sqrt(diag(vcovHC(ar2_stars_re, type = "HC1"))),
+               sqrt(diag(vcovHC(ar2_stars_fe, type = "HC1"))))
+stargazer(ar2_stars_re, 
+          ar2_stars_fe, 
+          digits = 3,
+          header = FALSE,
+          type = "latex", 
+          se = rob_se,
+          model.numbers = FALSE)
+```

@@ -10,7 +10,7 @@ from github import Github, Auth
 from pymongo import MongoClient
 
 from scripts import MONGO_URL, GITHUB_TOKENS
-from scripts.analysis.data import get_fake_star_repos_all, get_repo_with_compaign
+from scripts.analysis.data import get_fake_star_repos, get_repos_with_campaign
 
 
 def get_github_readme(repo: str) -> Optional[str]:
@@ -35,10 +35,10 @@ def get_repo_size(repo: str) -> Optional[int]:
 
 def clone_github_repo(repo: str) -> None:
     prev_dir = os.getcwd()
-    os.chdir("../repos")
+    os.chdir("../fake-star-repos")
 
     # clone repo
-    if os.path.exists(f"../repos/{repo.replace('/', '_')}"):
+    if os.path.exists(f"../fake-star-repos/{repo.replace('/', '_')}"):
         logging.info(f"Skipping {repo} because it is already cloned")
     else:
         logging.info(f"Cloning {repo}...")
@@ -77,15 +77,6 @@ def clone_github_repo(repo: str) -> None:
     os.chdir(prev_dir)
 
 
-def get_readme_woc(repo: str) -> Optional[str]:
-    try:
-        import oscar
-    except ImportError:
-        logging.error("oscar.py not installed")
-        return None
-    raise NotImplementedError("TODO")
-
-
 def main():
     logging.basicConfig(
         format="%(asctime)s (PID %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
@@ -93,8 +84,8 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    repos = get_fake_star_repos_all()
-    repos = repos[repos.repo_name.isin(get_repo_with_compaign())]
+    repos = get_fake_star_repos()
+    repos = repos[repos.repo_name.isin(get_repos_with_campaign())]
 
     with MongoClient(MONGO_URL) as client:
         github_readmes = client.fake_stars.github_readmes
@@ -123,7 +114,7 @@ def main():
                     summary.append({"repo": repo, "readme": path, "type": None})
         pd.DataFrame(summary).to_csv("data/readmes/summary.csv", index=False)
 
-    """
+    
     for repo in repos[repos.repo_id.notna()].repo_name:
         size = get_repo_size(repo)
         if size is None:
@@ -133,12 +124,9 @@ def main():
             logging.info(f"Skipping {repo} because it is too large ({size} Kb)")
             continue
         clone_github_repo(repo)
-    """
-
-    for repo in repos.repo_name:
-        pass  # TODO: world of code
 
     logging.info("Done!")
+
 
 if __name__ == "__main__":
     main()
