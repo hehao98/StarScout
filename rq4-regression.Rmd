@@ -6,6 +6,7 @@ library(nlme)
 library(tseries)
 library(MuMIn)
 library(stargazer)
+library(texreg)
 ```
 
 ```{r}
@@ -303,4 +304,24 @@ stargazer(ar2_stars_re,
           type = "latex", 
           se = rob_se,
           model.numbers = FALSE)
+```
+
+```{r}
+rob_se <- list(sqrt(diag(vcovHC(ar1_stars_re, type = "HC1"))),
+               sqrt(diag(vcovHC(ar1_stars_fe, type = "HC1"))),
+               sqrt(diag(vcovHC(ar3_stars_re, type = "HC1"))),
+               sqrt(diag(vcovHC(ar3_stars_fe, type = "HC1"))),
+               sqrt(diag(vcovHC(ar4_stars_re, type = "HC1"))),
+               sqrt(diag(vcovHC(ar4_stars_fe, type = "HC1"))),
+               sqrt(diag(vcovHC(ar5_stars_re, type = "HC1"))),
+               sqrt(diag(vcovHC(ar5_stars_fe, type = "HC1"))),
+               sqrt(diag(vcovHC(ar6_stars_re, type = "HC1"))),
+               sqrt(diag(vcovHC(ar6_stars_fe, type = "HC1"))))
+texreg(list(ar1_stars_re,ar1_stars_fe,
+            ar3_stars_re,ar3_stars_fe,
+            ar4_stars_re,ar4_stars_fe,
+            ar5_stars_re,ar5_stars_fe,
+            ar6_stars_re,ar6_stars_fe,),
+       dcolumn=FALSE,
+       override.se=rob_se)
 ```

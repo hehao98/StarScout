@@ -14,3 +14,4 @@ PyGithub
 scikit-survival
 wordcloud
 gensim
+nltk
