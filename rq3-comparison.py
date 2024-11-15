@@ -3,6 +3,7 @@ import json
 import time
 import logging
 import requests
+import numpy as np
 import pandas as pd
 
 from io import BytesIO
@@ -67,11 +68,14 @@ def augument_user_info(user_info: pd.DataFrame) -> pd.DataFrame:
     has_blog = []
     has_company = []
 
-    existing_actors = user_info[user_info["error"].isna()]
-
-    logging.info("number of existing actors: %d", existing_actors.shape[0])
     # Iterate through each row
-    for index, row in existing_actors.iterrows():
+    for index, row in user_info.iterrows():
+        if pd.notnull(row["error"]):
+            default_avatar.append(np.nan)
+            has_organization_ts.append(np.nan)
+            has_blog.append(np.nan)
+            has_company.append(np.nan)
+            continue
         actor = row["actor"]
         logging.info(f"Scanning actor {actor}...")
         raw_response = row["raw_response"]
@@ -100,9 +104,13 @@ def augument_user_info(user_info: pd.DataFrame) -> pd.DataFrame:
             logging.info(f"Processed actor {actor}")
         except json.JSONDecodeError:
             logging.info(f"Error decoding JSON for actor: {actor}")
+            default_avatar.append(np.nan)
+            has_organization_ts.append(np.nan)
+            has_blog.append(np.nan)
+            has_company.append(np.nan)
 
     user_info.insert(2, "default_avatar", default_avatar)
-    user_info.insert(3, "has_organization", has_organization)
+    user_info.insert(3, "has_organization", has_organization_ts)
     user_info.insert(4, "has_blog", has_blog)
     user_info.insert(5, "has_company", has_company)
     return user_info
