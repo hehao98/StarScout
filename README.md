@@ -59,3 +59,13 @@ python -m scripts.copycatch.bigquery --export
 ```
 
 After they finish, you should be able to see CSV files in the `data/{END_DATE}` folder.
+
+## The (Suspected) Fake Stars Dataset
+
+Currently, StarScout runs on a quarterly basis and we dump the data from each quarter into `data/{END_DATE}`. We have a few utility code to generate combined data and repositories with suspected fake star campaigns in `scripts/analysis/data.py`. Other data files in the `data/` folder are updated on-demand by the paper authors.
+
+**Disclaimer.** *As we discussed in Section 3.4 and 3.5 in our paper, the resulting dataset are only repositories and users with suspected fake stars. The individual repositories and users in our dataset may be false positives. The main purpose of our dataset is for statistical analyses (which tolerates noises reasonably well), not for publicly shaming individual repositories. If you intend to publish subsequent work based on our dataset, please be aware of this limitation and its ethical implications.*
+
+## The Measurement Study
+
+All the scripts and results from our measurement study can be found in the Jupyter Notebooks. Currently, the notebook depends on a MongoDB database which stores a large amount of data. We are actively working on it and release a public version in the future.
