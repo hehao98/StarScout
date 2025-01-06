@@ -1,6 +1,6 @@
 # StarScout
 
-Find suspicious (and possibly faked) GitHub stars at-scale. Please refer to [this paper preprint] for technical details and our findings:
+Find suspicious (and possibly faked) GitHub stars at-scale. Please refer to [this paper preprint](https://arxiv.org/abs/2412.13459) for technical details and our findings:
 
 ```
 @misc{he202445millionsuspectedfake,
@@ -46,7 +46,7 @@ The scripts works with Python 3.12 and has only been tested on Ubuntu 22.04.
 
 ## Running the Detector
 
-The detector employs two heuristics: a low-activity heuristic and a clustering heuristic. Their parameters are defined in [scripts/__init__.py](scripts/__init__.py). Notably, you may wnat to change the `END_DATE` and `COPYCATCH_DATE_CHUNKS` to include latest data. The CopyCatch algorithm for the clustering heuristic works on half-year chunks as specified in `COPYCATCH_DATE_CHUNKS` and a new chunk should be manually added on a quarterly basis (e.g., add `("240401", "241001")` after Oct 2024).
+The detector employs two heuristics: a low-activity heuristic and a lockstep heuristic. Their parameters are defined in [scripts/__init__.py](scripts/__init__.py). Notably, you may wnat to change the `END_DATE` and `COPYCATCH_DATE_CHUNKS` to include latest data. The CopyCatch algorithm for the lockstep heuristic works on half-year chunks as specified in `COPYCATCH_DATE_CHUNKS` and a new chunk should be manually added on a quarterly basis (e.g., add `("240401", "241001")` after Oct 2024).
 
 To run the low-acivity heuristic, use:
 
@@ -56,7 +56,7 @@ python -m scripts.dagster.simple_detector_bigquery
 
 It will run the low-activity heuristic starting from `scripts.START_DATE` to `scripts.END_DATE` on Google BigQuery, and write the results to MongoDB. Expect it to read >= 20TB of data ($6.25/TB on the default billing). The BigQuery quries won't take more than a few minutes, but the script will also fetch GitHub API to collect certain information. Expect it to be slower and output a lot of error messages (because many of the fake star repositories have been deleted). Once this script finishes, you should be able to see several CSV files in `data/[END_DATE]` and a new collection `fake_stars.low_activity_stars` in the MongoDB instance as specificed my `scripts.MONGODB_URL`.
 
-To run the clustering heuristic, first use:
+To run the lockstep heuristic, first use:
 
 ```shell
 python -m scripts.copycatch.bigquery --run
