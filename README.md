@@ -1,6 +1,18 @@
 # StarScout
 
-Find suspicious (and possibly faked) GitHub stars at-scale
+Find suspicious (and possibly faked) GitHub stars at-scale. Please refer to [this paper preprint] for technical details and our findings:
+
+```
+@misc{he202445millionsuspectedfake,
+      title={4.5 Million (Suspected) Fake Stars in GitHub: A Growing Spiral of Popularity Contests, Scams, and Malware}, 
+      author={Hao He and Haoqin Yang and Philipp Burckhardt and Alexandros Kapravelos and Bogdan Vasilescu and Christian Kästner},
+      year={2024},
+      eprint={2412.13459},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2412.13459}, 
+}
+```
 
 ## Setup
 
