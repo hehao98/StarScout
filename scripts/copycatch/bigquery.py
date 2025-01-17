@@ -252,7 +252,7 @@ def summarize_results(start_date: str, end_date: str) -> dict[str, set[str]]:
 def export_mongodb(repo_to_fakes: dict[str, set[str]]):
     client = MongoClient(MONGO_URL)
     collection = client.fake_stars.clustered_stars
-    collection.drop()
+    # collection.drop()
     collection.create_index(["repo", "actor", "starred_at"], unique=True)
 
     # Export all real stars first
@@ -266,10 +266,7 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
                         UpdateOne(
                             filter={**key},
                             update={
-                                "$set": {
-                                    **key,
-                                    "clustered": False,
-                                }
+                                "$setOnInsert": {**key, "clustered": False},
                             },
                             upsert=True,
                         )
@@ -370,7 +367,7 @@ def main():
             pool.starmap(export_stargazer_graphs, COPYCATCH_DATE_CHUNKS)
             pool.starmap(agg_results, COPYCATCH_DATE_CHUNKS)
             pool.starmap(export_copycatch_results, COPYCATCH_DATE_CHUNKS)
-            
+
         repo_to_fakes = defaultdict(set)
         for start_date, end_date in COPYCATCH_DATE_CHUNKS:
             repo_to_fakes = summarize_results(start_date, end_date)
@@ -381,7 +378,7 @@ def main():
             len(repo_to_fakes),
             sum(map(len, repo_to_fakes.values())),
         )
-        
+
         export_mongodb(repo_to_fakes)
 
         summarize_mongodb()

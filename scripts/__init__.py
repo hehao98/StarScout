@@ -17,7 +17,7 @@ VIRUS_TOTAL_API_KEY: str = SECRETS["virus_total_api_key"]
 
 # Parameters for running experiments
 START_DATE: str = "190701"
-END_DATE: str = "241001"
+END_DATE: str = "250101"
 MIN_STARS_LOW_ACTIVITY: int = 50
 MIN_STARS_COPYCATCH_SEED: int = 50
 COPYCATCH_NUM_ITERATIONS: int = 10
@@ -49,4 +49,5 @@ COPYCATCH_DATE_CHUNKS = [
     ("231001", "240401"),
     ("240101", "240701"),
     ("240401", "241001"),
+    ("240701", "250101"),
 ]

@@ -22,7 +22,7 @@ from scripts import (
 from scripts.gcp import process_bigquery
 
 
-END_DATES = ["240701", "241001"]
+END_DATES = ["240701", "241001", "250101"]
 
 
 def _pad_missing_months(df: pd.DataFrame, key: str) -> pd.DataFrame:
