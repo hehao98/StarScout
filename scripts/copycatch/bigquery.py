@@ -221,6 +221,13 @@ def summarize_results(start_date: str, end_date: str) -> dict[str, set[str]]:
                 obj = json.loads(line)
                 logging.info("Cluster ID: %s", obj["repo_name"])
 
+                if len(obj["cluster"]) < COPYCATCH_PARAMS.m:
+                    logging.info(
+                        "Skipping because cluster has less than %d repos",
+                        COPYCATCH_PARAMS.m,
+                    )
+                    continue
+
                 for repo in obj["cluster"]:
                     star_times = []
                     for user in obj["actors"]:

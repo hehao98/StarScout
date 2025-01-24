@@ -1,0 +1,3 @@
+[submodule "data/trending_archive"]
+	path = data/trending_archive
+	url = https://github.com/larsbijl/trending_archive.git

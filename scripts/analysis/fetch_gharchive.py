@@ -23,34 +23,31 @@ from scripts.gcp import (
     load_gzipped_json_blob_to_mongodb,
 )
 from scripts.analysis.data import get_fake_star_repos
-from scripts.github import get_repo_id, get_user_info
+from scripts.github import get_user_info, get_repo_id
 
 
 SAMPLE_SIZE = 10000
 
 
 def sample_repo_events():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_repo_events"):
-        logging.info(
-            "sample_repo_events already exists, skipping table creation")
-    else:
-        bigquery_task = {
-            "interactive": False,
-            "query_file": "scripts/analysis/queries/sample_repos.sql",
-            "output_table_id": "sample_repo_events",
-            "params": [
-                bigquery.ScalarQueryParameter(
-                    "start_date", "STRING", START_DATE),
-                bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
-                bigquery.ScalarQueryParameter(
-                    "sample_size", "INT64", SAMPLE_SIZE),
-                bigquery.ScalarQueryParameter(
-                    "min_stars", "INT64", MIN_STARS_COPYCATCH_SEED
-                ),
-            ],
-        }
-        process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table sample_repo_events created")
+    #if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_repo_events"):
+    #    logging.info("sample_repo_events already exists, skipping table creation")
+    #else:
+    bigquery_task = {
+        "interactive": False,
+        "query_file": "scripts/analysis/queries/sample_repos.sql",
+        "output_table_id": "sample_repo_events",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+            bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
+            bigquery.ScalarQueryParameter("sample_size", "INT64", SAMPLE_SIZE),
+            bigquery.ScalarQueryParameter(
+                "min_stars", "INT64", MIN_STARS_COPYCATCH_SEED
+            ),
+        ],
+    }
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+    logging.info("table sample_repo_events created")
 
     blobs = dump_bigquery_table(
         PROJECT_ID, DATASET_ID, "sample_repo_events", GCP_BUCKET
@@ -67,24 +64,22 @@ def sample_repo_events():
 
 
 def sample_user_events():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_actor_events"):
-        logging.info(
-            "sample_actor_events already exists, skipping table creation")
-    else:
-        bigquery_task = {
-            "interactive": False,
-            "query_file": "scripts/analysis/queries/sample_users.sql",
-            "output_table_id": "sample_actor_events",
-            "params": [
-                bigquery.ScalarQueryParameter(
-                    "start_date", "STRING", START_DATE),
-                bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
-                bigquery.ScalarQueryParameter(
-                    "sample_size", "INT64", SAMPLE_SIZE),
-            ],
-        }
-        process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table sample_actor_events created")
+    # if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "sample_actor_events"):
+    #    logging.info(
+    #        "sample_actor_events already exists, skipping table creation")
+    # else:
+    bigquery_task = {
+        "interactive": False,
+        "query_file": "scripts/analysis/queries/sample_users.sql",
+        "output_table_id": "sample_actor_events",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+            bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
+            bigquery.ScalarQueryParameter("sample_size", "INT64", SAMPLE_SIZE),
+        ],
+    }
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+    logging.info("table sample_actor_events created")
 
     blobs = dump_bigquery_table(
         PROJECT_ID, DATASET_ID, "sample_actor_events", GCP_BUCKET
@@ -101,29 +96,25 @@ def sample_user_events():
 
 
 def stg_all_events_from_fake_star_repos():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_repo_events"):
-        logging.info(
-            "fake_repo_events already exists, skipping table creation")
-    else:
-        fake_star_repos = list(get_fake_star_repos().repo_name)
-        logging.info("Number of fake star repos: %d", len(fake_star_repos))
-        bigquery_task = {
-            "interactive": False,
-            "query_file": "scripts/analysis/queries/stg_all_events_repos.sql",
-            "output_table_id": "fake_repo_events",
-            "params": [
-                bigquery.ScalarQueryParameter(
-                    "start_date", "STRING", START_DATE),
-                bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
-                bigquery.ArrayQueryParameter(
-                    "repos", "STRING", fake_star_repos),
-            ],
-        }
-        process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table fake_repo_events created")
+    # if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_repo_events"):
+    #    logging.info("fake_repo_events already exists, skipping table creation")
+    # else:
+    fake_star_repos = list(get_fake_star_repos().repo_name)
+    logging.info("Number of fake star repos: %d", len(fake_star_repos))
+    bigquery_task = {
+        "interactive": False,
+        "query_file": "scripts/analysis/queries/stg_all_events_repos.sql",
+        "output_table_id": "fake_repo_events",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+            bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
+            bigquery.ArrayQueryParameter("repos", "STRING", fake_star_repos),
+        ],
+    }
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+    logging.info("table fake_repo_events created")
 
-    blobs = dump_bigquery_table(
-        PROJECT_ID, DATASET_ID, "fake_repo_events", GCP_BUCKET)
+    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "fake_repo_events", GCP_BUCKET)
 
     with pymongo.MongoClient(MONGO_URL) as client:
         client.fake_stars.fake_repo_events.drop()
@@ -136,51 +127,43 @@ def stg_all_events_from_fake_star_repos():
 
 
 def stg_all_events_from_fake_star_actors():
-    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_actor_events"):
-        logging.info(
-            "fake_actor_events already exists, skipping table creation")
-    else:
-        with pymongo.MongoClient(MONGO_URL) as client:
-            fake_star_actors = list(
-                map(
-                    lambda x: x["_id"],
-                    client.fake_stars.actors.aggregate(
-                        [{"$group": {"_id": "$actor"}}]),
-                )
+    #if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, "fake_actor_events"):
+    #    logging.info("fake_actor_events already exists, skipping table creation")
+    #else:
+    with pymongo.MongoClient(MONGO_URL) as client:
+        fake_star_actors = list(
+            map(
+                lambda x: x["_id"],
+                client.fake_stars.actors.aggregate([{"$group": {"_id": "$actor"}}]),
             )
-            motivating_example_actors = []
-            for doc in client.fake_stars.low_activity_stars.find(
-                {"repo": "gqylpy/funccache", "low_activity": True}
-            ):
-                motivating_example_actors.append(doc["actor"])
-            for doc in client.fake_stars.clustered_stars.find(
-                {"repo": "gqylpy/funccache", "clustered": True}
-            ):
-                motivating_example_actors.append(doc["actor"])
-        logging.info("# of fake star actors: %d", len(fake_star_actors))
-        logging.info("# in motivating example: %d",
-                     len(motivating_example_actors))
+        )
+        motivating_example_actors = []
+        for doc in client.fake_stars.low_activity_stars.find(
+            {"repo": "gqylpy/funccache", "low_activity": True}
+        ):
+            motivating_example_actors.append(doc["actor"])
+        for doc in client.fake_stars.clustered_stars.find(
+            {"repo": "gqylpy/funccache", "clustered": True}
+        ):
+            motivating_example_actors.append(doc["actor"])
+    logging.info("# of fake star actors: %d", len(fake_star_actors))
+    logging.info("# in motivating example: %d", len(motivating_example_actors))
+    fake_star_actors = random.sample(fake_star_actors, SAMPLE_SIZE)
+    fake_star_actors += motivating_example_actors
+    bigquery_task = {
+        "interactive": False,
+        "query_file": "scripts/analysis/queries/stg_all_events_actors.sql",
+        "output_table_id": "fake_actor_events",
+        "params": [
+            bigquery.ScalarQueryParameter("start_date", "STRING", START_DATE),
+            bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
+            bigquery.ArrayQueryParameter("actors", "STRING", fake_star_actors),
+        ],
+    }
+    process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
+    logging.info("table fake_actor_events created")
 
-        fake_star_actors = random.sample(fake_star_actors, SAMPLE_SIZE)
-        fake_star_actors += motivating_example_actors
-
-        bigquery_task = {
-            "interactive": False,
-            "query_file": "scripts/analysis/queries/stg_all_events_actors.sql",
-            "output_table_id": "fake_actor_events",
-            "params": [
-                bigquery.ScalarQueryParameter(
-                    "start_date", "STRING", START_DATE),
-                bigquery.ScalarQueryParameter("end_date", "STRING", END_DATE),
-                bigquery.ArrayQueryParameter(
-                    "actors", "STRING", fake_star_actors),
-            ],
-        }
-        process_bigquery(PROJECT_ID, DATASET_ID, **bigquery_task)
-        logging.info("table fake_actor_events created")
-
-    blobs = dump_bigquery_table(
-        PROJECT_ID, DATASET_ID, "fake_actor_events", GCP_BUCKET)
+    blobs = dump_bigquery_table(PROJECT_ID, DATASET_ID, "fake_actor_events", GCP_BUCKET)
 
     with pymongo.MongoClient(MONGO_URL) as client:
         client.fake_stars.fake_actor_events.drop()
@@ -223,8 +206,7 @@ def aggregate_csvs():
             .sort_values(by=["repo", "month"])
             .reset_index(drop=True)
         )
-    results.to_csv(
-        f"data/{END_DATE}/sample_repo_stars_by_month.csv", index=False)
+    results.to_csv(f"data/{END_DATE}/sample_repo_stars_by_month.csv", index=False)
 
     collections_and_pivots = [
         ("sample_repo_events", "repo"),
@@ -272,40 +254,40 @@ def check_deletion_status():
     sample_actors = pd.read_csv(f"data/{END_DATE}/sample_actor_events.csv")
     fake_actors = pd.read_csv(f"data/{END_DATE}/fake_actor_events.csv")
 
-    # logging.info("Matching %d sample repos to GitHub IDs", len(sample_repos))
-    # sample_repo_ids = []
-    # for repo in sample_repos.repo:
-    #    repo_id = get_repo_id(repo)
-    #    sample_repo_ids.append({"repo": repo, "id": repo_id})
-    #    logging.info("Repo: %s, ID: %s", repo, repo_id)
+    logging.info("Matching %d sample repos to GitHub IDs", len(sample_repos))
+    sample_repo_ids = []
+    for repo in sample_repos.repo:
+        repo_id = get_repo_id(repo)
+        sample_repo_ids.append({"repo": repo, "id": repo_id})
+        logging.info("Repo: %s, ID: %s", repo, repo_id)
 
     sample_user_info = []
     for actor in sample_actors.actor:
         user_info = get_user_info(actor)
         if "error" in user_info:
-            sample_user_info.append(
-                {"actor": actor, "error": user_info["error"]})
+            sample_user_info.append({"actor": actor, "error": user_info["error"]})
             logging.error("Actor: %s, Error: %s", actor, user_info["error"])
         else:
             sample_user_info.append(
-                {"actor": actor, "raw_response": json.dumps(user_info)})
+                {"actor": actor, "raw_response": json.dumps(user_info)}
+            )
             logging.info("Actor: %s, Info: %s", actor, user_info)
 
     fake_user_info = []
     for actor in fake_actors.actor:
         user_info = get_user_info(actor)
         if "error" in user_info:
-            fake_user_info.append(
-                {"actor": actor, "error": user_info["error"]})
+            fake_user_info.append({"actor": actor, "error": user_info["error"]})
             logging.error("Actor: %s, Error: %s", actor, user_info["error"])
         else:
             fake_user_info.append(
-                {"actor": actor, "raw_response": json.dumps(user_info)})
+                {"actor": actor, "raw_response": json.dumps(user_info)}
+            )
             logging.info("Actor: %s, Info: %s", actor, user_info)
 
-    # pd.DataFrame(sample_repo_ids).to_csv(
-    #    f"data/{END_DATE}/sample_repo_ids.csv", index=False
-    # )
+    pd.DataFrame(sample_repo_ids).to_csv(
+        f"data/{END_DATE}/sample_repo_ids.csv", index=False
+    )
     pd.DataFrame(sample_user_info).to_csv(
         f"data/{END_DATE}/sample_user_info.csv", index=False
     )
@@ -321,13 +303,13 @@ def main():
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
-    # sample_repo_events()
-    # sample_user_events()
+    sample_repo_events()
+    sample_user_events()
 
-    # stg_all_events_from_fake_star_repos()
-    # stg_all_events_from_fake_star_actors()
+    stg_all_events_from_fake_star_repos()
+    stg_all_events_from_fake_star_actors()
 
-    # aggregate_csvs()
+    aggregate_csvs()
 
     check_deletion_status()
 

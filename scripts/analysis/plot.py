@@ -10,10 +10,10 @@ def init_matplotlib():
 
     for path in matplotlib.font_manager.findSystemFonts():
         f = matplotlib.font_manager.get_font(path)
-        if f.family_name == "Times New Roman":
+        if f.family_name == "Linux Biolinum":
             matplotlib.font_manager.fontManager.addfont(path)
             prop = matplotlib.font_manager.FontProperties(fname=path)
-            plt.rcParams["font.family"] = "serif"
+            plt.rcParams["font.family"] = "sans-serif"
             plt.rcParams["font.sans-serif"] = prop.get_name()
 
     setattr(plt.Axes, "remove_spines", remove_spines)
