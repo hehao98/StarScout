@@ -221,10 +221,26 @@ def summarize_results(start_date: str, end_date: str) -> dict[str, set[str]]:
                 obj = json.loads(line)
                 logging.info("Cluster ID: %s", obj["repo_name"])
 
-                if len(obj["cluster"]) < COPYCATCH_PARAMS.m:
+                if len(obj["cluster"]) < COPYCATCH_PARAMS.m * COPYCATCH_PARAMS.rho:
                     logging.info(
                         "Skipping because cluster has less than %d repos",
                         COPYCATCH_PARAMS.m,
+                    )
+                    continue
+
+                cluster_size = 0
+                for repo in obj["cluster"]:
+                    star_times = []
+                    for user in obj["actors"]:
+                        if (repo, user) in repo_user_to_time:
+                            star_times.append(repo_user_to_time[(repo, user)])
+                    if len(star_times) >= COPYCATCH_PARAMS.n:
+                        cluster_size += 1
+                if cluster_size < COPYCATCH_PARAMS.m * COPYCATCH_PARAMS.rho:
+                    logging.info(
+                        "Skipping because cluster has less than %d repos with %d fake stars",
+                        COPYCATCH_PARAMS.m * COPYCATCH_PARAMS.rho,
+                        COPYCATCH_PARAMS.n
                     )
                     continue
 
@@ -234,7 +250,7 @@ def summarize_results(start_date: str, end_date: str) -> dict[str, set[str]]:
                         if (repo, user) in repo_user_to_time:
                             star_times.append(repo_user_to_time[(repo, user)])
                     star_times = sorted(star_times)
-                    if len(star_times) >= COPYCATCH_PARAMS.n * COPYCATCH_PARAMS.rho:
+                    if len(star_times) >= COPYCATCH_PARAMS.n:
                         logging.info(
                             "Repo %s: %d stars out of %d users, star time %s - %s",
                             repo,
@@ -259,7 +275,7 @@ def summarize_results(start_date: str, end_date: str) -> dict[str, set[str]]:
 def export_mongodb(repo_to_fakes: dict[str, set[str]]):
     client = MongoClient(MONGO_URL)
     collection = client.fake_stars.clustered_stars
-    # collection.drop()
+    collection.drop()
     collection.create_index(["repo", "actor", "starred_at"], unique=True)
 
     # Export all real stars first
@@ -273,7 +289,7 @@ def export_mongodb(repo_to_fakes: dict[str, set[str]]):
                         UpdateOne(
                             filter={**key},
                             update={
-                                "$setOnInsert": {**key, "clustered": False},
+                                "$set": {**key, "clustered": False},
                             },
                             upsert=True,
                         )
