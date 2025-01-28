@@ -1,0 +1,794 @@
+repo_name,package,ecosystem,description,created_at,n_stars,n_versions,n_dependent_packages,n_dependent_repos,n_downloads,downloads_period
+Theneo-Inc/api-documentation,Theneo-Inc/api-documentation,actions,Generate Stripe-like API Documentation,2023-01-03T22:02:40.158Z,89.0,12,0,1,,
+diggerhq/digger,diggerhq/digger,actions,Manage terraform collaboration,2023-05-17T08:44:25.174Z,4210.0,239,0,4,,
+holochain/holochain,aitia,cargo,Library for making sense of events in terms of causal graphs,2024-01-10T01:45:30.438Z,1235.0,28,4,0,34470.0,total
+Wilfred/difftastic,difftastic,cargo,A structural diff that understands syntax.,2022-04-12T10:19:38.232Z,19161.0,73,0,0,114996.0,total
+Wilfred/difftastic,difftastic-oc,cargo,A syntactic diff,2022-09-15T08:51:21.674Z,19161.0,1,0,0,1161.0,total
+polytope-labs/hyperbridge,ethereum-triedb,cargo,EIP-1186 ethereum trie layout implementation for parity/trie,2024-05-13T22:32:40.357Z,195.0,2,0,0,9321.0,total
+holochain/holochain,fixt,cargo,minimum viable fixtures,2022-04-12T12:40:51.895Z,1235.0,61,17,37,125244.0,total
+polytope-labs/hyperbridge,grandpa-verifier,cargo,GRANDPA consensus proof verifier,2024-09-19T18:04:11.462Z,195.0,2,0,0,1612.0,total
+polytope-labs/hyperbridge,grandpa-verifier-primitives,cargo,Primitives for verifying GRANDPA consensus proofs,2024-09-19T18:04:11.048Z,195.0,2,0,0,1634.0,total
+holochain/holochain,hc_deepkey_sdk,cargo,SDK for the Deepkey DNA Zomes,2024-04-12T20:47:43.627Z,1235.0,35,1,0,18846.0,total
+holochain/holochain,hc_deepkey_types,cargo,Definitions used by the Deepkey DNA Zomes,2024-02-27T14:46:11.297Z,1235.0,33,2,0,18877.0,total
+holochain/holochain,hc_sleuth,cargo,Tool for diagnosing problems with Holochain,2024-01-12T12:17:34.040Z,1235.0,66,3,0,54071.0,total
+holochain/holochain,hcterm,cargo,A terminal for Holochain,2023-11-01T12:20:26.578Z,1235.0,89,0,0,46079.0,total
+holochain/holochain,hdi,cargo,The HDI,2022-07-04T14:38:19.101Z,1235.0,144,11,61,202599.0,total
+holochain/holochain,hdk,cargo,The Holochain HDK,2022-04-12T15:06:53.790Z,1235.0,230,30,136,308391.0,total
+holochain/holochain,hdk_derive,cargo,derive macros for the holochain hdk,2022-04-12T15:07:06.293Z,1235.0,171,4,81,254703.0,total
+holochain/holochain-rust,hdk_proc_macros,cargo,holochain hdk v2 (with proc macros),2022-04-12T15:07:10.413Z,578.0,32,3,47,32168.0,total
+holochain/holochain,holo_hash,cargo,hashing helpers supporting dht sharding,2022-04-12T15:21:26.364Z,1235.0,134,26,85,255518.0,total
+holochain/holochain,holochain,cargo,"Holochain, a framework for distributed applications",2022-04-12T15:17:41.635Z,1235.0,269,6,17,223105.0,total
+holochain/holochain,holochain-services,cargo,Holochain Conductor Services types,2023-12-22T16:01:09.055Z,1235.0,1,1,0,856.0,total
+holochain/holochain,holochain_cascade,cargo,Logic for cascading updates to Holochain state and network interaction,2022-04-06T12:45:22.521Z,1235.0,235,1,20,191079.0,total
+holochain/holochain,holochain_chc,cargo,Defines the Chain Head Coordinator (CHC) API for Holochain and provides an HTTP client implementation.,2024-09-04T02:03:19.149Z,1235.0,30,0,0,12995.0,total
+holochain/holochain,holochain_cli,cargo,"Provides the `hc` binary, a helpful CLI tool for working with Holochain.",2022-04-12T15:18:12.504Z,1235.0,244,0,0,159395.0,total
+holochain/holochain,holochain_cli_bundle,cargo,DNA and hApp bundling functionality for the `hc` Holochain CLI utility,2022-04-06T12:45:21.308Z,1235.0,220,4,1,144373.0,total
+holochain/launcher,holochain_cli_launch,cargo,A CLI to launch holochain apps in a Holochain Launcher environment for testing and development purposes.,2023-01-24T11:05:43.921Z,246.0,5,0,0,3583.0,total
+holochain/holochain,holochain_cli_run_local_services,cargo,Run a holochain webrtc signal server and bootstrap server.,2023-05-15T10:15:05.148Z,1235.0,94,2,0,57442.0,total
+holochain/holochain,holochain_cli_sandbox,cargo,"A library and CLI to help create, run and interact with sandboxed Holochain conductor environments, for testing and development purposes.",2022-04-12T15:18:17.558Z,1235.0,223,2,2,172831.0,total
+holochain/holochain,holochain_cli_signal_srv,cargo,Run a holochain webrtc signal server.,2023-04-26T18:05:37.760Z,1235.0,2,1,0,1579.0,total
+holochain/holochain-client-rust,holochain_client,cargo,A Rust client for the Holochain Conductor API,2022-04-12T15:18:16.911Z,88.0,66,4,1,54063.0,total
+holochain/wind-tunnel,holochain_client_instrumented,cargo,An instrumented wrapper around the holochain_client,2024-03-06T20:03:00.217Z,60.0,5,1,0,3855.0,total
+holochain/holochain-rust,holochain_common,cargo,holochain core commons,2022-04-12T15:18:21.638Z,578.0,54,9,2,46786.0,total
+holochain/holochain,holochain_conductor_api,cargo,Message types for Holochain admin and app interface protocols,2022-04-06T12:45:22.404Z,1235.0,235,8,22,203750.0,total
+holochain/holochain,holochain_conductor_config,cargo,Provides utilities for generating holochain conductor configuration.,2025-01-15T13:47:18.439Z,1235.0,1,0,0,152.0,total
+holochain/holochain-rust,holochain_conductor_lib,cargo,holochain conductor library,2022-04-12T15:18:31.936Z,578.0,32,2,2,27266.0,total
+holochain/holochain-rust,holochain_conductor_lib_api,cargo,holochain conductor lib api,2022-04-12T15:18:39.590Z,578.0,39,2,2,32886.0,total
+holochain/holochain,holochain_conductor_services,cargo,Holochain Conductor Services types,2024-01-11T09:45:21.549Z,1235.0,81,1,0,55043.0,total
+holochain/holochain-rust,holochain_conductor_wasm,cargo,holochain wasm,2022-04-12T15:18:45.650Z,578.0,32,0,0,26536.0,total
+holochain/holochain-rust,holochain_core,cargo,holochain core,2022-04-12T15:19:00.346Z,578.0,34,3,2,29269.0,total
+holochain/holochain-rust,holochain_core_types,cargo,core types needed for all holochain development,2022-04-12T15:19:05.944Z,578.0,44,11,55,49160.0,total
+holochain/holochain,holochain_deterministic_integrity,cargo,The HDI,2022-04-14T15:01:10.544Z,1235.0,12,3,22,13426.0,total
+holochain/holochain-rust,holochain_dpki,cargo,holochain dpki,2022-04-12T15:19:13.005Z,578.0,39,2,2,33394.0,total
+holochain/holochain,holochain_integrity_types,cargo,Holochain integrity types,2022-04-06T12:45:22.928Z,1235.0,138,7,68,222375.0,total
+holochain/holochain,holochain_keystore,cargo,keystore for libsodium keypairs,2022-04-12T15:19:34.603Z,1235.0,210,9,26,204654.0,total
+holochain/launcher,holochain_launcher_utils,cargo,Shared utils used by Holochain Launcher and the hc launch CLI (holochain_cli_launch),2023-01-24T10:23:17.159Z,246.0,5,1,1,7171.0,total
+holochain/holochain-rust,holochain_locksmith,cargo,helpers for mutex deadlock diagnosis,2022-04-12T15:19:39.751Z,578.0,49,8,53,49212.0,total
+holochain/holochain,holochain_metrics,cargo,metrics helpers,2022-04-12T15:19:47.762Z,1235.0,64,5,2,63456.0,total
+holochain/holochain-rust,holochain_net,cargo,holochain net,2022-04-12T15:19:52.433Z,578.0,36,2,2,31040.0,total
+holochain/holochain,holochain_nonce,cargo,This crate is for generating nonces.,2023-10-11T05:17:04.921Z,1235.0,27,8,1,58329.0,total
+holochain/holochain,holochain_p2p,cargo,holochain specific wrapper around more generic p2p module,2022-04-12T15:19:58.275Z,1235.0,226,7,23,198575.0,total
+holochain/scaffolding,holochain_scaffolding_cli,cargo,CLI to easily generate and modify holochain apps,2022-10-28T15:47:03.605Z,206.0,33,0,0,18681.0,total
+holochain/holochain,holochain_secure_primitive,cargo,Crate for the secure primitive macros,2023-10-11T05:05:08.617Z,1235.0,16,5,1,52573.0,total
+holochain/holochain,holochain_sqlite,cargo,Abstractions for persistence of Holochain state via SQLite,2022-04-12T15:20:30.535Z,1235.0,214,6,23,208879.0,total
+holochain/holochain,holochain_state,cargo,Holochain persisted state datatypes and functions,2022-04-06T12:45:22.678Z,1235.0,228,4,23,196162.0,total
+holochain/holochain,holochain_state_types,cargo,Types for the holochain_state crate,2023-10-11T05:32:28.641Z,1235.0,61,3,1,54348.0,total
+holochain/holochain,holochain_trace,cargo,tracing helpers,2023-03-16T09:22:15.694Z,1235.0,46,20,1,74183.0,total
+holochain/holochain,holochain_types,cargo,Holochain common types,2022-04-12T15:20:42.061Z,1235.0,225,24,29,212016.0,total
+holochain/holochain,holochain_util,cargo,This crate is a collection of various utility functions that are used in the other crates in the holochain repository.,2022-04-12T15:20:46.973Z,1235.0,62,20,23,147878.0,total
+holochain/holochain-rust,holochain_wasm_utils,cargo,holochain wasm utils,2022-04-12T15:21:15.172Z,578.0,41,7,55,43042.0,total
+holochain/holochain,holochain_websocket,cargo,Holochain utilities for serving and connection with websockets,2022-04-06T12:45:21.354Z,1235.0,155,4,22,145138.0,total
+holochain/wind-tunnel,holochain_wind_tunnel_runner,cargo,Customises the wind_tunnel_runner for Holochain testing,2024-03-06T20:03:00.227Z,60.0,5,0,0,3788.0,total
+holochain/holochain,holochain_zome_types,cargo,Holochain zome types,2022-04-12T15:21:20.654Z,1235.0,184,19,85,275322.0,total
+holochain/holochain-rust,in_stream,cargo,trait system for facilitating non-blocking stream chaining with handshaking,2022-04-12T16:02:16.088Z,578.0,25,2,2,22070.0,total
+polytope-labs/hyperbridge,ismp,cargo,Rust implementation of the interoperable state machine protocol,2024-05-02T13:47:36.234Z,195.0,6,7,0,4809.0,total
+polytope-labs/hyperbridge,ismp-grandpa,cargo,GRANDPA consensus client for pallet-ismp,2024-09-19T18:04:10.853Z,195.0,6,0,0,2498.0,total
+polytope-labs/hyperbridge,ismp-parachain,cargo,Parachain consensus client for pallet-ismp,2024-05-02T14:02:50.966Z,195.0,9,1,0,4094.0,total
+polytope-labs/hyperbridge,ismp-parachain-inherent,cargo,ISMP parachain consensus client inherent provider,2024-05-02T14:32:46.332Z,195.0,9,0,0,4551.0,total
+polytope-labs/hyperbridge,ismp-parachain-runtime-api,cargo,Substrate runtime API for the ISMP Parachain consensus client,2024-05-02T14:17:42.956Z,195.0,6,1,0,3397.0,total
+holochain/holochain,kitsune_p2p,cargo,p2p / dht communication framework,2022-04-12T16:51:35.763Z,1235.0,188,8,27,188884.0,total
+holochain/holochain,kitsune_p2p_bin_data,cargo,Binary data types for kitsune_p2p,2023-03-16T09:22:16.569Z,1235.0,69,10,4,122919.0,total
+holochain/holochain,kitsune_p2p_block,cargo,(un)Block datatype for kitsune_p2p,2023-03-16T09:22:15.098Z,1235.0,75,4,4,124171.0,total
+holochain/holochain,kitsune_p2p_bootstrap,cargo,Bootstrap server written in rust for kitsune nodes to find each other,2022-04-12T16:51:42.849Z,1235.0,107,3,1,97666.0,total
+holochain/holochain,kitsune_p2p_bootstrap_client,cargo,a client library for the bootstrap service used by Kitsune P2P,2023-10-11T05:17:04.946Z,1235.0,59,4,1,53941.0,total
+holochain/holochain,kitsune_p2p_dht,cargo,Kitsune P2p DHT definition,2022-07-01T20:55:57.589Z,1235.0,90,5,10,144028.0,total
+holochain/holochain,kitsune_p2p_dht_arc,cargo,Kitsune P2p Dht Arc Utils,2022-04-12T16:51:46.617Z,1235.0,87,5,79,222444.0,total
+holochain/holochain,kitsune_p2p_fetch,cargo,Kitsune P2p Fetch Pool Logic,2022-12-15T18:39:17.990Z,1235.0,110,1,3,116357.0,total
+holochain/holochain,kitsune_p2p_mdns,cargo,p2p / mdns discovery framework,2022-04-12T16:51:48.354Z,1235.0,46,1,25,91194.0,total
+holochain/holochain,kitsune_p2p_proxy,cargo,Proxy transport module for kitsune-p2p,2022-04-12T16:51:49.013Z,1235.0,143,1,27,161361.0,total
+holochain/holochain,kitsune_p2p_timestamp,cargo,Microsecond-precision timestamp datatype for kitsune_p2p,2022-04-12T16:51:54.923Z,1235.0,70,10,79,209670.0,total
+holochain/holochain,kitsune_p2p_transport_quic,cargo,QUIC transport module for kitsune-p2p,2022-04-12T16:51:58.696Z,1235.0,126,2,27,148513.0,total
+holochain/holochain,kitsune_p2p_types,cargo,types subcrate for kitsune-p2p,2022-04-12T16:52:09.590Z,1235.0,146,16,27,172806.0,total
+lens-vm/lens,lens_sdk,cargo,"An SDK for writing bi-directional, wasm based, LensVM transformations in Rust",2023-11-27T22:51:23.242Z,383.0,2,0,0,37170.0,total
+drl990114/MarkFlowy,markflowy,cargo,A Markdown Editor App,2024-02-27T13:16:33.498Z,627.0,1,0,0,983.0,total
+polytope-labs/hyperbridge,mmr-primitives,cargo,Merkle mountain range primitives for pallet-ismp,2024-05-02T13:47:36.239Z,195.0,5,1,0,4135.0,total
+holochain/holochain,mr_bundle,cargo,Implements the un-/packing of bundles that either embed or reference a set of resources,2022-04-12T19:24:30.395Z,1235.0,81,4,25,119007.0,total
+noctisynth/oblivion-rust,oblivion,cargo,"A fast, lightweight, and secure end-to-end encryption protocol based on ECDHE",2024-06-19T14:18:48.988Z,96.0,4,0,0,2412.0,total
+noctisynth/oblivion-rust,oblivion-codegen,cargo,Oblivion Codegen,2024-06-19T14:18:48.845Z,96.0,4,0,0,2304.0,total
+polytope-labs/hyperbridge,pallet-hyperbridge,cargo,Pallet hyperbridge mediates the connection between hyperbridge and substrate-based chains.,2024-05-06T08:32:50.824Z,195.0,7,0,0,3127.0,total
+polytope-labs/hyperbridge,pallet-ismp,cargo,The substrate runtime implementation of the Interoperable State Machine Protocol,2024-05-02T13:47:36.581Z,195.0,8,5,0,5090.0,total
+polytope-labs/hyperbridge,pallet-ismp-rpc,cargo,RPC apis for pallet-ismp,2024-05-02T14:02:51.408Z,195.0,8,0,0,4227.0,total
+polytope-labs/hyperbridge,pallet-ismp-runtime-api,cargo,The substrate runtime API for pallet-ismp,2024-05-02T14:02:51.417Z,195.0,8,2,0,4646.0,total
+polytope-labs/hyperbridge,pallet-token-gateway,cargo,A substrate implementation of the token gateway protocol,2024-10-15T11:51:03.129Z,195.0,6,0,0,1476.0,total
+makeecat/Peng,peng_quad,cargo,"Peng is a minimal quadrotor pipeline including quadrotor dynamics, IMU simulation, various trajectory planners, PID controller and depth map rendering.",2024-08-27T03:03:53.257Z,532.0,14,0,0,8953.0,total
+polytope-labs/hyperbridge,serde-hex-utils,cargo,Collection of hexadecimal (De)serialization utilities for serde,2024-09-19T13:48:07.989Z,195.0,1,0,0,1702.0,total
+holochain/holochain-rust,sim1h,cargo,A simulation of lib3h,2022-04-13T04:32:10.145Z,578.0,27,1,0,26001.0,total
+polytope-labs/hyperbridge,substrate-state-machine,cargo,ISMP state machine client implementation for substrate-based chains ,2024-05-02T14:02:51.253Z,195.0,8,1,0,4804.0,total
+polytope-labs/hyperbridge,token-gateway-primitives,cargo,A collection of types used by token gateway,2024-10-15T11:51:03.157Z,195.0,4,0,0,1193.0,total
+utnet-org/utility,unc-cache,cargo,"do not use this, new versions can stop being published at literally any time",2024-03-05T09:17:47.437Z,348.0,14,0,0,9947.0,total
+utnet-org/utility,unc-chain-configs,cargo,This crate provides typed interfaces to the UNC Genesis and Chain Configs,2024-03-06T07:17:54.054Z,348.0,12,5,0,10714.0,total
+utnet-org/utility,unc-chain-primitives,cargo,This crate hosts UNC chain-related error types,2024-03-06T07:17:54.043Z,348.0,12,2,0,8987.0,total
+utnet-org/utility,unc-chunks-primitives,cargo,This crate hosts Utility chunks-related error types,2024-03-06T07:47:51.388Z,348.0,12,1,0,8817.0,total
+utnet-org/utility,unc-client-primitives,cargo,This crate hosts UNC client-related error types,2024-03-06T07:47:51.790Z,348.0,12,1,0,8591.0,total
+utnet-org/utility,unc-config-utils,cargo,This is an internal crate to provide utils for reading config files,2024-03-05T09:17:47.420Z,348.0,14,2,0,13391.0,total
+utnet-org/utility,unc-crypto,cargo,This is an internal crate for common cryptographic types,2024-03-05T10:17:44.208Z,348.0,15,14,0,14096.0,total
+utnet-org/utility,unc-dyn-configs,cargo,Dynamic configure helpers for the unc codebase,2024-03-06T07:47:51.407Z,348.0,11,0,0,7778.0,total
+utnet-org/utility,unc-fmt,cargo,Helpers for pretty formatting.,2024-03-05T10:17:44.165Z,348.0,14,2,0,13217.0,total
+utnet-org/utility,unc-indexer-primitives,cargo,This crate hosts structures for the UNC Indexer Framework types,2024-03-06T08:03:07.998Z,348.0,10,0,0,7125.0,total
+utnet-org/utility,unc-jsonrpc-primitives,cargo,"This crate hosts structures for the UNC JSON RPC Requests, Responses and Error types",2024-03-06T08:17:45.081Z,348.0,11,5,0,9621.0,total
+utnet-org/utility,unc-o11y,cargo,Observability helpers for the unc codebase,2024-03-05T10:17:44.167Z,348.0,14,3,0,13027.0,total
+utnet-org/utility,unc-parameters,cargo,This crate provides the information about the configuration of the unc protocol,2024-03-05T10:17:44.140Z,348.0,14,4,0,13189.0,total
+utnet-org/utility,unc-primitives,cargo,This crate provides the base set of primitives used by other unc-infra.crates,2024-03-06T07:17:53.966Z,348.0,14,14,0,13003.0,total
+utnet-org/utility,unc-primitives-core,cargo,This crate provides the core set of primitives used by other unc-infra.crates including unc-primitives,2024-03-05T10:17:44.197Z,348.0,14,7,0,13580.0,total
+utnet-org/utility,unc-rpc-error-core,cargo,This crate generates schema for Rust structs which can be used by TypeScript.,2024-03-05T10:47:31.575Z,348.0,14,1,0,13143.0,total
+utnet-org/utility,unc-rpc-error-macro,cargo,This crate generates schema for Rust structs which can be used by TypeScript.,2024-03-05T10:47:31.578Z,348.0,14,2,0,13048.0,total
+utnet-org/utility,unc-stable-hasher,cargo,"`unc-stable-hasher` is a library that is essentially a wrapper around, now deprecated, `std::hash::SipHasher`.",2024-03-06T09:17:39.105Z,348.0,10,0,0,7171.0,total
+utnet-org/utility,unc-stdx,cargo,"This crate contains polyfills which should really be in std, but currently aren't for one reason or another.",2024-03-05T09:17:47.534Z,348.0,14,3,0,13384.0,total
+utnet-org/utility,unc-vm-compiler,cargo,Base compiler abstraction for Wasmer WebAssembly runtime,2024-03-05T11:03:08.811Z,348.0,13,3,0,12726.0,total
+utnet-org/utility,unc-vm-compiler-singlepass,cargo,Singlepass compiler for Wasmer WebAssembly runtime,2024-03-06T07:03:13.491Z,348.0,14,1,0,12612.0,total
+utnet-org/utility,unc-vm-engine,cargo,Wasmer Engine abstraction,2024-03-06T07:03:13.471Z,348.0,13,1,0,12366.0,total
+utnet-org/utility,unc-vm-runner,cargo,This crate implements the specification of the interface that unc blockchain exposes to the smart contracts.,2024-03-06T07:17:53.960Z,348.0,13,2,0,12479.0,total
+utnet-org/utility,unc-vm-types,cargo,unc VM Common Types,2024-03-05T10:47:31.546Z,348.0,14,5,0,13703.0,total
+utnet-org/utility,unc-vm-vm,cargo,Runtime library support for Wasmer,2024-03-05T11:03:08.846Z,348.0,14,4,0,13648.0,total
+holochain/wind-tunnel,wind_tunnel_core,cargo,Core components for Wind Tunnel,2024-03-08T19:17:45.602Z,60.0,4,2,0,3393.0,total
+holochain/wind-tunnel,wind_tunnel_instruments,cargo,Instruments for measuring performance with Wind Tunnel,2024-03-06T19:48:07.915Z,60.0,5,2,0,4052.0,total
+holochain/wind-tunnel,wind_tunnel_instruments_derive,cargo,Derive macros for the wind_tunnel_instruments crate,2024-03-06T20:03:00.413Z,60.0,5,1,0,4102.0,total
+holochain/wind-tunnel,wind_tunnel_runner,cargo,The Wind Tunnel runner,2024-03-06T20:03:00.254Z,60.0,5,1,0,3856.0,total
+PZXforXcode/PZXCodeTextField,PZXCodeTextField,cocoapods,A Swift library for customizable code text fields.,2024-08-14T03:34:26.240Z,342.0,9,0,0,,
+hviana/faster_react,faster_react,deno,"Tiny Full-Stack React framework. Avoid Overengineering. Automatic routes, reload and component bundle. It uses its own RSC engine, combining SSR and CSR. 100% Deno, no Node dependencies. Fully compatible with Deno Deploy and Serverless Environments.",2024-09-22T00:02:22.676Z,144.0,178,0,0,,
+33fdfffgdfh4626hjjgfdj/gitpush.jadepool.cloud-web,github.com/33fdfffgdfh4626hjjgfdj/gitpush.jadepool.cloud-web,go,,2024-05-11T06:38:32.910Z,114.0,0,0,0,,
+Azure/PyRIT,github.com/Azure/PyRIT,go,,2024-06-11T15:42:30.741Z,1346.0,9,0,0,,
+Azzzting/gbn,github.com/Azzzting/gbn,go,,2024-04-23T06:28:42.252Z,60.0,6,2,0,,
+Boeing/config-file-validator,github.com/Boeing/config-file-validator,go,,2022-12-17T01:03:01.249Z,343.0,11,0,0,,
+EvolvingLMMs-Lab/lmms-eval,github.com/EvolvingLMMs-Lab/lmms-eval,go,,2024-06-11T15:51:18.514Z,1328.0,6,0,0,,
+InternLM/agentlego,github.com/InternLM/agentlego,go,,2024-06-11T15:40:45.937Z,327.0,4,0,0,,
+Joystream/joystream,github.com/Joystream/joystream,go,,2022-04-12T15:27:48.766Z,1682.0,27,0,0,,
+NibiruChain/nibiru,github.com/NibiruChain/nibiru,go,,2022-11-08T03:15:09.937Z,248.0,197,4,1,,
+NibiruChain/nibiru,github.com/NibiruChain/nibiru/v2,go,,2024-08-15T07:24:42.463Z,248.0,28,0,0,,
+RiemaLabs/modular-indexer-committee,github.com/RiemaLabs/modular-indexer-committee,go,,2024-03-26T03:35:57.849Z,116.0,7,0,0,,
+SuperTux/supertux,github.com/SuperTux/supertux,go,,2024-06-17T05:13:17.251Z,1782.0,36,0,0,,
+harmony-one/harmony,github.com/TrustlessTeam/harmony,go,,2023-09-05T02:49:50.569Z,1450.0,27,0,0,,
+YABOIpy/GoDm,github.com/YABOIpy/GoDm,go,,2023-09-05T03:39:50.124Z,395.0,5,0,0,,
+ajwlforever/go-ratelimit-manager,github.com/ajwlforever/go-ratelimit-manager,go,,2024-03-16T02:56:46.679Z,119.0,1,0,0,,
+akash-network/node,github.com/akash-network/node,go,,2023-01-10T00:43:17.478Z,507.0,353,3,1,,
+akash-network/provider,github.com/akash-network/provider,go,,2023-01-12T00:36:53.291Z,308.0,148,0,0,,
+amlweems/xzbot,github.com/amlweems/xzbot,go,,2024-04-02T04:44:44.487Z,3265.0,0,0,0,,
+athanchap/KHldty,github.com/athanchap/khldty,go,,2024-04-06T06:10:53.860Z,285.0,0,0,0,,
+atpuxiner/grapi,github.com/atpuxiner/grapi,go,,2024-03-26T04:04:12.599Z,226.0,0,0,0,,
+Azure/PyRIT,github.com/azure/pyrit,go,,2024-06-11T15:42:31.336Z,1346.0,9,0,0,,
+Azzzting/gbn,github.com/azzzting/gbn,go,,2024-04-23T06:28:42.714Z,60.0,6,0,0,,
+base-org/withdrawer,github.com/base-org/withdrawer,go,,2023-09-05T03:12:07.197Z,414.0,4,0,0,,
+bifrost-finance/bifrost,github.com/bifrost-finance/bifrost,go,,2024-06-23T04:42:55.357Z,442.0,241,0,0,,
+Boeing/config-file-validator,github.com/boeing/config-file-validator,go,,2022-12-17T01:02:34.158Z,343.0,11,0,0,,
+caxapok5656/tron-wallet,github.com/caxapok5656/tron-wallet,go,,2025-01-02T06:57:08.618Z,105.0,0,0,0,,
+coreos/mantle,github.com/coreos/mantle,go,,2022-04-10T21:22:07.158Z,77.0,27,0,0,,
+danl5/goelect,github.com/danl5/goelect,go,,2024-05-09T03:59:43.269Z,231.0,7,0,0,,
+diamcircle/Aurora,github.com/diamcircle/Aurora,go,,2023-09-05T02:24:08.976Z,416.0,1,0,0,,
+diamcircle/Aurora,github.com/diamcircle/aurora,go,,2023-09-05T02:24:08.968Z,416.0,1,0,0,,
+diamcircle/go,github.com/diamcircle/go,go,,2024-01-26T04:59:20.955Z,400.0,3,0,0,,
+diamcircle/go-xdr,github.com/diamcircle/go-xdr,go,,2024-01-26T04:57:55.021Z,397.0,1,1,0,,
+diamcircle/throttled,github.com/diamcircle/throttled,go,"Package throttled implements rate limiting access to resources such
+as HTTP endpoints.",2024-01-26T04:58:20.814Z,397.0,1,1,0,,
+diggerhq/digger,github.com/diggerhq/digger,go,,2023-09-05T02:13:51.115Z,4210.0,199,0,1,,
+diggerhq/digger,github.com/diggerhq/digger/backend,go,,2024-05-26T07:54:20.655Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/cli,go,,2024-05-28T03:56:01.796Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/dgctl,go,"Copyright © 2024 diggerhq
+
+Licensed under the Apache License, Version 2.0 (the ""License"");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an ""AS IS"" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.",2024-11-19T10:05:42.461Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/ee/backend,go,,2024-11-20T06:40:08.481Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/ee/cli,go,,2024-11-19T10:05:42.425Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/ee/drift,go,,2024-11-14T06:24:48.193Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/libs,go,,2023-12-20T04:46:23.816Z,4210.0,0,0,0,,
+diggerhq/digger,github.com/diggerhq/digger/next,go,,2024-09-24T05:58:26.923Z,4210.0,0,0,0,,
+dream-mo/prom-elastic-alert,github.com/dream-mo/prom-elastic-alert,go,,2023-09-05T02:10:02.486Z,110.0,1,0,0,,
+ethstorage/es-node,github.com/ethstorage/es-node,go,,2024-07-20T08:51:35.863Z,946.0,17,0,0,,
+EvolvingLMMs-Lab/lmms-eval,github.com/evolvinglmms-lab/lmms-eval,go,,2024-06-11T15:51:26.444Z,1328.0,6,0,0,,
+go-lynx/lynx,github.com/go-lynx/lynx,go,,2023-11-16T10:02:19.068Z,140.0,9,1,1,,
+go-lynx/lynx,github.com/go-lynx/lynx/cmd/lynx,go,,2023-11-23T01:53:10.195Z,140.0,37,0,0,,
+harmony-one/harmony,github.com/harmony-one/harmony,go,,2022-04-10T21:35:07.097Z,1450.0,27,12,19,,
+hngprojects/hng_boilerplate_golang_web,github.com/hngprojects/hng_boilerplate_golang_web,go,,2024-07-11T05:55:38.882Z,81.0,0,0,0,,
+holochain/holochain-proto,github.com/holochain/holochain-proto,go,"Copyright (C) 2013-2018, The MetaCurrency Project (Eric Harris-Braun, Arthur Brock, et. al.)
+Use of this source code is governed by GPLv3 found in the LICENSE file
+----------------------------------------------------------------------------------------
+
+Copyright (C) 2013-2018, The MetaCurrency Project (Eric Harris-Braun, Arthur Brock, et. al.)
+Use of this source code is governed by GPLv3 found in the LICENSE file
+----------------------------------------------------------------------------------------
+
+Copyright (C) 2013-2018, The MetaCurrency Project (Eric Harris-Braun, Arthur Brock, et. al.)
+Use of this source code is governed by GPLv3 found in the LICENSE file
+----------------------------------------------------------------------------------------
+
+Copyright (C) 2013-2018, The MetaCurrency Project (Eric Harris-Braun, Arthur Brock, et. al.)
+Use of this source code is governed by GPLv3 found in the LICENSE file
+----------------------------------------------------------------------------------------
+
+package holochain should be imported by go packages intending to create a UI for this holochain implementation.
+
+An example of a package which imports holochain is https://github.com/holochain/holochain-proto/tree/master/cmd/hc
+
+For information not found here see the wiki:
+
+https://github.com/holochain/holochain-proto/wiki
+
+or the repo:
+
+https://github.com/holochain/holochain-proto
+
+If you are here because you intend to develop an application built on holochain take a look at the App Developer sections of the wiki.
+
+If you would like a description of the architecture/technical aspects of holochain look at those sections of the wiki.
+
+Data integrity engine for distributed applications -- a validating monotonic
+DHT ""backed"" by authoritative hashchains for data provenance.
+
+Copyright (C) 2013-2017, The MetaCurrency Project (Eric Harris-Braun, Arthur Brock, et. al.)
+Use of this source code is governed by GPLv3 found in the LICENSE file
+----------------------------------------------------------------------------------------
+
+This code is adapted from the libp2p project, specifically:
+https://github.com/libp2p/go-libp2p-kad-dht/notif.go
+
+The ipfs use of kademlia is substantially different than that needed by holochain so we remove
+parts we don't need and add others.",2022-04-11T01:55:50.668Z,170.0,3,0,0,,
+hoorayman/popple,github.com/hoorayman/popple,go,,2023-03-13T01:11:21.866Z,299.0,2,0,0,,
+hugo-fixit/FixIt,github.com/hugo-fixit/FixIt,go,,2022-10-18T02:58:35.579Z,844.0,36,0,3,,
+hugo-fixit/FixIt,github.com/hugo-fixit/fixit,go,,2022-10-18T02:58:41.912Z,844.0,32,0,0,,
+indifs/indifs,github.com/indifs/indifs,go,,2024-11-14T06:27:30.223Z,109.0,0,0,0,,
+insight-chain/inb-go,github.com/insight-chain/inb-go,go,Package ethereum defines interfaces for interacting with Ethereum.,2022-04-11T01:00:25.622Z,451.0,9,0,0,,
+InternLM/agentlego,github.com/internlm/agentlego,go,,2024-06-11T15:40:44.344Z,327.0,4,0,0,,
+jeffcail/sql2orm,github.com/jeffcail/sql2orm,go,,2024-11-29T05:18:57.447Z,73.0,1,0,0,,
+Joystream/joystream,github.com/joystream/joystream,go,,2022-04-12T15:48:33.102Z,1682.0,27,0,0,,
+KindlingProject/kindling,github.com/kindlingproject/kindling,go,,2024-07-20T08:51:57.140Z,840.0,13,0,0,,
+lastmile-ai/aiconfig,github.com/lastmile-ai/aiconfig,go,,2024-06-11T15:46:31.879Z,881.0,15,0,0,,
+lens-vm/lens,github.com/lens-vm/lens,go,,2023-09-05T02:46:21.830Z,383.0,6,0,0,,
+lens-vm/lens,github.com/lens-vm/lens/host-go,go,,2023-09-05T02:46:19.519Z,383.0,8,1,1,,
+lens-vm/lens,github.com/lens-vm/lens/host-go/runtimes/js,go,,2024-06-06T04:15:11.789Z,383.0,0,0,0,,
+lens-vm/lens,github.com/lens-vm/lens/host-go/runtimes/wasmer,go,,2024-06-06T04:15:09.676Z,383.0,0,0,0,,
+lens-vm/lens,github.com/lens-vm/lens/host-go/runtimes/wasmtime,go,,2024-06-06T04:15:11.875Z,383.0,0,0,0,,
+lens-vm/lens,github.com/lens-vm/lens/host-go/runtimes/wazero,go,,2024-06-06T04:15:12.645Z,383.0,0,0,0,,
+lens-vm/lens,github.com/lens-vm/lens/tests/integration,go,,2024-01-22T03:59:55.612Z,383.0,1,0,0,,
+lens-vm/lens,github.com/lens-vm/lens/tests/modules,go,,2023-09-05T03:09:58.781Z,383.0,1,1,0,,
+mgtv-tech/jetcache-go,github.com/mgtv-tech/jetcache-go,go,,2024-03-21T03:07:02.335Z,359.0,22,0,0,,
+ml444/gkit,github.com/ml444/gkit,go,,2023-03-06T01:11:06.572Z,355.0,82,0,1,,
+ml444/gkit,github.com/ml444/gkit/cmd/protoc-gen-go-errcode,go,,2024-01-26T05:02:24.903Z,355.0,1,0,0,,
+ml444/gkit,github.com/ml444/gkit/cmd/protoc-gen-go-field,go,,2024-03-10T05:25:29.827Z,355.0,0,0,0,,
+ml444/gkit,github.com/ml444/gkit/cmd/protoc-gen-go-gorm,go,,2024-01-18T04:57:18.412Z,355.0,2,0,0,,
+ml444/gkit,github.com/ml444/gkit/cmd/protoc-gen-go-http,go,,2023-10-28T04:14:45.401Z,355.0,25,0,0,,
+ml444/gkit,github.com/ml444/gkit/cmd/protoc-gen-go-validate,go,,2024-01-26T05:02:25.148Z,355.0,1,0,0,,
+ml444/gkit,github.com/ml444/gkit/cmd/protoc-gen-go-validate/tests,go,,2024-02-03T04:27:53.749Z,355.0,0,0,0,,
+ml444/gkit,github.com/ml444/gkit/config/ini,go,,2024-02-03T04:27:54.835Z,355.0,0,0,0,,
+ml444/gkit,github.com/ml444/gkit/config/toml,go,,2024-02-07T04:41:06.581Z,355.0,0,0,0,,
+ml444/gkit,github.com/ml444/gkit/config/yaml,go,,2023-12-13T01:36:04.020Z,355.0,10,0,0,,
+ml444/gkit,github.com/ml444/gkit/pkg/tracing,go,,2024-02-03T04:27:21.672Z,355.0,0,0,0,,
+NibiruChain/nibiru,github.com/nibiruchain/nibiru,go,,2022-11-08T03:14:53.792Z,248.0,198,0,0,,
+NibiruChain/nibiru,github.com/nibiruchain/nibiru/v2,go,,2024-08-15T07:24:42.187Z,248.0,28,0,0,,
+oceanbase/ob-operator,github.com/oceanbase/ob-operator,go,,2022-04-13T00:14:25.414Z,166.0,2,1,3,,
+oceanbase/ob-operator,github.com/oceanbase/ob-operator/test/e2e,go,,2022-08-06T00:37:49.610Z,166.0,13,0,0,,
+oxylabs/youtube-scraper,github.com/oxylabs/youtube-scraper,go,,2024-03-17T03:16:00.886Z,212.0,0,0,0,,
+RiemaLabs/modular-indexer-committee,github.com/riemalabs/modular-indexer-committee,go,,2024-03-26T03:43:27.977Z,116.0,7,0,0,,
+risesoft-y9/Digital-Infrastructure,github.com/risesoft-y9/digital-infrastructure,go,,2024-12-03T10:00:35.506Z,1472.0,5,0,0,,
+rookie-luochao/openapi-ui,github.com/rookie-luochao/openapi-ui,go,,2024-07-11T05:54:08.295Z,570.0,42,0,0,,
+sanriodev/goji,github.com/sanriodev/goji,go,,2024-09-25T06:18:04.649Z,72.0,7,0,0,,
+singchia/frontier,github.com/singchia/frontier,go,,2024-05-31T04:00:52.953Z,273.0,2,0,0,,
+sjy-dv/nnv,github.com/sjy-dv/nnv,go,,2025-01-24T08:12:46.265Z,158.0,0,0,0,,
+sourcenetwork/defradb,github.com/sourcenetwork/defradb,go,,2023-04-14T01:26:11.331Z,528.0,19,0,0,,
+sourcenetwork/orbis-go,github.com/sourcenetwork/orbis-go,go,,2024-01-26T04:58:12.968Z,385.0,5,0,0,,
+sourcenetwork/sourcehub,github.com/sourcenetwork/sourcehub,go,,2024-01-11T05:52:37.170Z,385.0,3,0,0,,
+spaceandtimelabs/SxT-Go-SDK,github.com/spaceandtimelabs/SxT-Go-SDK,go,,2023-12-11T03:23:11.192Z,2845.0,9,0,0,,
+spaceandtimelabs/SxT-Go-SDK,github.com/spaceandtimelabs/sxt-go-sdk,go,,2023-12-11T03:23:11.340Z,2845.0,9,0,0,,
+superjcd/gocrawler,github.com/superjcd/gocrawler,go,,2024-02-09T05:58:19.238Z,111.0,1,0,0,,
+SuperTux/supertux,github.com/supertux/supertux,go,,2024-06-17T05:13:30.323Z,1782.0,36,0,0,,
+traceloop/openllmetry,github.com/traceloop/openllmetry,go,,2024-06-11T15:42:19.409Z,5109.0,161,0,0,,
+wangshiben/QuicFrameWork,github.com/wangshiben/QuicFrameWork,go,,2024-06-16T05:17:12.212Z,126.0,4,0,0,,
+wangshiben/QuicFrameWork,github.com/wangshiben/quicframework,go,,2024-06-16T05:17:13.448Z,126.0,4,0,0,,
+woaijssss/tros,github.com/woaijssss/tros,go,Package tros golang OS,2024-09-17T08:59:03.377Z,279.0,16,0,0,,
+YABOIpy/GoDm,github.com/yaboipy/godm,go,,2023-09-05T03:39:50.248Z,395.0,5,0,0,,
+yyle88/done,github.com/yyle88/done,go,,2024-05-11T06:38:33.104Z,106.0,24,0,0,,
+yyle88/erero,github.com/yyle88/erero,go,,2024-05-14T04:15:48.326Z,84.0,17,0,0,,
+yyle88/eroticgo,github.com/yyle88/eroticgo,go,,2024-11-13T10:31:07.713Z,75.0,3,0,0,,
+yyle88/formatgo,github.com/yyle88/formatgo,go,,2024-05-19T03:41:54.766Z,90.0,22,0,0,,
+yyle88/gobtcsign,github.com/yyle88/gobtcsign,go,,2024-09-09T08:33:18.282Z,110.0,38,0,0,,
+yyle88/gormmom,github.com/yyle88/gormmom,go,,2024-07-14T09:02:11.679Z,107.0,26,0,0,,
+yyle88/gotrontrx,github.com/yyle88/gotrontrx,go,,2024-09-17T08:58:32.145Z,89.0,14,0,0,,
+yyle88/must,github.com/yyle88/must,go,,2024-09-26T06:29:37.814Z,127.0,13,0,0,,
+yyle88/osexec,github.com/yyle88/osexec,go,,2024-11-13T10:20:14.210Z,122.0,18,0,0,,
+yyle88/osexistpath,github.com/yyle88/osexistpath,go,,2024-09-22T05:44:53.721Z,73.0,16,0,0,,
+yyle88/rese,github.com/yyle88/rese,go,,2024-11-29T05:29:25.963Z,80.0,3,0,0,,
+yyle88/sure,github.com/yyle88/sure,go,,2024-08-04T05:34:15.270Z,133.0,36,0,0,,
+yyle88/syncmap,github.com/yyle88/syncmap,go,,2024-03-07T04:29:08.557Z,74.0,12,0,0,,
+yyle88/syntaxgo,github.com/yyle88/syntaxgo,go,,2024-05-18T04:09:12.255Z,87.0,44,0,0,,
+yyle88/tern,github.com/yyle88/tern,go,,2024-11-26T05:12:17.528Z,96.0,5,0,0,,
+yyle88/yyle88,github.com/yyle88/yyle88,go,,2024-11-13T10:32:24.326Z,166.0,58,0,0,,
+Wilfred/difftastic,difftastic,homebrew,Diff that understands syntax,2022-04-12T16:43:01.862Z,19161.0,39,0,42,2157.0,last-month
+veasion/veasion-db,cn.veasion:veasion-db,maven,The framework makes it easier to use a relational database with object-oriented applications.,2022-07-25T15:53:58.801Z,139.0,24,2,2,,
+rxson/rxson,com.github.rxson:rxson,maven,Reactive approach to JSON,2022-07-25T20:54:45.373Z,69.0,3,0,0,,
+rxson/rxson,com.github.rxson:rxson-core,maven,Reactive approach to JSON,2022-07-25T20:54:44.412Z,69.0,2,2,1,,
+rxson/rxson,com.github.rxson:rxson-reactor,maven,Reactive approach to JSON,2022-07-25T20:54:52.847Z,69.0,2,0,0,,
+rxson/rxson,com.github.rxson:rxson-rxjava,maven,Reactive approach to JSON,2022-07-25T20:54:45.243Z,69.0,2,0,0,,
+pengweizhong/dynamic-sql,com.pengwz:dynamic-spring-boot-starter,maven,Spring Boot Dependencies,2022-07-26T01:24:45.315Z,184.0,3,0,0,,
+pengweizhong/dynamic-sql,com.pengwz:dynamic-sql,maven,基于JDBC的单表动态增删改查SQL,2022-07-22T19:12:28.553Z,184.0,27,2,1,,
+pengweizhong/dynamic-sql,com.pengwz:dynamic-sql-spring-boot-starter,maven,Spring Boot Dependencies,2022-07-23T00:02:03.214Z,184.0,16,0,0,,
+AnyLifeZLB/FaceVerificationSDK,io.github.anylifezlb:Face-Verification,maven,Offline Android Face Detection & Recognition And Alive Detect SDK,2023-01-26T16:30:54.913Z,559.0,143,0,1,,
+AnyLifeZLB/FaceVerificationSDK,io.github.anylifezlb:FaceVerification,maven,Offline Android Face Detection & Recognition And Alive Detect SDK,2023-01-26T16:30:54.629Z,559.0,5,0,0,,
+AnyLifeZLB/FaceVerificationSDK,io.github.anylifezlb:FaceVerifyLib,maven,Offline Android Face Detection & Recognition And Alive Detect SDK,2023-01-26T16:30:54.548Z,559.0,26,0,0,,
+alephium/alephium,org.alephium:alephium-api_2.13,maven,alephium-api,2022-07-23T13:27:09.002Z,240.0,266,1,0,,
+alephium/alephium,org.alephium:alephium-conf_2.13,maven,alephium-conf,2022-07-23T03:45:22.989Z,240.0,252,0,0,,
+alephium/alephium,org.alephium:alephium-crypto_2.13,maven,alephium-crypto,2022-07-29T08:09:21.405Z,240.0,266,3,0,,
+alephium/alephium,org.alephium:alephium-http_2.13,maven,alephium-http,2022-07-23T12:47:37.228Z,240.0,235,0,0,,
+alephium/alephium,org.alephium:alephium-io_2.13,maven,alephium-io,2022-07-23T04:58:15.298Z,240.0,266,1,0,,
+alephium/alephium,org.alephium:alephium-json_2.13,maven,alephium-json,2022-07-23T17:05:38.470Z,240.0,252,3,0,,
+alephium/alephium,org.alephium:alephium-macros_2.13,maven,alephium-macros,2022-07-22T19:15:09.356Z,240.0,265,1,0,,
+alephium/alephium,org.alephium:alephium-protocol_2.13,maven,alephium-protocol,2022-07-23T09:37:55.517Z,240.0,266,3,0,,
+alephium/alephium,org.alephium:alephium-ralph_2.13,maven,alephium-ralph,2023-01-26T16:57:36.663Z,240.0,130,1,0,,
+alephium/alephium,org.alephium:alephium-serde_2.13,maven,alephium-serde,2022-07-29T08:12:18.505Z,240.0,266,4,0,,
+alephium/alephium,org.alephium:alephium-tools_2.13,maven,alephium-tools,2022-07-22T21:07:24.639Z,240.0,253,0,0,,
+alephium/alephium,org.alephium:alephium-util_2.13,maven,alephium-util,2022-07-23T15:19:56.018Z,240.0,266,8,0,,
+chensheng/wechatty-project,space.chensheng.wechatty:wechatty-common,maven,wechatty-common contains common codes to develop wechat media platform and enterprise platform,2022-07-27T13:29:22.034Z,176.0,3,1,1,,
+chensheng/wechatty-project,space.chensheng.wechatty:wechatty-mp,maven,wechatty-mp is a framework with well encapsulated API to develop wechat media platform.,2022-07-27T13:29:22.462Z,176.0,3,0,1,,
+chensheng/wechatty-project,space.chensheng.wechatty:wechatty-project,maven,Wechatty is a framework with well encapsulated API to develop wechat media platform and enterprise platform.,2022-07-27T13:29:22.130Z,176.0,3,0,0,,
+matter-labs/hardhat-zksync,@appliedblockchain/hardhat-zksync-upgradable,npm,Hardhat plugin to deploy and update upgradable smart contracts for the ZKsync network,2024-07-29T14:50:09.454Z,283.0,4,0,0,23.0,last-month
+matter-labs/hardhat-zksync,@cakoyo/hardhat-zksync-solc,npm,Hardhat plugin to compile smart contracts for the zkSync network,2022-04-07T14:37:38.988Z,283.0,1,1,0,4.0,last-month
+Baoing/hooks,@channelwill/hooks,npm,"Lightweight, multi-application based React hooks library",2024-07-18T05:37:54.358Z,84.0,38,0,0,86.0,last-month
+holochain/holochain-client-js,@connoropolous/holochain-client,npm,A JavaScript client for the Holochain Conductor API,2022-07-18T14:44:58.023Z,233.0,1,2,0,8.0,last-month
+difizen/libro,@difizen/libro-ai-native,npm,,2024-10-31T10:45:13.549Z,369.0,15,0,0,151.0,last-month
+difizen/libro,@difizen/libro-app,npm,,2024-11-14T11:20:11.479Z,369.0,6,0,0,96.0,last-month
+difizen/libro,@difizen/libro-code-cell,npm,cell,2023-12-20T04:46:19.344Z,369.0,100,0,0,757.0,last-month
+difizen/libro,@difizen/libro-code-editor,npm,,2023-10-17T13:18:19.940Z,369.0,104,8,1,876.0,last-month
+difizen/libro,@difizen/libro-codemirror,npm,,2023-10-17T13:18:20.424Z,369.0,102,6,1,918.0,last-month
+difizen/libro,@difizen/libro-codemirror-code-cell,npm,cell,2023-10-17T13:18:20.784Z,369.0,3,2,1,20.0,last-month
+difizen/libro,@difizen/libro-codemirror-markdown-cell,npm,cell,2023-10-17T13:18:21.559Z,369.0,3,1,1,12.0,last-month
+difizen/libro,@difizen/libro-codemirror-raw-cell,npm,cell,2023-10-17T13:18:21.912Z,369.0,3,1,1,16.0,last-month
+difizen/libro,@difizen/libro-cofine-editor,npm,cell,2023-12-20T04:46:19.326Z,369.0,100,0,0,691.0,last-month
+difizen/libro,@difizen/libro-cofine-editor-contribution,npm,cell,2023-12-20T04:46:19.567Z,369.0,100,0,0,720.0,last-month
+difizen/libro,@difizen/libro-cofine-editor-core,npm,cell,2023-12-20T04:46:19.522Z,369.0,101,0,0,944.0,last-month
+difizen/libro,@difizen/libro-cofine-textmate,npm,cell,2023-12-20T04:46:19.460Z,369.0,100,0,0,691.0,last-month
+difizen/libro,@difizen/libro-common,npm,,2023-10-17T13:18:21.384Z,369.0,104,17,1,847.0,last-month
+difizen/libro,@difizen/libro-core,npm,## Token/API,2023-10-17T13:18:28.891Z,369.0,103,13,1,951.0,last-month
+difizen/libro,@difizen/libro-jupyter,npm,,2023-10-17T13:18:29.615Z,369.0,103,2,1,729.0,last-month
+difizen/libro,@difizen/libro-kernel,npm,,2023-10-17T13:18:21.718Z,369.0,103,3,1,766.0,last-month
+difizen/libro,@difizen/libro-l10n,npm,,2023-10-17T13:18:22.216Z,369.0,102,1,1,707.0,last-month
+difizen/libro,@difizen/libro-lab,npm,,2023-10-17T13:18:29.610Z,369.0,103,0,1,393.0,last-month
+difizen/libro,@difizen/libro-language-client,npm,,2024-02-05T04:37:10.802Z,369.0,84,0,0,669.0,last-month
+difizen/libro,@difizen/libro-lsp,npm,,2023-12-20T04:50:36.952Z,369.0,100,0,0,733.0,last-month
+difizen/libro,@difizen/libro-markdown,npm,,2023-10-17T13:18:29.596Z,369.0,102,3,1,722.0,last-month
+difizen/libro,@difizen/libro-markdown-cell,npm,,2023-12-20T04:50:38.122Z,369.0,100,0,0,708.0,last-month
+difizen/libro,@difizen/libro-output,npm,"该包基于 [libro-core](../libro-core) 模块提供的输出扩展实现了 Jupyter 场景下的三个 Output 模块: `StreamOutputModule`,`ErrorOutputModule`,`DisplayDataOutputModule`。同时，Output 中不同输出数据格式的渲染实现在 [libro-rendermime](../libro-rendermime/)。",2023-10-17T11:12:36.758Z,369.0,103,1,1,716.0,last-month
+difizen/libro,@difizen/libro-prompt-cell,npm,![image](../../apps/docs/public/prompt_em.jpeg),2023-12-12T05:05:12.260Z,369.0,101,0,0,215.0,last-month
+difizen/libro,@difizen/libro-raw-cell,npm,cell,2023-12-20T04:46:18.737Z,369.0,100,0,0,694.0,last-month
+difizen/libro,@difizen/libro-rendermime,npm,该包提供了 `LibroRenderMimeModule` 模块用于识别不同数据格式的内容并且正确解析渲染。通过定义多个 MIME 类型和优先级，可以在不同的环境中提供灵活的输出展示选项，以适应各种类型的数据和前端环境的要求。内置了文本、图片、Markdown、HTML、SVG 等 MIME 渲染器，同时提供 MIME 渲染器扩展，支持扩展更多自定义的 MIME 类型渲染。,2023-10-17T11:12:37.740Z,369.0,103,6,1,708.0,last-month
+difizen/libro,@difizen/libro-search,npm,,2023-10-17T13:18:29.318Z,369.0,103,2,1,764.0,last-month
+difizen/libro,@difizen/libro-search-code-cell,npm,cell,2023-12-20T04:50:38.149Z,369.0,99,0,0,710.0,last-month
+difizen/libro,@difizen/libro-search-codemirror-cell,npm,cell,2023-10-17T11:12:37.736Z,369.0,3,1,1,14.0,last-month
+difizen/libro,@difizen/libro-shared-model,npm,,2023-10-17T11:12:35.391Z,369.0,102,2,1,855.0,last-month
+difizen/libro,@difizen/libro-sql-cell,npm,,2024-09-18T05:36:29.265Z,369.0,31,0,0,148.0,last-month
+difizen/libro,@difizen/libro-terminal,npm,,2023-12-01T05:20:12.234Z,369.0,102,0,0,185.0,last-month
+difizen/libro,@difizen/libro-toc,npm,,2023-10-17T11:12:36.166Z,369.0,103,1,0,666.0,last-month
+difizen/libro,@difizen/libro-virtualized,npm,,2023-12-20T04:50:36.897Z,369.0,101,0,0,857.0,last-month
+difizen/libro,@difizen/libro-widget,npm,,2023-10-17T11:12:35.267Z,369.0,103,0,0,206.0,last-month
+Joystream/joystream,@dzlzv/hydra-indexer-lib,npm,Block index builder for substrate based chains,2022-04-07T16:44:28.602Z,1682.0,36,1,0,76.0,last-month
+flashbots-sdk/ethers-provider-flashbots-bundle,@flashbots-sdk/ethers-provider-bundle,npm,"This repository contains the `FlashbotsBundleProvider` ethers.js provider, an additional `Provider` to `ethers.js` to enable high-level access to `eth_sendBundle` and `eth_callBundle` rpc endpoint on [mev-relay](https://github.com/flashbots-sdk/mev-relay-",2024-12-05T09:43:04.793Z,300.0,2,0,0,108.0,last-month
+matter-labs/hardhat-zksync,@gabspeck/hardhat-zksync-upgradable,npm,Hardhat plugin to deploy and update upgradable smart contracts for the ZKsync network,2024-07-26T15:30:12.085Z,283.0,1,0,0,5.0,last-month
+Holo-Host/web-sdk,@holo-host/web-sdk,npm,Standard development kit for creating Web UIs that work with Holo Hosting.,2022-04-07T18:21:10.127Z,177.0,35,3,12,71.0,last-month
+holochain/scaffolding,@holochain-open-dev/create,npm,RAD tools for quickly scaffolding holochain modules,2022-04-07T18:21:10.247Z,206.0,2,1,0,9.0,last-month
+holochain/holochain-client-js,@holochain/client,npm,A JavaScript client for the Holochain Conductor API,2022-04-07T18:21:10.898Z,233.0,104,46,70,2280.0,last-month
+holochain/scaffolding,@holochain/create,npm,Rapid Application Development tools to build Holochain apps,2022-04-07T18:21:11.830Z,206.0,41,1,0,96.0,last-month
+holochain/holochain-rust,@holochain/holochain-nodejs,npm,Nodejs Holochain Conductor primarily for test execution,2022-04-07T18:21:12.352Z,578.0,33,1,17,63.0,last-month
+holochain/holochain-rust,@holochain/holochain-nodejs-bleeding,npm,Nodejs Holochain Container primarily for test execution,2022-04-07T18:21:12.013Z,578.0,6,1,1,18.0,last-month
+holochain/tryorama,@holochain/tryorama,npm,Toolset to manage Holochain conductors and facilitate running test scenarios,2022-04-07T18:21:13.191Z,199.0,95,3,137,856.0,last-month
+IPILabs/shorter-v1-periphery,@ipilabs/shorter-v1-periphery,npm,In-depth documentation on 💲horter V1 is available at [shorter.finance](https://docs.shorter.finance/).,2022-07-07T08:19:59.758Z,453.0,1,1,0,7.0,last-month
+IqbalKbll/tea-anjay,@iqbalkbl/iqbalkabol37,npm,,2024-07-09T05:21:35.051Z,144.0,1,0,0,3.0,last-month
+jasonsoft/nestjs-seq,@jasonsoft/nestjs-seq,npm,Seq logging module for Nest framework (node.js),2022-04-07T18:55:01.081Z,146.0,20,1,0,667.0,last-month
+Joystream/joystream,@joystream/cd-schemas,npm,"JSON schemas, inputs and related tooling for Joystream content directory 2.0",2022-04-07T19:05:24.863Z,1682.0,2,2,1,13.0,last-month
+Joystream/joystream,@joystream/cli,npm,Command Line Interface for Joystream community and governance activities,2022-04-07T19:05:25.279Z,1682.0,19,1,0,75.0,last-month
+Joystream/joystream,@joystream/content-metadata-protobuf,npm,Joystream Content Metadata Protobuf Library ,2022-04-07T19:05:25.421Z,1682.0,2,2,5,14.0,last-month
+Joystream/joystream,@joystream/eslint-config,npm,joystream eslint shared config,2022-04-07T19:05:25.390Z,1682.0,1,2,10,63.0,last-month
+Joystream/joystream,@joystream/js,npm,Joystream JS package provides  utilities required to work with Joystream network.,2022-11-16T00:26:16.399Z,1682.0,16,2,1,143.0,last-month
+Joystream/joystream,@joystream/metadata-protobuf,npm,Joystream Metadata Protobuf Library,2022-04-07T19:05:25.911Z,1682.0,21,3,15,172.0,last-month
+Joystream/joystream,@joystream/prettier-config,npm,joystream prettier shared config,2022-04-07T19:05:25.742Z,1682.0,1,3,10,93.0,last-month
+Joystream/joystream,@joystream/types,npm,Types for Joystream Substrate Runtime - Nara release,2022-04-07T19:05:26.487Z,1682.0,58,4,35,327.0,last-month
+kazura233/kazurajs,@kazura/common,npm,kazura common,2024-05-22T21:14:19.422Z,130.0,1,0,0,4.0,last-month
+kazura233/kazurajs,@kazura/googleapis,npm,googleapis,2023-12-04T17:16:43.074Z,130.0,4,0,0,21.0,last-month
+kazura233/kazurajs,@kazura/http-client,npm,http client,2024-05-18T15:21:36.922Z,130.0,2,0,0,9.0,last-month
+kazura233/kazurajs,@kazura/lock-native-back,npm,lock-native-back,2023-09-01T11:46:51.930Z,130.0,3,0,0,1.0,last-month
+kazura233/kazurajs,@kazura/nestjs-redis,npm,nestjs redis,2024-03-29T13:30:20.923Z,130.0,2,0,0,14.0,last-month
+kazura233/kazurajs,@kazura/nestjs-winston,npm,nestjs winston,2024-03-29T13:30:20.865Z,130.0,2,0,0,14.0,last-month
+kazura233/kazurajs,@kazura/node-util,npm,node-util,2023-09-01T12:27:14.516Z,130.0,8,0,0,64.0,last-month
+kazura233/kazurajs,@kazura/postmsg-builder,npm,postmsg-builder,2023-07-25T10:15:08.079Z,130.0,3,0,0,16.0,last-month
+kazura233/kazurajs,@kazura/react-hooks,npm,react hooks,2023-11-07T07:40:14.145Z,130.0,1,0,0,9.0,last-month
+kazura233/kazurajs,@kazura/react-mobx,npm,react-mobx,2023-11-28T18:20:16.349Z,130.0,9,0,0,65.0,last-month
+kazura233/kazurajs,@kazura/react-toolkit,npm,react toolkit,2023-11-07T09:44:18.482Z,130.0,2,0,0,13.0,last-month
+kazura233/kazurajs,@kazura/validator,npm,kazura validator,2024-05-22T21:15:10.589Z,130.0,1,0,0,5.0,last-month
+kazura233/kazurajs,@kazura/vite-config,npm,vite env config,2024-05-13T14:15:26.568Z,130.0,2,0,0,9.0,last-month
+kazura233/kazurajs,@kazura/web-broadcast,npm,web-broadcast,2022-12-30T20:38:25.826Z,130.0,3,1,0,29.0,last-month
+kazura233/kazurajs,@kazura/web-crypto,npm,web-crypto,2022-04-07T19:17:02.511Z,130.0,10,2,0,101.0,last-month
+kazura233/web-daemon,@kazura/web-daemon,npm,web-daemon,2022-04-07T19:17:02.300Z,685.0,2,1,1,10.0,last-month
+kazura233/kazurajs,@kazura/web-postmsg,npm,web-postmsg,2022-04-07T19:17:02.591Z,130.0,10,2,1,37.0,last-month
+kazura233/kazurajs,@kazura/web-util,npm,web-util,2022-04-07T19:17:02.094Z,130.0,33,5,3,307.0,last-month
+liyuec/webSite_Update_Detector,@liyuec/website-update-detector,npm,web前端主动发现站点发布更新 客户端更新 主动发现更新 发现更新,2024-01-13T13:01:26.498Z,207.0,1,0,0,3.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync,npm,ZKsync bundle of Hardhat plugins,2024-04-05T18:01:28.701Z,283.0,8,0,0,9082.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-chai-matchers,npm,"Hardhat plugin that adds zkSync-specific capabilities to the Chaiassertion library, making your smart contract tests easy to write and read",2022-12-11T00:19:50.554Z,283.0,14,7,36,11594.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-deploy,npm,Hardhat plugin to deploy smart contracts into the ZKsync network,2022-04-07T20:14:32.188Z,283.0,43,63,311,48082.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-ethers,npm,Hardhat plugin for integration with zksync-ethers library,2023-12-08T19:18:42.389Z,283.0,13,0,0,13834.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-node,npm,Hardhat plugin to run anvil-zksync locally,2023-10-03T13:35:13.292Z,283.0,19,1,1,28331.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-solc,npm,Hardhat plugin to compile smart contracts for the ZKsync network,2022-04-07T20:14:31.926Z,283.0,55,67,677,132828.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-upgradable,npm,Hardhat plugin to deploy and update upgradable smart contracts for the ZKsync network,2023-04-20T15:33:01.345Z,283.0,46,3,1,12400.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-verify,npm,Hardhat plugin to verify smart contracts for the ZKsync network,2022-12-16T16:12:39.449Z,283.0,34,28,326,89316.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-verify-vyper,npm,Hardhat plugin to verify Vyper smart contracts for the zkSync network,2023-09-02T13:16:14.373Z,283.0,5,0,1,9.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-vyper,npm,Hardhat plugin to compile Vyper smart contracts for the ZKsync network,2022-07-20T00:54:08.850Z,283.0,25,4,32,7806.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-vyper-verify,npm,Hardhat plugin to verify Vyper smart contracts for the zkSync network,2023-08-11T06:49:53.462Z,283.0,1,0,0,4.0,last-month
+matter-labs/hardhat-zksync,@matterlabs/hardhat-zksync-zksync2js,npm,Hardhat plugin for integration with zksync2-js library,2023-11-03T16:25:12.444Z,283.0,4,0,0,12.0,last-month
+numbersprotocol/nit,@numbersprotocol/nit,npm,git for web3 digital asset,2022-05-24T13:34:18.467Z,4351.0,28,1,1,40.0,last-month
+oselezi/solana-volume-sdk,@oselezi/solana-volume-sdk,npm,Solana Market Maker AMM to generate volume trades,2024-11-19T03:43:00.682Z,106.0,5,0,0,74.0,last-month
+Pleasurecruise/NottinghamWall,@pleasure1234/nottinghamwall,npm,宁波诺丁汉大学校园墙,2024-07-13T17:05:15.998Z,148.0,4,0,0,255.0,last-month
+polytope-labs/hyperbridge,@polytope-labs/hyperclient,npm,The hyperclient is a library for managing (in-flight) ISMP requests,2024-03-03T11:15:13.572Z,195.0,61,0,0,176.0,last-month
+chaxus/ran,@randevcx/monorepo,npm,Monorepo,2024-06-11T16:42:38.209Z,298.0,1,0,0,1.0,last-month
+chaxus/ran,@randevcx/ranui,npm,UI Component library based on `Web Component`,2024-06-12T01:10:29.482Z,298.0,12,0,0,47.0,last-month
+chaxus/ran,@ranui/react,npm,UI Component library based on `Web Component`,2023-09-21T13:15:43.930Z,298.0,10,0,0,49.0,last-month
+childrentime/reactuse,@reactuses/core,npm,"<div align = ""center"">    <h1 align = ""center"">     reactuse   </h1> </div>",2022-09-17T17:05:00.302Z,1074.0,78,1,1,18168.0,last-month
+scayle/storefront-api-ts-sdk,@scayle/storefront-api-sdk,npm,TypeScript and JavaScript SDK source for the SCAYLE Storefront API.,2023-07-05T13:05:59.284Z,65.0,2,0,0,2.0,last-month
+holochain/holochain-client-js,@sprillow-connor/holochain-client,npm,A JavaScript client for the Holochain Conductor API,2022-07-29T03:01:05.314Z,233.0,3,3,1,19.0,last-month
+tatumio/tatum-js,@tatumcom/js,npm,Tatum JS SDK,2023-02-15T11:29:21.671Z,451.0,105,0,2,390.0,last-month
+tatumio/tatum-js,@tatumio/tatum,npm,Tatum JS SDK,2022-04-08T20:22:01.953Z,451.0,836,38,25,10124.0,last-month
+tatumio/tatum-js,@tatumio/tatum-v1,npm,Tatum API client allows browsers and Node.js clients to interact with Tatum API.,2023-09-04T15:35:50.243Z,451.0,5,0,0,17.0,last-month
+Theo-Messi/tools,@theojs/solis,npm,VitePress的博客主题,2024-08-29T15:13:13.522Z,280.0,22,0,0,2265.0,last-month
+wzc520pyfm/utype,@utype/core,npm,Collection of typescript utility types that extends the official utility types,2023-12-31T04:46:57.821Z,88.0,7,0,0,8.0,last-month
+wzc520pyfm/utype,@utype/shared,npm,Collection of typescript utility types that extends the official utility types,2023-12-31T04:46:34.296Z,88.0,6,0,0,9.0,last-month
+Autumn-one/a-calc-old,a-calc,npm,A very powerful and easy-to-use number precision calculation and formatting library.,2022-04-08T23:16:00.483Z,270.0,154,3,1,109733.0,last-month
+CodeFromAnywhere/ActionSchema,actionschema,npm,ActionSchema intends to be a new standard allowing developers to create data-centric codebases. ActionSchema is a superset of [JSON-Schema](https://json-schema.org) connecting meaning to how this meaning is obtained through [OpenAPIs](https://www.openapis,2024-02-26T08:20:13.150Z,113.0,40,1,0,64.0,last-month
+Adamant-im/adamant-api-jsclient,adamant-api,npm,JavaScript API library for the ADAMANT Blockchain,2022-04-08T23:29:15.825Z,409.0,48,5,20,319.0,last-month
+Adamant-im/adamant-console,adamant-console,npm,Console API and JSON-RPC for interacting with ADAMANT Blockchain,2022-04-08T23:29:16.640Z,410.0,16,2,1,48.0,last-month
+lastmile-ai/aiconfig,aiconfig,npm,"Library to help manage AI prompts, models and parameters using the .aiconfig file format.",2023-10-17T14:35:32.086Z,881.0,25,6,1,845.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-llama,npm,## Overview,2023-11-16T00:51:07.784Z,881.0,3,1,0,7.0,last-month
+LinHanlove/atom-tools,atom-tools,npm,A quick tool and function collection designed specifically for projects using the JavaScript language,2024-03-17T04:47:52.686Z,148.0,35,0,0,6.0,last-month
+codeblitz97/discord-authorize,discord-authorize,npm,A node module for easy authentication with Discord,2023-08-22T18:43:27.269Z,226.0,11,0,1,36.0,last-month
+felixtrz/elics,elics,npm,"lightweight, flexible ECS for web games",2023-12-08T05:05:19.027Z,207.0,6,0,0,30.0,last-month
+onraj/expo-draggable-textfield,expo-draggable-textfield,npm,A draggable and resizable textfield build for expo,2023-12-30T01:05:36.064Z,117.0,5,0,0,40.0,last-month
+hugo-fixit/FixIt,fixit-src,npm,FixIt theme source files,2023-08-27T03:03:19.991Z,844.0,1,0,0,,last-month
+freechat-fun/freechat,freechat-sdk,npm,OpenAPI client for freechat-sdk,2023-12-06T11:38:47.137Z,678.0,15,0,0,54.0,last-month
+JimmyLaurent/hcaptcha-solver,hcap-slv,npm,A library to solve hCaptcha challenges,2022-04-09T16:59:51.372Z,296.0,1,0,0,0.0,
+JimmyLaurent/hcaptcha-solver,hcaptcha-solver,npm,A library to solve hCaptcha challenges,2022-04-09T16:59:51.655Z,296.0,3,5,29,1538.0,last-month
+JimmyLaurent/hcaptcha-solver,hcaptcha-solver-fixed,npm,A library to solve hCaptcha challenges,2022-08-27T16:24:20.298Z,296.0,2,0,0,0.0,
+Joystream/joystream,hydra-index-builder,npm,Block index builder for substrate based chains,2022-04-09T17:23:00.309Z,1682.0,1,1,0,4.0,last-month
+NaiveSteven/ideaz-element,ideaz-element,npm,"<p align=""center"">   <a href="""" target=""_blank"" rel=""noopener noreferrer"">     <img src=""./docs/public/logo.svg"" alt=""Ideaz Element"" width=""180"" style=""width: 180px;"" />   </a> </p>",2024-06-29T20:55:19.867Z,201.0,12,0,0,27.0,last-month
+kazura233/kazurajs,komekko,npm,komekko,2023-11-08T16:15:45.780Z,130.0,7,0,0,14.0,last-month
+rookie-luochao/openapi-ui,lane-test,npm,"<h1 align=""center"">   OpenAPI UI </h1> <p align=""center""> OpenAPI/Swagger UI document, quickly generate mock params and call api, also simplified postman tool </p> <p align=""center"">   <a href=""https://github.com/rookie-luochao/openapi-ui/blob/master/LICE",2024-04-16T05:35:10.344Z,570.0,5,0,0,54.0,last-month
+layer-pack/layer-pack,layer-pack,npm,"Webpack plugin to make inheritable code layers, named glob imports, easy multi packages app & shared webpack configs",2022-04-09T18:40:45.017Z,115.0,81,10,9,70.0,last-month
+Haiananan/next-fast-table,next-fast-table,npm,"A super-fast form building solution for full-stack developers, build your data forms in one minute.",2024-07-18T09:25:30.829Z,112.0,9,0,0,47.0,last-month
+Pleasurecruise/NottinghamWall,nottinghamwall,npm,宁波诺丁汉大学校园墙,2024-07-13T15:00:16.064Z,148.0,4,0,0,8.0,last-month
+rookie-luochao/openapi-ui,openapi-ui-dist,npm,"<h1 align=""center"">   OpenAPI UI </h1> <p align=""center""> OpenAPI/Swagger UI document, quickly generate mock params and call api, also simplified postman tool </p> <p align=""center"">   <a href=""https://github.com/rookie-luochao/openapi-ui/blob/master/LICE",2024-04-16T23:25:10.779Z,570.0,10,0,0,59.0,last-month
+amurgola/OpenGridJs,opengridjs,npm,"A lightweight JavaScript grid framework that allows you to create fast and easy-to-use data grids in your web application. It supports virtual scrolling, custom column headers, and context menus.",2023-05-20T18:26:18.183Z,121.0,13,0,0,56.0,last-month
+xie392/quill-mention-react,quill-mention-react,npm,Quill React Mention,2024-03-02T17:05:18.799Z,145.0,6,0,0,35.0,last-month
+chaxus/ran,ranui,npm,UI Component library based on `Web Component`,2022-10-22T02:38:24.717Z,298.0,38,1,2,144.0,last-month
+chaxus/ran,ranuts,npm,lib,2022-10-22T02:38:24.664Z,298.0,18,2,2,79.0,last-month
+DorianMazur/react-native-keychain-manager,react-native-keychain-manager,npm,Keychain Access for React Native,2024-09-09T13:51:57.514Z,98.0,6,0,0,25.0,last-month
+react-voodoo/react-voodoo,react-voodoo,npm,"Faster, simplier, additive, swipeable & multidimentional animation engine for React",2022-04-09T23:34:31.271Z,118.0,93,2,3,177.0,last-month
+Maybe-U/remote-browser-view,remote-browser-view,npm,A library for executing actions in a remote browser and viewing/replaying them locally.,2024-10-15T10:35:32.923Z,117.0,4,0,0,17.0,last-month
+liquan-0108/retry-cdn,retry-cdn,npm,Automatically switch the domain name when error,2024-03-28T09:15:14.778Z,88.0,3,0,0,4.0,last-month
+indicium-ag/rsult,rsult,npm,"<p align=""center"">   <img src=""https://github.com/indicium-ag/rsult/raw/master/rsult.svg"" width=""300px""/><br/>   <img src=""https://github.com/indicium-ag/rsult/raw/master/rsult-test.svg"" width=""450px""/> </p>",2024-04-04T22:49:10.468Z,446.0,7,0,0,134.0,last-month
+Easy-Email-Pro/smart-mjml,smart-mjml,npm,"Smart MJML is a library that provides TypeScript intelligence hints and checks, making editing MJML simpler.",2024-03-21T12:40:14.970Z,148.0,2,0,0,2.0,last-month
+starknet-io/starknet.js,starknet,npm,JavaScript library for Starknet,2022-04-10T01:12:40.482Z,936.0,231,149,467,210533.0,last-month
+tatumio/tatum-js,tatumio,npm,Tatum API client allows browsers and Node.js clients to interact with Tatum API. It includes the following core components.,2022-10-22T02:38:31.034Z,451.0,2,0,0,7.0,last-month
+IqbalKbll/tea-anjay,tea-kiwkiw,npm,This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).,2024-06-08T06:30:19.761Z,144.0,1,0,0,1.0,last-month
+rytsai/best-undress-ai-list,undress-ai,npm,"list of undress AI, NSFW image editing (inpainting and outpaining) websites available in the market.",2024-06-27T06:25:13.020Z,376.0,1,0,0,6.0,last-month
+liyuec/webSite_Update_Detector,website_update_detector,npm,web前端主动发现站点发布更新 客户端更新 主动发现更新 发现更新,2024-01-13T12:31:27.915Z,207.0,2,0,0,7.0,last-month
+GeneralLibrary/GeneralUpdate,generalupdate.bowl,nuget,"Bowl is used to monitor whether the main program can start normally after an upgrade. If it detects that the main program crashes on startup, it will restore the backup.",2024-11-27T16:27:26.729Z,210.0,14,0,0,1270.0,total
+GeneralLibrary/GeneralUpdate,generalupdate.common,nuget,"The infrastructure required to support all components is necessary, and this nuget package is essential.",2024-02-27T05:44:40.047Z,210.0,4,0,0,2149.0,total
+GeneralLibrary/GeneralUpdate,generalupdate.core,nuget,This section describes how to upgrade client applications.,2024-02-27T02:24:24.876Z,210.0,19,0,0,8117.0,total
+GeneralLibrary/GeneralUpdate,generalupdate.differential,nuget,"The binary differential update function is provided, but the configuration file update function is reserved.",2024-02-27T02:24:24.971Z,210.0,9,2,0,5090.0,total
+aimeos/aimeos-base,aimeos/aimeos-base,packagist,Aimeos base layer for abstracting from host environments,2022-04-07T01:19:10.103Z,1141.0,27,1,5,95123.0,total
+aimeos/aimeos-headless,aimeos/aimeos-headless,packagist,Aimeos headless ecommerce system,2022-04-07T01:19:10.121Z,1476.0,8,0,0,1775.0,total
+aimeos/aimeos-symfony,aimeos/aimeos-symfony,packagist,"Professional, full-featured and high performance Symfony e-commerce bundle for online shops and complex B2B projects",2022-04-07T01:19:10.575Z,366.0,76,0,2,4148.0,total
+aimeos/aimeos-symfony,aimeos/aimeos-symfony2,packagist,"Professional, full-featured and high performance Symfony e-commerce bundle for online shops and complex B2B projects",2022-04-07T01:19:16.758Z,366.0,76,0,4,717.0,total
+aimeos/aimeos-typo3,aimeos/aimeos-typo3,packagist,"Professional, full-featured and high performance TYPO3 e-commerce extension for online shops and complex B2B projects",2022-04-07T01:19:10.710Z,450.0,133,4,4,80462.0,total
+aimeos/aimeos-typo3-dist,aimeos/aimeos-typo3-dist,packagist,"Aimeos TYPO3 distribution for web shops, portals and market places",2022-04-07T01:19:10.709Z,235.0,22,0,0,1596.0,total
+aimeos/aimeos-typo3-dist,aimeos/aimeos_dist,packagist,"Aimeos TYPO3 distribution for web shops, portals and market places",2022-04-07T01:19:10.938Z,235.0,22,0,0,2435.0,total
+aimeos/macro,aimeos/macro,packagist,Customize classes using closures,2022-04-07T01:19:11.593Z,1382.0,3,3,7,93186.0,total
+aimeos/upscheme,aimeos/upscheme,packagist,Database schema upgrades made easy,2022-04-07T01:19:13.528Z,1642.0,19,1,6,96745.0,total
+alirezajavadigit/framebot,alirezajavadi/framebot,packagist,"FrameBot is a fast and secure framework that offers an ORM similar to Eloquent, making it incredibly user-friendly and powerful for developers looking to handle database operations efficiently. Designed with OOP principles in mind, FrameBot provides a robust foundation for building scalable applications.",2024-05-13T22:47:36.702Z,229.0,1,0,0,6.0,total
+liberu-genealogy/genealogy-laravel,cgdprojects/genealogy,packagist,The Genealogy Laravel Framework.,2022-12-08T15:33:09.829Z,306.0,124,0,0,1.0,total
+duxweb/duxcms,duxweb/duxcms,packagist,Lightweight project development system,2024-03-23T07:05:02.105Z,225.0,22,0,0,87.0,total
+liberu-genealogy/genealogy-laravel,familytree365/genealogy,packagist,The Genealogy Laravel Framework.,2022-04-07T09:25:03.261Z,306.0,125,0,0,458.0,total
+gitHusband/Validation,githusband/validation,packagist,Parameters Validation,2022-04-07T09:33:01.691Z,129.0,22,0,1,1113.0,total
+liberu-genealogy/genealogy-laravel,modularsoftware/genealogy,packagist,"Genealogy can be a solid start for any family tree builder application based on Laravel 8.x, Vue and Bulma",2022-04-07T10:19:48.693Z,306.0,120,0,0,129.0,total
+paidworkco/worken-sdk-php,paidworkco/worken-sdk,packagist,Make and receive secure transactions with Worken,2024-05-10T17:17:40.767Z,903.0,2,0,0,3.0,total
+scayle/admin-api-php-sdk,scayle/admin-api,packagist,SCAYLE Admin API SDK,2023-10-19T12:50:22.910Z,75.0,33,0,0,8893.0,total
+scayle/storefront-api-php-sdk,scayle/storefront-api,packagist,SCAYLE Storefront API SDK,2022-11-25T16:19:17.280Z,75.0,4,0,0,3007.0,total
+azkadev/azkagram,azkagram,pub,A Library Full Package Template,2024-01-14T13:32:01.262Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_android,pub,A Library Full Package Template,2024-01-14T13:46:50.987Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_apis,pub,A Library Full Package Template,2024-01-14T13:46:50.980Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_cli,pub,A Library Full Package Template,2024-01-14T13:46:50.999Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_client,pub,A Library Full Package Template,2024-01-14T13:32:01.661Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_dart,pub,A Library Full Package Template,2024-01-14T13:46:50.966Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_flutter,pub,A Library Full Package Template,2024-01-14T13:46:50.967Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_fucshia,pub,A Library Full Package Template,2024-01-14T13:46:50.989Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_ios,pub,A Library Full Package Template,2024-01-14T13:46:50.998Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_linux,pub,A Library Full Package Template,2024-01-14T13:32:01.648Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_macos,pub,A Library Full Package Template,2024-01-14T13:46:51.006Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_server,pub,A Library Full Package Template,2024-01-14T13:46:50.982Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_web,pub,A Library Full Package Template,2024-01-14T13:32:01.664Z,366.0,1,0,0,,
+azkadev/azkagram,azkagram_windows,pub,A Library Full Package Template,2024-01-14T13:46:50.976Z,366.0,1,0,0,,
+azkadev/camera_universal,camera_universal,pub,A Camera universal library for interact with camera on cross platform devices.,2023-01-30T21:23:15.567Z,275.0,4,0,1,,
+azkadev/emulator,emulator_android,pub,A Library Full Package Template,2023-12-23T08:46:13.950Z,271.0,1,0,0,,
+azkadev/emulator,emulator_apis,pub,A Library Full Package Template,2023-12-23T08:46:14.166Z,271.0,1,0,0,,
+azkadev/emulator,emulator_cli,pub,A Library Full Package Template,2023-12-23T08:46:15.860Z,271.0,1,0,0,,
+azkadev/emulator,emulator_client,pub,A Library Full Package Template,2023-12-23T08:46:14.649Z,271.0,1,0,0,,
+azkadev/emulator,emulator_dart,pub,A Library Full Package Template,2023-12-23T08:46:13.810Z,271.0,1,0,0,,
+azkadev/emulator,emulator_flutter,pub,A Library Full Package Template,2023-12-23T08:46:14.034Z,271.0,1,0,0,,
+azkadev/emulator,emulator_fucshia,pub,A Library Full Package Template,2023-12-23T08:46:13.670Z,271.0,1,0,0,,
+azkadev/emulator,emulator_ios,pub,A Library Full Package Template,2023-12-23T08:46:14.027Z,271.0,1,0,0,,
+azkadev/emulator,emulator_linux,pub,A Library Full Package Template,2023-12-23T08:46:14.258Z,271.0,1,0,0,,
+azkadev/emulator,emulator_macos,pub,A Library Full Package Template,2023-12-23T08:46:13.976Z,271.0,1,0,0,,
+azkadev/emulator,emulator_server,pub,A Library Full Package Template,2023-12-23T08:46:14.210Z,271.0,1,0,0,,
+azkadev/emulator,emulator_web,pub,A Library Full Package Template,2023-12-23T08:46:13.904Z,271.0,1,0,0,,
+azkadev/emulator,emulator_windows,pub,A Library Full Package Template,2023-12-23T08:46:14.276Z,271.0,1,0,0,,
+azkadev/game,game,pub,A Library for make game More easy,2022-06-20T23:20:16.514Z,275.0,4,0,1,,
+azkadev/game,game_android,pub,A Library for make game More easy,2023-12-19T21:30:56.992Z,275.0,2,0,0,,
+azkadev/game,game_apis,pub,A Library for make game More easy,2023-12-19T21:30:56.895Z,275.0,2,0,0,,
+azkadev/game,game_cli,pub,A Library for make game More easy,2023-12-19T21:30:56.888Z,275.0,2,0,0,,
+azkadev/game,game_client,pub,A Library for make game More easy,2023-12-19T21:30:56.904Z,275.0,2,0,0,,
+azkadev/game,game_dart,pub,A Library for make game More easy,2023-12-19T21:30:56.967Z,275.0,2,0,0,,
+azkadev/game,game_engine,pub,A Library Full Package Template,2023-12-19T21:46:03.764Z,275.0,1,0,0,,
+azkadev/game,game_engine_dart,pub,A Library Full Package Template,2023-12-19T21:46:03.738Z,275.0,1,0,0,,
+azkadev/game,game_engine_flutter,pub,A Library Full Package Template,2023-12-19T21:46:03.723Z,275.0,1,0,0,,
+azkadev/game,game_flutter,pub,A Library for make game More easy,2023-12-19T21:30:56.892Z,275.0,2,0,0,,
+azkadev/game,game_fucshia,pub,A Library for make game More easy,2023-12-19T21:30:56.957Z,275.0,2,0,0,,
+azkadev/game,game_ios,pub,A Library for make game More easy,2023-12-19T21:30:56.979Z,275.0,2,0,0,,
+azkadev/game,game_linux,pub,A Library for make game More easy,2023-12-19T21:30:56.975Z,275.0,2,0,0,,
+azkadev/game,game_macos,pub,A Library for make game More easy,2023-12-19T21:30:56.857Z,275.0,2,0,0,,
+azkadev/game,game_server,pub,A Library for make game More easy,2023-12-19T21:30:56.810Z,275.0,2,0,0,,
+azkadev/game,game_web,pub,A Library for make game More easy,2023-12-19T21:30:56.879Z,275.0,2,0,0,,
+azkadev/game,game_windows,pub,A Library for make game More easy,2023-12-19T21:30:56.899Z,275.0,2,0,0,,
+azkadev/general,general,pub,"General Library for help you integrate any package commong used like permission, and many more only use one library",2024-02-16T20:47:19.320Z,240.0,47,2,0,,
+azkadev/general_ai,general_ai,pub,A Library Full Package Template,2024-02-24T14:02:29.256Z,246.0,3,2,0,,
+azkadev/general_ai,general_ai_android,pub,A Library Full Package Template,2024-02-24T13:47:16.147Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_apis,pub,A Library Full Package Template,2024-02-24T14:02:29.267Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_cli,pub,A Library Full Package Template,2024-02-24T13:47:16.199Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_client,pub,A Library Full Package Template,2024-02-24T13:47:16.198Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_dart,pub,A Library Full Package Template,2024-02-25T16:02:26.390Z,246.0,3,1,0,,
+azkadev/general_ai,general_ai_flutter,pub,A Library Full Package Template,2024-02-24T14:02:29.256Z,246.0,3,0,0,,
+azkadev/general_ai,general_ai_fucshia,pub,A Library Full Package Template,2024-02-24T13:47:16.153Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_ios,pub,A Library Full Package Template,2024-02-24T13:47:16.154Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_linux,pub,A Library Full Package Template,2024-02-24T13:47:16.197Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_macos,pub,A Library Full Package Template,2024-02-24T14:02:29.246Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_web,pub,A Library Full Package Template,2024-02-24T13:47:16.065Z,246.0,1,0,0,,
+azkadev/general_ai,general_ai_windows,pub,A Library Full Package Template,2024-02-24T13:47:16.158Z,246.0,1,0,0,,
+azkadev/general,general_android,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.653Z,240.0,3,0,0,,
+azkadev/general,general_apis,pub,General library For Make Your Coding or Project More Easy,2024-02-16T20:47:20.361Z,240.0,3,0,0,,
+azkadev/general_apis_client,general_apis_client,pub,A Library Full Package Template,2024-02-25T18:47:21.513Z,242.0,1,0,0,,
+azkadev/general_apis_client,general_apis_client_dart,pub,A Library Full Package Template,2024-02-25T18:47:21.498Z,242.0,1,0,0,,
+azkadev/general,general_cli,pub,General library For Make Your Coding or Project More Easy,2023-09-29T20:04:15.183Z,240.0,14,0,0,,
+azkadev/general,general_client,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.676Z,240.0,3,0,0,,
+azkadev/general,general_dart,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.647Z,240.0,27,2,0,,
+azkadev/general_database,general_database,pub,A Library Full Package Template,2024-02-25T18:32:55.787Z,241.0,1,0,0,,
+azkadev/general_database,general_database_dart,pub,A Library Full Package Template,2024-02-25T18:32:56.384Z,241.0,1,0,0,,
+azkadev/general_database,general_database_flutter,pub,A Library Full Package Template,2024-02-25T18:32:55.718Z,241.0,1,0,0,,
+azkadev/general_dev,general_dev,pub,A Library Full Package Template,2024-02-25T18:17:39.378Z,238.0,1,0,0,,
+azkadev/general_dev,general_dev_dart,pub,A Library Full Package Template,2024-02-25T18:17:39.331Z,238.0,1,0,0,,
+azkadev/general_dev,general_dev_flutter,pub,A Library Full Package Template,2024-02-25T18:17:39.342Z,238.0,1,0,0,,
+azkadev/general,general_flutter,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.663Z,240.0,26,0,0,,
+azkadev/general,general_fucshia,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.388Z,240.0,3,0,0,,
+azkadev/general,general_ios,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.492Z,240.0,3,0,0,,
+azkadev/general,general_linux,pub,General library For Make Your Coding or Project More Easy,2024-02-16T20:47:19.322Z,240.0,3,0,0,,
+azkadev/general,general_macos,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.364Z,240.0,3,0,0,,
+azkadev/general_payment,general_payment_dart,pub,A Library Full Package Template,2024-02-25T18:32:55.801Z,246.0,1,0,0,,
+azkadev/general_payment,general_payment_flutter,pub,A Library Full Package Template,2024-02-25T18:32:55.766Z,246.0,1,0,0,,
+azkadev/general,general_server,pub,General library For Make Your Coding or Project More Easy,2024-02-16T21:04:26.488Z,240.0,3,0,0,,
+azkadev/general,general_web,pub,General library For Make Your Coding or Project More Easy,2024-04-27T05:17:08.795Z,240.0,2,0,0,,
+azkadev/general,general_windows,pub,General library For Make Your Coding or Project More Easy,2024-02-16T20:47:19.266Z,240.0,3,0,0,,
+globalcorporation/global,global_android,pub,A Global Corporation Library For Everyone,2024-03-07T16:08:47.472Z,183.0,1,0,0,,
+globalcorporation/global,global_client,pub,A Global Corporation Library For Everyone,2024-03-07T16:08:47.612Z,183.0,1,0,0,,
+globalcorporation/global,global_dart,pub,A Global Corporation Library For Everyone,2024-03-07T16:08:47.470Z,183.0,1,0,0,,
+globalcorporation/global,global_flutter,pub,A Global Corporation Library For Everyone,2024-03-07T16:08:47.434Z,183.0,1,0,0,,
+globalcorporation/global,global_ios,pub,A Global Corporation Library For Everyone,2024-03-07T16:08:47.447Z,183.0,1,0,0,,
+azkadev/llama,llama_dart,pub,LLaMA (Language Learning for Machine Translation) cross platform library except web.,2023-03-16T14:52:03.371Z,289.0,1,0,0,,
+azkadev/miniaudio,miniaudio,pub,a library for play audio cross patform.,2022-07-30T19:03:17.071Z,285.0,1,0,2,,
+azkadev/neofetch,neofetch,pub,A library neofetch.,2023-07-26T07:18:46.577Z,273.0,1,0,0,,
+azkadev/packagex,packagex,pub,A library for package dart or flutter to specific platform.,2022-12-02T12:01:56.240Z,278.0,83,24,1,,
+azkadev/proxmox,proxmox,pub,A Library proxmox Api Server.,2023-10-27T06:35:36.239Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_android,pub,A Library Full Package Template,2023-12-30T19:17:55.445Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_apis,pub,A Library Full Package Template,2023-12-30T19:17:55.626Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_cli,pub,A Library Full Package Template,2023-12-30T19:17:55.632Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_client,pub,A Library Full Package Template,2023-12-30T19:17:55.620Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_dart,pub,A Library Full Package Template,2023-12-30T19:17:55.623Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_flutter,pub,A Library Full Package Template,2023-12-30T19:17:55.454Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_fucshia,pub,A Library Full Package Template,2023-12-30T19:17:55.589Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_ios,pub,A Library Full Package Template,2023-12-30T19:17:55.535Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_linux,pub,A Library Full Package Template,2023-12-30T19:17:55.630Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_macos,pub,A Library Full Package Template,2023-12-30T19:17:55.534Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_server,pub,A Library Full Package Template,2023-12-30T19:17:57.325Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_web,pub,A Library Full Package Template,2023-12-30T19:17:55.634Z,280.0,1,0,0,,
+azkadev/proxmox,proxmox_windows,pub,A Library Full Package Template,2023-12-30T19:17:56.677Z,280.0,1,0,0,,
+azkadev/record_widget,record_widget,pub,Library for record widget to image realtime fast and can render to video,2023-11-24T12:05:41.025Z,279.0,12,0,1,,
+azkadev/telegraph,telegraph,pub,Telegraph Dart Library For interact with api telegraph.,2023-10-25T14:20:15.365Z,300.0,7,0,1,,
+azkadev/terminal_flutter,terminal_flutter,pub,A Plugable terminal flutter cross platform.,2022-08-29T15:25:05.077Z,310.0,3,0,1,,
+azkadev/termux,termux,pub,A Library Full Package Template,2024-01-02T09:48:02.653Z,291.0,1,0,0,,
+azkadev/termux,termux_android,pub,A Library Full Package Template,2024-01-02T09:48:02.727Z,291.0,1,0,0,,
+azkadev/termux,termux_apis,pub,A Library Full Package Template,2024-01-02T09:48:02.634Z,291.0,1,0,0,,
+azkadev/termux,termux_cli,pub,A Library Full Package Template,2024-01-02T09:48:02.575Z,291.0,1,0,0,,
+azkadev/termux,termux_client,pub,A Library Full Package Template,2024-01-02T09:48:02.626Z,291.0,1,0,0,,
+azkadev/termux,termux_dart,pub,A Library Full Package Template,2024-01-02T09:48:02.643Z,291.0,1,0,0,,
+azkadev/termux,termux_flutter,pub,A Library Full Package Template,2024-01-02T09:48:02.754Z,291.0,1,0,0,,
+azkadev/termux,termux_fucshia,pub,A Library Full Package Template,2024-01-02T09:48:02.775Z,291.0,1,0,0,,
+azkadev/termux,termux_ios,pub,A Library Full Package Template,2024-01-02T09:48:02.624Z,291.0,1,0,0,,
+azkadev/termux,termux_linux,pub,A Library Full Package Template,2024-01-02T09:48:02.712Z,291.0,1,0,0,,
+azkadev/termux,termux_macos,pub,A Library Full Package Template,2024-01-02T09:48:02.769Z,291.0,1,0,0,,
+azkadev/termux,termux_server,pub,A Library Full Package Template,2024-01-02T09:48:02.741Z,291.0,1,0,0,,
+azkadev/termux,termux_web,pub,A Library Full Package Template,2024-01-02T09:48:02.767Z,291.0,1,0,0,,
+azkadev/termux,termux_windows,pub,A Library Full Package Template,2024-01-02T09:48:02.789Z,291.0,1,0,0,,
+azkadev/webify,webify,pub,Webify Framework Alternative Flutter Web Untuk Membangun app web dengan style code flutter.,2022-12-16T05:39:42.150Z,304.0,2,0,1,,
+azkadev/whatsapp,whatsapp_android,pub,A Library Full Package Template,2023-12-23T08:46:13.997Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_apis,pub,A Library Full Package Template,2023-12-23T08:31:37.286Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_cli,pub,A Library Full Package Template,2023-12-23T08:46:14.587Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_client,pub,A Whatsapp Client Library for interact with whatsapp api unnofficial.,2022-10-26T09:29:22.551Z,328.0,57,0,1,,
+azkadev/whatsapp,whatsapp_dart,pub,A Library Full Package Template,2023-12-23T08:46:14.487Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_flutter,pub,A Library Full Package Template,2023-12-23T08:31:37.264Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_fucshia,pub,A Library Full Package Template,2023-12-23T08:31:37.241Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_ios,pub,A Library Full Package Template,2023-12-23T08:46:14.606Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_linux,pub,A Library Full Package Template,2023-12-23T08:46:14.608Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_macos,pub,A Library Full Package Template,2023-12-23T08:46:14.439Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_server,pub,A Library Full Package Template,2023-12-23T08:31:37.255Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_web,pub,A Library Full Package Template,2023-12-23T08:46:14.264Z,328.0,1,0,0,,
+azkadev/whatsapp,whatsapp_windows,pub,A Library Full Package Template,2023-12-23T08:31:37.244Z,328.0,1,0,0,,
+azkadev/window,window_app,pub,A flutter library for make application more pretty window.,2023-03-18T11:56:03.964Z,297.0,1,0,0,,
+azkadev/xendit,xendit,pub,unofficial library for interact with api xendit payment support cross platform.,2022-04-05T16:17:45.201Z,310.0,26,0,1,,
+OpenInterpreter/01,01os,pypi,"The #1 open-source voice interface for desktop, mobile, and ESP32 chips.",2024-02-12T09:03:00.891Z,4359.0,14,0,0,1974.0,last-month
+InternLM/agentlego,agentlego,pypi,AgentLego is a versatile tool library for enhancing LLM-based agents.,2023-12-08T07:46:42.973Z,327.0,4,0,0,323.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-gemini,pypi,An extension for using Gemini with aiconfig,2023-12-13T23:39:30.757Z,881.0,5,0,0,326.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-groq,pypi,An extension for using the Groq client wrapper with AIConfig.,2024-03-05T23:17:43.841Z,881.0,2,0,0,161.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-hugging-face,pypi,An extension for using Hugging Face tasks to parse models for AIConfig.,2023-12-15T03:02:52.756Z,881.0,13,3,0,1102.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-hugging-face-transformers,pypi,An extension for using Hugging Face transformers to parse models for AIConfig.,2023-12-01T01:16:21.176Z,881.0,4,0,0,49.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-llama,pypi,Model Parser extension for Llama,2023-12-27T23:32:38.237Z,881.0,2,0,0,146.0,last-month
+lastmile-ai/aiconfig,aiconfig-extension-llama-guard,pypi,An extension for using LLama Guard with aiconfig,2023-12-09T02:16:22.278Z,881.0,3,0,0,231.0,last-month
+HAL-42/AlchemyCat,alchemy-cat,pypi,Alchemy Cat —— 🔥Config System for SOTA,2024-06-26T13:49:10.366Z,128.0,10,0,0,587.0,last-month
+oxylabs/aliexpress-scraper,ali-express-scraper,pypi,"Easily collect public AliExpress data like prices, product details, and ratings with AliExpress Scraper API",2024-02-22T14:01:56.257Z,287.0,1,0,0,94.0,last-month
+jianzfb/antgo,antgo,pypi,machine learning experiment platform,2022-04-10T10:02:20.846Z,256.0,46,0,1,1462.0,last-month
+chai-research/chaiverse,chaiverse,pypi,Chaiverse,2023-12-06T04:31:38.140Z,501.0,242,0,0,5202.0,last-month
+chai-research/chaiverse,chaiverse-temp,pypi,Chaiverse,2024-01-17T20:00:53.937Z,501.0,16,0,0,380.0,last-month
+codefuse-ai/CodeFuse-muAgent,codefuse-muagent,pypi,An Innovative Agent Framework Driven by KG Engine,2024-04-22T03:46:23.804Z,621.0,6,0,0,344.0,last-month
+ComposioHQ/composio,composio-autogen,pypi,Use Composio to get an array of tools with your Autogen agent.,2024-02-23T06:31:24.764Z,29061.0,233,0,0,9339.0,last-month
+ComposioHQ/composio,composio-camel,pypi,Use Composio to get an array of tools with your Claude LLMs.,2024-07-09T14:47:04.365Z,29061.0,94,0,0,5350.0,last-month
+ComposioHQ/composio,composio-claude,pypi,Use Composio to get an array of tools with your Claude LLMs.,2024-05-07T09:31:25.360Z,29061.0,125,0,0,7100.0,last-month
+ComposioHQ/composio,composio-core,pypi,Core package to act as a bridge between composio platform and other services.,2024-03-16T10:17:34.054Z,29061.0,276,5,0,120756.0,last-month
+ComposioHQ/composio,composio-crewai,pypi,Use Composio to get an array of tools with your CrewAI agent.,2024-03-20T10:33:02.130Z,29061.0,230,0,0,10405.0,last-month
+ComposioHQ/composio,composio-google,pypi,Use Composio to get an array of tools with your Google AI Python Gemini model.,2024-09-23T04:47:40.319Z,29061.0,49,0,0,3771.0,last-month
+ComposioHQ/composio,composio-griptape,pypi,Use Composio to get an array of tools with your Griptape workflow.,2024-05-07T09:31:25.359Z,29061.0,124,0,0,6461.0,last-month
+ComposioHQ/composio,composio-julep,pypi,Use Composio to get an array of tools with your Julep workflow.,2024-05-01T15:01:40.772Z,29061.0,127,0,0,6882.0,last-month
+ComposioHQ/composio,composio-langchain,pypi,Use Composio to get an array of tools with your LangChain agent.,2024-03-16T10:47:43.331Z,29061.0,256,1,0,123247.0,last-month
+ComposioHQ/composio,composio-langgraph,pypi,Use Composio to get array of tools with LangGraph Agent Workflows,2024-07-19T13:46:50.075Z,29061.0,88,0,0,13116.0,last-month
+ComposioHQ/composio,composio-llamaindex,pypi,Use Composio to get an array of tools with your LlamaIndex agent.,2024-02-27T16:02:47.638Z,29061.0,103,0,0,6053.0,last-month
+ComposioHQ/composio,composio-lyzr,pypi,Use Composio to get an array of tools with your Lyzr workflow.,2024-04-12T15:16:28.222Z,29061.0,163,0,0,8264.0,last-month
+ComposioHQ/composio,composio-openai,pypi,Use Composio to get an array of tools with your OpenAI Function Call.,2024-05-01T15:01:42.812Z,29061.0,128,2,0,16608.0,last-month
+ComposioHQ/composio,composio-phidata,pypi,Use Composio to get an array of tools with your Phidata Plugin.,2024-08-13T14:31:51.046Z,29061.0,77,0,0,5559.0,last-month
+ComposioHQ/composio,composio-praisonai,pypi,Use Composio Tools to enhance your PraisonAI agents capabilities.,2024-07-19T13:46:50.391Z,29061.0,88,0,0,5050.0,last-month
+WwwwwyDev/crawlipt,crawlipt,pypi,The script for selenium in python,2024-04-19T08:01:47.347Z,173.0,15,0,0,654.0,last-month
+WwwwwyDev/crawlist,crawlist,pypi,A universal solution for web crawling lists,2024-04-09T06:46:04.890Z,116.0,10,0,0,433.0,last-month
+abrorbekuz/django-db-only,django-db-only,pypi,Django models as standalone app.,2022-07-24T14:31:52.536Z,807.0,2,0,1,33.0,last-month
+renoyuan/easyofd,easyofd,pypi,easy operate OFD,2023-07-27T06:11:38.129Z,269.0,28,0,0,1483.0,last-month
+renning22/engy,engy,pypi,"Engy is an AI-powered development tool that generates fully functional web applications from natural language, streamlining the process from idea to working prototype.",2024-10-05T06:30:48.150Z,241.0,9,0,0,848.0,last-month
+gqylpy/exceptionx,exceptionx,pypi,The `exceptionx` is a flexible and convenient Python exception handling library that allows you to dynamically create exception classes and provides various exception handling mechanisms.,2024-07-09T05:40:32.172Z,125.0,16,0,0,832.0,last-month
+atpuxiner/fastapi-scaf,fastapi-scaf,pypi,This is a fastapi scaf.,2024-07-30T06:02:28.576Z,152.0,30,0,0,1217.0,last-month
+xszyou/Fay,fay,pypi,"Fay is an open-source digital human framework integrating language models and digital characters. It offers retail, assistant, and agent versions for diverse applications like virtual shopping guides, broadcasters, assistants, waiters, teachers, and voice or text-based mobile assistants.",2024-06-13T08:30:38.134Z,1792.0,4,0,0,69.0,last-month
+freechat-fun/freechat,freechat-sdk,pypi,FreeChat OpenAPI Definition,2023-12-07T06:46:19.622Z,678.0,11,0,0,321.0,last-month
+gqylpy/funccache,funccache,pypi,"True to its name, `funccache` implements the cache function. Cache the return value of a callable object or all methods defined in a class.",2023-03-19T04:39:02.384Z,109.0,13,0,1,656.0,last-month
+oxylabs/google-shopping-scraper,google-shopping-scraper-api,pypi,Google Shopping Scraper can scrape and parse various Google Shopping page types to collect structured e-commerce data.,2024-02-22T14:01:55.993Z,158.0,1,0,0,71.0,last-month
+gqylpy/gqylpy-exception,gqylpy-exception,pypi,`gqylpy-exception` is a flexible and convenient Python exception handling library that allows you to dynamically create exception classes and provides various exception handling mechanisms.,2022-05-31T06:01:12.709Z,127.0,21,2,1,1032.0,last-month
+nightzjp/graphrag_api,graphrag-api,pypi,graphrag api 调用,2024-08-07T02:47:03.137Z,133.0,12,0,0,1026.0,last-month
+traceloop/openllmetry,iftracer-sdk,pypi,Iftracer Software Development Kit (SDK) for Python,2024-12-05T21:15:18.143Z,5109.0,2,0,0,100.0,last-month
+herche-jane/IntelliScraper,intelliscraper,pypi,An advanced web scraping tool using BeautifulSoup and scikit-learn.,2024-01-15T07:45:36.454Z,254.0,2,0,0,67.0,last-month
+traceloop/openllmetry,iudex,pypi,,2024-02-22T00:46:17.446Z,5109.0,72,0,0,3143.0,last-month
+keephq/keep,keephq,pypi,"Alerting. for developers, by developers.",2023-02-22T12:28:13.615Z,8278.0,9,0,0,401.0,last-month
+lavague-ai/LaVague,lavague,pypi,automation code generation from text instructions,2024-03-14T20:03:02.932Z,4334.0,52,0,0,3333.0,last-month
+lavague-ai/LaVague,lavague-cli,pypi,CLI for lavague,2024-05-15T16:31:39.636Z,4334.0,1,0,0,54.0,last-month
+lavague-ai/LaVague,lavague-contexts-anthropic,pypi,anthropic integration for lavague,2024-05-15T16:31:39.552Z,4334.0,7,0,0,343.0,last-month
+lavague-ai/LaVague,lavague-contexts-cache,pypi,Context for lavague able to cache and proxy to LLM and MM LLM designed to save up tokens and make model calls deterministic,2024-08-15T13:16:49.973Z,4334.0,1,0,0,290.0,last-month
+lavague-ai/LaVague,lavague-contexts-fireworks,pypi,fireworks integration for lavague,2024-07-24T14:16:46.739Z,4334.0,3,0,0,156.0,last-month
+lavague-ai/LaVague,lavague-contexts-gemini,pypi,gemini integration for lavague,2024-05-16T11:16:19.642Z,4334.0,6,0,0,375.0,last-month
+lavague-ai/LaVague,lavague-contexts-groq,pypi,Groq integration for lavague,2024-05-15T16:31:39.333Z,4334.0,1,0,0,58.0,last-month
+lavague-ai/LaVague,lavague-contexts-huggingface,pypi,HuggingFaceLLM integration for lavague,2024-05-15T16:31:39.126Z,4334.0,1,0,0,62.0,last-month
+lavague-ai/LaVague,lavague-contexts-openai,pypi,Openai integration for lavague,2024-05-14T14:31:27.920Z,4334.0,7,0,0,1206.0,last-month
+lavague-ai/LaVague,lavague-core,pypi,automation code generation from text instructions,2024-05-14T14:31:27.922Z,4334.0,51,0,0,3524.0,last-month
+lavague-ai/LaVague,lavague-drivers-playwright,pypi,Playwright integration for lavague,2024-05-14T14:31:27.317Z,4334.0,17,0,0,696.0,last-month
+lavague-ai/LaVague,lavague-drivers-remote,pypi,Remote driver execution for Lavague,2024-06-23T11:01:34.211Z,4334.0,6,0,0,260.0,last-month
+lavague-ai/LaVague,lavague-drivers-selenium,pypi,Selenium integration for lavague,2024-05-14T14:31:27.319Z,4334.0,25,0,0,1911.0,last-month
+lavague-ai/LaVague,lavague-gradio,pypi,Gradio demo for lavague,2024-05-15T16:31:39.586Z,4334.0,10,0,0,1222.0,last-month
+lavague-ai/LaVague,lavague-llms-huggingface,pypi,HuggingFaceLLM integration for lavague,2024-05-14T14:31:27.921Z,4334.0,1,0,0,60.0,last-month
+lavague-ai/LaVague,lavague-qa,pypi,QA Automation with LaVague,2024-08-02T14:17:05.381Z,4334.0,6,0,0,698.0,last-month
+lavague-ai/LaVague,lavague-retriever-cohere,pypi,Cohere retriever for lavague,2024-05-14T14:31:27.924Z,4334.0,3,0,0,139.0,last-month
+lavague-ai/LaVague,lavague-sdk,pypi,automation code generation from text instructions,2024-10-16T14:00:18.743Z,4334.0,1,0,0,394.0,last-month
+lavague-ai/LaVague,lavague-server,pypi,Server for Lavague agents,2024-06-26T08:16:32.714Z,4334.0,4,0,0,254.0,last-month
+lavague-ai/LaVague,lavague-tests,pypi,Test runner for Lavague,2024-07-26T08:31:56.488Z,4334.0,4,0,0,578.0,last-month
+LazyAGI/LazyLLM,lazyllm,pypi,A Low-code Development Tool For Building Multi-agent LLMs Applications.,2024-06-11T17:02:38.197Z,1020.0,13,0,0,444.0,last-month
+LazyAGI/LazyLLM,lazyllm-bate,pypi,A Low-code Development Tool For Building Multi-agent LLMs Applications.,2024-08-30T03:21:34.656Z,1020.0,1,0,0,,last-month
+LazyAGI/LazyLLM,lazyllm-beta,pypi,A Low-code Development Tool For Building Multi-agent LLMs Applications.,2024-08-30T07:17:20.174Z,1020.0,2,0,0,346.0,last-month
+ProjectNeura/LEADS,leads,pypi,Lightweight Embedded Assisted Driving System,2023-11-23T16:53:26.642Z,221.0,117,0,1,442187.0,last-month
+EvolvingLMMs-Lab/lmms-eval,live-bench,pypi,Live Bench,2024-06-11T00:49:11.955Z,1328.0,1,0,0,66.0,last-month
+JetXu-LLM/llama-github,llama-github,pypi,"Llama-github is an open-source Python library that empowers LLM Chatbots, AI Agents, and Auto-dev Agents to conduct Retrieval from actively selected GitHub public projects. It Augments through LLMs and Generates context for any coding question, in order to streamline the development of sophisticated AI-driven applications.",2024-06-01T15:46:32.385Z,192.0,17,0,0,941.0,last-month
+lazyFrogLOL/llmdocparser,llmdocparser,pypi,Using LLM to parse PDF and get better chunk for retrieval,2024-07-26T07:01:59.344Z,251.0,8,0,0,778.0,last-month
+lastmile-ai/aiconfig,lm-debug-eval-ui,pypi,LLM Application Debug/Eval UI on top of AIConfig,2024-04-04T18:00:37.508Z,881.0,6,0,0,287.0,last-month
+EvolvingLMMs-Lab/lmms-eval,lmms-eval,pypi,A framework for evaluating large multi-modality language models,2024-03-06T10:17:32.420Z,1328.0,14,0,0,5208.0,last-month
+scrapy/loginform,loginform,pypi,Fill HTML login forms automatically,2022-04-10T11:30:27.150Z,138.0,4,1,60,1121.0,last-month
+greydoubt/m77,m77,pypi,...,2024-02-10T11:16:12.989Z,54.0,1,0,0,41.0,last-month
+ChangxingJiang/metasequoia-sql,metasequoia-java,pypi,水杉 Java 解析器,2025-01-05T15:30:29.082Z,228.0,2,0,0,85.0,last-month
+ChangxingJiang/metasequoia-sql,metasequoia-sql,pypi,metasequoia-sql 是一款注重性能的 SQL 语法的解析和分析器，适用于 SQL 的格式化、执行和分析场景，致力于打造性能最高的 Python 版 SQL 解析器。,2024-03-10T09:03:08.790Z,228.0,8,0,0,189.0,last-month
+UlionTse/mlgb,mlgb,pypi,MLGB is a library that includes many models of CTR Prediction & Recommender System by TensorFlow & PyTorch.,2022-04-10T11:37:22.876Z,397.0,5,0,1,250.0,last-month
+mytix9999/mytix,mytix-mytix,pypi,"A small package for success, failed and normal prints",2023-01-29T00:49:53.459Z,176.0,1,0,0,,last-month
+xames3/nanotorch,nanotorch,pypi,nanotorch: Small-scale implementation of PyTorch from the ground up.,2024-03-24T16:17:32.792Z,122.0,2,0,0,45.0,last-month
+NexaAI/nexa-sdk,nexaai,pypi,Nexa AI SDK,2024-01-05T04:04:37.459Z,4203.0,27,0,0,1073.0,last-month
+NexaAI/nexa-sdk,nexaai-gpu,pypi,Nexa AI SDK,2024-08-14T09:16:55.397Z,4203.0,1,0,0,168.0,last-month
+NexaAI/nexa-sdk,nexai,pypi,Nexa AI SDK,2024-08-19T07:17:06.747Z,4203.0,1,0,0,170.0,last-month
+nextcaptcha/nextcaptcha-python,nextcaptcha-python,pypi,"NextCaptcha Captcha Solving Service Api Wrapper for Python to solving recaptcha v2, v3,recapthcha moible,hcaptcha,funcaptcha",2024-03-14T10:03:52.707Z,92.0,8,0,0,2806.0,last-month
+om-ai-lab/OmAgent,omagent_core,pypi,Core package for OmAgent,2024-12-25T06:15:28.834Z,1238.0,3,0,0,389.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-alephalpha,pypi,OpenTelemetry Aleph Alpha instrumentation,2025-01-13T16:57:44.651Z,5109.0,1,0,0,61.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-anthropic,pypi,OpenTelemetry Anthropic instrumentation,2025-01-13T16:57:44.616Z,5109.0,1,0,0,63.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-bedrock,pypi,OpenTelemetry Bedrock instrumentation,2025-01-13T16:57:44.588Z,5109.0,1,0,0,62.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-chromadb,pypi,OpenTelemetry Chroma DB instrumentation,2025-01-13T16:57:44.602Z,5109.0,1,0,0,63.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-cohere,pypi,OpenTelemetry Cohere instrumentation,2025-01-13T16:57:44.486Z,5109.0,1,0,0,63.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-google-generativeai,pypi,OpenTelemetry Google Generative AI instrumentation,2025-01-13T16:57:44.592Z,5109.0,1,0,0,76.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-haystack,pypi,OpenTelemetry Haystack instrumentation,2025-01-13T16:57:44.522Z,5109.0,1,0,0,65.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-langchain,pypi,OpenTelemetry Langchain instrumentation,2025-01-13T16:57:44.608Z,5109.0,1,0,0,68.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-llamaindex,pypi,OpenTelemetry LlamaIndex instrumentation,2025-01-13T16:57:44.329Z,5109.0,1,0,0,65.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-marqo,pypi,OpenTelemetry Marqo instrumentation,2025-01-13T16:57:44.327Z,5109.0,1,0,0,67.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-milvus,pypi,OpenTelemetry Milvus instrumentation,2025-01-13T16:57:43.674Z,5109.0,1,0,0,65.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-mistralai,pypi,OpenTelemetry Mistral AI instrumentation,2025-01-13T16:57:43.305Z,5109.0,1,0,0,68.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-ollama,pypi,OpenTelemetry Ollama instrumentation,2025-01-13T16:57:42.753Z,5109.0,1,0,0,64.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-openai,pypi,OpenTelemetry OpenAI instrumentation,2025-01-13T16:57:42.491Z,5109.0,1,0,0,66.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-pinecone,pypi,OpenTelemetry Pinecone instrumentation,2025-01-13T16:57:41.876Z,5109.0,1,0,0,64.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-qdrant,pypi,OpenTelemetry Qdrant instrumentation,2025-01-13T16:57:40.285Z,5109.0,1,0,0,66.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-replicate,pypi,OpenTelemetry Replicate instrumentation,2025-01-13T16:57:40.213Z,5109.0,1,0,0,66.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-together,pypi,OpenTelemetry Together AI instrumentation,2025-01-13T16:57:40.244Z,5109.0,1,0,0,66.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-transformers,pypi,OpenTelemetry transformers instrumentation,2025-01-13T16:57:40.041Z,5109.0,1,0,0,65.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-vertexai,pypi,OpenTelemetry Vertex AI instrumentation,2025-01-13T16:57:40.016Z,5109.0,1,0,0,66.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-watsonx,pypi,OpenTelemetry IBM Watsonx Instrumentation,2025-01-13T18:02:20.028Z,5109.0,1,0,0,128.0,last-month
+traceloop/openllmetry,opentelemetry-if-instrumentation-weaviate,pypi,OpenTelemetry Weaviate instrumentation,2025-01-13T18:02:20.803Z,5109.0,1,0,0,144.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-alephalpha,pypi,OpenTelemetry Aleph Alpha instrumentation,2024-06-12T00:07:53.954Z,5109.0,55,0,0,47935.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-anthropic,pypi,OpenTelemetry Anthropic instrumentation,2023-09-05T14:00:36.740Z,5109.0,169,3,1,124224.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-bedrock,pypi,OpenTelemetry Bedrock instrumentation,2023-09-05T14:00:36.809Z,5109.0,158,2,0,96122.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-chromadb,pypi,OpenTelemetry Chroma DB instrumentation,2023-09-05T14:00:36.842Z,5109.0,167,3,1,83006.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-cohere,pypi,OpenTelemetry Cohere instrumentation,2023-09-05T14:00:36.828Z,5109.0,165,3,1,77700.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-crewai,pypi,OpenTelemetry crewAI instrumentation,2025-01-16T04:17:15.970Z,5109.0,2,0,0,155.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-google-generativeai,pypi,OpenTelemetry Google Generative AI instrumentation,2024-06-12T00:07:54.246Z,5109.0,54,0,0,50324.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-groq,pypi,OpenTelemetry Groq instrumentation,2024-09-04T11:47:05.421Z,5109.0,30,0,0,49221.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-haystack,pypi,OpenTelemetry Haystack instrumentation,2023-09-14T17:17:18.154Z,5109.0,165,2,1,82184.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-lancedb,pypi,OpenTelemetry Lancedb instrumentation,2024-08-15T07:16:47.968Z,5109.0,37,0,0,41975.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-langchain,pypi,OpenTelemetry Langchain instrumentation,2023-10-06T16:19:36.027Z,5109.0,175,3,1,121988.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-llamaindex,pypi,OpenTelemetry LlamaIndex instrumentation,2023-11-08T09:46:38.166Z,5109.0,149,3,2,82974.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-marqo,pypi,OpenTelemetry Marqo instrumentation,2024-06-26T16:16:36.911Z,5109.0,52,0,0,46669.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-milvus,pypi,OpenTelemetry Milvus instrumentation,2024-05-20T11:03:09.091Z,5109.0,62,0,0,65170.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-mistralai,pypi,OpenTelemetry Mistral AI instrumentation,2024-05-26T09:17:06.083Z,5109.0,61,0,0,64596.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-ollama,pypi,OpenTelemetry Ollama instrumentation,2024-05-24T21:17:27.992Z,5109.0,61,0,0,64563.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-openai,pypi,OpenTelemetry OpenAI instrumentation,2023-09-05T12:15:24.193Z,5109.0,173,3,1,359283.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-pinecone,pypi,OpenTelemetry Pinecone instrumentation,2023-09-05T12:15:24.150Z,5109.0,167,3,1,84027.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-qdrant,pypi,OpenTelemetry Qdrant instrumentation,2024-02-21T19:16:32.896Z,5109.0,113,2,0,81765.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-replicate,pypi,OpenTelemetry Replicate instrumentation,2023-12-22T07:32:13.383Z,5109.0,129,2,0,89240.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-sagemaker,pypi,OpenTelemetry SageMaker instrumentation,2024-10-03T00:49:38.246Z,5109.0,22,0,0,36592.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-together,pypi,OpenTelemetry Together AI instrumentation,2024-06-06T16:46:53.230Z,5109.0,55,0,0,47315.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-togetherai,pypi,OpenTelemetry Together AI instrumentation,2024-06-06T16:31:40.245Z,5109.0,1,0,0,,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-transformers,pypi,OpenTelemetry transformers instrumentation,2023-10-15T15:19:03.654Z,5109.0,166,3,1,69688.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-vertexai,pypi,OpenTelemetry Vertex AI instrumentation,2023-09-05T14:00:36.849Z,5109.0,157,2,0,105051.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-watsonx,pypi,OpenTelemetry IBM Watsonx Instrumentation,2024-01-22T09:31:07.091Z,5109.0,123,2,0,80676.0,last-month
+traceloop/openllmetry,opentelemetry-instrumentation-weaviate,pypi,OpenTelemetry Weaviate instrumentation,2023-09-05T14:00:36.775Z,5109.0,157,2,0,80668.0,last-month
+xiaoqiang-cheng/Oviz,oviz,pypi,"Oviz: A powerful visualization tool for all your data. See images, point clouds, and more. Your go-to choice for effortless visualization!",2023-10-19T02:45:21.826Z,177.0,4,0,0,209.0,last-month
+manujajay/portfolio-optimize,portfolio-optimize,pypi,A Python package for portfolio optimization. (Note: This package is under ongoing development. Contributions and corrections are welcome!),2024-03-10T20:32:48.362Z,249.0,7,0,0,215.0,last-month
+yuanx749/py-cdhit,py-cdhit,pypi,A Python interface for CD-HIT package.,2023-05-25T12:02:56.975Z,136.0,19,2,0,883.0,last-month
+jen-soft/pydocker,pydocker,pypi,Easy generator Dockerfile for humans.,2022-04-10T12:11:55.417Z,92.0,6,0,1,973.0,last-month
+harmony-one/harmony,pyhmy,pypi,A library for interacting and working the Harmony blockchain and related codebases,2022-04-10T12:13:43.338Z,1450.0,31,0,9,1267.0,last-month
+chinapandaman/PyPDFForm,pypdfform,pypi,The Python library for PDF forms.,2022-04-10T12:16:34.047Z,405.0,94,0,1,8880.0,last-month
+Azure/PyRIT,pyrit,pypi,The Python Risk Identification Tool for LLMs (PyRIT) is a library used to assess the robustness of LLMs,2024-02-21T22:01:48.859Z,1346.0,10,0,0,2592.0,last-month
+lastmile-ai/aiconfig,python-aiconfig,pypi,Python library for AIConfig SDK,2023-10-17T14:50:01.883Z,881.0,45,12,1,1561.0,last-month
+lastmile-ai/aiconfig,python-aiconfig-llama,pypi,LLama extension for AIConfig Library,2023-11-17T14:16:27.548Z,881.0,1,0,0,54.0,last-month
+lastmile-ai/aiconfig,python-aiconfig-test,pypi,Python library for LastMile AI API,2024-02-13T20:16:26.611Z,881.0,1,0,0,44.0,last-month
+oxylabs/Python-Web-Scraping-Tutorial,python-web-scraping-tutorial-step-by-step,pypi,"In this Python Web Scraping Tutorial, we will outline everything needed to get started with web scraping. We will begin with simple examples and move on to relatively more complex.",2023-11-15T14:16:24.439Z,308.0,1,0,0,36.0,last-month
+hitsz-ids/synthetic-data-generator,sdgx,pypi,synthetic-data-generator,2023-08-11T03:21:56.678Z,2528.0,15,0,0,606.0,last-month
+jialuechen/shogunfolio,shogunfolio,pypi,Portfolio optimization built on top of scikit-learn,2024-05-25T18:02:57.046Z,137.0,1,0,0,17.0,last-month
+abess-team/skscope,skscope,pypi,Sparsity-Constraint OPtimization via itErative-algorithm,2023-08-05T18:11:36.042Z,310.0,10,0,0,3068.0,last-month
+spaceandtimelabs/SxT-Python-SDK,spaceandtime,pypi,SDK for Space and Time verifiable database,2023-10-06T23:18:05.009Z,2888.0,43,0,0,2056.0,last-month
+ComposioHQ/composio,swekit,pypi,Tools for running a SWE agent using Composio platform,2024-07-09T14:47:04.933Z,29061.0,89,0,0,4826.0,last-month
+TorchEnsemble-Community/Ensemble-Pytorch,torchensemble,pypi,A unified ensemble framework for PyTorch to improve the performance and robustness of your deep learning model,2022-04-10T12:52:26.548Z,825.0,11,1,5,926.0,last-month
+traceloop/openllmetry,traceloop-sdk,pypi,Traceloop Software Development Kit (SDK) for Python,2023-08-02T09:42:07.207Z,5109.0,238,4,1,78180.0,last-month
+in1nit1t/uniref,uniref,pypi,Unity reflection framework,2023-01-20T02:32:41.158Z,183.0,12,0,0,226.0,last-month
+manumerous/vpselector,vpselector,pypi,Visualize and interactively select time-series data from a pandas DataFrame.,2023-09-17T15:46:09.906Z,138.0,4,0,0,200.0,last-month
+Weitheskmt/WeiDMD,weidmd,pypi,Wei's Dynamic Mode Decomposition.,2023-10-30T13:31:38.292Z,110.0,2,0,0,58.0,last-month
+oxylabs/youtube-scraper,youtube-video-scraper-api,pypi,"YouTube Scraper for effortless public YouTube data collection, including video and channel information.",2024-02-22T15:02:05.871Z,212.0,1,0,0,66.0,last-month
+zksync-sdk/zksync2-python,zksync2,pypi,ZKsync python client sdk,2022-10-18T15:35:17.124Z,320.0,12,0,1,1034.0,last-month
+microsoft/ClimaX,py-climax,spack,"ClimaX: A foundation model for weather and climate.
+",2024-03-12T05:15:18.986Z,739.0,0,0,0,,
+NexaAI/nexa-sdk,github.com/NexaAI/nexa-sdk,swiftpm,"Nexa SDK is a comprehensive toolkit for supporting GGML and ONNX models. It supports text generation, image generation, vision-language models (VLM), Audio Language Model, auto-speech-recognition (ASR), and text-to-speech (TTS) capabilities.",2024-11-04T00:00:15.441Z,4203.0,100,0,0,,
