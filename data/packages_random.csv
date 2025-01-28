@@ -1,308 +1,195 @@
 package,ecosystem,description,n_versions,n_stars,n_dependent_packages,n_dependent_repos,n_downloads,downloads_period
-@appliedblockchain/hardhat-zksync-upgradable,npm,Hardhat plugin to deploy and update upgradable smart contracts for the ZKsync network,4,279,0,0,23.0,last-month
-@cakoyo/hardhat-zksync-solc,npm,Hardhat plugin to compile smart contracts for the zkSync network,1,279,1,0,4.0,last-month
-@channelwill/hooks,npm,"Lightweight, multi-application based React hooks library",38,77,0,0,86.0,last-month
-@connoropolous/holochain-client,npm,A JavaScript client for the Holochain Conductor API,1,257,2,0,8.0,last-month
-@difizen/libro-ai-native,npm,,15,219,0,0,151.0,last-month
-@difizen/libro-app,npm,,6,219,0,0,96.0,last-month
-@difizen/libro-code-cell,npm,cell,100,219,0,0,757.0,last-month
-@difizen/libro-code-editor,npm,,104,219,8,1,876.0,last-month
-@difizen/libro-codemirror,npm,,102,219,6,1,918.0,last-month
-@difizen/libro-codemirror-code-cell,npm,cell,3,219,2,1,20.0,last-month
-@difizen/libro-codemirror-markdown-cell,npm,cell,3,219,1,1,12.0,last-month
-@difizen/libro-codemirror-raw-cell,npm,cell,3,219,1,1,16.0,last-month
-@difizen/libro-cofine-editor,npm,cell,100,219,0,0,691.0,last-month
-@difizen/libro-cofine-editor-contribution,npm,cell,100,219,0,0,720.0,last-month
-@difizen/libro-cofine-editor-core,npm,cell,101,219,0,0,944.0,last-month
-@difizen/libro-cofine-textmate,npm,cell,100,219,0,0,691.0,last-month
-@difizen/libro-common,npm,,104,219,17,1,847.0,last-month
-@difizen/libro-core,npm,## Token/API,103,219,13,1,951.0,last-month
-@difizen/libro-jupyter,npm,,103,219,2,1,729.0,last-month
-@difizen/libro-kernel,npm,,103,219,3,1,766.0,last-month
-@difizen/libro-l10n,npm,,102,219,1,1,707.0,last-month
-@difizen/libro-lab,npm,,103,219,0,1,393.0,last-month
-@difizen/libro-language-client,npm,,84,219,0,0,669.0,last-month
-@difizen/libro-lsp,npm,,100,219,0,0,733.0,last-month
-@difizen/libro-markdown,npm,,102,219,3,1,722.0,last-month
-@difizen/libro-markdown-cell,npm,,100,219,0,0,708.0,last-month
-@difizen/libro-output,npm,"该包基于 [libro-core](../libro-core) 模块提供的输出扩展实现了 Jupyter 场景下的三个 Output 模块: `StreamOutputModule`,`ErrorOutputModule`,`DisplayDataOutputModule`。同时，Output 中不同输出数据格式的渲染实现在 [libro-rendermime](../libro-rendermime/)。",103,219,1,1,716.0,last-month
-@difizen/libro-prompt-cell,npm,![image](../../apps/docs/public/prompt_em.jpeg),101,219,0,0,215.0,last-month
-@difizen/libro-raw-cell,npm,cell,100,219,0,0,694.0,last-month
-@difizen/libro-rendermime,npm,该包提供了 `LibroRenderMimeModule` 模块用于识别不同数据格式的内容并且正确解析渲染。通过定义多个 MIME 类型和优先级，可以在不同的环境中提供灵活的输出展示选项，以适应各种类型的数据和前端环境的要求。内置了文本、图片、Markdown、HTML、SVG 等 MIME 渲染器，同时提供 MIME 渲染器扩展，支持扩展更多自定义的 MIME 类型渲染。,103,219,6,1,708.0,last-month
-@difizen/libro-search,npm,,103,219,2,1,764.0,last-month
-@difizen/libro-search-code-cell,npm,cell,99,219,0,0,710.0,last-month
-@difizen/libro-search-codemirror-cell,npm,cell,3,219,1,1,14.0,last-month
-@difizen/libro-shared-model,npm,,102,219,2,1,855.0,last-month
-@difizen/libro-sql-cell,npm,,31,219,0,0,148.0,last-month
-@difizen/libro-terminal,npm,,102,219,0,0,185.0,last-month
-@difizen/libro-toc,npm,,103,219,1,0,666.0,last-month
-@difizen/libro-virtualized,npm,,101,219,0,0,857.0,last-month
-@difizen/libro-widget,npm,,103,219,0,0,206.0,last-month
-@dzlzv/hydra-indexer-lib,npm,Block index builder for substrate based chains,36,1426,1,0,76.0,last-month
-@gabspeck/hardhat-zksync-upgradable,npm,Hardhat plugin to deploy and update upgradable smart contracts for the ZKsync network,1,279,0,0,5.0,last-month
-@holo-host/web-sdk,npm,Standard development kit for creating Web UIs that work with Holo Hosting.,35,175,3,12,71.0,last-month
-@holochain-open-dev/create,npm,RAD tools for quickly scaffolding holochain modules,2,220,1,0,9.0,last-month
-@holochain/client,npm,A JavaScript client for the Holochain Conductor API,104,258,46,70,2280.0,last-month
-@holochain/create,npm,Rapid Application Development tools to build Holochain apps,41,220,1,0,96.0,last-month
-@holochain/holochain-nodejs,npm,Nodejs Holochain Conductor primarily for test execution,33,1116,1,17,63.0,last-month
-@holochain/holochain-nodejs-bleeding,npm,Nodejs Holochain Container primarily for test execution,6,1116,1,1,18.0,last-month
-@holochain/tryorama,npm,Toolset to manage Holochain conductors and facilitate running test scenarios,95,212,3,137,856.0,last-month
-@jasonsoft/nestjs-seq,npm,Seq logging module for Nest framework (node.js),20,169,1,0,667.0,last-month
-@joystream/cd-schemas,npm,"JSON schemas, inputs and related tooling for Joystream content directory 2.0",2,1426,2,1,13.0,last-month
-@joystream/cli,npm,Command Line Interface for Joystream community and governance activities,19,1426,1,0,75.0,last-month
-@joystream/content-metadata-protobuf,npm,Joystream Content Metadata Protobuf Library ,2,1426,2,5,14.0,last-month
-@joystream/eslint-config,npm,joystream eslint shared config,1,1425,2,10,63.0,last-month
-@joystream/js,npm,Joystream JS package provides  utilities required to work with Joystream network.,16,1426,2,1,143.0,last-month
-@joystream/metadata-protobuf,npm,Joystream Metadata Protobuf Library,21,1425,3,15,172.0,last-month
-@joystream/prettier-config,npm,joystream prettier shared config,1,1425,3,10,93.0,last-month
-@joystream/types,npm,Types for Joystream Substrate Runtime - Nara release,58,1426,4,35,327.0,last-month
-@kazura/common,npm,kazura common,1,133,0,0,4.0,last-month
-@kazura/googleapis,npm,googleapis,4,133,0,0,21.0,last-month
-@kazura/http-client,npm,http client,2,133,0,0,9.0,last-month
-@kazura/lock-native-back,npm,lock-native-back,3,133,0,0,1.0,last-month
-@kazura/nestjs-redis,npm,nestjs redis,2,133,0,0,14.0,last-month
-@kazura/nestjs-winston,npm,nestjs winston,2,133,0,0,14.0,last-month
-@kazura/node-util,npm,node-util,8,133,0,0,64.0,last-month
-@kazura/postmsg-builder,npm,postmsg-builder,3,133,0,0,16.0,last-month
-@kazura/react-hooks,npm,react hooks,1,133,0,0,9.0,last-month
-@kazura/react-mobx,npm,react-mobx,9,133,0,0,65.0,last-month
-@kazura/react-toolkit,npm,react toolkit,2,133,0,0,13.0,last-month
-@kazura/validator,npm,kazura validator,1,133,0,0,5.0,last-month
-@kazura/vite-config,npm,vite env config,2,133,0,0,9.0,last-month
-@kazura/web-broadcast,npm,web-broadcast,3,133,1,0,29.0,last-month
-@kazura/web-crypto,npm,web-crypto,10,133,2,0,101.0,last-month
-@kazura/web-daemon,npm,web-daemon,2,671,1,1,10.0,last-month
-@kazura/web-postmsg,npm,web-postmsg,10,133,2,1,37.0,last-month
-@kazura/web-util,npm,web-util,33,133,5,3,307.0,last-month
-@liyuec/website-update-detector,npm,web前端主动发现站点发布更新 客户端更新 主动发现更新 发现更新,1,208,0,0,3.0,last-month
-@matterlabs/hardhat-zksync,npm,ZKsync bundle of Hardhat plugins,8,279,0,0,9082.0,last-month
-@matterlabs/hardhat-zksync-chai-matchers,npm,"Hardhat plugin that adds zkSync-specific capabilities to the Chaiassertion library, making your smart contract tests easy to write and read",14,279,7,36,11594.0,last-month
-@matterlabs/hardhat-zksync-deploy,npm,Hardhat plugin to deploy smart contracts into the ZKsync network,43,279,63,311,48082.0,last-month
-@matterlabs/hardhat-zksync-ethers,npm,Hardhat plugin for integration with zksync-ethers library,13,279,0,0,13834.0,last-month
-@matterlabs/hardhat-zksync-node,npm,Hardhat plugin to run anvil-zksync locally,19,279,1,1,28331.0,last-month
-@matterlabs/hardhat-zksync-solc,npm,Hardhat plugin to compile smart contracts for the ZKsync network,55,269,67,677,132828.0,last-month
-@matterlabs/hardhat-zksync-upgradable,npm,Hardhat plugin to deploy and update upgradable smart contracts for the ZKsync network,46,279,3,1,12400.0,last-month
-@matterlabs/hardhat-zksync-verify,npm,Hardhat plugin to verify smart contracts for the ZKsync network,34,279,28,326,89316.0,last-month
-@matterlabs/hardhat-zksync-verify-vyper,npm,Hardhat plugin to verify Vyper smart contracts for the zkSync network,5,279,0,1,9.0,last-month
-@matterlabs/hardhat-zksync-vyper,npm,Hardhat plugin to compile Vyper smart contracts for the ZKsync network,25,279,4,32,7806.0,last-month
-@matterlabs/hardhat-zksync-vyper-verify,npm,Hardhat plugin to verify Vyper smart contracts for the zkSync network,1,279,0,0,4.0,last-month
-@matterlabs/hardhat-zksync-zksync2js,npm,Hardhat plugin for integration with zksync2-js library,4,279,0,0,12.0,last-month
-@numbersprotocol/nit,npm,git for web3 digital asset,28,4406,1,1,40.0,last-month
-@pleasure1234/nottinghamwall,npm,宁波诺丁汉大学校园墙,4,103,0,0,255.0,last-month
-@polytope-labs/hyperclient,npm,The hyperclient is a library for managing (in-flight) ISMP requests,61,123,0,0,176.0,last-month
-@randevcx/monorepo,npm,Monorepo,1,59,0,0,1.0,last-month
-@randevcx/ranui,npm,UI Component library based on `Web Component`,12,59,0,0,47.0,last-month
-@ranui/react,npm,UI Component library based on `Web Component`,10,59,0,0,49.0,last-month
-@reactuses/core,npm,"<div align = ""center"">    <h1 align = ""center"">     reactuse   </h1> </div>",78,885,1,1,18168.0,last-month
-@scayle/storefront-api-sdk,npm,TypeScript and JavaScript SDK source for the SCAYLE Storefront API.,2,76,0,0,2.0,last-month
-@sprillow-connor/holochain-client,npm,A JavaScript client for the Holochain Conductor API,3,257,3,1,19.0,last-month
-@tatumcom/js,npm,Tatum JS SDK,105,370,0,2,390.0,last-month
-@tatumio/tatum,npm,Tatum JS SDK,836,370,38,25,10124.0,last-month
-@tatumio/tatum-v1,npm,Tatum API client allows browsers and Node.js clients to interact with Tatum API.,5,370,0,0,17.0,last-month
-@theojs/solis,npm,VitePress的博客主题,22,127,0,0,2265.0,last-month
-@utype/core,npm,Collection of typescript utility types that extends the official utility types,7,93,0,0,8.0,last-month
-@utype/shared,npm,Collection of typescript utility types that extends the official utility types,6,92,0,0,9.0,last-month
-a-calc,npm,A very powerful and easy-to-use number precision calculation and formatting library.,154,254,3,1,109733.0,last-month
-adamant-api,npm,JavaScript API library for the ADAMANT Blockchain,48,356,5,20,319.0,last-month
-adamant-console,npm,Console API and JSON-RPC for interacting with ADAMANT Blockchain,16,339,2,1,48.0,last-month
-aiconfig,npm,"Library to help manage AI prompts, models and parameters using the .aiconfig file format.",25,866,6,1,845.0,last-month
-aiconfig-extension-llama,npm,## Overview,3,866,1,0,7.0,last-month
-atom-tools,npm,A quick tool and function collection designed specifically for projects using the JavaScript language,35,201,0,0,6.0,last-month
+accounting,npm,"number, money and currency formatting library",3,4972,370,2763,718395.0,last-month
+alm,npm,The best IDE for TypeScript,228,3007,3,6,1185.0,last-month
+asker,npm,http.request wrapper with request retries and http.Agent tuning,33,93,17,8,3070.0,last-month
 authorizenet,npm,nodejs sdk for Authorize.Net,11,79,9,53,42047.0,last-month
 autotune,npm,Automatically tune JavaScript apps,124,77,2,1,32.0,last-month
+azula,npm,Lightweight GPU accelerated HTML GUI for Node,6,320,1,1,34.0,last-month
 bcbp,npm,Encoding/decoding library for the IATA Bar Coded Boarding Pass,33,58,2,3,5201.0,last-month
+bip32,npm,A BIP32 compatible library,20,188,1039,10668,907630.0,last-month
+bluebird,npm,Full featured Promises/A+ implementation with exceptionally good performance,223,20446,30080,8603,96703428.0,last-month
+booru,npm,Search (and do other things) on a bunch of different boorus!,68,78,7,249,2196.0,last-month
+bottleneck,npm,Distributed task scheduler and rate limiter,79,1849,585,55261,10379802.0,last-month
+bun,npm,Bun is a fast all-in-one JavaScript runtime.,769,74420,108,21486,830259.0,last-month
+catnap,npm,Fast and simple Resource-Oriented Architecture for Node.,5,75,1,1,42.0,last-month
+catppuccin-catwalk,npm,A sweet program that takes in four showcase images and displays them all at once.,1,81,0,0,63.0,last-month
 cdk8s-plus-30,npm,cdk8s+ is a software development framework that provides high level abstractions for authoring Kubernetes applications. cdk8s-plus-30 synthesizes Kubernetes manifests for Kubernetes 1.30.0,31,131,0,0,28185.0,last-month
+chip-io,npm,Johnny-Five IO Plugin for the Next Thing Co. C.H.I.P.,10,95,2,2,42.0,last-month
+chocolate,npm,A full stack Node.js web framework built using Coffeescript,36,191,1,3,74.0,last-month
 codebox,npm,Extensible hybrid IDE,39,4128,2,4,64.0,last-month
+coffea,npm,event based and extensible nodejs irc client library with multi-network support,65,65,5,10,170.0,last-month
 dargs,npm,Reverse minimist. Convert an object of options into an array of command-line arguments.,20,182,698,230429,21693596.0,last-month
+dash-bootstrap-components,npm,Bootstrap components for Plotly Dash,182,1136,1,1,8693.0,last-month
 dato,npm,wowo,7,39688,1,1,26.0,last-month
+deferred,npm,Modular and fast Promises implementation,44,363,224,11351,2961206.0,last-month
+dialect,npm,Translations manager for nodejs,7,109,3,4,42.0,last-month
 easy-monitor,npm,a node.js performance analysis tool,58,3104,8,21,242.0,last-month
+easydl,npm,"Easily download a file and save it to local disk. It supports resuming previously downloaded files, multi-connection/parallel downloads, and retry on fail out of the box!",7,78,7,12,9091.0,last-month
+electron-rpc,npm,A lightweight rpc-style wrapper for the ipc module of electron,6,60,3,30,31.0,last-month
 elemental,npm,React UI Framework,44,4319,53,816,2365.0,last-month
+embeddings-util,npm,A NodeJS framework to easily work with LLMs and custom datasets,2,373,0,0,9.0,last-month
+emojilib,npm,Emoji keyword library.,42,1685,153,1551,6095568.0,last-month
 endorphin,npm,Component-based UI rendering library,98,57,1,15,41.0,last-month
-fixit-src,npm,FixIt theme source files,1,288,0,0,,last-month
+evue,npm,"重新封装element-ui部分组件,QQ:2052021114",39,60,1,1,17.0,last-month
+firebird,npm,"Firebird binding to node, uses libfbclient.",19,82,3,9,543.0,last-month
+flowhub,npm,Through a simple way to deal with the event streams,4,113,2,0,30.0,last-month
+fluent,npm,Localization library for expressive translations.,24,936,14,156,1081.0,last-month
 fora,npm,Full-stack (DB-to-UI) Isomorphic JS framework,24,64,2,1,58.0,last-month
-freechat-sdk,npm,OpenAPI client for freechat-sdk,15,606,0,0,54.0,last-month
 fuzzyset,npm,A fast fuzzy string set for JavaScript,6,1368,14,60,65521.0,last-month
+ganon,npm,A Javascript library,39,93,1,1,80.0,last-month
+github-stats,npm,Visualize stats about GitHub users and projects in your terminal.,18,278,2,1,153.0,last-month
 gitid,npm,Manage multiple git accounts easily,15,250,0,0,8.0,last-month
-hcap-slv,npm,A library to solve hCaptcha challenges,1,155,0,0,0.0,
-hcaptcha-solver,npm,A library to solve hCaptcha challenges,3,202,5,29,1538.0,last-month
-hcaptcha-solver-fixed,npm,A library to solve hCaptcha challenges,2,155,0,0,0.0,
-hydra-index-builder,npm,Block index builder for substrate based chains,1,1426,1,0,4.0,last-month
-ideaz-element,npm,"<p align=""center"">   <a href="""" target=""_blank"" rel=""noopener noreferrer"">     <img src=""./docs/public/logo.svg"" alt=""Ideaz Element"" width=""180"" style=""width: 180px;"" />   </a> </p>",12,140,0,0,27.0,last-month
+gologin,npm,A high-level API to control Orbita browser over GoLogin API,93,118,1,1,1705.0,last-month
+h2m,npm,Transform HTML to markdown base on posthtml.,10,271,10,32,1118.0,last-month
+handlebars,npm,Handlebars provides the power necessary to let you build semantic templates effectively with no frustration,80,17990,15556,1258975,51418951.0,last-month
+hound,npm,"Cross platform directory tree watcher, focussed on reliability, speed, and simplicity.",6,95,46,128,1097.0,last-month
+hypernova,npm,A service for server-side rendering your JavaScript views,18,5824,20,68,29748.0,last-month
+image-cli,npm,Uploading local or remote images from Cli to store in Cloud.,15,51,1,3,54.0,last-month
+ipydatagrid,npm,Fast Datagrid widget for the Jupyter Notebook and JupyterLab,28,545,1,1,1469.0,last-month
+isomorphic,npm,command line utility for isomorphic webapps,13,58,2,18,33.0,last-month
+jsonbin,npm,CLI and package for jsonbin.org,14,390,1,1,66.0,last-month
 jsonlint,npm,Validate JSON,17,1929,1045,57349,514134.0,last-month
-komekko,npm,komekko,7,133,0,0,14.0,last-month
-lane-test,npm,"<h1 align=""center"">   OpenAPI UI </h1> <p align=""center""> OpenAPI/Swagger UI document, quickly generate mock params and call api, also simplified postman tool </p> <p align=""center"">   <a href=""https://github.com/rookie-luochao/openapi-ui/blob/master/LICE",5,500,0,0,54.0,last-month
+jsonplus,npm,JSON parser with comments and self reference support,7,90,6,8,124.0,last-month
+kappa,npm,A hierarchical npm-registry proxy to make private registries easier. (Based on npm-delegate by @jden),19,557,7,11,236.0,last-month
+lambda-git,npm,"A git binary installed through NPM, for use with AWS Lambda",8,78,15,9,268.0,last-month
+loom,npm,Weave your wefts betwixt the warps of loom generators and scaffolds.,12,93,17,313,800.0,last-month
 lrc,npm,a javascript lrc parser,1,79,3,3,9.0,last-month
+mailersend,npm,Node.js helper module for MailerSend API,26,106,16,209,74734.0,last-month
 markdown-to-confluence,npm,convert markdown to confluence markup,5,424,2,1,328.0,last-month
 meilisearch,npm,The Meilisearch JS client for Node.js and the browser.,99,726,68,802,345952.0,last-month
+merge,npm,(recursive)? merging of (cloned)? objects.,9,176,2573,536429,8204581.0,last-month
+mongous,npm,Simple MongoDB driver,9,247,6,25,49.0,last-month
+monocdk,npm,An experiment to bundle the entire CDK into a single module,157,11841,9,152,386.0,last-month
 moonshine,npm,A lightweight Lua virtual machine.,7,502,1,4,11.0,last-month
 mountebank,npm,Over the wire test doubles,410,1974,25,90,111216.0,last-month
 nets,npm,nothin but nets. http client that works in node and browsers,5,101,120,1103,19483.0,last-month
-next-fast-table,npm,"A super-fast form building solution for full-stack developers, build your data forms in one minute.",9,94,0,0,47.0,last-month
-nottinghamwall,npm,宁波诺丁汉大学校园墙,4,208,0,0,8.0,last-month
+nise,npm,Fake XHR and server,59,107,96,110000,16495018.0,last-month
+nls,npm,Missing inspector for npm packages.,23,54,3,1,273.0,last-month
 omi,npm,"<p align=""center""><img src=""https://omijs.github.io/home/assets/logo.svg"" alt=""omi"" width=""100""/></p> <h2 align=""center"">Omi - Web Components Framework</h2>",373,13033,111,48,3038.0,last-month
-openapi-ui-dist,npm,"<h1 align=""center"">   OpenAPI UI </h1> <p align=""center""> OpenAPI/Swagger UI document, quickly generate mock params and call api, also simplified postman tool </p> <p align=""center"">   <a href=""https://github.com/rookie-luochao/openapi-ui/blob/master/LICE",10,645,0,0,59.0,last-month
+orderly,npm,Translates Orderly to JSON Schema,3,119,3,6,111.0,last-month
 parameter,npm,A parameter verify tools.,29,729,71,569,26497.0,last-month
+passbook,npm,iOS Passbook for the Node hacker,12,280,1,11,1881.0,last-month
 passwordless,npm,A node.js/express module for passwordless authentication,28,1948,14,81,4223.0,last-month
+pgmock,npm,In-memory Postgres for unit/E2E tests,5,1149,1,1,8803.0,last-month
 porm,npm,Postgres ORM,77,495,2,1,128.0,last-month
-quill-mention-react,npm,Quill React Mention,6,123,0,0,35.0,last-month
-ranui,npm,UI Component library based on `Web Component`,38,59,1,2,144.0,last-month
-ranuts,npm,lib,18,59,2,2,79.0,last-month
-react-voodoo,npm,"Faster, simplier, additive, swipeable & multidimentional animation engine for React",93,72,2,3,177.0,last-month
+primrose,npm,Syntax-highlighting text editor that renders to an HTML5 Canvas element,114,529,2,3,3675.0,last-month
+prompter,npm,"create json files, prompting for input and evaluating expressions",6,60,4,9,764.0,last-month
+pyarn,npm,pyarn is a super-powered wrapper around [Yarn](https://yarnpkg.com/) and [npm](https://www.npmjs.com/) that provides you with useful commands for working with your projects. The hope in the future is that a lot of these ideas will make it back into Yarn a,14,2355,3,1,23.0,last-month
+quail,npm,A javascript content accessibility checker.,2,300,1,2,4.0,last-month
+rate-limit-redis,npm,A Redis store for the `express-rate-limit` middleware,23,183,41,870,718092.0,last-month
+readwise,npm,"The default personal blogging theme for Ghost. Beautiful, minimal and responsive.",1,2512,0,1,8.0,last-month
+redis-lock,npm,A locking primitive using redis.,14,211,36,201,192086.0,last-month
 remarkable,npm,"Markdown parser, done right. 100% Commonmark support, extensions, syntax plugins, high speed - all in one.",23,5745,657,25524,2495066.0,last-month
-remote-browser-view,npm,A library for executing actions in a remote browser and viewing/replaying them locally.,4,88,0,0,17.0,last-month
+requestify,npm,Simplifies node HTTP request making (HTTP client) with caching support.,22,223,113,576,15917.0,last-month
 rethinkdb,npm,This package provides the JavaScript driver library for the RethinkDB database server for use in your node application.,50,26509,368,1283,36157.0,last-month
-retry-cdn,npm,Automatically switch the domain name when error,3,66,0,0,4.0,last-month
-rsult,npm,"<p align=""center"">   <img src=""https://github.com/indicium-ag/rsult/raw/master/rsult.svg"" width=""300px""/><br/>   <img src=""https://github.com/indicium-ag/rsult/raw/master/rsult-test.svg"" width=""450px""/> </p>",7,63,0,0,134.0,last-month
+sharedb,npm,JSON OT database backend,141,5977,115,293,28388.0,last-month
 sjcl,npm,Stanford Javascript Crypto Library,8,7164,526,4602,465187.0,last-month
-smart-mjml,npm,"Smart MJML is a library that provides TypeScript intelligence hints and checks, making editing MJML simpler.",2,135,0,0,2.0,last-month
+sonos-cli,npm,CLI for controlling Sonos devices,13,53,0,1,43.0,last-month
+sourcecred,npm,a tool for communities to measure and reward value creation,44,495,1,207,1682.0,last-month
+spectrum,npm,JavaScript Template Library,11,58,6,14,1571.0,last-month
 spex,npm,Specialized Promise Extensions,105,52,9,10508,1271818.0,last-month
-starknet,npm,JavaScript library for Starknet,231,1157,149,467,210533.0,last-month
+springy,npm,A force directed graph layout algorithm in JavaScript.,11,1881,8,22,338.0,last-month
+stackexchange,npm,Node.js implementation of the stackexchange/stackoverflow API,24,58,11,27,6068.0,last-month
 supermemo2,npm,An implement of supermemo 2 algorithm.,3,81,0,5,211.0,last-month
-tatumio,npm,Tatum API client allows browsers and Node.js clients to interact with Tatum API. It includes the following core components.,2,370,0,0,7.0,last-month
+tako,npm,Functional web framework.,8,320,14,29,42.0,last-month
+tardis-dev,npm,Convenient access to tick-level historical and real-time cryptocurrency market data via Node.js,272,304,3,4,1688.0,last-month
+tlds,npm,A list of TLDs.,254,140,153,19538,5136100.0,last-month
+tokio,npm,Web scraping made simple.,3,143,2,1,19.0,last-month
+tortilla,npm,A tutorials framework based on git and NodeJS,45,51,0,1,267.0,last-month
+tree-sitter-c,npm,C grammar for tree-sitter,72,237,16,290,24797.0,last-month
+trie-search,npm,A trie implementation that maps keys to objects for rapid retrieval by phrases. Most common use will be for typeahead searches.,41,179,36,153,188206.0,last-month
+tripwire,npm,Break out from scripts blocking node.js event loop,7,99,9,7,29.0,last-month
+tsr,npm,"TypeScript Remove (tsr) is a utility that removes unused code from TypeScript projects – It's like tree shaking, but for source files",20,1114,0,1,1521.0,last-month
 txtgen,npm,"Util for generating random sentences, paragraphs and articles in English",39,86,43,327,14349.0,last-month
-undress-ai,npm,"list of undress AI, NSFW image editing (inpainting and outpaining) websites available in the market.",1,418,0,0,6.0,last-month
 valuable,npm,An immutable data store for React,17,100,0,1,4.0,last-month
 vbuild,npm,Fast prototype and distribute modern web apps like a pro.,175,5233,49,31,432.0,last-month
+vinyl,npm,Virtual file format.,30,1267,4274,453099,17317041.0,last-month
+void,npm,A toolkit for making generative art.,11,61,1,4,95.0,last-month
 wd,npm,WebDriver/Selenium 2 node.js client,110,1527,654,64060,273374.0,last-month
-website_update_detector,npm,web前端主动发现站点发布更新 客户端更新 主动发现更新 发现更新,2,208,0,0,7.0,last-month
-01os,pypi,"The #1 open-source voice interface for desktop, mobile, and ESP32 chips.",14,4838,0,0,1974.0,last-month
+wilderness,npm,An SVG animation API,37,156,0,1,313.0,last-month
+wonka,npm,A tiny but capable push & pull stream library for TypeScript and Flow,83,704,95,58349,4860494.0,last-month
+zipcodes,npm,Useful zipcode database with helper methods,16,157,21,241,130049.0,last-month
+zx,npm,A tool for writing better scripts,164,43486,1354,2228,2491642.0,last-month
 agent-attention-pytorch,pypi,Agent Attention - Pytorch,13,88,0,0,889.0,last-month
-agentlego,pypi,AgentLego is a versatile tool library for enhancing LLM-based agents.,4,366,0,0,323.0,last-month
-aiconfig-extension-gemini,pypi,An extension for using Gemini with aiconfig,5,866,0,0,326.0,last-month
-aiconfig-extension-groq,pypi,An extension for using the Groq client wrapper with AIConfig.,2,866,0,0,161.0,last-month
-aiconfig-extension-hugging-face,pypi,An extension for using Hugging Face tasks to parse models for AIConfig.,13,866,3,0,1102.0,last-month
-aiconfig-extension-hugging-face-transformers,pypi,An extension for using Hugging Face transformers to parse models for AIConfig.,4,594,0,0,49.0,last-month
-aiconfig-extension-llama,pypi,Model Parser extension for Llama,2,866,0,0,146.0,last-month
-aiconfig-extension-llama-guard,pypi,An extension for using LLama Guard with aiconfig,3,866,0,0,231.0,last-month
+aget,pypi,Aget - An Asynchronous Downloader,16,127,3,2,1668.0,last-month
 aioaws,pypi,Asyncio SDK for some AWS services.,16,174,2,2,7721.0,last-month
-alchemy-cat,pypi,Alchemy Cat —— 🔥Config System for SOTA,10,119,0,0,587.0,last-month
-ali-express-scraper,pypi,"Easily collect public AliExpress data like prices, product details, and ratings with AliExpress Scraper API",1,231,0,0,94.0,last-month
 alibabacloud-aiccs20230516,pypi,Alibaba Cloud aiccs (20230516) SDK Library for Python,5,78,0,0,364.0,last-month
 alibabacloud-jarvis-public20180621,pypi,Alibaba Cloud jarvis-public (20180621) SDK Library for Python,1,78,0,1,73.0,last-month
 alibabacloud-live20161101,pypi,Alibaba Cloud ApsaraVideo for Live (20161101) SDK Library for Python,8,78,1,1,510.0,last-month
 alibabacloud-nbf-vpc-cloud20211115-131123360,pypi,Alibaba Cloud NBF-VPC-Cloud (20211115_131123360) SDK Library for Python,1,78,0,0,73.0,last-month
 amsterdam,pypi,"Suricata, ELK, Scirius on Docker",10,183,0,3,671.0,last-month
-antgo,pypi,machine learning experiment platform,46,247,0,1,1462.0,last-month
 approvaltests-minimal,pypi,Assertion/verification library to aid testing with the minimal required dependencies + the ability to opt in for the others,50,150,0,1,3292.0,last-month
 aruba-central-migrate-lib,pypi,A sample Python project,14,4436,0,0,0.0,
+astor,pypi,Read/rewrite/write Python ASTs,14,781,172,26385,8942002.0,last-month
 asyncio-buffered-pipeline,pypi,Parallelize pipelines of Python async iterables/generators,8,113,0,1,498.0,last-month
 atoti-server-directquery-synapse,pypi,Resources to use DirectQuery on Azure Synapse Analytics,5,223,0,0,366.0,last-month
+autometrics,pypi,Easily add metrics to your system – and actually understand them using automatically customized Prometheus queries,10,217,0,1,2122.0,last-month
 bbb-dl,pypi,Big Blue Button Downloader that downloads a BBB lesson as MP4 video,51,67,0,1,2258.0,last-month
 bigdl-chronos-spark321,pypi,Scalable time series analysis using AutoML,1,6644,0,0,85.0,last-month
+bilix,pypi,⚡️Lightning-fast asynchronous download tool for bilibili and more,87,1678,2,1,4753.0,last-month
 botbuilder-integration-aiohttp,pypi,Microsoft Bot Framework Bot Builder,32,728,3,176,80684.0,last-month
 bubblejail,pypi,Use AUR to install bubblejail. PyPI package is only to hold place.,1,279,0,1,64.0,last-month
 buku,pypi,Bookmark manager like a text-based mini-web.,32,6590,0,11,1002.0,last-month
 camphr-torch,pypi,,1,341,0,1,85.0,last-month
-chaiverse,pypi,Chaiverse,242,183,0,0,5202.0,last-month
-chaiverse-temp,pypi,Chaiverse,16,180,0,0,380.0,last-month
 chalice,pypi,Microframework,93,10731,15,505,336739.0,last-month
+chest,pypi,Simple on-disk dictionary,5,60,0,176,5288.0,last-month
 cloudgaze-cli,pypi,"Convert CloudFormation templates to draw.io compatible diagrams, with dependency arrows",2,516,0,1,115.0,last-month
-codefuse-muagent,pypi,An Innovative Agent Framework Driven by KG Engine,6,643,0,0,344.0,last-month
 complexity,pypi,"A refreshingly simple static site generator, for those who like to work in HTML.",16,117,0,17,316.0,last-month
-composio-autogen,pypi,Use Composio to get an array of tools with your Autogen agent.,233,14183,0,0,9339.0,last-month
-composio-camel,pypi,Use Composio to get an array of tools with your Claude LLMs.,94,14183,0,0,5350.0,last-month
-composio-claude,pypi,Use Composio to get an array of tools with your Claude LLMs.,125,14183,0,0,7100.0,last-month
-composio-core,pypi,Core package to act as a bridge between composio platform and other services.,276,14183,5,0,120756.0,last-month
-composio-crewai,pypi,Use Composio to get an array of tools with your CrewAI agent.,230,14183,0,0,10405.0,last-month
-composio-google,pypi,Use Composio to get an array of tools with your Google AI Python Gemini model.,49,14183,0,0,3771.0,last-month
-composio-griptape,pypi,Use Composio to get an array of tools with your Griptape workflow.,124,14183,0,0,6461.0,last-month
-composio-julep,pypi,Use Composio to get an array of tools with your Julep workflow.,127,14183,0,0,6882.0,last-month
-composio-langchain,pypi,Use Composio to get an array of tools with your LangChain agent.,256,14183,1,0,123247.0,last-month
-composio-langgraph,pypi,Use Composio to get array of tools with LangGraph Agent Workflows,88,14183,0,0,13116.0,last-month
-composio-llamaindex,pypi,Use Composio to get an array of tools with your LlamaIndex agent.,103,14183,0,0,6053.0,last-month
-composio-lyzr,pypi,Use Composio to get an array of tools with your Lyzr workflow.,163,14183,0,0,8264.0,last-month
-composio-openai,pypi,Use Composio to get an array of tools with your OpenAI Function Call.,128,14183,2,0,16608.0,last-month
-composio-phidata,pypi,Use Composio to get an array of tools with your Phidata Plugin.,77,14183,0,0,5559.0,last-month
-composio-praisonai,pypi,Use Composio Tools to enhance your PraisonAI agents capabilities.,88,14183,0,0,5050.0,last-month
-crawlipt,pypi,The script for selenium in python,15,167,0,0,654.0,last-month
+connectus,pypi,Librería para la gestión de dispositivos físicos y virtuales.,9,6980,0,0,757.0,last-month
 dagster-databricks,pypi,Package for Databricks-specific Dagster framework op and resource components.,488,9191,0,1,146408.0,last-month
 deepkoopman,pypi,Deep Koopman-based Modeling and Control,1,5150,0,0,43.0,last-month
-django-db-only,pypi,Django models as standalone app.,2,201,0,1,33.0,last-month
 docopts,pypi,"Shell interface for docopt, the command-line interface description language.",6,485,3,53,90098.0,last-month
 draive,pypi,Framework designed to simplify and accelerate the development of LLM-based applications.,75,105,0,0,5028.0,last-month
+drawille,pypi,Drawing in terminal with unicode braille characters,6,3118,1,17,925.0,last-month
 dreammultidevices,pypi,给adb加了过滤关键字的功能,22,178,0,1,1043.0,last-month
 dtformats,pypi,Data formats (dtformats),2,164,0,1,30.0,last-month
-easyofd,pypi,easy operate OFD,28,135,0,0,1483.0,last-month
+dtls,pypi,Python Datagram Transport Layer Security,5,71,0,7,5337.0,last-month
 eeg-positions,pypi,Compute and plot standard EEG electrode positions.,4,65,0,1,405.0,last-month
-engy,pypi,"Engy is an AI-powered development tool that generates fully functional web applications from natural language, streamlining the process from idea to working prototype.",9,257,0,0,848.0,last-month
 eveapi,pypi,Python library for accessing the EVE Online API.,1,148,0,27,17.0,last-month
-exceptionx,pypi,The `exceptionx` is a flexible and convenient Python exception handling library that allows you to dynamically create exception classes and provides various exception handling mechanisms.,16,121,0,0,832.0,last-month
 ezgmail,pypi,A Pythonic interface to the Gmail API that actually works as of December 2024.,17,249,0,41,1658.0,last-month
 f-r,pypi,Abstrair o processo de reconhecimento facial com o modelo CNN Vgg Faces.,1,5156,0,1,72.0,last-month
 f3rm,pypi,F3RM: Feature Fields for Robotic Manipulation,6,154,0,0,183.0,last-month
-fastapi-scaf,pypi,This is a fastapi scaf.,30,136,0,0,1217.0,last-month
 fastapi_users_db_sync_sqlalchemy,pypi,FastAPI Users database adapter for Sync SQLAlchemy,1,4832,0,0,69.0,last-month
 fastash,pypi,Fast Averages Shifted Histogram,31,62,0,1,604.0,last-month
 fauxtograph,pypi,"Python module for training unsupervised deep, generative models on images.",7,225,0,5,209.0,last-month
 faxplus-api,pypi,Fax.Plus REST API,9,55,0,1,1509.0,last-month
-fay,pypi,"Fay is an open-source digital human framework integrating language models and digital characters. It offers retail, assistant, and agent versions for diverse applications like virtual shopping guides, broadcasters, assistants, waiters, teachers, and voice or text-based mobile assistants.",4,9513,0,0,69.0,last-month
 flask-dance,pypi,"Doing the OAuth dance with style using Flask, requests, and oauthlib",52,1006,2,127,106427.0,last-month
-freechat-sdk,pypi,FreeChat OpenAPI Definition,11,606,0,0,321.0,last-month
 fsb5,pypi,Library and to extract audio from FSB5 (FMOD Sample Bank) files,1,141,3,8,419.0,last-month
-funccache,pypi,"True to its name, `funccache` implements the cache function. Cache the return value of a callable object or all methods defined in a class.",13,102,0,1,656.0,last-month
 gax-google-cloud-vision-v1,pypi,DEPRECATED,3,7711,0,1,111.0,last-month
 glacier-upload,pypi,A helper tool to upload and manage archives in AWS Glacier Vaults,8,121,0,1,470.0,last-month
 glog,pypi,Simple Google-style logging wrapper for Python.,3,51,5,367,22231.0,last-month
 gluoncv,pypi,Gluon CV Toolkit,1535,5819,11,392,95007.0,last-month
 google-area120-tables,pypi,Google Area120 Tables API client library,37,4784,0,1,2094.0,last-month
-gqylpy-exception,pypi,`gqylpy-exception` is a flexible and convenient Python exception handling library that allows you to dynamically create exception classes and provides various exception handling mechanisms.,21,120,2,1,1032.0,last-month
-graphrag-api,pypi,graphrag api 调用,12,123,0,0,1026.0,last-month
 hccpy,pypi,hccpy is a Python implementation of HCC,17,97,0,1,44039.0,last-month
 housing-prediction-devaraj-saravana,pypi,california's housing price prediction,1,5158,0,0,65.0,last-month
 htbuilder,pypi,A purely-functional HTML builder for Python. Think JSX rather than templates.,11,81,9,83,129379.0,last-month
 hydra-rq-launcher,pypi,Redis Queue (RQ) Launcher for Hydra apps,10,8277,0,1,460.0,last-month
-iftracer-sdk,pypi,Iftracer Software Development Kit (SDK) for Python,2,5295,0,0,100.0,last-month
-intelliscraper,pypi,An advanced web scraping tool using BeautifulSoup and scikit-learn.,2,267,0,0,67.0,last-month
-iudex,pypi,,72,5295,0,0,3143.0,last-month
+inject,pypi,Python dependency injection framework.,27,702,16,93,5857627.0,last-month
+interpolation,pypi,Interpolation in Python,20,125,7,24,3548.0,last-month
 jupyter-server-proxy,pypi,A Jupyter server extension to run additional processes and proxy to them that comes bundled JupyterLab extension to launch pre-defined processes.,37,351,52,456,209718.0,last-month
-keephq,pypi,"Alerting. for developers, by developers.",9,8827,0,0,401.0,last-month
+kafka-rest-client,pypi,A python kafka rest client,7,5156,0,1,293.0,last-month
 keskivonfer,pypi,Keskivonfer is a tool that allows you to extract information from a vinted account,2,50,0,1,132.0,last-month
 keybert,pypi,KeyBERT performs keyword extraction with state-of-the-art transformer models.,18,3418,20,105,205025.0,last-month
 lab-mytest,pypi,A small example package,1,4436,0,0,0.0,
-lavague,pypi,automation code generation from text instructions,52,5808,0,0,3333.0,last-month
-lavague-cli,pypi,CLI for lavague,1,5808,0,0,54.0,last-month
-lavague-contexts-anthropic,pypi,anthropic integration for lavague,7,5808,0,0,343.0,last-month
-lavague-contexts-cache,pypi,Context for lavague able to cache and proxy to LLM and MM LLM designed to save up tokens and make model calls deterministic,1,5808,0,0,290.0,last-month
-lavague-contexts-fireworks,pypi,fireworks integration for lavague,3,5808,0,0,156.0,last-month
-lavague-contexts-gemini,pypi,gemini integration for lavague,6,5808,0,0,375.0,last-month
-lavague-contexts-groq,pypi,Groq integration for lavague,1,5808,0,0,58.0,last-month
-lavague-contexts-huggingface,pypi,HuggingFaceLLM integration for lavague,1,5808,0,0,62.0,last-month
-lavague-contexts-openai,pypi,Openai integration for lavague,7,5808,0,0,1206.0,last-month
-lavague-core,pypi,automation code generation from text instructions,51,5808,0,0,3524.0,last-month
-lavague-drivers-playwright,pypi,Playwright integration for lavague,17,5808,0,0,696.0,last-month
-lavague-drivers-remote,pypi,Remote driver execution for Lavague,6,5808,0,0,260.0,last-month
-lavague-drivers-selenium,pypi,Selenium integration for lavague,25,5808,0,0,1911.0,last-month
-lavague-gradio,pypi,Gradio demo for lavague,10,5808,0,0,1222.0,last-month
-lavague-llms-huggingface,pypi,HuggingFaceLLM integration for lavague,1,5808,0,0,60.0,last-month
-lavague-qa,pypi,QA Automation with LaVague,6,5808,0,0,698.0,last-month
-lavague-retriever-cohere,pypi,Cohere retriever for lavague,3,5808,0,0,139.0,last-month
-lavague-sdk,pypi,automation code generation from text instructions,1,5808,0,0,394.0,last-month
-lavague-server,pypi,Server for Lavague agents,4,5808,0,0,254.0,last-month
-lavague-tests,pypi,Test runner for Lavague,4,5808,0,0,578.0,last-month
-lazyllm,pypi,A Low-code Development Tool For Building Multi-agent LLMs Applications.,13,791,0,0,444.0,last-month
-lazyllm-bate,pypi,A Low-code Development Tool For Building Multi-agent LLMs Applications.,1,770,0,0,,last-month
-lazyllm-beta,pypi,A Low-code Development Tool For Building Multi-agent LLMs Applications.,2,791,0,0,346.0,last-month
+lagom,pypi,Lagom is a dependency injection container designed to give you 'just enough' help with building your dependencies.,92,301,7,51,56994.0,last-month
 letsencrypt-nginx,pypi,Nginx plugin for Let's Encrypt,23,31495,0,3,1193.0,last-month
 litestar,pypi,"Litestar - A production-ready, highly performant, extensible ASGI API Framework",52,3784,23,96,271556.0,last-month
-live-bench,pypi,Live Bench,1,1785,0,0,66.0,last-month
-llama-github,pypi,"Llama-github is an open-source Python library that empowers LLM Chatbots, AI Agents, and Auto-dev Agents to conduct Retrieval from actively selected GitHub public projects. It Augments through LLMs and Generates context for any coding question, in order to streamline the development of sophisticated AI-driven applications.",17,268,0,0,941.0,last-month
-llmdocparser,pypi,Using LLM to parse PDF and get better chunk for retrieval,8,229,0,0,778.0,last-month
-lm-debug-eval-ui,pypi,LLM Application Debug/Eval UI on top of AIConfig,6,866,0,0,287.0,last-month
-lmms-eval,pypi,A framework for evaluating large multi-modality language models,14,1785,0,0,5208.0,last-month
-loginform,pypi,Fill HTML login forms automatically,4,270,1,60,1121.0,last-month
+lowdb,pypi,A simple package to convert a local JSON file into a NoSQL db and use for small projects,1,21729,0,1,61.0,last-month
 maskrcnn-modanet,pypi,A MaskRCNN Keras implementation with Modanet annotations on the Paperdoll dataset,12,73,0,1,654.0,last-month
 mcthings,pypi,McThings is a python library for building things in Minecraft,60,59,0,1,2139.0,last-month
 mdpython,pypi,MD Python Library,15,5003,0,0,471.0,last-month
 mellplayer,pypi,A tiny terminal player based on Python,6,176,0,1,132.0,last-month
 micropython-stringprep,pypi,Dummy stringprep module for MicroPython,2,2411,0,2,73.0,last-month
-mlgb,pypi,MLGB is a library that includes many models of CTR Prediction & Recommender System by TensorFlow & PyTorch.,5,466,0,1,250.0,last-month
+molotov,pypi,Spiffy load testing tool.,21,457,1,26,122680.0,last-month
 mssqltoolsservice-linux-64,pypi,Microsoft SQL Tools Service,1,446,0,1,111.0,last-month
 mtp,pypi,Many-Time Pad Interactive,4,163,0,1,354.0,last-month
+nero,pypi,The uncompromising code formatter. Single Quotes version.,7,38855,0,8,217.0,last-month
+nestle,pypi,Nested sampling algorithms for evaluating Bayesian evidence,4,75,15,25,2662.0,last-month
 neurokit2-cw,pypi,The Python Toolbox for Neurophysiological Signal Processing.,1,1073,0,0,,last-month
-nexaai,pypi,Nexa AI SDK,27,5718,0,0,1073.0,last-month
-nextcaptcha-python,pypi,"NextCaptcha Captcha Solving Service Api Wrapper for Python to solving recaptcha v2, v3,recapthcha moible,hcaptcha,funcaptcha",8,100,0,0,2806.0,last-month
 nextpy,pypi,"⚡The Pure Python Framework for Web Apps, Meticulously Optimized for 🤖AI agents🤖. World's first AMS🥇",30,2256,1,1,409.0,last-month
 nodenotepackage,pypi,Mind map software,2,355,0,1,54.0,last-month
+notification-service,pypi,A Python package which provides stable notification service.,6,158,0,1,198.0,last-month
+numerics,pypi,personal experiments in numerics + plotting,3,1415,0,3,85.0,last-month
 numscrypt,pypi,A tiny bit of NumPy for Transcrypt using JavaScript typed arrays,37,60,0,2,396.0,last-month
 odoo-addon-auth-jwt-server-env,pypi,This addon adds auth.jwt.validator fields to server env,2,155,1,0,73.0,last-month
 odoo-addon-base-multi-image,pypi,Allow multiple images for database objects,14,644,2,0,218.0,last-month
@@ -331,123 +218,72 @@ odoo14-addon-pos-disable-pricelist-selection,pypi,Disable Pricelist selection bu
 odoo14-addon-sale-commission-delegated-partner,pypi,Allow to delegate the invoices of agent to a delegate partner,7,111,1,0,154.0,last-month
 odoo14-addon-sale-commission-formula,pypi,Sale commissions computed by formulas,9,111,1,1,100.0,last-month
 odoo14-addon-sale-margin-security,pypi,Sale Margin Security,5,72,1,0,73.0,last-month
-omagent_core,pypi,Core package for OmAgent,3,876,0,0,389.0,last-month
 opcua-client,pypi,OPC-UA Client GUI,9,547,0,12,2028.0,last-month
 opencv-python,pypi,Wrapper package for OpenCV python bindings.,73,4518,3545,67670,13302660.0,last-month
 opendr-toolkit-skeleton-based-action-recognition,pypi,Open Deep Learning Toolkit for Robotics (submodule: perception/skeleton_based_action_recognition),6,620,0,0,92.0,last-month
 openmetadata-managed-apis,pypi,Airflow REST APIs to create and manage DAGS,192,5446,0,0,25882.0,last-month
-opentelemetry-if-instrumentation-alephalpha,pypi,OpenTelemetry Aleph Alpha instrumentation,1,5295,0,0,61.0,last-month
-opentelemetry-if-instrumentation-anthropic,pypi,OpenTelemetry Anthropic instrumentation,1,5295,0,0,63.0,last-month
-opentelemetry-if-instrumentation-bedrock,pypi,OpenTelemetry Bedrock instrumentation,1,5295,0,0,62.0,last-month
-opentelemetry-if-instrumentation-chromadb,pypi,OpenTelemetry Chroma DB instrumentation,1,5295,0,0,63.0,last-month
-opentelemetry-if-instrumentation-cohere,pypi,OpenTelemetry Cohere instrumentation,1,5295,0,0,63.0,last-month
-opentelemetry-if-instrumentation-google-generativeai,pypi,OpenTelemetry Google Generative AI instrumentation,1,5295,0,0,76.0,last-month
-opentelemetry-if-instrumentation-haystack,pypi,OpenTelemetry Haystack instrumentation,1,5295,0,0,65.0,last-month
-opentelemetry-if-instrumentation-langchain,pypi,OpenTelemetry Langchain instrumentation,1,5295,0,0,68.0,last-month
-opentelemetry-if-instrumentation-llamaindex,pypi,OpenTelemetry LlamaIndex instrumentation,1,5295,0,0,65.0,last-month
-opentelemetry-if-instrumentation-marqo,pypi,OpenTelemetry Marqo instrumentation,1,5295,0,0,67.0,last-month
-opentelemetry-if-instrumentation-milvus,pypi,OpenTelemetry Milvus instrumentation,1,5295,0,0,65.0,last-month
-opentelemetry-if-instrumentation-mistralai,pypi,OpenTelemetry Mistral AI instrumentation,1,5295,0,0,68.0,last-month
-opentelemetry-if-instrumentation-ollama,pypi,OpenTelemetry Ollama instrumentation,1,5295,0,0,64.0,last-month
-opentelemetry-if-instrumentation-openai,pypi,OpenTelemetry OpenAI instrumentation,1,5295,0,0,66.0,last-month
-opentelemetry-if-instrumentation-pinecone,pypi,OpenTelemetry Pinecone instrumentation,1,5295,0,0,64.0,last-month
-opentelemetry-if-instrumentation-qdrant,pypi,OpenTelemetry Qdrant instrumentation,1,5295,0,0,66.0,last-month
-opentelemetry-if-instrumentation-replicate,pypi,OpenTelemetry Replicate instrumentation,1,5295,0,0,66.0,last-month
-opentelemetry-if-instrumentation-together,pypi,OpenTelemetry Together AI instrumentation,1,5295,0,0,66.0,last-month
-opentelemetry-if-instrumentation-transformers,pypi,OpenTelemetry transformers instrumentation,1,5295,0,0,65.0,last-month
-opentelemetry-if-instrumentation-vertexai,pypi,OpenTelemetry Vertex AI instrumentation,1,5295,0,0,66.0,last-month
-opentelemetry-if-instrumentation-watsonx,pypi,OpenTelemetry IBM Watsonx Instrumentation,1,5295,0,0,128.0,last-month
-opentelemetry-if-instrumentation-weaviate,pypi,OpenTelemetry Weaviate instrumentation,1,5295,0,0,144.0,last-month
 opentelemetry-instrumentation-aiopg,pypi,OpenTelemetry aiopg instrumentation,49,762,6,27,297797.0,last-month
-opentelemetry-instrumentation-alephalpha,pypi,OpenTelemetry Aleph Alpha instrumentation,55,5295,0,0,47935.0,last-month
-opentelemetry-instrumentation-anthropic,pypi,OpenTelemetry Anthropic instrumentation,169,5295,3,1,124224.0,last-month
-opentelemetry-instrumentation-bedrock,pypi,OpenTelemetry Bedrock instrumentation,158,5295,2,0,96122.0,last-month
-opentelemetry-instrumentation-chromadb,pypi,OpenTelemetry Chroma DB instrumentation,167,5295,3,1,83006.0,last-month
-opentelemetry-instrumentation-cohere,pypi,OpenTelemetry Cohere instrumentation,165,5295,3,1,77700.0,last-month
-opentelemetry-instrumentation-crewai,pypi,OpenTelemetry crewAI instrumentation,2,5295,0,0,155.0,last-month
-opentelemetry-instrumentation-google-generativeai,pypi,OpenTelemetry Google Generative AI instrumentation,54,5295,0,0,50324.0,last-month
-opentelemetry-instrumentation-groq,pypi,OpenTelemetry Groq instrumentation,30,3125,0,0,49221.0,last-month
-opentelemetry-instrumentation-haystack,pypi,OpenTelemetry Haystack instrumentation,165,5295,2,1,82184.0,last-month
-opentelemetry-instrumentation-lancedb,pypi,OpenTelemetry Lancedb instrumentation,37,5295,0,0,41975.0,last-month
-opentelemetry-instrumentation-langchain,pypi,OpenTelemetry Langchain instrumentation,175,5295,3,1,121988.0,last-month
-opentelemetry-instrumentation-llamaindex,pypi,OpenTelemetry LlamaIndex instrumentation,149,5295,3,2,82974.0,last-month
-opentelemetry-instrumentation-marqo,pypi,OpenTelemetry Marqo instrumentation,52,5295,0,0,46669.0,last-month
-opentelemetry-instrumentation-milvus,pypi,OpenTelemetry Milvus instrumentation,62,5295,0,0,65170.0,last-month
-opentelemetry-instrumentation-mistralai,pypi,OpenTelemetry Mistral AI instrumentation,61,5295,0,0,64596.0,last-month
-opentelemetry-instrumentation-ollama,pypi,OpenTelemetry Ollama instrumentation,61,5295,0,0,64563.0,last-month
-opentelemetry-instrumentation-openai,pypi,OpenTelemetry OpenAI instrumentation,173,5295,3,1,359283.0,last-month
-opentelemetry-instrumentation-pinecone,pypi,OpenTelemetry Pinecone instrumentation,167,5295,3,1,84027.0,last-month
-opentelemetry-instrumentation-qdrant,pypi,OpenTelemetry Qdrant instrumentation,113,5295,2,0,81765.0,last-month
-opentelemetry-instrumentation-replicate,pypi,OpenTelemetry Replicate instrumentation,129,5295,2,0,89240.0,last-month
-opentelemetry-instrumentation-sagemaker,pypi,OpenTelemetry SageMaker instrumentation,22,3125,0,0,36592.0,last-month
-opentelemetry-instrumentation-together,pypi,OpenTelemetry Together AI instrumentation,55,5295,0,0,47315.0,last-month
-opentelemetry-instrumentation-togetherai,pypi,OpenTelemetry Together AI instrumentation,1,1175,0,0,,last-month
-opentelemetry-instrumentation-transformers,pypi,OpenTelemetry transformers instrumentation,166,5295,3,1,69688.0,last-month
-opentelemetry-instrumentation-vertexai,pypi,OpenTelemetry Vertex AI instrumentation,157,5295,2,0,105051.0,last-month
-opentelemetry-instrumentation-watsonx,pypi,OpenTelemetry IBM Watsonx Instrumentation,123,5295,2,0,80676.0,last-month
-opentelemetry-instrumentation-weaviate,pypi,OpenTelemetry Weaviate instrumentation,157,5295,2,0,80668.0,last-month
+oseti,pypi,Dictionary based Sentiment Analysis for Japanese,9,93,0,11,997.0,last-month
 pathy,pypi,pathlib.Path subclasses for local and cloud bucket storage,30,170,25,3362,4049346.0,last-month
 piwho,pypi,A python wrapper around MARF speaker recognition frameworkfor raspberry pi and other SBCs,4,54,0,1,53.0,last-month
-portfolio-optimize,pypi,A Python package for portfolio optimization. (Note: This package is under ongoing development. Contributions and corrections are welcome!),7,105,0,0,215.0,last-month
+playwright,pypi,A high-level API to automate web browsers,73,9905,547,4026,6049283.0,last-month
+pocketbase,pypi,PocketBase SDK for python.,22,230,2,2,19709.0,last-month
+prov,pypi,"A library for W3C Provenance Data Model supporting PROV-JSON, PROV-XML and PROV-O (RDF)",15,124,26,1135,217488.0,last-month
+pscript,pypi,Python to JavaScript compiler.,18,262,9,74,157479.0,last-month
 pulser-simulation,pypi,An emulator of pulse-level sequences created with Pulser.,43,155,1,1,5667.0,last-month
-py-cdhit,pypi,A Python interface for CD-HIT package.,19,123,2,0,883.0,last-month
 pyboof,pypi,Py4J Python wrapper for BoofCV,17,67,0,1,623.0,last-month
 pydmps,pypi,Python implementation of Dynamic Movement Primitives (DMPs),2,229,0,4,102.0,last-month
 pygatt,pypi,Python Bluetooth LE (Low Energy) and GATT Library,18,522,4,780,12786.0,last-month
 pygpc,pypi,A sensitivity and uncertainty analysis toolbox for Python,24,73,1,1,4871.0,last-month
-pyhmy,pypi,A library for interacting and working the Harmony blockchain and related codebases,31,1469,0,9,1267.0,last-month
 pyimgui-wheels,pypi,Cython-based Python bindings for dear imgui,2,1252,0,2,119.0,last-month
 pyinputplus,pypi,Provides more featureful versions of input() and raw_input().,14,95,4,27,8507.0,last-month
 pyoanda,pypi,"Oanda's API python wrapper. Robust and Fast API wrapper for your Forex bot Python library that wraps Oanda API. Built on top of requests, it's easy to use and makes sense.",12,66,0,3,133.0,last-month
-pypdfform,pypi,The Python library for PDF forms.,94,236,0,1,8880.0,last-month
-pyrit,pypi,The Python Risk Identification Tool for LLMs (PyRIT) is a library used to assess the robustness of LLMs,10,2107,0,0,2592.0,last-month
 pyscenic,pypi,Python implementation of the SCENIC pipeline for transcription factor inference from single-cell transcriptomics experiments.,63,418,6,14,3219.0,last-month
 pyswxf,pypi,Routines for calculating standing wave x-ray fluorescence and x-ray reflectivity,49,4761,0,0,1779.0,last-month
-python-aiconfig,pypi,Python library for AIConfig SDK,45,485,12,1,1561.0,last-month
-python-aiconfig-llama,pypi,LLama extension for AIConfig Library,1,866,0,0,54.0,last-month
-python-aiconfig-test,pypi,Python library for LastMile AI API,1,866,0,0,44.0,last-month
 python-bidi,pypi,Python Bidi layout wrapping the Rust crate unicode-bidi,15,108,47,1049,1938594.0,last-month
 python-epson-printer,pypi,A library to control Epson thermal printers based on ESC/POS language,2,55,0,2,73.0,last-month
 python-gnupg,pypi,A wrapper for the Gnu Privacy Guard (GPG or GnuPG),32,99,90,2116,10616875.0,last-month
 python-jose-ext,pypi,JOSE implementation in Python,4,1489,0,10,100.0,last-month
-python-web-scraping-tutorial-step-by-step,pypi,"In this Python Web Scraping Tutorial, we will outline everything needed to get started with web scraping. We will begin with simple examples and move on to relatively more complex.",1,276,0,0,36.0,last-month
 pytorch-attention,pypi,"Pytorch implementation of popular Attention Mechanisms, Vision Transformers, MLP-Like models and CNNs.",1,409,0,0,22.0,last-month
 pyxmpp2,pypi,XMPP/Jabber implementation for Python,4,183,2,9,82.0,last-month
 qcandyui,pypi,quick beautify your pyQt5 app,4,86,0,1,315.0,last-month
 quilt-stack-installer,pypi,Quilt Data installation tool,2,1328,0,1,91.0,last-month
 rapidocr-api,pypi,A cross platform OCR API Library based on OnnxRuntime.,15,2958,0,0,500.0,last-month
 riscof,pypi,RISC-V Architectural Test Framework,57,60,0,1,4698.0,last-month
+robusta,pypi,A pytorch package for robustness and adaptation research,2,113,0,1,61.0,last-month
 ruck,pypi,Performant evolutionary algorithms for Python.,7,53,0,3,296.0,last-month
-sdgx,pypi,synthetic-data-generator,15,3321,0,0,606.0,last-month
 sequence-models,pypi,Machine learning for sequences.,9,234,1,1,12982.0,last-month
 sherlock,pypi,Distributed inter-process locks with a choice of backend,7,374,4,41,14792.0,last-month
-skscope,pypi,Sparsity-Constraint OPtimization via itErative-algorithm,10,323,0,0,3068.0,last-month
 snowy,pypi,Small Image Library for Python 3,8,416,0,3,971.0,last-month
 source-google-workspace-admin-reports,pypi,A small example package,1,5156,0,0,52.0,last-month
-spaceandtime,pypi,SDK for Space and Time verifiable database,43,3509,0,0,2056.0,last-month
+spectrum,pypi,Spectrum Analysis Tools,26,336,5,68,20064.0,last-month
 sqlframe,pypi,Turning PySpark Into a Universal DataFrame API,65,300,0,0,30280.0,last-month
 st-dbscan,pypi,Spatial-temporal DBSCAN,8,135,0,2,2044.0,last-month
 stac-fastapi.sqlalchemy,pypi,An implementation of STAC API based on the FastAPI framework.,11,258,0,0,550.0,last-month
 stormspotter,pypi,A small example package test,2,1565,0,1,89.0,last-month
 supr-convertor,pypi,A simple tool to convert SMPL-X model parameters to SUPR model parameters.,1,101,0,0,53.0,last-month
-swekit,pypi,Tools for running a SWE agent using Composio platform,89,14183,0,0,4826.0,last-month
+svg.elements,pypi,Svg Elements Parsing,20,137,0,0,469.0,last-month
 tartube,pypi,GUI front-end for youtube-dl and yt-dlp,161,2176,0,1,5391.0,last-month
+tc,pypi,Python bindings to the Tokyo Cabinet database library,1,54,0,3,157.0,last-month
 tekton-pipeline,pypi,Tekton Pipeline Python SDK,9,8148,0,1,581.0,last-month
 tencentcloud-sdk-python-nlp,pypi,Tencent Cloud Nlp SDK for Python,1011,621,0,1,35363.0,last-month
-torchensemble,pypi,A unified ensemble framework for PyTorch to improve the performance and robustness of your deep learning model,11,793,1,5,926.0,last-month
-traceloop-sdk,pypi,Traceloop Software Development Kit (SDK) for Python,238,5295,4,1,78180.0,last-month
+traci,pypi,The pure python version of the TraCI API to communicate with the traffic simulation Eclipse SUMO,18,2265,10,33,9192.0,last-month
 trademaster406,pypi,TradeMaster - A platform for algorithmic trading,8,1500,0,0,209.0,last-month
 trame,pypi,"Trame, a framework to build applications in plain Python",149,466,37,18,123171.0,last-month
 twchat,pypi,A Geek style client for WeChat,11,66,0,1,112.0,last-month
 types-aiobotocore-lightsail,pypi,Type annotations for aiobotocore Lightsail 2.18.0 service generated with mypy-boto3-builder 8.8.0,52,440,4,1,19381.0,last-month
-uniref,pypi,Unity reflection framework,12,178,0,0,226.0,last-month
+ueberzug,pypi,ueberzug is a command line util which allows to display images in combination with X11,10,1147,2,39,1939.0,last-month
 vprof,pypi,Visual profiler for Python,24,3959,4,35,9301.0,last-month
-vpselector,pypi,Visualize and interactively select time-series data from a pandas DataFrame.,4,78,0,0,200.0,last-month
+vumi,pypi,"Super-scalable messaging engine for the delivery of SMS, Star Menu and chat messages to diverse audiences in emerging markets and beyond.",56,421,0,23,2448.0,last-month
+wafer,pypi,A wafer-thin Django library for running small conferences.,62,50,1,19,3335.0,last-month
+warrant,pypi,Python class to integrate Boto3's Cognito client so it is easy to login users. With SRP support.,7,464,7,108,79319.0,last-month
+websockify,pypi,Websockify.,12,3919,7,230,64558.0,last-month
 whereisip,pypi,Get the geolocation of the current server,5,2100,0,0,238.0,last-month
 winrt-windows.media.capture.core,pypi,Python projection of Windows Runtime (WinRT) APIs,6,88,0,0,682.0,last-month
 wiringpi2,pypi,"A python interface to WiringPi 2.0 library which allows for
     easily interfacing with the GPIO pins of the Raspberry Pi. Also supports
     i2c and SPI",19,532,1,20,172.0,last-month
+xcat,pypi,A command line tool to automate the exploitation of blind XPath injection vulnerabilities,11,372,0,3,687.0,last-month
 xskillscore,pypi,Metrics for verifying forecasts,25,224,5,13,4860.0,last-month
-youtube-video-scraper-api,pypi,"YouTube Scraper for effortless public YouTube data collection, including video and channel information.",1,175,0,0,66.0,last-month
-zksync2,pypi,ZKsync python client sdk,12,323,0,1,1034.0,last-month
+yandex.translate,pypi,Python library for Yandex.Translate API.,3,98,0,35,116.0,last-month
+zarr,pypi,"An implementation of chunked, compressed, N-dimensional arrays for Python",96,1512,450,626,1107057.0,last-month

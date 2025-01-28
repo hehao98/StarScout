@@ -190,7 +190,7 @@ def main():
 
     # For comparison (especially w. download data), sample packages from npm and PyPI
     random = sample_random_packages(10000)
-    random = random[random.package.notin(set(summary.package))]
+    random = random[~random.package.isin(set(summary.package))]
     random.to_csv("data/packages_random.csv", index=False)
 
     logging.info("Done!")
