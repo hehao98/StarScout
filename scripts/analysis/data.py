@@ -86,19 +86,54 @@ def _get_stars_by_month_from_mongodb(end_date: str, fake_type: str) -> pd.DataFr
     return stars_by_month
 
 
-def get_unique_actors(collection: str, query: dict) -> set:
+def get_unique_actors(kind: str) -> set:
+    assert kind in ["low_activity", "clustered"]
+    if os.path.exists(f"data/{END_DATE}/unique_actors_{kind}.txt"):
+        with open(f"data/{END_DATE}/unique_actors_{kind}.txt") as f:
+            return set(f.read().splitlines())
     with pymongo.MongoClient(MONGO_URL) as client:
-        return set(
+        actors = set(
             map(
                 lambda x: x["_id"],
-                client.fake_stars[collection].aggregate(
+                client.fake_stars[kind + "_stars"].aggregate(
                     [
-                        {"$match": query},
+                        {"$match": {kind: True}},
                         {"$group": {"_id": "$actor"}},
                     ]
                 ),
             )
         )
+    with open(f"data/{END_DATE}/unique_actors_{kind}.txt", "w") as f:
+        f.write("\n".join(sorted(actors)))
+    return actors
+
+
+def get_unique_actors_in_campaign(kind: str) -> set:
+    assert kind in ["low_activity", "clustered"]
+
+    if os.path.exists(f"data/{END_DATE}/unique_actors_{kind}_in_campaign.txt"):
+        with open(f"data/{END_DATE}/unique_actors_{kind}_in_campaign.txt") as f:
+            return set(f.read().splitlines())
+
+    repos_with_campaign = get_repos_with_campaign()
+    stars = get_fake_stars_by_month()
+    repo_campaign_months = set(
+        zip(stars[stars.anomaly].repo, stars[stars.anomaly].month)
+    )
+
+    actors_in_campaign = set()
+    with pymongo.MongoClient(MONGO_URL) as client:
+        for star in client.fake_stars[kind + "_stars"].find(
+            {kind: True, "repo": {"$in": list(repos_with_campaign)}}
+        ):
+            if (
+                star["repo"] in repos_with_campaign
+                and (star["repo"], star["starred_at"][:7]) in repo_campaign_months
+            ):
+                actors_in_campaign.add(star["actor"])
+    with open(f"data/{END_DATE}/unique_actors_{kind}_in_campaign.txt", "w") as f:
+        f.write("\n".join(sorted(actors_in_campaign)))
+    return actors_in_campaign
 
 
 def get_fake_star_repos() -> pd.DataFrame:
