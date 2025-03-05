@@ -414,17 +414,18 @@ def get_pypi_pkgs_and_downloads() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     path_stars, path_downloads = "data/model_stars.csv", "data/model_downloads.csv"
-    if os.path.exists(path_stars) and os.path.exists(path_downloads):
-        return pd.read_csv(path_stars), pd.read_csv(path_downloads)
+    # if os.path.exists(path_stars) and os.path.exists(path_downloads):
+    #    return pd.read_csv(path_stars), pd.read_csv(path_downloads)
 
-    npm_github, npm_downloads = get_fake_npm_pkgs_and_downloads()
-    pypi_github, pypi_downloads = get_fake_pypi_pkgs_and_downloads()
+    # npm_github, npm_downloads = get_fake_npm_pkgs_and_downloads()
+    # pypi_github, pypi_downloads = get_fake_pypi_pkgs_and_downloads()
     stars = get_fake_stars_by_month()
     repos_with_campaign = sorted(get_repos_with_campaign())
 
     model_stars, model_downloads = defaultdict(dict), defaultdict(dict)
 
     for repo in repos_with_campaign:
+        """
         if repo in set(npm_github.github):
             pkgs = set(npm_github[npm_github.github == repo].name)
             df = (
@@ -445,6 +446,7 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
             )
             for month, count in zip(df.month, df.download_count):
                 model_downloads[repo][month] = count
+        """
         df = stars[stars.repo == repo]
         for row in df.itertuples():
             model_stars[repo][row.month] = {
@@ -454,6 +456,7 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
                 "n_stars_real": row.n_stars_other,
             }
 
+    """
     model_downloads_df = []
     for repo, months in model_downloads.items():
         for month, count in months.items():
@@ -473,7 +476,7 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
                     "n_stars_fake": n_stars_fake,
                     "n_stars_real": n_stars_real,
                 }
-            )
+            )"""
     model_stars_df = [
         {"repo": repo, "month": month, **data}
         for repo, months in model_stars.items()
@@ -481,10 +484,10 @@ def get_modeling_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     ]
 
     model_stars_df = pd.DataFrame(model_stars_df)
-    model_downloads_df = pd.DataFrame(model_downloads_df)
+    # model_downloads_df = pd.DataFrame(model_downloads_df)
     model_stars_df.to_csv("data/model_stars.csv", index=False)
-    model_downloads_df.to_csv("data/model_downloads.csv", index=False)
-    return model_stars_df, model_downloads_df
+    # model_downloads_df.to_csv("data/model_downloads.csv", index=False)
+    return model_stars_df, None
 
 
 def get_control_variables_for_modeling() -> pd.DataFrame:
@@ -504,11 +507,9 @@ def get_control_variables_for_modeling() -> pd.DataFrame:
         for repo in tqdm(model_stars.repo.unique()):
             events = list(client.fake_stars.fake_repo_events.find({"repo": repo}))
             fake_actors = get_unique_actors(
-                "low_activity_stars", {"repo": repo, "low_activity": True}
+                "low_activity",
             )
-            fake_actors |= get_unique_actors(
-                "clustered_stars", {"repo": repo, "clustered": True}
-            )
+            fake_actors |= get_unique_actors("clustered")
             for event in events:
                 if event["type"] == "ReleaseEvent":
                     repo_month_with_release.add((repo, event["created_at"][:7]))
@@ -549,10 +550,10 @@ def main():
         _get_stars_by_month_from_mongodb(end_date, "clustered")
     get_fake_stars_by_month()
 
-    logging.info("Collecting downloads...")
-    get_npm_pkg_github()
-    get_npm_downloads()
-    get_pypi_pkgs_and_downloads()
+    # logging.info("Collecting downloads...")
+    # get_npm_pkg_github()
+    # get_npm_downloads()
+    # get_pypi_pkgs_and_downloads()
 
     logging.info("Collecting modeling data...")
     get_modeling_data()
