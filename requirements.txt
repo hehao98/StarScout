@@ -15,3 +15,5 @@ scikit-survival
 wordcloud
 gensim
 nltk
+langchain
+langchain-openai
