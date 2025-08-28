@@ -54,6 +54,7 @@ def get_stargazer_data(start_date: str, end_date: str):
 
 def get_initial_centers(start_date: str, end_date: str):
     table_id = f"stargazers_{start_date}_{end_date}"
+    output_table_id = f"centers_{start_date}_{end_date}"
     if not check_bigquery_table_exists(PROJECT_ID, DATASET_ID, table_id):
         logging.info("Table %s does not exist, skipping", table_id)
         return
@@ -61,7 +62,7 @@ def get_initial_centers(start_date: str, end_date: str):
     bigquery_task = {
         "interactive": False,
         "query_file": "scripts/copycatch/queries/stg_initial_centers.sql",
-        "output_table_id": f"centers_{start_date}_{end_date}",
+        "output_table_id": output_table_id,
         "params": [
             bigquery.ScalarQueryParameter("start_date", "STRING", start_date),
             bigquery.ScalarQueryParameter("end_date", "STRING", end_date),
@@ -123,6 +124,11 @@ def run_chunk(start_date: str, end_date: str):
     logging.info("Processing dates %s to %s", start_date, end_date)
 
     get_stargazer_data(start_date, end_date)
+
+    output_table_id = f"centers_{start_date}_{end_date}"
+    if check_bigquery_table_exists(PROJECT_ID, DATASET_ID, output_table_id):
+        logging.info("Table %s already exists, skipping", output_table_id)
+        return
 
     get_initial_centers(start_date, end_date)
 
@@ -371,6 +377,12 @@ def main():
     parser = argparse.ArgumentParser(description="Run CopyCatch on BigQuery")
     parser.add_argument("--run", action="store_true", help="Run CopyCatch on BigQuery")
     parser.add_argument(
+        "--run-one",
+        help="Run CopyCatch on one date range (format: YYMMDD-YYMMDD)",
+        type=str,
+        default=None,
+    )
+    parser.add_argument(
         "--export",
         action="store_true",
         help="Export CopyCatch clusters and stargazer results to Google Cloud Storage",
@@ -385,6 +397,8 @@ def main():
     if args.run:
         with mp.Pool(len(COPYCATCH_DATE_CHUNKS)) as pool:
             pool.starmap(run_chunk, COPYCATCH_DATE_CHUNKS)
+    if args.run_one:
+        run_chunk(args.run_one.split("-")[0], args.run_one.split("-")[1])
     if args.export:
         with mp.Pool(len(COPYCATCH_DATE_CHUNKS)) as pool:
             pool.starmap(export_stargazer_graphs, COPYCATCH_DATE_CHUNKS)
