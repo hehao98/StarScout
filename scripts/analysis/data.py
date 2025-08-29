@@ -225,8 +225,8 @@ def get_events_with_samples(repo_or_actor: str) -> pd.DataFrame:
         repos = get_fake_star_repos()
         samples = samples[~samples[repo_or_actor].isin(set(repos.repo_name))]
     else:
-        low_act_actors = get_unique_actors("low_activity_stars", {"low_activity": True})
-        clustered_actors = get_unique_actors("clustered_stars", {"clustered": True})
+        low_act_actors = get_unique_actors("low_activity")
+        clustered_actors = get_unique_actors("clustered")
         samples = samples[
             ~samples[repo_or_actor].isin(low_act_actors | clustered_actors)
         ]
