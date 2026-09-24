@@ -2,6 +2,57 @@
 
 This module provides a local alternative to the BigQuery-based detection pipeline. It uses [DuckDB](https://duckdb.org/) to query Parquet files directly, eliminating the need for Google Cloud services.
 
+## Live Repository Star History
+
+To inspect a current public repository without downloading GitHub Archive data:
+
+```bash
+python3 scripts/local/star_history.py owner/repo
+python3 scripts/local/star_history.py https://github.com/owner/repo --anonymous
+python3 scripts/local/star_history.py owner/repo --max-history-pages 4
+```
+
+This standalone command needs only Python 3.10+ and its standard library.
+Invoke it by file path, rather than `python -m scripts.local.star_history`, to
+avoid importing the existing pipeline's optional dependencies. It uses an
+existing authenticated GitHub CLI (`gh`) session when available, or anonymous
+public API access otherwise. `--anonymous` disables GitHub CLI use. It never
+prints or saves tokens, queries stargazer identities, or requests extra scopes.
+
+The JSON output contains current repository metadata, source URLs, weekly
+history, peak days, the densest seven-day window, and descriptive temporal
+spike flags. Pagination defaults to 12 pages of at most 30 weeks each; the
+configurable limit is 1-100 pages. Exit code `0` means the returned history
+covers the creation week through the retrieval week; `2` means unavailable,
+invalid, restricted, rate-limited, or partial data. Partial results remain in
+the JSON with errors. This coverage indicator is not an authenticity verdict.
+
+The temporal rule flags a complete observed day with at least 100 stars and
+at least five times its preceding 28-calendar-day mean. This is a descriptive
+screening threshold, **not a validated fraud classifier**. The first 28 observed
+days have no prior baseline, and the current incomplete day is not scored.
+Launch-period peaks are still reported. Missing weeks are never filled with
+zeros, and a page limit is never presented as a complete history.
+
+Interpretation limitations:
+
+- Publicity, launches, and releases can cause legitimate concentration.
+- GitHub's calendar boundaries need not align with UTC; date labels are approximate.
+- The API history and current star count are not assumed to have identical semantics.
+- Account age, low activity, and cross-repository lockstep are not evaluated.
+  This tool does not replace either detector or reproduce the paper's findings.
+- GitHub restricts individual stargazer access; an unavailable endpoint is
+  reported, not bypassed.
+
+Sources: [GitHub aggregate-history API](https://docs.github.com/en/rest/activity/starring#get-repository-star-history)
+and [stargazer access restrictions](https://github.blog/changelog/2026-06-30-upcoming-access-restrictions-to-public-api-endpoints-and-ui-views/).
+
+Run its deterministic offline tests without pipeline dependencies:
+
+```bash
+python3 -B -m unittest discover -s scripts/local -p test_star_history.py -v
+```
+
 ## Quick Start
 
 The fastest way to run the detection pipeline locally:
