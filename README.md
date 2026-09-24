@@ -53,6 +53,23 @@ The scripts works with Python 3.12 and has only been tested on Ubuntu 22.04.
 
     If you only want to run fake star detector, you only need to setup the MongoDB URL and Google Cloud related fields (remember to configure Google Cloud [credentials](https://cloud.google.com/bigquery/docs/authentication#client-libs)). The remaining configurations are for experimental and research scripts.
 
+## Inspecting Current Repositories
+
+For a lightweight look at a repository created after the published dataset
+cutoffs, use the live aggregate star-history tool:
+
+```shell
+python3 scripts/local/star_history.py owner/repo
+```
+
+This standalone command uses only the Python standard library and GitHub's
+public aggregate-history API; it does not require the setup above, MongoDB,
+BigQuery, DuckDB, or a GitHub Archive download. It reports temporal concentration
+and explicit coverage limits, **not a fake-star verdict**, and does not execute
+the low-activity or lockstep heuristics. See
+[live star-history usage and limitations](scripts/local/README.md#live-repository-star-history)
+for details.
+
 ## Running the Detector
 
 The detector employs two heuristics: a low-activity heuristic and a lockstep heuristic. Their parameters are defined in [scripts/__init__.py](scripts/__init__.py). Notably, you may want to change the `END_DATE` and `COPYCATCH_DATE_CHUNKS` to include latest data. The CopyCatch algorithm for the lockstep heuristic works on half-year chunks as specified in `COPYCATCH_DATE_CHUNKS` and a new chunk should be manually added on a quarterly basis (e.g., add `("240401", "241001")` after Oct 2024).
