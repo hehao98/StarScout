@@ -43,14 +43,18 @@ def extract_event_fields(event: dict, hour_dt: datetime) -> dict | None:
             return None
 
         # Actor fields (with fallbacks for schema evolution)
-        actor = event.get("actor", {}) or {}
-        actor_id = actor.get("id")
-        actor_login = actor.get("login") or actor.get("display_login")
+        actor = event.get("actor") or {}
 
-        # In very old events, actor might be just a string
-        if isinstance(event.get("actor"), str):
-            actor_login = event["actor"]
-            actor_id = None
+        # In pre-2015 (timeline API) events, actor is a plain login string
+        # and the details live in actor_attributes. This must be checked
+        # before calling .get() on actor, or the event is silently dropped.
+        if isinstance(actor, str):
+            actor_login = actor
+            actor = event.get("actor_attributes") or {}
+            actor_id = actor.get("id")
+        else:
+            actor_id = actor.get("id")
+            actor_login = actor.get("login") or actor.get("display_login")
 
         if not actor_login:
             return None
